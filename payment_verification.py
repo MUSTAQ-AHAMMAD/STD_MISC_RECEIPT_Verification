@@ -406,6 +406,88 @@ def verify_bank_accounts(oracle_receipts: List[Dict], bank_accounts: Dict) -> Di
     return results
 
 
+def verify_oracle_invoice_folder(folder_path: Path) -> Dict:
+    """Verify Oracle invoice folder exists and files have correct naming"""
+    print_section("5. Oracle Invoice Folder Verification")
+
+    results = {
+        'folder_exists': False,
+        'folder_path': None,
+        'total_files': 0,
+        'valid_files': [],
+        'invalid_files': [],
+        'valid_count': 0,
+        'invalid_count': 0
+    }
+
+    # Look for Oracle invoice folder (case-insensitive)
+    oracle_invoice_patterns = [
+        'Oracle invoice',
+        'Oracle invoices',
+        'oracle_invoice',
+        'oracle_invoices',
+        'Oracle Invoice',
+        'Oracle Invoices',
+        'ORACLE_INVOICE',
+        'ORACLE INVOICE'
+    ]
+
+    oracle_invoice_folder = None
+    for item in folder_path.iterdir():
+        if item.is_dir():
+            # Check if the folder name matches any pattern (case-insensitive)
+            for pattern in oracle_invoice_patterns:
+                if item.name.lower() == pattern.lower():
+                    oracle_invoice_folder = item
+                    results['folder_exists'] = True
+                    results['folder_path'] = str(item)
+                    break
+            if oracle_invoice_folder:
+                break
+
+    if not oracle_invoice_folder:
+        print_warning("Oracle invoice folder not found")
+        return results
+
+    print_success(f"Oracle invoice folder found: {oracle_invoice_folder.name}")
+
+    # Check all CSV and Excel files in the folder
+    file_extensions = ['.csv', '.xlsx', '.xls', '.CSV', '.XLSX', '.XLS']
+    files_to_check = []
+
+    for ext in file_extensions:
+        files_to_check.extend(oracle_invoice_folder.glob(f'*{ext}'))
+
+    results['total_files'] = len(files_to_check)
+
+    if results['total_files'] == 0:
+        print_warning("No CSV or Excel files found in Oracle invoice folder")
+        return results
+
+    print_info(f"Found {results['total_files']} file(s) to verify")
+
+    # Verify each file has "Oracle invoice" in its name (case-insensitive)
+    for file_path in files_to_check:
+        file_name = file_path.name
+        # Check if filename contains "oracle" and "invoice" (case-insensitive)
+        if 'oracle' in file_name.lower() and 'invoice' in file_name.lower():
+            results['valid_files'].append(file_name)
+            results['valid_count'] += 1
+        else:
+            results['invalid_files'].append(file_name)
+            results['invalid_count'] += 1
+
+    # Print summary
+    print_success(f"Files with correct naming: {results['valid_count']}")
+
+    if results['invalid_count'] > 0:
+        print_error(f"Files without 'Oracle invoice' in name: {results['invalid_count']}")
+        for file_name in results['invalid_files']:
+            print_error(f"  - {file_name}")
+
+    return results
+
+
 def generate_detailed_report(folder_name: str, verification_results: Dict) -> str:
     """Generate detailed verification report"""
     report_lines = []
@@ -443,6 +525,13 @@ def generate_detailed_report(folder_name: str, verification_results: Dict) -> st
     bank_results = verification_results.get('bank_verification', {})
     report_lines.append(f"Matched Bank Accounts: {len(bank_results.get('matched', []))}")
     report_lines.append(f"Bank Accounts Not Found: {len(bank_results.get('not_found', []))}")
+    report_lines.append("")
+
+    oracle_invoice_results = verification_results.get('oracle_invoice_verification', {})
+    report_lines.append(f"Oracle Invoice Folder Exists: {'Yes' if oracle_invoice_results.get('folder_exists') else 'No'}")
+    if oracle_invoice_results.get('folder_exists'):
+        report_lines.append(f"Oracle Invoice Files with Correct Naming: {oracle_invoice_results.get('valid_count', 0)}")
+        report_lines.append(f"Oracle Invoice Files with Incorrect Naming: {oracle_invoice_results.get('invalid_count', 0)}")
     report_lines.append("")
 
     # Detailed sections
@@ -502,6 +591,14 @@ def generate_detailed_report(folder_name: str, verification_results: Dict) -> st
             report_lines.append(f"    Used in {len(receipts)} receipts")
         report_lines.append("")
 
+    if oracle_invoice_results.get('invalid_files'):
+        report_lines.append("ORACLE INVOICE FILES WITH INCORRECT NAMING")
+        report_lines.append("-" * 100)
+        report_lines.append("The following files do not have 'Oracle invoice' in their filename:")
+        for file_name in oracle_invoice_results['invalid_files']:
+            report_lines.append(f"  - {file_name}")
+        report_lines.append("")
+
     report_lines.append("=" * 100)
     report_lines.append("END OF REPORT")
     report_lines.append("=" * 100)
@@ -522,6 +619,7 @@ def process_folder(folder_path: Path, bank_accounts: Dict) -> Dict:
         'transaction_verification': {},
         'organization_verification': {},
         'bank_verification': {},
+        'oracle_invoice_verification': {},
     }
 
     try:
@@ -550,6 +648,7 @@ def process_folder(folder_path: Path, bank_accounts: Dict) -> Dict:
         results['transaction_verification'] = verify_transactions(oracle_data, oracle_receipts)
         results['organization_verification'] = verify_organization_id(oracle_receipts)
         results['bank_verification'] = verify_bank_accounts(oracle_receipts, bank_accounts)
+        results['oracle_invoice_verification'] = verify_oracle_invoice_folder(folder_path)
 
         # Generate report
         report_content = generate_detailed_report(folder_name, results)
