@@ -1,0 +1,467 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 09:04:40 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         269,455.58 SAR     ║
+║  [ℹ] Standard Receipt Total                   561,874.00 SAR     ║
+║  [✗] Amount Reconciliation                    Diff: 292,418.42 SAR║
+║  [ℹ] Total Invoices                           1,251              ║
+║  [ℹ] Receipt Files Generated                  5                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          SMARTSHRYD.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             SMARTSHRYD_Payment_lines_5-31.xlsx
+  Segment 1 prefix                         97997992
+  Segment 2 prefix                         11442265
+
+  AR rows read                             5723
+  Unique invoices loaded                   1250
+  Unique transactions (BLK)                55
+  Total AR amount                          269,854.58 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Cash                       224           58,529.00             
+  Mada                       712           148,695.00            
+  Master                     49            12,622.00             
+  TABBY                      88            23,606.00             
+  TAMARA                     16            5,257.00              
+  Visa                       238           61,091.00             
+  ----------------------------------------------------------------------
+  TOTAL                      1327          309,800.00            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  RYDAVENUE                       1           -399.00             
+  RYDGALLER                       104         28,863.00           
+  SMARTSHRYD                      1146        281,336.00          
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 101
+    Total amount: 280,937.00 SAR
+    Payment methods included: ['Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              280,937.00 SAR
+    Per-method total:                280,937.00 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    Cash               27 rows           58,529.00 SAR  ⚠ 1 NEGATIVE AMOUNTS!
+    Mada               27 rows          148,695.00 SAR  ✓
+    Master             20 rows           12,622.00 SAR  ✓
+    Visa               27 rows           61,091.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    104
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   5
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       148,695.00 SAR
+    Visa                        61,091.00 SAR
+    Cash                        58,529.00 SAR
+    Master                      12,622.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TABBY                       23,606.00 SAR
+    TAMARA                       5,257.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          RYDAVENUE        Cash        -399.00           CashRYDAVENUE                      
+  Receipt_CASH.csv                          SMARTSHRYD       Cash        883.00            Cash SMARTSHRYD                    
+  Receipt_MADA.csv                          SMARTSHRYD       Mada        8,162.00          157-95017321-SMARTSHRYD            
+  Receipt_MASTER.csv                        SMARTSHRYD       Master      797.00            157-95017321-SMARTSHRYD            
+  Receipt_VISA.csv                          SMARTSHRYD       Visa        2,648.00          157-95017321-SMARTSHRYD            
+  Receipt_CASH.csv                          SMARTSHRYD       Cash        2,062.00          Cash SMARTSHRYD                    
+  Receipt_MADA.csv                          SMARTSHRYD       Mada        7,113.00          157-95017321-SMARTSHRYD            
+  Receipt_MASTER.csv                        SMARTSHRYD       Master      525.00            157-95017321-SMARTSHRYD            
+  Receipt_VISA.csv                          SMARTSHRYD       Visa        2,744.00          157-95017321-SMARTSHRYD            
+  Receipt_CASH.csv                          SMARTSHRYD       Cash        902.00            Cash SMARTSHRYD                    
+  Receipt_MADA.csv                          SMARTSHRYD       Mada        8,217.00          157-95017321-SMARTSHRYD            
+  Receipt_MASTER.csv                        SMARTSHRYD       Master      1,011.00          157-95017321-SMARTSHRYD            
+  Receipt_VISA.csv                          SMARTSHRYD       Visa        4,006.00          157-95017321-SMARTSHRYD            
+  Receipt_CASH.csv                          SMARTSHRYD       Cash        2,117.00          Cash SMARTSHRYD                    
+  Receipt_MADA.csv                          SMARTSHRYD       Mada        5,338.00          157-95017321-SMARTSHRYD            
+  Receipt_MASTER.csv                        SMARTSHRYD       Master      583.00            157-95017321-SMARTSHRYD            
+  Receipt_VISA.csv                          SMARTSHRYD       Visa        3,821.00          157-95017321-SMARTSHRYD            
+  Receipt_CASH.csv                          SMARTSHRYD       Cash        877.00            Cash SMARTSHRYD                    
+  Receipt_MADA.csv                          SMARTSHRYD       Mada        5,107.00          157-95017321-SMARTSHRYD            
+  Receipt_VISA.csv                          SMARTSHRYD       Visa        2,893.00          157-95017321-SMARTSHRYD            
+  Receipt_CASH.csv                          SMARTSHRYD       Cash        1,271.00          Cash SMARTSHRYD                    
+  Receipt_MADA.csv                          SMARTSHRYD       Mada        2,914.00          157-95017321-SMARTSHRYD            
+  Receipt_MASTER.csv                        SMARTSHRYD       Master      1,122.00          157-95017321-SMARTSHRYD            
+  Receipt_VISA.csv                          SMARTSHRYD       Visa        2,086.00          157-95017321-SMARTSHRYD            
+  Receipt_CASH.csv                          SMARTSHRYD       Cash        1,632.00          Cash SMARTSHRYD                    
+  Receipt_MADA.csv                          SMARTSHRYD       Mada        9,505.00          157-95017321-SMARTSHRYD            
+  Receipt_MASTER.csv                        SMARTSHRYD       Master      798.00            157-95017321-SMARTSHRYD            
+  Receipt_VISA.csv                          SMARTSHRYD       Visa        2,659.00          157-95017321-SMARTSHRYD            
+  Receipt_CASH.csv                          SMARTSHRYD       Cash        15,816.00         Cash SMARTSHRYD                    
+  Receipt_MADA.csv                          SMARTSHRYD       Mada        4,664.00          157-95017321-SMARTSHRYD            
+  Receipt_MASTER.csv                        SMARTSHRYD       Master      894.00            157-95017321-SMARTSHRYD            
+  Receipt_VISA.csv                          SMARTSHRYD       Visa        1,776.00          157-95017321-SMARTSHRYD            
+  Receipt_CASH.csv                          SMARTSHRYD       Cash        2,138.00          Cash SMARTSHRYD                    
+  Receipt_MADA.csv                          SMARTSHRYD       Mada        5,035.00          157-95017321-SMARTSHRYD            
+  Receipt_MASTER.csv                        SMARTSHRYD       Master      115.00            157-95017321-SMARTSHRYD            
+  Receipt_VISA.csv                          SMARTSHRYD       Visa        2,100.00          157-95017321-SMARTSHRYD            
+  Receipt_CASH.csv                          SMARTSHRYD       Cash        1,333.00          Cash SMARTSHRYD                    
+  Receipt_MADA.csv                          SMARTSHRYD       Mada        7,444.00          157-95017321-SMARTSHRYD            
+  Receipt_MASTER.csv                        SMARTSHRYD       Master      945.00            157-95017321-SMARTSHRYD            
+  Receipt_VISA.csv                          SMARTSHRYD       Visa        2,805.00          157-95017321-SMARTSHRYD            
+  Receipt_CASH.csv                          SMARTSHRYD       Cash        2,977.00          Cash SMARTSHRYD                    
+  Receipt_MADA.csv                          SMARTSHRYD       Mada        12,015.00         157-95017321-SMARTSHRYD            
+  Receipt_MASTER.csv                        SMARTSHRYD       Master      274.00            157-95017321-SMARTSHRYD            
+  Receipt_VISA.csv                          SMARTSHRYD       Visa        3,743.00          157-95017321-SMARTSHRYD            
+  Receipt_CASH.csv                          SMARTSHRYD       Cash        2,568.00          Cash SMARTSHRYD                    
+  Receipt_MADA.csv                          SMARTSHRYD       Mada        10,383.00         157-95017321-SMARTSHRYD            
+  Receipt_MASTER.csv                        SMARTSHRYD       Master      1,938.00          157-95017321-SMARTSHRYD            
+  Receipt_VISA.csv                          SMARTSHRYD       Visa        5,064.00          157-95017321-SMARTSHRYD            
+  Receipt_CASH.csv                          SMARTSHRYD       Cash        5,827.00          Cash SMARTSHRYD                    
+  Receipt_MADA.csv                          SMARTSHRYD       Mada        10,959.00         157-95017321-SMARTSHRYD            
+  Receipt_MASTER.csv                        SMARTSHRYD       Master      613.00            157-95017321-SMARTSHRYD            
+  Receipt_VISA.csv                          SMARTSHRYD       Visa        3,012.00          157-95017321-SMARTSHRYD            
+  Receipt_CASH.csv                          SMARTSHRYD       Cash        1,809.00          Cash SMARTSHRYD                    
+  Receipt_MADA.csv                          SMARTSHRYD       Mada        7,731.00          157-95017321-SMARTSHRYD            
+  Receipt_MASTER.csv                        SMARTSHRYD       Master      1,438.00          157-95017321-SMARTSHRYD            
+  Receipt_VISA.csv                          SMARTSHRYD       Visa        1,202.00          157-95017321-SMARTSHRYD            
+  Receipt_CASH.csv                          SMARTSHRYD       Cash        6,442.00          Cash SMARTSHRYD                    
+  Receipt_MADA.csv                          SMARTSHRYD       Mada        20,519.00         157-95017321-SMARTSHRYD            
+  Receipt_MASTER.csv                        SMARTSHRYD       Master      521.00            157-95017321-SMARTSHRYD            
+  Receipt_VISA.csv                          SMARTSHRYD       Visa        4,657.00          157-95017321-SMARTSHRYD            
+  Receipt_CASH.csv                          SMARTSHRYD       Cash        828.00            Cash SMARTSHRYD                    
+  Receipt_MADA.csv                          SMARTSHRYD       Mada        4,330.00          157-95017321-SMARTSHRYD            
+  Receipt_VISA.csv                          SMARTSHRYD       Visa        2,097.00          157-95017321-SMARTSHRYD            
+  Receipt_CASH.csv                          SMARTSHRYD       Cash        738.00            Cash SMARTSHRYD                    
+  Receipt_MADA.csv                          SMARTSHRYD       Mada        1,917.00          157-95017321-SMARTSHRYD            
+  Receipt_MASTER.csv                        SMARTSHRYD       Master      521.00            157-95017321-SMARTSHRYD            
+  Receipt_VISA.csv                          SMARTSHRYD       Visa        1,034.00          157-95017321-SMARTSHRYD            
+  Receipt_CASH.csv                          SMARTSHRYD       Cash        939.00            Cash SMARTSHRYD                    
+  Receipt_MADA.csv                          SMARTSHRYD       Mada        1,353.00          157-95017321-SMARTSHRYD            
+  Receipt_VISA.csv                          SMARTSHRYD       Visa        1,991.00          157-95017321-SMARTSHRYD            
+  Receipt_CASH.csv                          SMARTSHRYD       Cash        1,142.00          Cash SMARTSHRYD                    
+  Receipt_MADA.csv                          SMARTSHRYD       Mada        1,468.00          157-95017321-SMARTSHRYD            
+  Receipt_MASTER.csv                        SMARTSHRYD       Master      49.00             157-95017321-SMARTSHRYD            
+  Receipt_VISA.csv                          SMARTSHRYD       Visa        785.00            157-95017321-SMARTSHRYD            
+  Receipt_CASH.csv                          SMARTSHRYD       Cash        1,397.00          Cash SMARTSHRYD                    
+  Receipt_MADA.csv                          SMARTSHRYD       Mada        3,267.00          157-95017321-SMARTSHRYD            
+  Receipt_MASTER.csv                        SMARTSHRYD       Master      125.00            157-95017321-SMARTSHRYD            
+  Receipt_VISA.csv                          SMARTSHRYD       Visa        1,639.00          157-95017321-SMARTSHRYD            
+  Receipt_CASH.csv                          SMARTSHRYD       Cash        925.00            Cash SMARTSHRYD                    
+  Receipt_MADA.csv                          SMARTSHRYD       Mada        1,349.00          157-95017321-SMARTSHRYD            
+  Receipt_VISA.csv                          SMARTSHRYD       Visa        2,126.00          157-95017321-SMARTSHRYD            
+  Receipt_CASH.csv                          SMARTSHRYD       Cash        100.00            Cash SMARTSHRYD                    
+  Receipt_MADA.csv                          SMARTSHRYD       Mada        1,997.00          157-95017321-SMARTSHRYD            
+  Receipt_VISA.csv                          SMARTSHRYD       Visa        1,359.00          157-95017321-SMARTSHRYD            
+  Receipt_CASH.csv                          SMARTSHRYD       Cash        398.00            Cash SMARTSHRYD                    
+  Receipt_MADA.csv                          SMARTSHRYD       Mada        2,806.00          157-95017321-SMARTSHRYD            
+  Receipt_MASTER.csv                        SMARTSHRYD       Master      149.00            157-95017321-SMARTSHRYD            
+  Receipt_VISA.csv                          SMARTSHRYD       Visa        1,237.00          157-95017321-SMARTSHRYD            
+  Receipt_CASH.csv                          SMARTSHRYD       Cash        898.00            Cash SMARTSHRYD                    
+  Receipt_MADA.csv                          SMARTSHRYD       Mada        2,459.00          157-95017321-SMARTSHRYD            
+  Receipt_VISA.csv                          SMARTSHRYD       Visa        1,645.00          157-95017321-SMARTSHRYD            
+  Receipt_CASH.csv                          SMARTSHRYD       Cash        1,315.00          Cash SMARTSHRYD                    
+  Receipt_MADA.csv                          SMARTSHRYD       Mada        1,598.00          157-95017321-SMARTSHRYD            
+  Receipt_MASTER.csv                        SMARTSHRYD       Master      99.00             157-95017321-SMARTSHRYD            
+  Receipt_VISA.csv                          SMARTSHRYD       Visa        907.00            157-95017321-SMARTSHRYD            
+  Receipt_CASH.csv                          SMARTSHRYD       Cash        1,594.00          Cash SMARTSHRYD                    
+  Receipt_MADA.csv                          SMARTSHRYD       Mada        850.00            157-95017321-SMARTSHRYD            
+  Receipt_VISA.csv                          SMARTSHRYD       Visa        601.00            157-95017321-SMARTSHRYD            
+  Receipt_MADA.csv                          SMARTSHRYD       Mada        195.00            157-95017321-SMARTSHRYD            
+  Receipt_MASTER.csv                        SMARTSHRYD       Master      105.00            157-95017321-SMARTSHRYD            
+  Receipt_VISA.csv                          SMARTSHRYD       Visa        454.00            157-95017321-SMARTSHRYD            
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            280,937.00                                           
+
+  Per-method totals:
+    Cash             27 file(s)       58,529.00 SAR
+    Mada             27 file(s)      148,695.00 SAR
+    Master           20 file(s)       12,622.00 SAR
+    Visa             27 file(s)       61,091.00 SAR
+    Grand Total                       280,937.00 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Cash         Mada       Master         Visa          TOTAL
+  ----------------------------------------------------------------------------------
+  2026-03-05            883        8,162          797        2,648         12,490
+  2026-03-06          2,062        7,113          525        2,744         12,444
+  2026-03-07            902        8,217        1,011        4,006         14,136
+  2026-03-08          2,117        5,338          583        3,821         11,859
+  2026-03-09            877        5,107            0        2,893          8,877
+  2026-03-10          1,271        2,914        1,122        2,086          7,393
+  2026-03-11          1,632        9,505          798        2,659         14,594
+  2026-03-12         15,816        4,664          894        1,776         23,150
+  2026-03-13          2,138        5,035          115        2,100          9,388
+  2026-03-14          1,333        7,444          945        2,805         12,527
+  2026-03-15          2,977       12,015          274        3,743         19,009
+  2026-03-16          2,568       10,383        1,938        5,064         19,953
+  2026-03-17          5,827       10,959          613        3,012         20,411
+  2026-03-18          1,809        7,731        1,438        1,202         12,180
+  2026-03-19          6,442       20,519          521        4,657         32,139
+  2026-03-20            828        4,330            0        2,097          7,255
+  2026-03-21            738        1,917          521        1,034          4,210
+  2026-03-22            939        1,353            0        1,991          4,283
+  2026-03-23          1,142        1,468           49          785          3,444
+  2026-03-24            998        3,267          125        1,639          6,029
+  2026-03-25            925        1,349            0        2,126          4,400
+  2026-03-26            100        1,997            0        1,359          3,456
+  2026-03-27            398        2,806          149        1,237          4,590
+  2026-03-28            898        2,459            0        1,645          5,002
+  2026-03-29          1,315        1,598           99          907          3,919
+  2026-03-30          1,594          850            0          601          3,045
+  2026-03-31              0          195          105          454            754
+  ----------------------------------------------------------------------------------
+  TOTAL              58,529      148,695       12,622       61,091        280,937
+
+  VALIDATION:
+    Payment file total (for standard receipts):       280,937.00 SAR
+    Receipt files total:                              280,937.00 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Cash            Payment:    58,529.00  Receipt:    58,529.00  Diff:     0.00  ✓
+    Mada            Payment:   148,695.00  Receipt:   148,695.00  Diff:     0.00  ✓
+    Master          Payment:    12,622.00  Receipt:    12,622.00  Diff:     0.00  ✓
+    Visa            Payment:    61,091.00  Receipt:    61,091.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (101 rows, 280,937.00 SAR)
+  Per-method grand total                   280,937.00 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 74
+    Total amount: -2,643.0266 SAR
+    Payment methods included: ['Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -2,643.0266 SAR
+    Per-method total:               -2,643.0266 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    Mada               27 rows         -1,032.3987 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             20 rows           -275.7902 SAR  ⚠ 20 NEGATIVE AMOUNTS!
+    Visa               27 rows         -1,334.8377 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              4
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       149,623.00 SAR
+    Visa                        61,091.00 SAR
+    Master                      12,622.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                        61,509.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED               61,509.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  SMARTSHRYD       Mada        8,162.00          0.01      -56.3178          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Master      797.00            0.02      -17.4144          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Visa        2,648.00          0.02      -57.8588          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Mada        7,113.00          0.01      -49.0797          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Master      525.00            0.02      -11.4712          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Visa        2,744.00          0.02      -59.9564          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Mada        8,516.00          0.01      -58.7604          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Master      1,011.00          0.02      -22.0903          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Visa        4,006.00          0.02      -87.5311          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Mada        5,338.00          0.01      -36.8322          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Master      583.00            0.02      -12.7385          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Visa        3,821.00          0.02      -83.4888          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Mada        5,107.00          0.01      -35.2383          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Visa        2,893.00          0.02      -63.2120          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Mada        2,914.00          0.01      -20.1066          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Master      1,122.00          0.02      -24.5157          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Visa        2,086.00          0.02      -45.5791          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Mada        9,505.00          0.01      -65.5845          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Master      798.00            0.02      -17.4363          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Visa        2,659.00          0.02      -58.0991          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Mada        4,664.00          0.01      -32.1816          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Master      894.00            0.02      -19.5339          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Visa        1,776.00          0.02      -38.8056          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Mada        5,035.00          0.01      -34.7415          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Master      115.00            0.02      -2.5128           157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Visa        2,100.00          0.02      -45.8850          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Mada        7,444.00          0.01      -51.3636          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Master      945.00            0.02      -20.6482          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Visa        2,805.00          0.02      -61.2892          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Mada        12,015.00         0.01      -82.9035          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Master      274.00            0.02      -5.9869           157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Visa        3,743.00          0.02      -81.7845          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Mada        10,838.00         0.01      -74.7822          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Master      1,938.00          0.02      -42.3453          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Visa        5,064.00          0.02      -110.6484         157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Mada        10,959.00         0.01      -75.6171          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Master      613.00            0.02      -13.3941          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Visa        3,012.00          0.02      -65.8122          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Mada        7,731.00          0.01      -53.3439          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Master      1,438.00          0.02      -31.4203          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Visa        1,202.00          0.02      -26.2637          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Mada        20,693.00         0.01      -142.7817         157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Master      521.00            0.02      -11.3838          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Visa        4,657.00          0.02      -101.7554         157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Mada        4,330.00          0.01      -29.8770          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Visa        2,097.00          0.02      -45.8194          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Mada        1,917.00          0.01      -13.2273          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Master      521.00            0.02      -11.3838          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Visa        1,034.00          0.02      -22.5929          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Mada        1,353.00          0.01      -9.3357           157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Visa        1,991.00          0.02      -43.5033          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Mada        1,468.00          0.01      -10.1292          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Master      49.00             0.02      -1.0706           157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Visa        785.00            0.02      -17.1522          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Mada        3,267.00          0.01      -22.5423          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Master      125.00            0.02      -2.7312           157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Visa        1,639.00          0.02      -35.8121          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Mada        1,349.00          0.01      -9.3081           157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Visa        2,126.00          0.02      -46.4531          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Mada        1,997.00          0.01      -13.7793          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Visa        1,359.00          0.02      -29.6941          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Mada        2,806.00          0.01      -19.3614          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Master      149.00            0.02      -3.2556           157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Visa        1,237.00          0.02      -27.0284          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Mada        2,459.00          0.01      -16.9671          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Visa        1,645.00          0.02      -35.9432          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Mada        1,598.00          0.01      -11.0262          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Master      99.00             0.02      -2.1631           157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Visa        907.00            0.02      -19.8179          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Mada        850.00            0.01      -5.8650           157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Visa        601.00            0.02      -13.1319          157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Mada        195.00            0.01      -1.3455           157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Master      105.00            0.02      -2.2942           157-95017321-SMARTSHRYD       
+  SMARTSHRYD       Visa        454.00            0.02      -9.9199           157-95017321-SMARTSHRYD       
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -2,643.0266                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (74 rows, -2,643.0266 SAR)
+  Per-method grand total                   -2,643.0266 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  269,455.58 SAR         █
+  █  Total Standard Receipt amt               561,874.00 SAR         █
+  █  Difference                               292,418.42 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  269,455.58 SAR
+  Total Standard Receipt amt               561,874.00 SAR
+  Difference                               292,418.42 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0004810
+  >>> Next run START_TXN_SEQUENCE =        4811  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 21:04:43
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

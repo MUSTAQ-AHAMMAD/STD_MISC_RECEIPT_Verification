@@ -1,0 +1,497 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 08:54:17 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         747,499.65 SAR     ║
+║  [ℹ] Standard Receipt Total                   1,592,986.00 SAR   ║
+║  [✗] Amount Reconciliation                    Diff: 845,486.35 SAR║
+║  [ℹ] Total Invoices                           2,313              ║
+║  [ℹ] Receipt Files Generated                  6                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          NOUR.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             NOUR_payment_line_5_to_31_March.xlsx
+  Segment 1 prefix                         50747642
+  Segment 2 prefix                         67217882
+
+  AR rows read                             12427
+  Unique invoices loaded                   2313
+  Unique transactions (BLK)                70
+  Total AR amount                          747,499.65 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Amex                       10            4,510.00              
+  Cash                       803           280,565.00            
+  Mada                       1081          305,088.00            
+  Master                     144           69,315.00             
+  TABBY                      73            25,573.00             
+  TAMARA                     111           38,544.00             
+  Visa                       356           137,015.00            
+  ----------------------------------------------------------------------
+  TOTAL                      2578          860,610.00            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  NOUR                            2129        796,493.00          
+  RYDGALLER                       184         64,117.00           
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 113
+    Total amount: 796,493.00 SAR
+    Payment methods included: ['AMEX', 'Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              796,493.00 SAR
+    Per-method total:                796,493.00 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    AMEX                7 rows            4,510.00 SAR  ✓
+    Cash               27 rows          280,565.00 SAR  ✓
+    Mada               27 rows          305,088.00 SAR  ✓
+    Master             25 rows           69,315.00 SAR  ✓
+    Visa               27 rows          137,015.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    184
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   6
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       305,088.00 SAR
+    Cash                       280,565.00 SAR
+    Visa                       137,015.00 SAR
+    Master                      69,315.00 SAR
+    Amex                         4,510.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TAMARA                      38,544.00 SAR
+    TABBY                       25,573.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          NOUR             Cash        8,159.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          NOUR             Mada        13,299.00         1831441329940                      
+  Receipt_MASTER.csv                        NOUR             Master      692.00            1831441329940                      
+  Receipt_VISA.csv                          NOUR             Visa        2,981.00          1831441329940                      
+  Receipt_AMEX.csv                          NOUR             Amex        298.00            1831441329940                      
+  Receipt_CASH.csv                          NOUR             Cash        13,943.00         CashOth Mall Hail                  
+  Receipt_MADA.csv                          NOUR             Mada        16,911.00         1831441329940                      
+  Receipt_MASTER.csv                        NOUR             Master      200.00            1831441329940                      
+  Receipt_VISA.csv                          NOUR             Visa        5,040.00          1831441329940                      
+  Receipt_AMEX.csv                          NOUR             Amex        894.00            1831441329940                      
+  Receipt_CASH.csv                          NOUR             Cash        9,946.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          NOUR             Mada        11,055.00         1831441329940                      
+  Receipt_VISA.csv                          NOUR             Visa        3,198.00          1831441329940                      
+  Receipt_CASH.csv                          NOUR             Cash        14,912.00         CashOth Mall Hail                  
+  Receipt_MADA.csv                          NOUR             Mada        13,796.00         1831441329940                      
+  Receipt_MASTER.csv                        NOUR             Master      0.00              1831441329940                      
+  Receipt_VISA.csv                          NOUR             Visa        3,332.00          1831441329940                      
+  Receipt_AMEX.csv                          NOUR             Amex        328.00            1831441329940                      
+  Receipt_CASH.csv                          NOUR             Cash        10,200.00         CashOth Mall Hail                  
+  Receipt_MADA.csv                          NOUR             Mada        15,299.00         1831441329940                      
+  Receipt_MASTER.csv                        NOUR             Master      1,876.00          1831441329940                      
+  Receipt_VISA.csv                          NOUR             Visa        5,473.00          1831441329940                      
+  Receipt_AMEX.csv                          NOUR             Amex        199.00            1831441329940                      
+  Receipt_CASH.csv                          NOUR             Cash        9,130.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          NOUR             Mada        18,110.00         1831441329940                      
+  Receipt_MASTER.csv                        NOUR             Master      3,167.00          1831441329940                      
+  Receipt_VISA.csv                          NOUR             Visa        9,815.00          1831441329940                      
+  Receipt_CASH.csv                          NOUR             Cash        12,651.00         CashOth Mall Hail                  
+  Receipt_MADA.csv                          NOUR             Mada        21,242.00         1831441329940                      
+  Receipt_MASTER.csv                        NOUR             Master      1,248.00          1831441329940                      
+  Receipt_VISA.csv                          NOUR             Visa        7,648.00          1831441329940                      
+  Receipt_CASH.csv                          NOUR             Cash        16,057.00         CashOth Mall Hail                  
+  Receipt_MADA.csv                          NOUR             Mada        15,502.00         1831441329940                      
+  Receipt_MASTER.csv                        NOUR             Master      5,420.00          1831441329940                      
+  Receipt_VISA.csv                          NOUR             Visa        5,712.00          1831441329940                      
+  Receipt_CASH.csv                          NOUR             Cash        13,007.00         CashOth Mall Hail                  
+  Receipt_MADA.csv                          NOUR             Mada        11,681.00         1831441329940                      
+  Receipt_MASTER.csv                        NOUR             Master      2,430.00          1831441329940                      
+  Receipt_VISA.csv                          NOUR             Visa        9,465.00          1831441329940                      
+  Receipt_CASH.csv                          NOUR             Cash        18,565.00         CashOth Mall Hail                  
+  Receipt_MADA.csv                          NOUR             Mada        15,177.00         1831441329940                      
+  Receipt_MASTER.csv                        NOUR             Master      4,107.00          1831441329940                      
+  Receipt_VISA.csv                          NOUR             Visa        7,742.00          1831441329940                      
+  Receipt_CASH.csv                          NOUR             Cash        12,760.00         CashOth Mall Hail                  
+  Receipt_MADA.csv                          NOUR             Mada        18,199.00         1831441329940                      
+  Receipt_MASTER.csv                        NOUR             Master      5,208.00          1831441329940                      
+  Receipt_VISA.csv                          NOUR             Visa        7,852.00          1831441329940                      
+  Receipt_CASH.csv                          NOUR             Cash        19,037.00         CashOth Mall Hail                  
+  Receipt_MADA.csv                          NOUR             Mada        19,675.00         1831441329940                      
+  Receipt_MASTER.csv                        NOUR             Master      2,998.00          1831441329940                      
+  Receipt_VISA.csv                          NOUR             Visa        9,470.00          1831441329940                      
+  Receipt_CASH.csv                          NOUR             Cash        18,505.00         CashOth Mall Hail                  
+  Receipt_MADA.csv                          NOUR             Mada        22,086.00         1831441329940                      
+  Receipt_MASTER.csv                        NOUR             Master      4,412.00          1831441329940                      
+  Receipt_VISA.csv                          NOUR             Visa        8,585.00          1831441329940                      
+  Receipt_CASH.csv                          NOUR             Cash        23,962.00         CashOth Mall Hail                  
+  Receipt_MADA.csv                          NOUR             Mada        17,759.00         1831441329940                      
+  Receipt_MASTER.csv                        NOUR             Master      11,509.00         1831441329940                      
+  Receipt_VISA.csv                          NOUR             Visa        7,393.00          1831441329940                      
+  Receipt_AMEX.csv                          NOUR             Amex        199.00            1831441329940                      
+  Receipt_CASH.csv                          NOUR             Cash        15,056.00         CashOth Mall Hail                  
+  Receipt_MADA.csv                          NOUR             Mada        26,725.00         1831441329940                      
+  Receipt_MASTER.csv                        NOUR             Master      7,103.00          1831441329940                      
+  Receipt_VISA.csv                          NOUR             Visa        10,207.00         1831441329940                      
+  Receipt_CASH.csv                          NOUR             Cash        8,502.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          NOUR             Mada        7,356.00          1831441329940                      
+  Receipt_MASTER.csv                        NOUR             Master      1,556.00          1831441329940                      
+  Receipt_VISA.csv                          NOUR             Visa        6,112.00          1831441329940                      
+  Receipt_CASH.csv                          NOUR             Cash        4,045.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          NOUR             Mada        2,002.00          1831441329940                      
+  Receipt_MASTER.csv                        NOUR             Master      1,988.00          1831441329940                      
+  Receipt_VISA.csv                          NOUR             Visa        5,493.00          1831441329940                      
+  Receipt_CASH.csv                          NOUR             Cash        5,713.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          NOUR             Mada        3,099.00          1831441329940                      
+  Receipt_MASTER.csv                        NOUR             Master      1,157.00          1831441329940                      
+  Receipt_VISA.csv                          NOUR             Visa        2,417.00          1831441329940                      
+  Receipt_CASH.csv                          NOUR             Cash        4,530.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          NOUR             Mada        2,814.00          1831441329940                      
+  Receipt_MASTER.csv                        NOUR             Master      1,387.00          1831441329940                      
+  Receipt_VISA.csv                          NOUR             Visa        470.00            1831441329940                      
+  Receipt_CASH.csv                          NOUR             Cash        5,335.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          NOUR             Mada        5,367.00          1831441329940                      
+  Receipt_MASTER.csv                        NOUR             Master      1,296.00          1831441329940                      
+  Receipt_VISA.csv                          NOUR             Visa        2,592.00          1831441329940                      
+  Receipt_AMEX.csv                          NOUR             Amex        998.00            1831441329940                      
+  Receipt_CASH.csv                          NOUR             Cash        6,069.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          NOUR             Mada        1,260.00          1831441329940                      
+  Receipt_MASTER.csv                        NOUR             Master      1,655.00          1831441329940                      
+  Receipt_VISA.csv                          NOUR             Visa        3,499.00          1831441329940                      
+  Receipt_CASH.csv                          NOUR             Cash        7,279.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          NOUR             Mada        5,129.00          1831441329940                      
+  Receipt_MASTER.csv                        NOUR             Master      3,068.00          1831441329940                      
+  Receipt_VISA.csv                          NOUR             Visa        4,928.00          1831441329940                      
+  Receipt_CASH.csv                          NOUR             Cash        4,330.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          NOUR             Mada        5,147.00          1831441329940                      
+  Receipt_VISA.csv                          NOUR             Visa        1,833.00          1831441329940                      
+  Receipt_AMEX.csv                          NOUR             Amex        1,594.00          1831441329940                      
+  Receipt_CASH.csv                          NOUR             Cash        3,293.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          NOUR             Mada        4,812.00          1831441329940                      
+  Receipt_MASTER.csv                        NOUR             Master      199.00            1831441329940                      
+  Receipt_VISA.csv                          NOUR             Visa        1,061.00          1831441329940                      
+  Receipt_CASH.csv                          NOUR             Cash        4,890.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          NOUR             Mada        2,868.00          1831441329940                      
+  Receipt_MASTER.csv                        NOUR             Master      4,965.00          1831441329940                      
+  Receipt_VISA.csv                          NOUR             Visa        1,152.00          1831441329940                      
+  Receipt_CASH.csv                          NOUR             Cash        3,980.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          NOUR             Mada        4,499.00          1831441329940                      
+  Receipt_MASTER.csv                        NOUR             Master      1,514.00          1831441329940                      
+  Receipt_VISA.csv                          NOUR             Visa        2,298.00          1831441329940                      
+  Receipt_CASH.csv                          NOUR             Cash        6,709.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          NOUR             Mada        4,219.00          1831441329940                      
+  Receipt_MASTER.csv                        NOUR             Master      160.00            1831441329940                      
+  Receipt_VISA.csv                          NOUR             Visa        1,247.00          1831441329940                      
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            796,493.00                                           
+
+  Per-method totals:
+    Amex              7 file(s)        4,510.00 SAR
+    Cash             27 file(s)      280,565.00 SAR
+    Mada             27 file(s)      305,088.00 SAR
+    Master           25 file(s)       69,315.00 SAR
+    Visa             27 file(s)      137,015.00 SAR
+    Grand Total                       796,493.00 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Amex         Cash         Mada       Master         Visa          TOTAL
+  ------------------------------------------------------------------------------------------------
+  2026-03-05              0        8,159       13,299          692        2,981         25,131
+  2026-03-06            298       13,943       16,911          200        5,040         36,392
+  2026-03-07            894        9,946       11,055            0        3,198         25,093
+  2026-03-08              0       14,912       13,796            0        3,332         32,040
+  2026-03-09            328       10,200       15,299        1,876        5,473         33,176
+  2026-03-10            199        9,130       18,110        3,167        9,815         40,421
+  2026-03-11              0       12,651       21,242        1,248        7,648         42,789
+  2026-03-12              0       16,057       15,502        5,420        5,712         42,691
+  2026-03-13              0       13,007       11,681        2,430        9,465         36,583
+  2026-03-14              0       18,565       15,177        4,107        7,742         45,591
+  2026-03-15              0       12,760       18,199        5,208        7,852         44,019
+  2026-03-16              0       19,037       19,675        2,998        9,470         51,180
+  2026-03-17              0       18,505       22,086        4,412        8,585         53,588
+  2026-03-18              0       23,962       17,759       11,509        7,393         60,623
+  2026-03-19            199       15,056       26,725        7,103       10,207         59,290
+  2026-03-20              0        8,502        7,356        1,556        6,112         23,526
+  2026-03-21              0        4,045        2,002        1,988        5,493         13,528
+  2026-03-22              0        5,713        3,099        1,157        2,417         12,386
+  2026-03-23              0        4,530        2,814        1,387          470          9,201
+  2026-03-24              0        5,335        5,367        1,296        2,592         14,590
+  2026-03-25            998        6,069        1,260        1,655        3,499         13,481
+  2026-03-26              0        7,279        5,129        3,068        4,928         20,404
+  2026-03-27              0        4,330        5,147            0        1,833         11,310
+  2026-03-28          1,594        3,293        4,812          199        1,061         10,959
+  2026-03-29              0        4,890        2,868        4,965        1,152         13,875
+  2026-03-30              0        3,980        4,499        1,514        2,298         12,291
+  2026-03-31              0        6,709        4,219          160        1,247         12,335
+  ------------------------------------------------------------------------------------------------
+  TOTAL               4,510      280,565      305,088       69,315      137,015        796,493
+
+  VALIDATION:
+    Payment file total (for standard receipts):       796,493.00 SAR
+    Receipt files total:                              796,493.00 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Amex            Payment:     4,510.00  Receipt:     4,510.00  Diff:     0.00  ✓
+    Cash            Payment:   280,565.00  Receipt:   280,565.00  Diff:     0.00  ✓
+    Mada            Payment:   305,088.00  Receipt:   305,088.00  Diff:     0.00  ✓
+    Master          Payment:    69,315.00  Receipt:    69,315.00  Diff:     0.00  ✓
+    Visa            Payment:   137,015.00  Receipt:   137,015.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (113 rows, 796,493.00 SAR)
+  Per-method grand total                   796,493.00 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 86
+    Total amount: -6,824.2277 SAR
+    Payment methods included: ['AMEX', 'Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -6,824.2277 SAR
+    Per-method total:               -6,824.2277 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    AMEX                7 rows           -191.9004 SAR  ⚠ 7 NEGATIVE AMOUNTS!
+    Mada               27 rows         -2,110.9515 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             25 rows         -1,527.5986 SAR  ⚠ 25 NEGATIVE AMOUNTS!
+    Visa               27 rows         -2,993.7772 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              5
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       305,935.00 SAR
+    Visa                       137,015.00 SAR
+    Master                      69,913.00 SAR
+    Amex                         4,510.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                       288,155.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED              288,155.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  NOUR             Mada        13,644.00         0.01      -94.1436          1831441329940                 
+  NOUR             Master      692.00            0.02      -15.1202          1831441329940                 
+  NOUR             Visa        2,981.00          0.02      -65.1348          1831441329940                 
+  NOUR             Amex        298.00            0.04      -12.6799          1831441329940                 
+  NOUR             Mada        16,911.00         0.01      -116.6859         1831441329940                 
+  NOUR             Master      200.00            0.02      -4.3700           1831441329940                 
+  NOUR             Visa        5,040.00          0.02      -110.1240         1831441329940                 
+  NOUR             Amex        894.00            0.04      -38.0397          1831441329940                 
+  NOUR             Mada        11,305.00         0.01      -78.0045          1831441329940                 
+  NOUR             Visa        3,198.00          0.02      -69.8763          1831441329940                 
+  NOUR             Mada        13,796.00         0.01      -95.1924          1831441329940                 
+  NOUR             Master      598.00            0.02      -13.0663          1831441329940                 
+  NOUR             Visa        3,332.00          0.02      -72.8042          1831441329940                 
+  NOUR             Amex        328.00            0.04      -13.9564          1831441329940                 
+  NOUR             Mada        15,299.00         0.01      -105.5631         1831441329940                 
+  NOUR             Master      1,876.00          0.02      -40.9906          1831441329940                 
+  NOUR             Visa        5,473.00          0.02      -119.5850         1831441329940                 
+  NOUR             Amex        199.00            0.04      -8.4674           1831441329940                 
+  NOUR             Mada        18,110.00         0.01      -124.9590         1831441329940                 
+  NOUR             Master      3,167.00          0.02      -69.1989          1831441329940                 
+  NOUR             Visa        9,815.00          0.02      -214.4577         1831441329940                 
+  NOUR             Mada        21,242.00         0.01      -146.5698         1831441329940                 
+  NOUR             Master      1,248.00          0.02      -27.2688          1831441329940                 
+  NOUR             Visa        7,648.00          0.02      -167.1088         1831441329940                 
+  NOUR             Mada        15,502.00         0.01      -106.9638         1831441329940                 
+  NOUR             Master      5,420.00          0.02      -118.4270         1831441329940                 
+  NOUR             Visa        5,712.00          0.02      -124.8072         1831441329940                 
+  NOUR             Mada        11,681.00         0.01      -80.5989          1831441329940                 
+  NOUR             Master      2,430.00          0.02      -53.0955          1831441329940                 
+  NOUR             Visa        9,465.00          0.02      -206.8102         1831441329940                 
+  NOUR             Mada        15,177.00         0.01      -104.7213         1831441329940                 
+  NOUR             Master      4,107.00          0.02      -89.7379          1831441329940                 
+  NOUR             Visa        7,742.00          0.02      -169.1627         1831441329940                 
+  NOUR             Mada        18,199.00         0.01      -125.5731         1831441329940                 
+  NOUR             Master      5,208.00          0.02      -113.7948         1831441329940                 
+  NOUR             Visa        7,852.00          0.02      -171.5662         1831441329940                 
+  NOUR             Mada        19,675.00         0.01      -135.7575         1831441329940                 
+  NOUR             Master      2,998.00          0.02      -65.5063          1831441329940                 
+  NOUR             Visa        9,470.00          0.02      -206.9195         1831441329940                 
+  NOUR             Mada        22,086.00         0.01      -152.3934         1831441329940                 
+  NOUR             Master      4,412.00          0.02      -96.4022          1831441329940                 
+  NOUR             Visa        8,585.00          0.02      -187.5822         1831441329940                 
+  NOUR             Mada        17,759.00         0.01      -122.5371         1831441329940                 
+  NOUR             Master      11,509.00         0.02      -251.4716         1831441329940                 
+  NOUR             Visa        7,393.00          0.02      -161.5370         1831441329940                 
+  NOUR             Amex        199.00            0.04      -8.4674           1831441329940                 
+  NOUR             Mada        26,977.00         0.01      -186.1413         1831441329940                 
+  NOUR             Master      7,103.00          0.02      -155.2005         1831441329940                 
+  NOUR             Visa        10,207.00         0.02      -223.0229         1831441329940                 
+  NOUR             Mada        7,356.00          0.01      -50.7564          1831441329940                 
+  NOUR             Master      1,556.00          0.02      -33.9986          1831441329940                 
+  NOUR             Visa        6,112.00          0.02      -133.5472         1831441329940                 
+  NOUR             Mada        2,002.00          0.01      -13.8138          1831441329940                 
+  NOUR             Master      1,988.00          0.02      -43.4378          1831441329940                 
+  NOUR             Visa        5,493.00          0.02      -120.0220         1831441329940                 
+  NOUR             Mada        3,099.00          0.01      -21.3831          1831441329940                 
+  NOUR             Master      1,157.00          0.02      -25.2804          1831441329940                 
+  NOUR             Visa        2,417.00          0.02      -52.8115          1831441329940                 
+  NOUR             Mada        2,814.00          0.01      -19.4166          1831441329940                 
+  NOUR             Master      1,387.00          0.02      -30.3059          1831441329940                 
+  NOUR             Visa        470.00            0.02      -10.2695          1831441329940                 
+  NOUR             Mada        5,367.00          0.01      -37.0323          1831441329940                 
+  NOUR             Master      1,296.00          0.02      -28.3176          1831441329940                 
+  NOUR             Visa        2,592.00          0.02      -56.6352          1831441329940                 
+  NOUR             Amex        998.00            0.04      -42.4649          1831441329940                 
+  NOUR             Mada        1,260.00          0.01      -8.6940           1831441329940                 
+  NOUR             Master      1,655.00          0.02      -36.1617          1831441329940                 
+  NOUR             Visa        3,499.00          0.02      -76.4531          1831441329940                 
+  NOUR             Mada        5,129.00          0.01      -35.3901          1831441329940                 
+  NOUR             Master      3,068.00          0.02      -67.0358          1831441329940                 
+  NOUR             Visa        4,928.00          0.02      -107.6768         1831441329940                 
+  NOUR             Mada        5,147.00          0.01      -35.5143          1831441329940                 
+  NOUR             Visa        1,833.00          0.02      -40.0510          1831441329940                 
+  NOUR             Amex        1,594.00          0.04      -67.8247          1831441329940                 
+  NOUR             Mada        4,812.00          0.01      -33.2028          1831441329940                 
+  NOUR             Master      199.00            0.02      -4.3481           1831441329940                 
+  NOUR             Visa        1,061.00          0.02      -23.1828          1831441329940                 
+  NOUR             Mada        2,868.00          0.01      -19.7892          1831441329940                 
+  NOUR             Master      4,965.00          0.02      -108.4852         1831441329940                 
+  NOUR             Visa        1,152.00          0.02      -25.1712          1831441329940                 
+  NOUR             Mada        4,499.00          0.01      -31.0431          1831441329940                 
+  NOUR             Master      1,514.00          0.02      -33.0809          1831441329940                 
+  NOUR             Visa        2,298.00          0.02      -50.2113          1831441329940                 
+  NOUR             Mada        4,219.00          0.01      -29.1111          1831441329940                 
+  NOUR             Master      160.00            0.02      -3.4960           1831441329940                 
+  NOUR             Visa        1,247.00          0.02      -27.2469          1831441329940                 
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -6,824.2277                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (86 rows, -6,824.2277 SAR)
+  Per-method grand total                   -6,824.2277 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  747,499.65 SAR         █
+  █  Total Standard Receipt amt               1,592,986.00 SAR       █
+  █  Difference                               845,486.35 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  747,499.65 SAR
+  Total Standard Receipt amt               1,592,986.00 SAR
+  Difference                               845,486.35 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0002149
+  >>> Next run START_TXN_SEQUENCE =        2150  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 20:54:23
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

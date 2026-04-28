@@ -1,0 +1,488 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 08:52:53 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         734,213.45 SAR     ║
+║  [ℹ] Standard Receipt Total                   1,541,952.00 SAR   ║
+║  [✗] Amount Reconciliation                    Diff: 807,738.55 SAR║
+║  [ℹ] Total Invoices                           4,089              ║
+║  [ℹ] Receipt Files Generated                  5                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          NAKHDMM.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             NAKHDMM_payment_line_5_to_31_March.xlsx
+  Segment 1 prefix                         73499559
+  Segment 2 prefix                         72183373
+
+  AR rows read                             18511
+  Unique invoices loaded                   4084
+  Unique transactions (BLK)                77
+  Total AR amount                          735,807.45 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Cash                       802           136,895.00            
+  Mada                       2417          472,077.00            
+  Master                     215           46,244.00             
+  TABBY                      136           36,551.00             
+  TAMARA                     135           36,772.00             
+  Visa                       548           115,760.00            
+  ----------------------------------------------------------------------
+  TOTAL                      4253          844,299.00            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  AMWAJ                           1           -199.00             
+  DAMMOTHAIM                      1           -299.00             
+  NAKHDMM                         3813        772,570.00          
+  RYDGALLER                       271         73,323.00           
+  ZAHRAN                          3           -1,096.00           
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 113
+    Total amount: 770,976.00 SAR
+    Payment methods included: ['Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              770,976.00 SAR
+    Per-method total:                770,976.00 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    Cash               32 rows          136,895.00 SAR  ⚠ 5 NEGATIVE AMOUNTS!
+    Mada               27 rows          472,077.00 SAR  ✓
+    Master             27 rows           46,244.00 SAR  ✓
+    Visa               27 rows          115,760.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    271
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   5
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       472,077.00 SAR
+    Cash                       136,895.00 SAR
+    Visa                       115,760.00 SAR
+    Master                      46,244.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TAMARA                      36,772.00 SAR
+    TABBY                       36,551.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          AMWAJ            Cash        -199.00           CASH Amwaj Mall Branch             
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        -299.00           CashDAMMOTHAIM                     
+  Receipt_CASH.csv                          NAKHDMM          Cash        5,626.00          CashNAKHDMM                        
+  Receipt_MADA.csv                          NAKHDMM          Mada        17,719.00         AL Jazeerah Bank NAKHDMM           
+  Receipt_MASTER.csv                        NAKHDMM          Master      2,092.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_VISA.csv                          NAKHDMM          Visa        2,922.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_CASH.csv                          NAKHDMM          Cash        6,575.00          CashNAKHDMM                        
+  Receipt_MADA.csv                          NAKHDMM          Mada        24,727.00         AL Jazeerah Bank NAKHDMM           
+  Receipt_MASTER.csv                        NAKHDMM          Master      498.00            AL Jazeerah Bank NAKHDMM           
+  Receipt_VISA.csv                          NAKHDMM          Visa        5,173.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_CASH.csv                          NAKHDMM          Cash        5,928.00          CashNAKHDMM                        
+  Receipt_MADA.csv                          NAKHDMM          Mada        27,400.00         AL Jazeerah Bank NAKHDMM           
+  Receipt_MASTER.csv                        NAKHDMM          Master      3,096.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_VISA.csv                          NAKHDMM          Visa        5,338.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_CASH.csv                          NAKHDMM          Cash        6,851.00          CashNAKHDMM                        
+  Receipt_MADA.csv                          NAKHDMM          Mada        23,596.00         AL Jazeerah Bank NAKHDMM           
+  Receipt_MASTER.csv                        NAKHDMM          Master      1,234.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_VISA.csv                          NAKHDMM          Visa        6,502.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_CASH.csv                          NAKHDMM          Cash        3,528.00          CashNAKHDMM                        
+  Receipt_MADA.csv                          NAKHDMM          Mada        21,786.00         AL Jazeerah Bank NAKHDMM           
+  Receipt_MASTER.csv                        NAKHDMM          Master      2,696.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_VISA.csv                          NAKHDMM          Visa        5,612.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_CASH.csv                          NAKHDMM          Cash        8,415.00          CashNAKHDMM                        
+  Receipt_MADA.csv                          NAKHDMM          Mada        23,490.00         AL Jazeerah Bank NAKHDMM           
+  Receipt_MASTER.csv                        NAKHDMM          Master      543.00            AL Jazeerah Bank NAKHDMM           
+  Receipt_VISA.csv                          NAKHDMM          Visa        2,888.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_CASH.csv                          NAKHDMM          Cash        4,097.00          CashNAKHDMM                        
+  Receipt_MADA.csv                          NAKHDMM          Mada        20,795.00         AL Jazeerah Bank NAKHDMM           
+  Receipt_MASTER.csv                        NAKHDMM          Master      2,707.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_VISA.csv                          NAKHDMM          Visa        6,030.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_CASH.csv                          NAKHDMM          Cash        10,976.00         CashNAKHDMM                        
+  Receipt_MADA.csv                          NAKHDMM          Mada        16,470.00         AL Jazeerah Bank NAKHDMM           
+  Receipt_MASTER.csv                        NAKHDMM          Master      2,842.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_VISA.csv                          NAKHDMM          Visa        4,762.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_CASH.csv                          NAKHDMM          Cash        8,776.00          CashNAKHDMM                        
+  Receipt_MADA.csv                          NAKHDMM          Mada        18,199.00         AL Jazeerah Bank NAKHDMM           
+  Receipt_MASTER.csv                        NAKHDMM          Master      762.00            AL Jazeerah Bank NAKHDMM           
+  Receipt_VISA.csv                          NAKHDMM          Visa        4,790.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_CASH.csv                          NAKHDMM          Cash        7,282.00          CashNAKHDMM                        
+  Receipt_MADA.csv                          NAKHDMM          Mada        33,621.00         AL Jazeerah Bank NAKHDMM           
+  Receipt_MASTER.csv                        NAKHDMM          Master      2,699.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_VISA.csv                          NAKHDMM          Visa        8,748.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_CASH.csv                          NAKHDMM          Cash        6,452.00          CashNAKHDMM                        
+  Receipt_MADA.csv                          NAKHDMM          Mada        27,116.00         AL Jazeerah Bank NAKHDMM           
+  Receipt_MASTER.csv                        NAKHDMM          Master      2,446.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_VISA.csv                          NAKHDMM          Visa        5,175.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_CASH.csv                          NAKHDMM          Cash        6,644.00          CashNAKHDMM                        
+  Receipt_MADA.csv                          NAKHDMM          Mada        28,549.00         AL Jazeerah Bank NAKHDMM           
+  Receipt_MASTER.csv                        NAKHDMM          Master      2,278.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_VISA.csv                          NAKHDMM          Visa        7,187.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_CASH.csv                          NAKHDMM          Cash        9,504.00          CashNAKHDMM                        
+  Receipt_MADA.csv                          NAKHDMM          Mada        26,047.00         AL Jazeerah Bank NAKHDMM           
+  Receipt_MASTER.csv                        NAKHDMM          Master      3,550.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_VISA.csv                          NAKHDMM          Visa        6,549.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_CASH.csv                          NAKHDMM          Cash        7,701.00          CashNAKHDMM                        
+  Receipt_MADA.csv                          NAKHDMM          Mada        36,890.00         AL Jazeerah Bank NAKHDMM           
+  Receipt_MASTER.csv                        NAKHDMM          Master      3,087.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_VISA.csv                          NAKHDMM          Visa        8,031.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_CASH.csv                          NAKHDMM          Cash        7,546.00          CashNAKHDMM                        
+  Receipt_MADA.csv                          NAKHDMM          Mada        37,048.00         AL Jazeerah Bank NAKHDMM           
+  Receipt_MASTER.csv                        NAKHDMM          Master      2,065.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_VISA.csv                          NAKHDMM          Visa        8,603.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_CASH.csv                          NAKHDMM          Cash        3,992.00          CashNAKHDMM                        
+  Receipt_MADA.csv                          NAKHDMM          Mada        9,588.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_MASTER.csv                        NAKHDMM          Master      712.00            AL Jazeerah Bank NAKHDMM           
+  Receipt_VISA.csv                          NAKHDMM          Visa        1,771.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_CASH.csv                          NAKHDMM          Cash        1,991.00          CashNAKHDMM                        
+  Receipt_MADA.csv                          NAKHDMM          Mada        4,095.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_MASTER.csv                        NAKHDMM          Master      594.00            AL Jazeerah Bank NAKHDMM           
+  Receipt_VISA.csv                          NAKHDMM          Visa        2,782.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_CASH.csv                          NAKHDMM          Cash        3,057.00          CashNAKHDMM                        
+  Receipt_MADA.csv                          NAKHDMM          Mada        7,901.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_MASTER.csv                        NAKHDMM          Master      3,059.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_VISA.csv                          NAKHDMM          Visa        2,505.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_CASH.csv                          NAKHDMM          Cash        4,125.00          CashNAKHDMM                        
+  Receipt_MADA.csv                          NAKHDMM          Mada        5,283.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_MASTER.csv                        NAKHDMM          Master      2,293.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_VISA.csv                          NAKHDMM          Visa        4,982.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_CASH.csv                          NAKHDMM          Cash        3,731.00          CashNAKHDMM                        
+  Receipt_MADA.csv                          NAKHDMM          Mada        6,868.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_MASTER.csv                        NAKHDMM          Master      311.00            AL Jazeerah Bank NAKHDMM           
+  Receipt_VISA.csv                          NAKHDMM          Visa        2,596.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_CASH.csv                          NAKHDMM          Cash        3,186.00          CashNAKHDMM                        
+  Receipt_MADA.csv                          NAKHDMM          Mada        10,402.00         AL Jazeerah Bank NAKHDMM           
+  Receipt_MASTER.csv                        NAKHDMM          Master      1,082.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_VISA.csv                          NAKHDMM          Visa        1,493.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_CASH.csv                          NAKHDMM          Cash        450.00            CashNAKHDMM                        
+  Receipt_MADA.csv                          NAKHDMM          Mada        11,413.00         AL Jazeerah Bank NAKHDMM           
+  Receipt_MASTER.csv                        NAKHDMM          Master      1,371.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_VISA.csv                          NAKHDMM          Visa        1,508.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_CASH.csv                          NAKHDMM          Cash        1,555.00          CashNAKHDMM                        
+  Receipt_MADA.csv                          NAKHDMM          Mada        11,234.00         AL Jazeerah Bank NAKHDMM           
+  Receipt_MASTER.csv                        NAKHDMM          Master      796.00            AL Jazeerah Bank NAKHDMM           
+  Receipt_VISA.csv                          NAKHDMM          Visa        3,197.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_CASH.csv                          NAKHDMM          Cash        2,907.00          CashNAKHDMM                        
+  Receipt_MADA.csv                          NAKHDMM          Mada        7,499.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_MASTER.csv                        NAKHDMM          Master      58.00             AL Jazeerah Bank NAKHDMM           
+  Receipt_VISA.csv                          NAKHDMM          Visa        2,676.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_CASH.csv                          NAKHDMM          Cash        1,693.00          CashNAKHDMM                        
+  Receipt_MADA.csv                          NAKHDMM          Mada        2,706.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_MASTER.csv                        NAKHDMM          Master      896.00            AL Jazeerah Bank NAKHDMM           
+  Receipt_VISA.csv                          NAKHDMM          Visa        514.00            AL Jazeerah Bank NAKHDMM           
+  Receipt_CASH.csv                          NAKHDMM          Cash        2,729.00          CashNAKHDMM                        
+  Receipt_MADA.csv                          NAKHDMM          Mada        6,283.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_MASTER.csv                        NAKHDMM          Master      1,545.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_VISA.csv                          NAKHDMM          Visa        2,197.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_CASH.csv                          NAKHDMM          Cash        3,172.00          CashNAKHDMM                        
+  Receipt_MADA.csv                          NAKHDMM          Mada        5,352.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_MASTER.csv                        NAKHDMM          Master      932.00            AL Jazeerah Bank NAKHDMM           
+  Receipt_VISA.csv                          NAKHDMM          Visa        1,229.00          AL Jazeerah Bank NAKHDMM           
+  Receipt_CASH.csv                          ZAHRAN           Cash        -399.00           CashOth Mall Hail                  
+  Receipt_CASH.csv                          ZAHRAN           Cash        -398.00           CashOth Mall Hail                  
+  Receipt_CASH.csv                          ZAHRAN           Cash        -299.00           CashOth Mall Hail                  
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            770,976.00                                           
+
+  Per-method totals:
+    Cash             32 file(s)      136,895.00 SAR
+    Mada             27 file(s)      472,077.00 SAR
+    Master           27 file(s)       46,244.00 SAR
+    Visa             27 file(s)      115,760.00 SAR
+    Grand Total                       770,976.00 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Cash         Mada       Master         Visa          TOTAL
+  ----------------------------------------------------------------------------------
+  2026-03-05          5,626       17,719        2,092        2,922         28,359
+  2026-03-06          6,276       24,727          498        5,173         36,674
+  2026-03-07          5,928       27,400        3,096        5,338         41,762
+  2026-03-08          6,851       23,596        1,234        6,502         38,183
+  2026-03-09          3,528       21,786        2,696        5,612         33,622
+  2026-03-10          8,415       23,490          543        2,888         35,336
+  2026-03-11          3,698       20,795        2,707        6,030         33,230
+  2026-03-12         10,976       16,470        2,842        4,762         35,050
+  2026-03-13          8,776       18,199          762        4,790         32,527
+  2026-03-14          6,884       33,621        2,699        8,748         51,952
+  2026-03-15          6,452       27,116        2,446        5,175         41,189
+  2026-03-16          6,146       28,549        2,278        7,187         44,160
+  2026-03-17          9,504       26,047        3,550        6,549         45,650
+  2026-03-18          7,701       36,890        3,087        8,031         55,709
+  2026-03-19          7,546       37,048        2,065        8,603         55,262
+  2026-03-20          3,992        9,588          712        1,771         16,063
+  2026-03-21          1,991        4,095          594        2,782          9,462
+  2026-03-22          3,057        7,901        3,059        2,505         16,522
+  2026-03-23          4,125        5,283        2,293        4,982         16,683
+  2026-03-24          3,731        6,868          311        2,596         13,506
+  2026-03-25          3,186       10,402        1,082        1,493         16,163
+  2026-03-26            450       11,413        1,371        1,508         14,742
+  2026-03-27          1,555       11,234          796        3,197         16,782
+  2026-03-28          2,907        7,499           58        2,676         13,140
+  2026-03-29          1,693        2,706          896          514          5,809
+  2026-03-30          2,729        6,283        1,545        2,197         12,754
+  2026-03-31          3,172        5,352          932        1,229         10,685
+  ----------------------------------------------------------------------------------
+  TOTAL             136,895      472,077       46,244      115,760        770,976
+
+  VALIDATION:
+    Payment file total (for standard receipts):       770,976.00 SAR
+    Receipt files total:                              770,976.00 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Cash            Payment:   136,895.00  Receipt:   136,895.00  Diff:     0.00  ✓
+    Mada            Payment:   472,077.00  Receipt:   472,077.00  Diff:     0.00  ✓
+    Master          Payment:    46,244.00  Receipt:    46,244.00  Diff:     0.00  ✓
+    Visa            Payment:   115,760.00  Receipt:   115,760.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (113 rows, 770,976.00 SAR)
+  Per-method grand total                   770,976.00 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 81
+    Total amount: -6,981.1775 SAR
+    Payment methods included: ['Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -6,981.1775 SAR
+    Per-method total:               -6,981.1775 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    Mada               27 rows         -3,275.2437 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             27 rows         -1,061.4288 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Visa               27 rows         -2,644.5050 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              4
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       474,673.00 SAR
+    Visa                       121,030.00 SAR
+    Master                      48,578.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                       156,109.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED              156,109.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  NAKHDMM          Mada        17,719.00         0.01      -122.2611         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Master      2,092.00          0.02      -45.7102          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Visa        2,922.00          0.02      -63.8457          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Mada        24,727.00         0.01      -170.6163         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Master      498.00            0.02      -10.8813          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Visa        5,173.00          0.02      -113.0300         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Mada        27,400.00         0.01      -189.0600         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Master      3,096.00          0.02      -67.6476          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Visa        5,560.00          0.02      -121.4860         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Mada        23,596.00         0.01      -162.8124         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Master      1,234.00          0.02      -26.9629          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Visa        6,502.00          0.02      -142.0687         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Mada        21,786.00         0.01      -150.3234         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Master      2,696.00          0.02      -58.9076          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Visa        5,772.00          0.02      -126.1182         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Mada        23,660.00         0.01      -163.2540         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Master      543.00            0.02      -11.8645          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Visa        2,888.00          0.02      -63.1028          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Mada        21,465.00         0.01      -148.1085         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Master      2,707.00          0.02      -59.1479          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Visa        6,030.00          0.02      -131.7555         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Mada        16,470.00         0.01      -113.6430         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Master      2,991.00          0.02      -65.3533          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Visa        4,911.00          0.02      -107.3053         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Mada        18,199.00         0.01      -125.5731         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Master      762.00            0.02      -16.6497          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Visa        5,568.00          0.02      -121.6608         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Mada        33,621.00         0.01      -231.9849         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Master      2,699.00          0.02      -58.9731          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Visa        8,947.00          0.02      -195.4919         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Mada        27,613.00         0.01      -190.5297         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Master      2,446.00          0.02      -53.4451          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Visa        6,170.00          0.02      -134.8145         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Mada        29,207.00         0.01      -201.5283         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Master      2,278.00          0.02      -49.7743          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Visa        7,187.00          0.02      -157.0359         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Mada        26,445.00         0.01      -182.4705         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Master      4,346.00          0.02      -94.9601          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Visa        6,549.00          0.02      -143.0956         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Mada        37,064.00         0.01      -255.7416         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Master      4,142.00          0.02      -90.5027          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Visa        9,577.00          0.02      -209.2574         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Mada        37,048.00         0.01      -255.6312         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Master      2,399.00          0.02      -52.4181          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Visa        9,824.00          0.02      -214.6544         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Mada        9,588.00          0.01      -66.1572          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Master      712.00            0.02      -15.5572          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Visa        1,771.00          0.02      -38.6963          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Mada        4,095.00          0.01      -28.2555          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Master      594.00            0.02      -12.9789          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Visa        2,782.00          0.02      -60.7867          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Mada        7,901.00          0.01      -54.5169          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Master      3,059.00          0.02      -66.8391          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Visa        2,505.00          0.02      -54.7342          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Mada        5,283.00          0.01      -36.4527          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Master      2,293.00          0.02      -50.1020          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Visa        4,982.00          0.02      -108.8567         AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Mada        6,868.00          0.01      -47.3892          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Master      311.00            0.02      -6.7953           AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Visa        2,596.00          0.02      -56.7226          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Mada        10,431.00         0.01      -71.9739          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Master      1,082.00          0.02      -23.6417          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Visa        1,493.00          0.02      -32.6221          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Mada        11,413.00         0.01      -78.7497          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Master      1,371.00          0.02      -29.9563          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Visa        1,508.00          0.02      -32.9498          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Mada        11,234.00         0.01      -77.5146          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Master      796.00            0.02      -17.3926          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Visa        3,197.00          0.02      -69.8544          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Mada        7,499.00          0.01      -51.7431          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Master      58.00             0.02      -1.2673           AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Visa        2,676.00          0.02      -58.4706          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Mada        2,706.00          0.01      -18.6714          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Master      896.00            0.02      -19.5776          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Visa        514.00            0.02      -11.2309          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Mada        6,283.00          0.01      -43.3527          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Master      1,545.00          0.02      -33.7582          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Visa        2,197.00          0.02      -48.0044          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Mada        5,352.00          0.01      -36.9288          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Master      932.00            0.02      -20.3642          AL Jazeerah Bank NAKHDMM      
+  NAKHDMM          Visa        1,229.00          0.02      -26.8536          AL Jazeerah Bank NAKHDMM      
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -6,981.1775                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (81 rows, -6,981.1775 SAR)
+  Per-method grand total                   -6,981.1775 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  734,213.45 SAR         █
+  █  Total Standard Receipt amt               1,541,952.00 SAR       █
+  █  Difference                               807,738.55 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  734,213.45 SAR
+  Total Standard Receipt amt               1,541,952.00 SAR
+  Difference                               807,738.55 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0002062
+  >>> Next run START_TXN_SEQUENCE =        2063  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 20:53:03
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

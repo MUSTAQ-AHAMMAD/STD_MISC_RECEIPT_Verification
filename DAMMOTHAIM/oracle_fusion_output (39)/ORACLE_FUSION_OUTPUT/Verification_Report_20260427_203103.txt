@@ -1,0 +1,481 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 08:30:59 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         300,975.12 SAR     ║
+║  [ℹ] Standard Receipt Total                   613,114.00 SAR     ║
+║  [✗] Amount Reconciliation                    Diff: 312,138.88 SAR║
+║  [ℹ] Total Invoices                           1,756              ║
+║  [ℹ] Receipt Files Generated                  6                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          DAMMOTHAIM.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             DAMMOTHAIM_payment_line_5_to_31_March.xlsx
+  Segment 1 prefix                         57369984
+  Segment 2 prefix                         88903665
+
+  AR rows read                             7146
+  Unique invoices loaded                   1753
+  Unique transactions (BLK)                71
+  Total AR amount                          301,593.12 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Amex                       1             199.00                
+  Cash                       465           55,714.00             
+  Mada                       971           183,253.00            
+  Master                     62            14,339.00             
+  TABBY                      81            22,683.00             
+  TAMARA                     60            17,328.00             
+  Visa                       249           53,052.00             
+  ----------------------------------------------------------------------
+  TOTAL                      1889          346,568.00            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  DAMMOTHAIM                      1612        307,175.00          
+  DMMMARINA                       1           -116.00             
+  NAKHDMM                         1           -203.00             
+  RYDGALLER                       141         40,011.00           
+  WESTAVENUE                      1           -299.00             
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 105
+    Total amount: 306,557.00 SAR
+    Payment methods included: ['AMEX', 'Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              306,557.00 SAR
+    Per-method total:                306,557.00 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    AMEX                1 rows              199.00 SAR  ✓
+    Cash               30 rows           55,714.00 SAR  ⚠ 3 NEGATIVE AMOUNTS!
+    Mada               27 rows          183,253.00 SAR  ✓
+    Master             20 rows           14,339.00 SAR  ✓
+    Visa               27 rows           53,052.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    141
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   6
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       183,253.00 SAR
+    Cash                        55,714.00 SAR
+    Visa                        53,052.00 SAR
+    Master                      14,339.00 SAR
+    Amex                           199.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TABBY                       22,683.00 SAR
+    TAMARA                      17,328.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        1,146.00          CashDAMMOTHAIM                     
+  Receipt_MADA.csv                          DAMMOTHAIM       Mada        8,554.00          015795017321054                    
+  Receipt_MASTER.csv                        DAMMOTHAIM       Master      817.00            015795017321054                    
+  Receipt_VISA.csv                          DAMMOTHAIM       Visa        1,843.00          015795017321054                    
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        708.00            CashDAMMOTHAIM                     
+  Receipt_MADA.csv                          DAMMOTHAIM       Mada        7,612.00          015795017321054                    
+  Receipt_MASTER.csv                        DAMMOTHAIM       Master      209.00            015795017321054                    
+  Receipt_VISA.csv                          DAMMOTHAIM       Visa        1,159.00          015795017321054                    
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        1,397.00          CashDAMMOTHAIM                     
+  Receipt_MADA.csv                          DAMMOTHAIM       Mada        7,297.00          015795017321054                    
+  Receipt_MASTER.csv                        DAMMOTHAIM       Master      97.00             015795017321054                    
+  Receipt_VISA.csv                          DAMMOTHAIM       Visa        1,445.00          015795017321054                    
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        1,829.00          CashDAMMOTHAIM                     
+  Receipt_MADA.csv                          DAMMOTHAIM       Mada        7,031.00          015795017321054                    
+  Receipt_VISA.csv                          DAMMOTHAIM       Visa        1,801.00          015795017321054                    
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        635.00            CashDAMMOTHAIM                     
+  Receipt_MADA.csv                          DAMMOTHAIM       Mada        6,204.00          015795017321054                    
+  Receipt_MASTER.csv                        DAMMOTHAIM       Master      149.00            015795017321054                    
+  Receipt_VISA.csv                          DAMMOTHAIM       Visa        1,735.00          015795017321054                    
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        1,059.00          CashDAMMOTHAIM                     
+  Receipt_MADA.csv                          DAMMOTHAIM       Mada        9,417.00          015795017321054                    
+  Receipt_VISA.csv                          DAMMOTHAIM       Visa        1,960.00          015795017321054                    
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        1,601.00          CashDAMMOTHAIM                     
+  Receipt_MADA.csv                          DAMMOTHAIM       Mada        9,662.00          015795017321054                    
+  Receipt_MASTER.csv                        DAMMOTHAIM       Master      953.00            015795017321054                    
+  Receipt_VISA.csv                          DAMMOTHAIM       Visa        1,956.00          015795017321054                    
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        3,119.00          CashDAMMOTHAIM                     
+  Receipt_MADA.csv                          DAMMOTHAIM       Mada        8,211.00          015795017321054                    
+  Receipt_MASTER.csv                        DAMMOTHAIM       Master      483.00            015795017321054                    
+  Receipt_VISA.csv                          DAMMOTHAIM       Visa        2,143.00          015795017321054                    
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        3,168.00          CashDAMMOTHAIM                     
+  Receipt_MADA.csv                          DAMMOTHAIM       Mada        10,759.00         015795017321054                    
+  Receipt_MASTER.csv                        DAMMOTHAIM       Master      1,878.00          015795017321054                    
+  Receipt_VISA.csv                          DAMMOTHAIM       Visa        4,266.00          015795017321054                    
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        172.00            CashDAMMOTHAIM                     
+  Receipt_MADA.csv                          DAMMOTHAIM       Mada        10,778.00         015795017321054                    
+  Receipt_MASTER.csv                        DAMMOTHAIM       Master      665.00            015795017321054                    
+  Receipt_VISA.csv                          DAMMOTHAIM       Visa        7,180.00          015795017321054                    
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        1,594.00          CashDAMMOTHAIM                     
+  Receipt_MADA.csv                          DAMMOTHAIM       Mada        9,780.00          015795017321054                    
+  Receipt_MASTER.csv                        DAMMOTHAIM       Master      784.00            015795017321054                    
+  Receipt_VISA.csv                          DAMMOTHAIM       Visa        4,045.00          015795017321054                    
+  Receipt_AMEX.csv                          DAMMOTHAIM       Amex        199.00            015795017321054                    
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        571.00            CashDAMMOTHAIM                     
+  Receipt_MADA.csv                          DAMMOTHAIM       Mada        9,146.00          015795017321054                    
+  Receipt_MASTER.csv                        DAMMOTHAIM       Master      892.00            015795017321054                    
+  Receipt_VISA.csv                          DAMMOTHAIM       Visa        2,480.00          015795017321054                    
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        2,565.00          CashDAMMOTHAIM                     
+  Receipt_MADA.csv                          DAMMOTHAIM       Mada        19,430.00         015795017321054                    
+  Receipt_MASTER.csv                        DAMMOTHAIM       Master      1,532.00          015795017321054                    
+  Receipt_VISA.csv                          DAMMOTHAIM       Visa        3,952.00          015795017321054                    
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        365.00            CashDAMMOTHAIM                     
+  Receipt_MADA.csv                          DAMMOTHAIM       Mada        10,752.00         015795017321054                    
+  Receipt_MASTER.csv                        DAMMOTHAIM       Master      926.00            015795017321054                    
+  Receipt_VISA.csv                          DAMMOTHAIM       Visa        3,064.00          015795017321054                    
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        807.00            CashDAMMOTHAIM                     
+  Receipt_MADA.csv                          DAMMOTHAIM       Mada        12,295.00         015795017321054                    
+  Receipt_MASTER.csv                        DAMMOTHAIM       Master      1,690.00          015795017321054                    
+  Receipt_VISA.csv                          DAMMOTHAIM       Visa        2,467.00          015795017321054                    
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        574.00            CashDAMMOTHAIM                     
+  Receipt_MADA.csv                          DAMMOTHAIM       Mada        2,582.00          015795017321054                    
+  Receipt_VISA.csv                          DAMMOTHAIM       Visa        912.00            015795017321054                    
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        446.00            CashDAMMOTHAIM                     
+  Receipt_MADA.csv                          DAMMOTHAIM       Mada        1,940.00          015795017321054                    
+  Receipt_MASTER.csv                        DAMMOTHAIM       Master      599.00            015795017321054                    
+  Receipt_VISA.csv                          DAMMOTHAIM       Visa        806.00            015795017321054                    
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        599.00            CashDAMMOTHAIM                     
+  Receipt_MADA.csv                          DAMMOTHAIM       Mada        4,710.00          015795017321054                    
+  Receipt_MASTER.csv                        DAMMOTHAIM       Master      598.00            015795017321054                    
+  Receipt_VISA.csv                          DAMMOTHAIM       Visa        261.00            015795017321054                    
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        1,273.00          CashDAMMOTHAIM                     
+  Receipt_MADA.csv                          DAMMOTHAIM       Mada        2,129.00          015795017321054                    
+  Receipt_MASTER.csv                        DAMMOTHAIM       Master      696.00            015795017321054                    
+  Receipt_VISA.csv                          DAMMOTHAIM       Visa        2,007.00          015795017321054                    
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        765.00            CashDAMMOTHAIM                     
+  Receipt_MADA.csv                          DAMMOTHAIM       Mada        3,332.00          015795017321054                    
+  Receipt_MASTER.csv                        DAMMOTHAIM       Master      199.00            015795017321054                    
+  Receipt_VISA.csv                          DAMMOTHAIM       Visa        1,292.00          015795017321054                    
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        577.00            CashDAMMOTHAIM                     
+  Receipt_MADA.csv                          DAMMOTHAIM       Mada        3,713.00          015795017321054                    
+  Receipt_VISA.csv                          DAMMOTHAIM       Visa        704.00            015795017321054                    
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        1,389.00          CashDAMMOTHAIM                     
+  Receipt_MADA.csv                          DAMMOTHAIM       Mada        4,199.00          015795017321054                    
+  Receipt_MASTER.csv                        DAMMOTHAIM       Master      180.00            015795017321054                    
+  Receipt_VISA.csv                          DAMMOTHAIM       Visa        2,226.00          015795017321054                    
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        544.00            CashDAMMOTHAIM                     
+  Receipt_MADA.csv                          DAMMOTHAIM       Mada        2,691.00          015795017321054                    
+  Receipt_VISA.csv                          DAMMOTHAIM       Visa        485.00            015795017321054                    
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        956.00            CashDAMMOTHAIM                     
+  Receipt_MADA.csv                          DAMMOTHAIM       Mada        3,655.00          015795017321054                    
+  Receipt_VISA.csv                          DAMMOTHAIM       Visa        1,112.00          015795017321054                    
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        1,222.00          CashDAMMOTHAIM                     
+  Receipt_MADA.csv                          DAMMOTHAIM       Mada        3,033.00          015795017321054                    
+  Receipt_VISA.csv                          DAMMOTHAIM       Visa        459.00            015795017321054                    
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        13,019.00         CashDAMMOTHAIM                     
+  Receipt_MADA.csv                          DAMMOTHAIM       Mada        2,833.00          015795017321054                    
+  Receipt_MASTER.csv                        DAMMOTHAIM       Master      299.00            015795017321054                    
+  Receipt_VISA.csv                          DAMMOTHAIM       Visa        763.00            015795017321054                    
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        14,232.00         CashDAMMOTHAIM                     
+  Receipt_MADA.csv                          DAMMOTHAIM       Mada        1,508.00          015795017321054                    
+  Receipt_MASTER.csv                        DAMMOTHAIM       Master      693.00            015795017321054                    
+  Receipt_VISA.csv                          DAMMOTHAIM       Visa        529.00            015795017321054                    
+  Receipt_CASH.csv                          DMMMARINA        Cash        -116.00           Cash DMMMARINA                     
+  Receipt_CASH.csv                          NAKHDMM          Cash        -203.00           CashNAKHDMM                        
+  Receipt_CASH.csv                          WESTAVENUE       Cash        -299.00           CashOth Mall Hail                  
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            306,557.00                                           
+
+  Per-method totals:
+    Amex              1 file(s)          199.00 SAR
+    Cash             30 file(s)       55,714.00 SAR
+    Mada             27 file(s)      183,253.00 SAR
+    Master           20 file(s)       14,339.00 SAR
+    Visa             27 file(s)       53,052.00 SAR
+    Grand Total                       306,557.00 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Amex         Cash         Mada       Master         Visa          TOTAL
+  ------------------------------------------------------------------------------------------------
+  2026-03-05              0        1,146        8,554          817        1,843         12,360
+  2026-03-06              0          505        7,612          209        1,159          9,485
+  2026-03-07              0        1,397        7,297           97        1,445         10,236
+  2026-03-08              0        1,829        7,031            0        1,801         10,661
+  2026-03-09              0          635        6,204          149        1,735          8,723
+  2026-03-10              0        1,059        9,417            0        1,960         12,436
+  2026-03-11              0        1,601        9,662          953        1,956         14,172
+  2026-03-12              0        3,119        8,211          483        2,143         13,956
+  2026-03-13              0        3,168       10,759        1,878        4,266         20,071
+  2026-03-14              0          172       10,778          665        7,180         18,795
+  2026-03-15              0        1,478        9,780          784        4,045         16,087
+  2026-03-16            199          272        9,146          892        2,480         12,989
+  2026-03-17              0        2,565       19,430        1,532        3,952         27,479
+  2026-03-18              0          365       10,752          926        3,064         15,107
+  2026-03-19              0          807       12,295        1,690        2,467         17,259
+  2026-03-20              0          574        2,582            0          912          4,068
+  2026-03-21              0          446        1,940          599          806          3,791
+  2026-03-22              0          599        4,710          598          261          6,168
+  2026-03-23              0        1,273        2,129          696        2,007          6,105
+  2026-03-24              0          765        3,332          199        1,292          5,588
+  2026-03-25              0          577        3,713            0          704          4,994
+  2026-03-26              0        1,389        4,199          180        2,226          7,994
+  2026-03-27              0          544        2,691            0          485          3,720
+  2026-03-28              0          956        3,655            0        1,112          5,723
+  2026-03-29              0        1,222        3,033            0          459          4,714
+  2026-03-30              0       13,019        2,833          299          763         16,914
+  2026-03-31              0       14,232        1,508          693          529         16,962
+  ------------------------------------------------------------------------------------------------
+  TOTAL                 199       55,714      183,253       14,339       53,052        306,557
+
+  VALIDATION:
+    Payment file total (for standard receipts):       306,557.00 SAR
+    Receipt files total:                              306,557.00 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Amex            Payment:       199.00  Receipt:       199.00  Diff:     0.00  ✓
+    Cash            Payment:    55,714.00  Receipt:    55,714.00  Diff:     0.00  ✓
+    Mada            Payment:   183,253.00  Receipt:   183,253.00  Diff:     0.00  ✓
+    Master          Payment:    14,339.00  Receipt:    14,339.00  Diff:     0.00  ✓
+    Visa            Payment:    53,052.00  Receipt:    53,052.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (105 rows, 306,557.00 SAR)
+  Per-method grand total                   306,557.00 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 75
+    Total amount: -2,753.0092 SAR
+    Payment methods included: ['AMEX', 'Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -2,753.0092 SAR
+    Per-method total:               -2,753.0092 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    AMEX                1 rows             -8.4674 SAR  ⚠ 1 NEGATIVE AMOUNTS!
+    Mada               27 rows         -1,264.4457 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             20 rows           -313.3067 SAR  ⚠ 20 NEGATIVE AMOUNTS!
+    Visa               27 rows         -1,166.7894 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              5
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       183,253.00 SAR
+    Visa                        53,400.00 SAR
+    Master                      14,339.00 SAR
+    Amex                           199.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                        89,285.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED               89,285.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  DAMMOTHAIM       Mada        8,554.00          0.01      -59.0226          015795017321054               
+  DAMMOTHAIM       Master      817.00            0.02      -17.8514          015795017321054               
+  DAMMOTHAIM       Visa        1,843.00          0.02      -40.2695          015795017321054               
+  DAMMOTHAIM       Mada        7,612.00          0.01      -52.5228          015795017321054               
+  DAMMOTHAIM       Master      209.00            0.02      -4.5667           015795017321054               
+  DAMMOTHAIM       Visa        1,159.00          0.02      -25.3241          015795017321054               
+  DAMMOTHAIM       Mada        7,297.00          0.01      -50.3493          015795017321054               
+  DAMMOTHAIM       Master      97.00             0.02      -2.1194           015795017321054               
+  DAMMOTHAIM       Visa        1,445.00          0.02      -31.5732          015795017321054               
+  DAMMOTHAIM       Mada        7,031.00          0.01      -48.5139          015795017321054               
+  DAMMOTHAIM       Visa        1,801.00          0.02      -39.3518          015795017321054               
+  DAMMOTHAIM       Mada        6,204.00          0.01      -42.8076          015795017321054               
+  DAMMOTHAIM       Master      149.00            0.02      -3.2556           015795017321054               
+  DAMMOTHAIM       Visa        1,735.00          0.02      -37.9097          015795017321054               
+  DAMMOTHAIM       Mada        9,417.00          0.01      -64.9773          015795017321054               
+  DAMMOTHAIM       Visa        1,960.00          0.02      -42.8260          015795017321054               
+  DAMMOTHAIM       Mada        9,662.00          0.01      -66.6678          015795017321054               
+  DAMMOTHAIM       Master      953.00            0.02      -20.8230          015795017321054               
+  DAMMOTHAIM       Visa        1,956.00          0.02      -42.7386          015795017321054               
+  DAMMOTHAIM       Mada        8,211.00          0.01      -56.6559          015795017321054               
+  DAMMOTHAIM       Master      483.00            0.02      -10.5535          015795017321054               
+  DAMMOTHAIM       Visa        2,143.00          0.02      -46.8245          015795017321054               
+  DAMMOTHAIM       Mada        10,759.00         0.01      -74.2371          015795017321054               
+  DAMMOTHAIM       Master      1,878.00          0.02      -41.0343          015795017321054               
+  DAMMOTHAIM       Visa        4,266.00          0.02      -93.2121          015795017321054               
+  DAMMOTHAIM       Mada        10,778.00         0.01      -74.3682          015795017321054               
+  DAMMOTHAIM       Master      665.00            0.02      -14.5302          015795017321054               
+  DAMMOTHAIM       Visa        7,180.00          0.02      -156.8830         015795017321054               
+  DAMMOTHAIM       Mada        9,780.00          0.01      -67.4820          015795017321054               
+  DAMMOTHAIM       Master      784.00            0.02      -17.1304          015795017321054               
+  DAMMOTHAIM       Visa        4,194.00          0.02      -91.6389          015795017321054               
+  DAMMOTHAIM       Amex        199.00            0.04      -8.4674           015795017321054               
+  DAMMOTHAIM       Mada        9,146.00          0.01      -63.1074          015795017321054               
+  DAMMOTHAIM       Master      892.00            0.02      -19.4902          015795017321054               
+  DAMMOTHAIM       Visa        2,480.00          0.02      -54.1880          015795017321054               
+  DAMMOTHAIM       Mada        19,430.00         0.01      -134.0670         015795017321054               
+  DAMMOTHAIM       Master      1,532.00          0.02      -33.4742          015795017321054               
+  DAMMOTHAIM       Visa        4,151.00          0.02      -90.6993          015795017321054               
+  DAMMOTHAIM       Mada        10,752.00         0.01      -74.1888          015795017321054               
+  DAMMOTHAIM       Master      926.00            0.02      -20.2331          015795017321054               
+  DAMMOTHAIM       Visa        3,064.00          0.02      -66.9484          015795017321054               
+  DAMMOTHAIM       Mada        12,295.00         0.01      -84.8355          015795017321054               
+  DAMMOTHAIM       Master      1,690.00          0.02      -36.9265          015795017321054               
+  DAMMOTHAIM       Visa        2,467.00          0.02      -53.9039          015795017321054               
+  DAMMOTHAIM       Mada        2,582.00          0.01      -17.8158          015795017321054               
+  DAMMOTHAIM       Visa        912.00            0.02      -19.9272          015795017321054               
+  DAMMOTHAIM       Mada        1,940.00          0.01      -13.3860          015795017321054               
+  DAMMOTHAIM       Master      599.00            0.02      -13.0881          015795017321054               
+  DAMMOTHAIM       Visa        806.00            0.02      -17.6111          015795017321054               
+  DAMMOTHAIM       Mada        4,710.00          0.01      -32.4990          015795017321054               
+  DAMMOTHAIM       Master      598.00            0.02      -13.0663          015795017321054               
+  DAMMOTHAIM       Visa        261.00            0.02      -5.7028           015795017321054               
+  DAMMOTHAIM       Mada        2,129.00          0.01      -14.6901          015795017321054               
+  DAMMOTHAIM       Master      696.00            0.02      -15.2076          015795017321054               
+  DAMMOTHAIM       Visa        2,007.00          0.02      -43.8529          015795017321054               
+  DAMMOTHAIM       Mada        3,332.00          0.01      -22.9908          015795017321054               
+  DAMMOTHAIM       Master      199.00            0.02      -4.3481           015795017321054               
+  DAMMOTHAIM       Visa        1,292.00          0.02      -28.2302          015795017321054               
+  DAMMOTHAIM       Mada        3,713.00          0.01      -25.6197          015795017321054               
+  DAMMOTHAIM       Visa        704.00            0.02      -15.3824          015795017321054               
+  DAMMOTHAIM       Mada        4,199.00          0.01      -28.9731          015795017321054               
+  DAMMOTHAIM       Master      180.00            0.02      -3.9330           015795017321054               
+  DAMMOTHAIM       Visa        2,226.00          0.02      -48.6381          015795017321054               
+  DAMMOTHAIM       Mada        2,691.00          0.01      -18.5679          015795017321054               
+  DAMMOTHAIM       Visa        485.00            0.02      -10.5972          015795017321054               
+  DAMMOTHAIM       Mada        3,655.00          0.01      -25.2195          015795017321054               
+  DAMMOTHAIM       Visa        1,112.00          0.02      -24.2972          015795017321054               
+  DAMMOTHAIM       Mada        3,033.00          0.01      -20.9277          015795017321054               
+  DAMMOTHAIM       Visa        459.00            0.02      -10.0291          015795017321054               
+  DAMMOTHAIM       Mada        2,833.00          0.01      -19.5477          015795017321054               
+  DAMMOTHAIM       Master      299.00            0.02      -6.5331           015795017321054               
+  DAMMOTHAIM       Visa        763.00            0.02      -16.6715          015795017321054               
+  DAMMOTHAIM       Mada        1,508.00          0.01      -10.4052          015795017321054               
+  DAMMOTHAIM       Master      693.00            0.02      -15.1420          015795017321054               
+  DAMMOTHAIM       Visa        529.00            0.02      -11.5587          015795017321054               
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -2,753.0092                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (75 rows, -2,753.0092 SAR)
+  Per-method grand total                   -2,753.0092 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  300,975.12 SAR         █
+  █  Total Standard Receipt amt               613,114.00 SAR         █
+  █  Difference                               312,138.88 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  300,975.12 SAR
+  Total Standard Receipt amt               613,114.00 SAR
+  Difference                               312,138.88 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0001084
+  >>> Next run START_TXN_SEQUENCE =        1085  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 20:31:03
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

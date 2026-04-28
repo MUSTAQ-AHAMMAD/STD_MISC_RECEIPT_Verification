@@ -1,0 +1,4 @@
+﻿"ReceiptNumber","ReceiptMethod","ReceiptDate","BusinessUnit","CustomerAccountNumber","CustomerSite","Amount","Currency","RemittanceBankAccountNumber","AccountingDate"
+"AMEX-BLKU-0002512","AMEX","2026-03-11","AlQurashi-KSA","68014","49006","409.0","SAR","015795017321052","2026-03-11"
+"AMEX-BLKU-0002515","AMEX","2026-03-14","AlQurashi-KSA","68014","49006","199.0","SAR","015795017321052","2026-03-14"
+"AMEX-BLKU-0002533","AMEX","2026-03-30","AlQurashi-KSA","68014","49006","499.0","SAR","015795017321052","2026-03-30"

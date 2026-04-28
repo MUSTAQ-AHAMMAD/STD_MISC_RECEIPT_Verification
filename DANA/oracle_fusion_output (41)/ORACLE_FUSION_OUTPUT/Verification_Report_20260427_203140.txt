@@ -1,0 +1,478 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 08:31:36 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         273,650.99 SAR     ║
+║  [ℹ] Standard Receipt Total                   584,168.00 SAR     ║
+║  [✗] Amount Reconciliation                    Diff: 310,517.01 SAR║
+║  [ℹ] Total Invoices                           1,768              ║
+║  [ℹ] Receipt Files Generated                  6                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          DANA.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             DANA_payment_line_5_to_31_March.xlsx
+  Segment 1 prefix                         19984916
+  Segment 2 prefix                         76390824
+
+  AR rows read                             6175
+  Unique invoices loaded                   1767
+  Unique transactions (BLK)                64
+  Total AR amount                          274,026.99 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Amex                       1             99.00                 
+  Cash                       348           36,880.00             
+  Mada                       1079          193,455.00            
+  Master                     63            13,157.00             
+  TABBY                      44            11,196.00             
+  TAMARA                     45            11,514.00             
+  Visa                       229           48,493.00             
+  ----------------------------------------------------------------------
+  TOTAL                      1809          314,794.00            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  ARABMALL                        1           -376.00             
+  DANA                            1678        292,460.00          
+  RYDGALLER                       89          22,710.00           
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 104
+    Total amount: 292,084.00 SAR
+    Payment methods included: ['AMEX', 'Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              292,084.00 SAR
+    Per-method total:                292,084.00 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    AMEX                1 rows               99.00 SAR  ✓
+    Cash               28 rows           36,880.00 SAR  ⚠ 1 NEGATIVE AMOUNTS!
+    Mada               27 rows          193,455.00 SAR  ✓
+    Master             21 rows           13,157.00 SAR  ⚠ 1 NEGATIVE AMOUNTS!
+    Visa               27 rows           48,493.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    89
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   6
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       193,455.00 SAR
+    Visa                        48,493.00 SAR
+    Cash                        36,880.00 SAR
+    Master                      13,157.00 SAR
+    Amex                            99.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TAMARA                      11,514.00 SAR
+    TABBY                       11,196.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          ARABMALL         Cash        -376.00           CashOth Mall Hail                  
+  Receipt_CASH.csv                          DANA             Cash        1,052.00          CASH Dana Mall Branch              
+  Receipt_MADA.csv                          DANA             Mada        12,839.00         015795017321040                    
+  Receipt_MASTER.csv                        DANA             Master      402.00            015795017321040                    
+  Receipt_VISA.csv                          DANA             Visa        2,447.00          015795017321040                    
+  Receipt_CASH.csv                          DANA             Cash        713.00            CASH Dana Mall Branch              
+  Receipt_MADA.csv                          DANA             Mada        13,491.00         015795017321040                    
+  Receipt_MASTER.csv                        DANA             Master      598.00            015795017321040                    
+  Receipt_VISA.csv                          DANA             Visa        4,547.00          015795017321040                    
+  Receipt_CASH.csv                          DANA             Cash        1,954.00          CASH Dana Mall Branch              
+  Receipt_MADA.csv                          DANA             Mada        12,742.00         015795017321040                    
+  Receipt_MASTER.csv                        DANA             Master      220.00            015795017321040                    
+  Receipt_VISA.csv                          DANA             Visa        2,532.00          015795017321040                    
+  Receipt_CASH.csv                          DANA             Cash        1,500.00          CASH Dana Mall Branch              
+  Receipt_MADA.csv                          DANA             Mada        13,875.00         015795017321040                    
+  Receipt_MASTER.csv                        DANA             Master      1,123.00          015795017321040                    
+  Receipt_VISA.csv                          DANA             Visa        4,038.00          015795017321040                    
+  Receipt_CASH.csv                          DANA             Cash        2,370.00          CASH Dana Mall Branch              
+  Receipt_MADA.csv                          DANA             Mada        13,057.00         015795017321040                    
+  Receipt_MASTER.csv                        DANA             Master      149.00            015795017321040                    
+  Receipt_VISA.csv                          DANA             Visa        2,007.00          015795017321040                    
+  Receipt_AMEX.csv                          DANA             Amex        99.00             015795017321040                    
+  Receipt_CASH.csv                          DANA             Cash        945.00            CASH Dana Mall Branch              
+  Receipt_MADA.csv                          DANA             Mada        11,270.00         015795017321040                    
+  Receipt_MASTER.csv                        DANA             Master      1,112.00          015795017321040                    
+  Receipt_VISA.csv                          DANA             Visa        3,826.00          015795017321040                    
+  Receipt_CASH.csv                          DANA             Cash        1,879.00          CASH Dana Mall Branch              
+  Receipt_MADA.csv                          DANA             Mada        8,544.00          015795017321040                    
+  Receipt_MASTER.csv                        DANA             Master      1,829.00          015795017321040                    
+  Receipt_VISA.csv                          DANA             Visa        1,464.00          015795017321040                    
+  Receipt_CASH.csv                          DANA             Cash        1,933.00          CASH Dana Mall Branch              
+  Receipt_MADA.csv                          DANA             Mada        6,270.00          015795017321040                    
+  Receipt_MASTER.csv                        DANA             Master      1,617.00          015795017321040                    
+  Receipt_VISA.csv                          DANA             Visa        941.00            015795017321040                    
+  Receipt_CASH.csv                          DANA             Cash        2,348.00          CASH Dana Mall Branch              
+  Receipt_MADA.csv                          DANA             Mada        5,665.00          015795017321040                    
+  Receipt_MASTER.csv                        DANA             Master      796.00            015795017321040                    
+  Receipt_VISA.csv                          DANA             Visa        2,028.00          015795017321040                    
+  Receipt_CASH.csv                          DANA             Cash        2,228.00          CASH Dana Mall Branch              
+  Receipt_MADA.csv                          DANA             Mada        8,433.00          015795017321040                    
+  Receipt_MASTER.csv                        DANA             Master      20.00             015795017321040                    
+  Receipt_VISA.csv                          DANA             Visa        1,106.00          015795017321040                    
+  Receipt_CASH.csv                          DANA             Cash        513.00            CASH Dana Mall Branch              
+  Receipt_MADA.csv                          DANA             Mada        4,779.00          015795017321040                    
+  Receipt_MASTER.csv                        DANA             Master      149.00            015795017321040                    
+  Receipt_VISA.csv                          DANA             Visa        1,077.00          015795017321040                    
+  Receipt_CASH.csv                          DANA             Cash        3,488.00          CASH Dana Mall Branch              
+  Receipt_MADA.csv                          DANA             Mada        15,721.00         015795017321040                    
+  Receipt_MASTER.csv                        DANA             Master      499.00            015795017321040                    
+  Receipt_VISA.csv                          DANA             Visa        5,120.00          015795017321040                    
+  Receipt_CASH.csv                          DANA             Cash        1,666.00          CASH Dana Mall Branch              
+  Receipt_MADA.csv                          DANA             Mada        12,034.00         015795017321040                    
+  Receipt_MASTER.csv                        DANA             Master      199.00            015795017321040                    
+  Receipt_VISA.csv                          DANA             Visa        3,488.00          015795017321040                    
+  Receipt_CASH.csv                          DANA             Cash        2,733.00          CASH Dana Mall Branch              
+  Receipt_MADA.csv                          DANA             Mada        12,830.00         015795017321040                    
+  Receipt_MASTER.csv                        DANA             Master      1,172.00          015795017321040                    
+  Receipt_VISA.csv                          DANA             Visa        4,096.00          015795017321040                    
+  Receipt_CASH.csv                          DANA             Cash        3,627.00          CASH Dana Mall Branch              
+  Receipt_MADA.csv                          DANA             Mada        10,804.00         015795017321040                    
+  Receipt_MASTER.csv                        DANA             Master      1,141.00          015795017321040                    
+  Receipt_VISA.csv                          DANA             Visa        2,573.00          015795017321040                    
+  Receipt_CASH.csv                          DANA             Cash        299.00            CASH Dana Mall Branch              
+  Receipt_MADA.csv                          DANA             Mada        4,085.00          015795017321040                    
+  Receipt_MASTER.csv                        DANA             Master      1,261.00          015795017321040                    
+  Receipt_VISA.csv                          DANA             Visa        334.00            015795017321040                    
+  Receipt_CASH.csv                          DANA             Cash        665.00            CASH Dana Mall Branch              
+  Receipt_MADA.csv                          DANA             Mada        967.00            015795017321040                    
+  Receipt_MASTER.csv                        DANA             Master      -349.00           015795017321040                    
+  Receipt_VISA.csv                          DANA             Visa        957.00            015795017321040                    
+  Receipt_CASH.csv                          DANA             Cash        1,257.00          CASH Dana Mall Branch              
+  Receipt_MADA.csv                          DANA             Mada        1,293.00          015795017321040                    
+  Receipt_VISA.csv                          DANA             Visa        894.00            015795017321040                    
+  Receipt_CASH.csv                          DANA             Cash        149.00            CASH Dana Mall Branch              
+  Receipt_MADA.csv                          DANA             Mada        847.00            015795017321040                    
+  Receipt_VISA.csv                          DANA             Visa        440.00            015795017321040                    
+  Receipt_CASH.csv                          DANA             Cash        401.00            CASH Dana Mall Branch              
+  Receipt_MADA.csv                          DANA             Mada        1,732.00          015795017321040                    
+  Receipt_VISA.csv                          DANA             Visa        470.00            015795017321040                    
+  Receipt_CASH.csv                          DANA             Cash        2,251.00          CASH Dana Mall Branch              
+  Receipt_MADA.csv                          DANA             Mada        2,128.00          015795017321040                    
+  Receipt_VISA.csv                          DANA             Visa        825.00            015795017321040                    
+  Receipt_CASH.csv                          DANA             Cash        498.00            CASH Dana Mall Branch              
+  Receipt_MADA.csv                          DANA             Mada        3,413.00          015795017321040                    
+  Receipt_MASTER.csv                        DANA             Master      299.00            015795017321040                    
+  Receipt_VISA.csv                          DANA             Visa        505.00            015795017321040                    
+  Receipt_CASH.csv                          DANA             Cash        839.00            CASH Dana Mall Branch              
+  Receipt_MADA.csv                          DANA             Mada        2,159.00          015795017321040                    
+  Receipt_MASTER.csv                        DANA             Master      85.00             015795017321040                    
+  Receipt_VISA.csv                          DANA             Visa        598.00            015795017321040                    
+  Receipt_CASH.csv                          DANA             Cash        413.00            CASH Dana Mall Branch              
+  Receipt_MADA.csv                          DANA             Mada        3,454.00          015795017321040                    
+  Receipt_MASTER.csv                        DANA             Master      607.00            015795017321040                    
+  Receipt_VISA.csv                          DANA             Visa        314.00            015795017321040                    
+  Receipt_CASH.csv                          DANA             Cash        655.00            CASH Dana Mall Branch              
+  Receipt_MADA.csv                          DANA             Mada        4,149.00          015795017321040                    
+  Receipt_VISA.csv                          DANA             Visa        207.00            015795017321040                    
+  Receipt_CASH.csv                          DANA             Cash        326.00            CASH Dana Mall Branch              
+  Receipt_MADA.csv                          DANA             Mada        3,705.00          015795017321040                    
+  Receipt_VISA.csv                          DANA             Visa        248.00            015795017321040                    
+  Receipt_CASH.csv                          DANA             Cash        554.00            CASH Dana Mall Branch              
+  Receipt_MADA.csv                          DANA             Mada        3,169.00          015795017321040                    
+  Receipt_MASTER.csv                        DANA             Master      228.00            015795017321040                    
+  Receipt_VISA.csv                          DANA             Visa        1,411.00          015795017321040                    
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            292,084.00                                           
+
+  Per-method totals:
+    Amex              1 file(s)           99.00 SAR
+    Cash             28 file(s)       36,880.00 SAR
+    Mada             27 file(s)      193,455.00 SAR
+    Master           21 file(s)       13,157.00 SAR
+    Visa             27 file(s)       48,493.00 SAR
+    Grand Total                       292,084.00 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Amex         Cash         Mada       Master         Visa          TOTAL
+  ------------------------------------------------------------------------------------------------
+  2026-03-05              0        1,052       12,839          402        2,447         16,740
+  2026-03-06              0          713       13,491          598        4,547         19,349
+  2026-03-07              0        1,954       12,742          220        2,532         17,448
+  2026-03-08              0        1,500       13,875        1,123        4,038         20,536
+  2026-03-09              0        2,370       13,057          149        2,007         17,583
+  2026-03-10             99          945       11,270        1,112        3,826         17,252
+  2026-03-11              0        1,879        8,544        1,829        1,464         13,716
+  2026-03-12              0        1,933        6,270        1,617          941         10,761
+  2026-03-13              0        2,348        5,665          796        2,028         10,837
+  2026-03-14              0        2,228        8,433           20        1,106         11,787
+  2026-03-15              0          513        4,779          149        1,077          6,518
+  2026-03-16              0        3,112       15,721          499        5,120         24,452
+  2026-03-17              0        1,666       12,034          199        3,488         17,387
+  2026-03-18              0        2,733       12,830        1,172        4,096         20,831
+  2026-03-19              0        3,627       10,804        1,141        2,573         18,145
+  2026-03-20              0          299        4,085        1,261          334          5,979
+  2026-03-21              0          665          967         -349          957          2,240
+  2026-03-22              0        1,257        1,293            0          894          3,444
+  2026-03-23              0          149          847            0          440          1,436
+  2026-03-24              0          401        1,732            0          470          2,603
+  2026-03-25              0        2,251        2,128            0          825          5,204
+  2026-03-26              0          498        3,413          299          505          4,715
+  2026-03-27              0          839        2,159           85          598          3,681
+  2026-03-28              0          413        3,454          607          314          4,788
+  2026-03-29              0          655        4,149            0          207          5,011
+  2026-03-30              0          326        3,705            0          248          4,279
+  2026-03-31              0          554        3,169          228        1,411          5,362
+  ------------------------------------------------------------------------------------------------
+  TOTAL                  99       36,880      193,455       13,157       48,493        292,084
+
+  VALIDATION:
+    Payment file total (for standard receipts):       292,084.00 SAR
+    Receipt files total:                              292,084.00 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Amex            Payment:        99.00  Receipt:        99.00  Diff:     0.00  ✓
+    Cash            Payment:    36,880.00  Receipt:    36,880.00  Diff:     0.00  ✓
+    Mada            Payment:   193,455.00  Receipt:   193,455.00  Diff:     0.00  ✓
+    Master          Payment:    13,157.00  Receipt:    13,157.00  Diff:     0.00  ✓
+    Visa            Payment:    48,493.00  Receipt:    48,493.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (104 rows, 292,084.00 SAR)
+  Per-method grand total                   292,084.00 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 75
+    Total amount: -2,778.4324 SAR
+    Payment methods included: ['AMEX', 'Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -2,778.4324 SAR
+    Per-method total:               -2,778.4324 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    AMEX                1 rows             -4.2124 SAR  ⚠ 1 NEGATIVE AMOUNTS!
+    Mada               27 rows         -1,370.0088 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             20 rows           -336.7953 SAR  ⚠ 20 NEGATIVE AMOUNTS!
+    Visa               27 rows         -1,067.4159 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              5
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       198,552.00 SAR
+    Visa                        48,852.00 SAR
+    Master                      15,414.00 SAR
+    Amex                            99.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                        50,503.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED               50,503.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  DANA             Mada        13,237.00         0.01      -91.3353          015795017321040               
+  DANA             Master      402.00            0.02      -8.7837           015795017321040               
+  DANA             Visa        2,447.00          0.02      -53.4669          015795017321040               
+  DANA             Mada        13,690.00         0.01      -94.4610          015795017321040               
+  DANA             Master      598.00            0.02      -13.0663          015795017321040               
+  DANA             Visa        4,547.00          0.02      -99.3519          015795017321040               
+  DANA             Mada        12,941.00         0.01      -89.2929          015795017321040               
+  DANA             Master      220.00            0.02      -4.8070           015795017321040               
+  DANA             Visa        2,532.00          0.02      -55.3242          015795017321040               
+  DANA             Mada        14,130.00         0.01      -97.4970          015795017321040               
+  DANA             Master      1,123.00          0.02      -24.5375          015795017321040               
+  DANA             Visa        4,038.00          0.02      -88.2303          015795017321040               
+  DANA             Mada        13,441.00         0.01      -92.7429          015795017321040               
+  DANA             Master      149.00            0.02      -3.2556           015795017321040               
+  DANA             Visa        2,007.00          0.02      -43.8529          015795017321040               
+  DANA             Amex        99.00             0.04      -4.2124           015795017321040               
+  DANA             Mada        11,584.00         0.01      -79.9296          015795017321040               
+  DANA             Master      1,112.00          0.02      -24.2972          015795017321040               
+  DANA             Visa        3,826.00          0.02      -83.5981          015795017321040               
+  DANA             Mada        9,553.00          0.01      -65.9157          015795017321040               
+  DANA             Master      3,612.00          0.02      -78.9222          015795017321040               
+  DANA             Visa        1,464.00          0.02      -31.9884          015795017321040               
+  DANA             Mada        6,270.00          0.01      -43.2630          015795017321040               
+  DANA             Master      1,617.00          0.02      -35.3314          015795017321040               
+  DANA             Visa        941.00            0.02      -20.5608          015795017321040               
+  DANA             Mada        5,665.00          0.01      -39.0885          015795017321040               
+  DANA             Master      796.00            0.02      -17.3926          015795017321040               
+  DANA             Visa        2,028.00          0.02      -44.3118          015795017321040               
+  DANA             Mada        8,433.00          0.01      -58.1877          015795017321040               
+  DANA             Master      145.00            0.02      -3.1682           015795017321040               
+  DANA             Visa        1,106.00          0.02      -24.1661          015795017321040               
+  DANA             Mada        4,779.00          0.01      -32.9751          015795017321040               
+  DANA             Master      149.00            0.02      -3.2556           015795017321040               
+  DANA             Visa        1,077.00          0.02      -23.5325          015795017321040               
+  DANA             Mada        16,020.00         0.01      -110.5380         015795017321040               
+  DANA             Master      499.00            0.02      -10.9031          015795017321040               
+  DANA             Visa        5,120.00          0.02      -111.8720         015795017321040               
+  DANA             Mada        12,183.00         0.01      -84.0627          015795017321040               
+  DANA             Master      199.00            0.02      -4.3481           015795017321040               
+  DANA             Visa        3,488.00          0.02      -76.2128          015795017321040               
+  DANA             Mada        13,549.00         0.01      -93.4881          015795017321040               
+  DANA             Master      1,172.00          0.02      -25.6082          015795017321040               
+  DANA             Visa        4,096.00          0.02      -89.4976          015795017321040               
+  DANA             Mada        10,804.00         0.01      -74.5476          015795017321040               
+  DANA             Master      1,141.00          0.02      -24.9308          015795017321040               
+  DANA             Visa        2,733.00          0.02      -59.7160          015795017321040               
+  DANA             Mada        4,085.00          0.01      -28.1865          015795017321040               
+  DANA             Master      1,261.00          0.02      -27.5528          015795017321040               
+  DANA             Visa        334.00            0.02      -7.2979           015795017321040               
+  DANA             Mada        1,095.00          0.01      -7.5555           015795017321040               
+  DANA             Visa        957.00            0.02      -20.9104          015795017321040               
+  DANA             Mada        1,293.00          0.01      -8.9217           015795017321040               
+  DANA             Visa        894.00            0.02      -19.5339          015795017321040               
+  DANA             Mada        847.00            0.01      -5.8443           015795017321040               
+  DANA             Visa        440.00            0.02      -9.6140           015795017321040               
+  DANA             Mada        1,732.00          0.01      -11.9508          015795017321040               
+  DANA             Visa        470.00            0.02      -10.2695          015795017321040               
+  DANA             Mada        2,128.00          0.01      -14.6832          015795017321040               
+  DANA             Visa        825.00            0.02      -18.0262          015795017321040               
+  DANA             Mada        3,413.00          0.01      -23.5497          015795017321040               
+  DANA             Master      299.00            0.02      -6.5331           015795017321040               
+  DANA             Visa        505.00            0.02      -11.0343          015795017321040               
+  DANA             Mada        2,159.00          0.01      -14.8971          015795017321040               
+  DANA             Master      85.00             0.02      -1.8572           015795017321040               
+  DANA             Visa        598.00            0.02      -13.0663          015795017321040               
+  DANA             Mada        4,299.00          0.01      -29.6631          015795017321040               
+  DANA             Master      607.00            0.02      -13.2629          015795017321040               
+  DANA             Visa        314.00            0.02      -6.8609           015795017321040               
+  DANA             Mada        4,348.00          0.01      -30.0012          015795017321040               
+  DANA             Visa        207.00            0.02      -4.5229           015795017321040               
+  DANA             Mada        3,705.00          0.01      -25.5645          015795017321040               
+  DANA             Visa        248.00            0.02      -5.4188           015795017321040               
+  DANA             Mada        3,169.00          0.01      -21.8661          015795017321040               
+  DANA             Master      228.00            0.02      -4.9818           015795017321040               
+  DANA             Visa        1,610.00          0.02      -35.1785          015795017321040               
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -2,778.4324                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (75 rows, -2,778.4324 SAR)
+  Per-method grand total                   -2,778.4324 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  273,650.99 SAR         █
+  █  Total Standard Receipt amt               584,168.00 SAR         █
+  █  Difference                               310,517.01 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  273,650.99 SAR
+  Total Standard Receipt amt               584,168.00 SAR
+  Difference                               310,517.01 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0001121
+  >>> Next run START_TXN_SEQUENCE =        1122  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 20:31:40
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

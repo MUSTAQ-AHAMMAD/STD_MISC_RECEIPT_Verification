@@ -1,0 +1,485 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 08:59:47 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         287,507.83 SAR     ║
+║  [ℹ] Standard Receipt Total                   603,748.00 SAR     ║
+║  [✗] Amount Reconciliation                    Diff: 316,240.17 SAR║
+║  [ℹ] Total Invoices                           1,580              ║
+║  [ℹ] Receipt Files Generated                  6                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          RYDALYAPLZ.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             RYDALYAPLZ_Payment_lines_5-31.xlsx
+  Segment 1 prefix                         44416934
+  Segment 2 prefix                         32643065
+
+  AR rows read                             6946
+  Unique invoices loaded                   1579
+  Unique transactions (BLK)                66
+  Total AR amount                          287,806.83 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Amex                       4             1,157.00              
+  Cash                       403           24,249.00             
+  Mada                       724           173,826.00            
+  Master                     76            21,051.00             
+  TABBY                      55            17,270.00             
+  TAMARA                     37            11,398.00             
+  Visa                       321           81,591.00             
+  ----------------------------------------------------------------------
+  TOTAL                      1620          330,542.00            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  RYDALYAPLZ                      1487        302,173.00          
+  RYDGALLER                       92          28,668.00           
+  THEGATERYD                      1           -299.00             
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 107
+    Total amount: 301,874.00 SAR
+    Payment methods included: ['AMEX', 'Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              301,874.00 SAR
+    Per-method total:                301,874.00 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    AMEX                2 rows            1,157.00 SAR  ✓
+    Cash               28 rows           24,249.00 SAR  ⚠ 5 NEGATIVE AMOUNTS!
+    Mada               27 rows          173,826.00 SAR  ✓
+    Master             23 rows           21,051.00 SAR  ✓
+    Visa               27 rows           81,591.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    92
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   6
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       173,826.00 SAR
+    Visa                        81,591.00 SAR
+    Cash                        24,249.00 SAR
+    Master                      21,051.00 SAR
+    Amex                         1,157.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TABBY                       17,270.00 SAR
+    TAMARA                      11,398.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          RYDALYAPLZ       Cash        327.00            Cash RYDALYAPLZ                    
+  Receipt_MADA.csv                          RYDALYAPLZ       Mada        4,933.00          157-95017321-RYDALYAPLZ            
+  Receipt_MASTER.csv                        RYDALYAPLZ       Master      1,565.00          157-95017321-RYDALYAPLZ            
+  Receipt_VISA.csv                          RYDALYAPLZ       Visa        3,095.00          157-95017321-RYDALYAPLZ            
+  Receipt_AMEX.csv                          RYDALYAPLZ       Amex        759.00            157-95017321-RYDALYAPLZ            
+  Receipt_CASH.csv                          RYDALYAPLZ       Cash        1,155.00          Cash RYDALYAPLZ                    
+  Receipt_MADA.csv                          RYDALYAPLZ       Mada        6,635.00          157-95017321-RYDALYAPLZ            
+  Receipt_VISA.csv                          RYDALYAPLZ       Visa        6,850.00          157-95017321-RYDALYAPLZ            
+  Receipt_CASH.csv                          RYDALYAPLZ       Cash        -233.00           Cash RYDALYAPLZ                    
+  Receipt_MADA.csv                          RYDALYAPLZ       Mada        5,765.00          157-95017321-RYDALYAPLZ            
+  Receipt_MASTER.csv                        RYDALYAPLZ       Master      822.00            157-95017321-RYDALYAPLZ            
+  Receipt_VISA.csv                          RYDALYAPLZ       Visa        4,597.00          157-95017321-RYDALYAPLZ            
+  Receipt_CASH.csv                          RYDALYAPLZ       Cash        1,047.00          Cash RYDALYAPLZ                    
+  Receipt_MADA.csv                          RYDALYAPLZ       Mada        9,542.00          157-95017321-RYDALYAPLZ            
+  Receipt_MASTER.csv                        RYDALYAPLZ       Master      521.00            157-95017321-RYDALYAPLZ            
+  Receipt_VISA.csv                          RYDALYAPLZ       Visa        1,478.00          157-95017321-RYDALYAPLZ            
+  Receipt_CASH.csv                          RYDALYAPLZ       Cash        997.00            Cash RYDALYAPLZ                    
+  Receipt_MADA.csv                          RYDALYAPLZ       Mada        9,266.00          157-95017321-RYDALYAPLZ            
+  Receipt_MASTER.csv                        RYDALYAPLZ       Master      433.00            157-95017321-RYDALYAPLZ            
+  Receipt_VISA.csv                          RYDALYAPLZ       Visa        3,504.00          157-95017321-RYDALYAPLZ            
+  Receipt_CASH.csv                          RYDALYAPLZ       Cash        987.00            Cash RYDALYAPLZ                    
+  Receipt_MADA.csv                          RYDALYAPLZ       Mada        5,271.00          157-95017321-RYDALYAPLZ            
+  Receipt_VISA.csv                          RYDALYAPLZ       Visa        2,328.00          157-95017321-RYDALYAPLZ            
+  Receipt_CASH.csv                          RYDALYAPLZ       Cash        365.00            Cash RYDALYAPLZ                    
+  Receipt_MADA.csv                          RYDALYAPLZ       Mada        7,515.00          157-95017321-RYDALYAPLZ            
+  Receipt_MASTER.csv                        RYDALYAPLZ       Master      2,040.00          157-95017321-RYDALYAPLZ            
+  Receipt_VISA.csv                          RYDALYAPLZ       Visa        4,378.00          157-95017321-RYDALYAPLZ            
+  Receipt_CASH.csv                          RYDALYAPLZ       Cash        1,363.00          Cash RYDALYAPLZ                    
+  Receipt_MADA.csv                          RYDALYAPLZ       Mada        4,686.00          157-95017321-RYDALYAPLZ            
+  Receipt_MASTER.csv                        RYDALYAPLZ       Master      895.00            157-95017321-RYDALYAPLZ            
+  Receipt_VISA.csv                          RYDALYAPLZ       Visa        1,398.00          157-95017321-RYDALYAPLZ            
+  Receipt_CASH.csv                          RYDALYAPLZ       Cash        1,692.00          Cash RYDALYAPLZ                    
+  Receipt_MADA.csv                          RYDALYAPLZ       Mada        5,031.00          157-95017321-RYDALYAPLZ            
+  Receipt_MASTER.csv                        RYDALYAPLZ       Master      626.00            157-95017321-RYDALYAPLZ            
+  Receipt_VISA.csv                          RYDALYAPLZ       Visa        2,789.00          157-95017321-RYDALYAPLZ            
+  Receipt_CASH.csv                          RYDALYAPLZ       Cash        1,229.00          Cash RYDALYAPLZ                    
+  Receipt_MADA.csv                          RYDALYAPLZ       Mada        10,322.00         157-95017321-RYDALYAPLZ            
+  Receipt_MASTER.csv                        RYDALYAPLZ       Master      1,671.00          157-95017321-RYDALYAPLZ            
+  Receipt_VISA.csv                          RYDALYAPLZ       Visa        4,829.00          157-95017321-RYDALYAPLZ            
+  Receipt_CASH.csv                          RYDALYAPLZ       Cash        -211.00           Cash RYDALYAPLZ                    
+  Receipt_MADA.csv                          RYDALYAPLZ       Mada        8,930.00          157-95017321-RYDALYAPLZ            
+  Receipt_MASTER.csv                        RYDALYAPLZ       Master      597.00            157-95017321-RYDALYAPLZ            
+  Receipt_VISA.csv                          RYDALYAPLZ       Visa        4,827.00          157-95017321-RYDALYAPLZ            
+  Receipt_CASH.csv                          RYDALYAPLZ       Cash        1,374.00          Cash RYDALYAPLZ                    
+  Receipt_MADA.csv                          RYDALYAPLZ       Mada        13,536.00         157-95017321-RYDALYAPLZ            
+  Receipt_MASTER.csv                        RYDALYAPLZ       Master      1,193.00          157-95017321-RYDALYAPLZ            
+  Receipt_VISA.csv                          RYDALYAPLZ       Visa        5,641.00          157-95017321-RYDALYAPLZ            
+  Receipt_CASH.csv                          RYDALYAPLZ       Cash        1,614.00          Cash RYDALYAPLZ                    
+  Receipt_MADA.csv                          RYDALYAPLZ       Mada        18,133.00         157-95017321-RYDALYAPLZ            
+  Receipt_MASTER.csv                        RYDALYAPLZ       Master      1,003.00          157-95017321-RYDALYAPLZ            
+  Receipt_VISA.csv                          RYDALYAPLZ       Visa        7,523.00          157-95017321-RYDALYAPLZ            
+  Receipt_CASH.csv                          RYDALYAPLZ       Cash        1,137.00          Cash RYDALYAPLZ                    
+  Receipt_MADA.csv                          RYDALYAPLZ       Mada        14,339.00         157-95017321-RYDALYAPLZ            
+  Receipt_MASTER.csv                        RYDALYAPLZ       Master      3,151.00          157-95017321-RYDALYAPLZ            
+  Receipt_VISA.csv                          RYDALYAPLZ       Visa        6,205.00          157-95017321-RYDALYAPLZ            
+  Receipt_CASH.csv                          RYDALYAPLZ       Cash        528.00            Cash RYDALYAPLZ                    
+  Receipt_MADA.csv                          RYDALYAPLZ       Mada        18,109.00         157-95017321-RYDALYAPLZ            
+  Receipt_MASTER.csv                        RYDALYAPLZ       Master      1,171.00          157-95017321-RYDALYAPLZ            
+  Receipt_VISA.csv                          RYDALYAPLZ       Visa        7,486.00          157-95017321-RYDALYAPLZ            
+  Receipt_CASH.csv                          RYDALYAPLZ       Cash        -354.00           Cash RYDALYAPLZ                    
+  Receipt_MADA.csv                          RYDALYAPLZ       Mada        2,746.00          157-95017321-RYDALYAPLZ            
+  Receipt_MASTER.csv                        RYDALYAPLZ       Master      360.00            157-95017321-RYDALYAPLZ            
+  Receipt_VISA.csv                          RYDALYAPLZ       Visa        2,833.00          157-95017321-RYDALYAPLZ            
+  Receipt_AMEX.csv                          RYDALYAPLZ       Amex        398.00            157-95017321-RYDALYAPLZ            
+  Receipt_CASH.csv                          RYDALYAPLZ       Cash        36.00             Cash RYDALYAPLZ                    
+  Receipt_MADA.csv                          RYDALYAPLZ       Mada        1,422.00          157-95017321-RYDALYAPLZ            
+  Receipt_MASTER.csv                        RYDALYAPLZ       Master      1,197.00          157-95017321-RYDALYAPLZ            
+  Receipt_VISA.csv                          RYDALYAPLZ       Visa        939.00            157-95017321-RYDALYAPLZ            
+  Receipt_CASH.csv                          RYDALYAPLZ       Cash        128.00            Cash RYDALYAPLZ                    
+  Receipt_MADA.csv                          RYDALYAPLZ       Mada        2,015.00          157-95017321-RYDALYAPLZ            
+  Receipt_MASTER.csv                        RYDALYAPLZ       Master      199.00            157-95017321-RYDALYAPLZ            
+  Receipt_VISA.csv                          RYDALYAPLZ       Visa        1,415.00          157-95017321-RYDALYAPLZ            
+  Receipt_CASH.csv                          RYDALYAPLZ       Cash        29.00             Cash RYDALYAPLZ                    
+  Receipt_MADA.csv                          RYDALYAPLZ       Mada        2,570.00          157-95017321-RYDALYAPLZ            
+  Receipt_MASTER.csv                        RYDALYAPLZ       Master      579.00            157-95017321-RYDALYAPLZ            
+  Receipt_VISA.csv                          RYDALYAPLZ       Visa        641.00            157-95017321-RYDALYAPLZ            
+  Receipt_CASH.csv                          RYDALYAPLZ       Cash        838.00            Cash RYDALYAPLZ                    
+  Receipt_MADA.csv                          RYDALYAPLZ       Mada        2,790.00          157-95017321-RYDALYAPLZ            
+  Receipt_VISA.csv                          RYDALYAPLZ       Visa        1,793.00          157-95017321-RYDALYAPLZ            
+  Receipt_CASH.csv                          RYDALYAPLZ       Cash        1,213.00          Cash RYDALYAPLZ                    
+  Receipt_MADA.csv                          RYDALYAPLZ       Mada        4,330.00          157-95017321-RYDALYAPLZ            
+  Receipt_MASTER.csv                        RYDALYAPLZ       Master      566.00            157-95017321-RYDALYAPLZ            
+  Receipt_VISA.csv                          RYDALYAPLZ       Visa        1,970.00          157-95017321-RYDALYAPLZ            
+  Receipt_CASH.csv                          RYDALYAPLZ       Cash        7,698.00          Cash RYDALYAPLZ                    
+  Receipt_MADA.csv                          RYDALYAPLZ       Mada        3,105.00          157-95017321-RYDALYAPLZ            
+  Receipt_MASTER.csv                        RYDALYAPLZ       Master      733.00            157-95017321-RYDALYAPLZ            
+  Receipt_VISA.csv                          RYDALYAPLZ       Visa        1,321.00          157-95017321-RYDALYAPLZ            
+  Receipt_CASH.csv                          RYDALYAPLZ       Cash        429.00            Cash RYDALYAPLZ                    
+  Receipt_MADA.csv                          RYDALYAPLZ       Mada        3,004.00          157-95017321-RYDALYAPLZ            
+  Receipt_MASTER.csv                        RYDALYAPLZ       Master      697.00            157-95017321-RYDALYAPLZ            
+  Receipt_VISA.csv                          RYDALYAPLZ       Visa        412.00            157-95017321-RYDALYAPLZ            
+  Receipt_CASH.csv                          RYDALYAPLZ       Cash        1,436.00          Cash RYDALYAPLZ                    
+  Receipt_MADA.csv                          RYDALYAPLZ       Mada        4,148.00          157-95017321-RYDALYAPLZ            
+  Receipt_MASTER.csv                        RYDALYAPLZ       Master      199.00            157-95017321-RYDALYAPLZ            
+  Receipt_VISA.csv                          RYDALYAPLZ       Visa        2,410.00          157-95017321-RYDALYAPLZ            
+  Receipt_CASH.csv                          RYDALYAPLZ       Cash        -651.00           Cash RYDALYAPLZ                    
+  Receipt_MADA.csv                          RYDALYAPLZ       Mada        1,955.00          157-95017321-RYDALYAPLZ            
+  Receipt_MASTER.csv                        RYDALYAPLZ       Master      160.00            157-95017321-RYDALYAPLZ            
+  Receipt_VISA.csv                          RYDALYAPLZ       Visa        299.00            157-95017321-RYDALYAPLZ            
+  Receipt_CASH.csv                          RYDALYAPLZ       Cash        215.00            Cash RYDALYAPLZ                    
+  Receipt_MADA.csv                          RYDALYAPLZ       Mada        2,096.00          157-95017321-RYDALYAPLZ            
+  Receipt_MASTER.csv                        RYDALYAPLZ       Master      673.00            157-95017321-RYDALYAPLZ            
+  Receipt_VISA.csv                          RYDALYAPLZ       Visa        398.00            157-95017321-RYDALYAPLZ            
+  Receipt_CASH.csv                          RYDALYAPLZ       Cash        160.00            Cash RYDALYAPLZ                    
+  Receipt_MADA.csv                          RYDALYAPLZ       Mada        1,632.00          157-95017321-RYDALYAPLZ            
+  Receipt_VISA.csv                          RYDALYAPLZ       Visa        232.00            157-95017321-RYDALYAPLZ            
+  Receipt_CASH.csv                          THEGATERYD       Cash        -299.00           Cash THEGATERYD                    
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            301,874.00                                           
+
+  Per-method totals:
+    Amex              2 file(s)        1,157.00 SAR
+    Cash             28 file(s)       24,249.00 SAR
+    Mada             27 file(s)      173,826.00 SAR
+    Master           23 file(s)       21,051.00 SAR
+    Visa             27 file(s)       81,591.00 SAR
+    Grand Total                       301,874.00 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Amex         Cash         Mada       Master         Visa          TOTAL
+  ------------------------------------------------------------------------------------------------
+  2026-03-05              0          327        4,933        1,565        3,095          9,920
+  2026-03-06            759        1,155        6,635            0        6,850         15,399
+  2026-03-07              0         -233        5,765          822        4,597         10,951
+  2026-03-08              0        1,047        9,542          521        1,478         12,588
+  2026-03-09              0          997        9,266          433        3,504         14,200
+  2026-03-10              0          987        5,271            0        2,328          8,586
+  2026-03-11              0          365        7,515        2,040        4,378         14,298
+  2026-03-12              0        1,363        4,686          895        1,398          8,342
+  2026-03-13              0        1,692        5,031          626        2,789         10,138
+  2026-03-14              0        1,229       10,322        1,671        4,829         18,051
+  2026-03-15              0         -211        8,930          597        4,827         14,143
+  2026-03-16              0        1,374       13,536        1,193        5,641         21,744
+  2026-03-17              0        1,614       18,133        1,003        7,523         28,273
+  2026-03-18              0        1,137       14,339        3,151        6,205         24,832
+  2026-03-19              0          229       18,109        1,171        7,486         26,995
+  2026-03-20              0         -354        2,746          360        2,833          5,585
+  2026-03-21            398           36        1,422        1,197          939          3,992
+  2026-03-22              0          128        2,015          199        1,415          3,757
+  2026-03-23              0           29        2,570          579          641          3,819
+  2026-03-24              0          838        2,790            0        1,793          5,421
+  2026-03-25              0        1,213        4,330          566        1,970          8,079
+  2026-03-26              0        7,698        3,105          733        1,321         12,857
+  2026-03-27              0          429        3,004          697          412          4,542
+  2026-03-28              0        1,436        4,148          199        2,410          8,193
+  2026-03-29              0         -651        1,955          160          299          1,763
+  2026-03-30              0          215        2,096          673          398          3,382
+  2026-03-31              0          160        1,632            0          232          2,024
+  ------------------------------------------------------------------------------------------------
+  TOTAL               1,157       24,249      173,826       21,051       81,591        301,874
+
+  VALIDATION:
+    Payment file total (for standard receipts):       301,874.00 SAR
+    Receipt files total:                              301,874.00 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Amex            Payment:     1,157.00  Receipt:     1,157.00  Diff:     0.00  ✓
+    Cash            Payment:    24,249.00  Receipt:    24,249.00  Diff:     0.00  ✓
+    Mada            Payment:   173,826.00  Receipt:   173,826.00  Diff:     0.00  ✓
+    Master          Payment:    21,051.00  Receipt:    21,051.00  Diff:     0.00  ✓
+    Visa            Payment:    81,591.00  Receipt:    81,591.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (107 rows, 301,874.00 SAR)
+  Per-method grand total                   301,874.00 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 79
+    Total amount: -3,535.1815 SAR
+    Payment methods included: ['AMEX', 'Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -3,535.1815 SAR
+    Per-method total:               -3,535.1815 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    AMEX                2 rows            -49.2303 SAR  ⚠ 2 NEGATIVE AMOUNTS!
+    Mada               27 rows         -1,212.6129 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             23 rows           -466.4968 SAR  ⚠ 23 NEGATIVE AMOUNTS!
+    Visa               27 rows         -1,806.8415 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              5
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       175,741.00 SAR
+    Visa                        82,693.00 SAR
+    Master                      21,350.00 SAR
+    Amex                         1,157.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                        60,053.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED               60,053.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  RYDALYAPLZ       Mada        5,530.00          0.01      -38.1570          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Master      1,565.00          0.02      -34.1952          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Visa        3,095.00          0.02      -67.6257          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Amex        759.00            0.04      -32.2954          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Mada        6,635.00          0.01      -45.7815          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Visa        7,394.00          0.02      -161.5589         157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Mada        5,765.00          0.01      -39.7785          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Master      822.00            0.02      -17.9607          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Visa        4,597.00          0.02      -100.4445         157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Mada        9,542.00          0.01      -65.8398          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Master      521.00            0.02      -11.3838          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Visa        1,478.00          0.02      -32.2943          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Mada        9,266.00          0.01      -63.9354          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Master      732.00            0.02      -15.9942          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Visa        3,504.00          0.02      -76.5624          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Mada        5,271.00          0.01      -36.3699          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Visa        2,328.00          0.02      -50.8668          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Mada        7,515.00          0.01      -51.8535          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Master      2,040.00          0.02      -44.5740          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Visa        4,378.00          0.02      -95.6593          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Mada        4,686.00          0.01      -32.3334          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Master      895.00            0.02      -19.5557          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Visa        1,398.00          0.02      -30.5463          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Mada        5,031.00          0.01      -34.7139          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Master      626.00            0.02      -13.6781          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Visa        2,789.00          0.02      -60.9396          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Mada        10,322.00         0.01      -71.2218          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Master      1,671.00          0.02      -36.5113          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Visa        4,829.00          0.02      -105.5136         157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Mada        8,930.00          0.01      -61.6170          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Master      597.00            0.02      -13.0444          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Visa        4,987.00          0.02      -108.9659         157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Mada        13,536.00         0.01      -93.3984          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Master      1,193.00          0.02      -26.0670          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Visa        5,641.00          0.02      -123.2558         157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Mada        18,232.00         0.01      -125.8008         157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Master      1,003.00          0.02      -21.9155          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Visa        7,523.00          0.02      -164.3775         157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Mada        14,714.00         0.01      -101.5266         157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Master      3,151.00          0.02      -68.8494          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Visa        6,205.00          0.02      -135.5792         157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Mada        18,109.00         0.01      -124.9521         157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Master      1,171.00          0.02      -25.5863          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Visa        7,486.00          0.02      -163.5691         157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Mada        2,746.00          0.01      -18.9474          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Master      360.00            0.02      -7.8660           157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Visa        3,028.00          0.02      -66.1618          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Amex        398.00            0.04      -16.9349          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Mada        2,106.00          0.01      -14.5314          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Master      1,197.00          0.02      -26.1544          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Visa        939.00            0.02      -20.5172          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Mada        2,175.00          0.01      -15.0075          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Master      199.00            0.02      -4.3481           157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Visa        1,415.00          0.02      -30.9177          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Mada        2,570.00          0.01      -17.7330          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Master      579.00            0.02      -12.6511          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Visa        641.00            0.02      -14.0058          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Mada        2,790.00          0.01      -19.2510          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Visa        1,793.00          0.02      -39.1770          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Mada        4,330.00          0.01      -29.8770          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Master      566.00            0.02      -12.3671          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Visa        1,970.00          0.02      -43.0445          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Mada        3,105.00          0.01      -21.4245          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Master      733.00            0.02      -16.0160          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Visa        1,321.00          0.02      -28.8638          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Mada        3,004.00          0.01      -20.7276          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Master      697.00            0.02      -15.2294          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Visa        412.00            0.02      -9.0022           157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Mada        4,148.00          0.01      -28.6212          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Master      199.00            0.02      -4.3481           157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Visa        2,410.00          0.02      -52.6585          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Mada        1,955.00          0.01      -13.4895          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Master      160.00            0.02      -3.4960           157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Visa        299.00            0.02      -6.5331           157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Mada        2,096.00          0.01      -14.4624          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Master      673.00            0.02      -14.7050          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Visa        398.00            0.02      -8.6963           157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Mada        1,632.00          0.01      -11.2608          157-95017321-RYDALYAPLZ       
+  RYDALYAPLZ       Visa        435.00            0.02      -9.5047           157-95017321-RYDALYAPLZ       
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -3,535.1815                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (79 rows, -3,535.1815 SAR)
+  Per-method grand total                   -3,535.1815 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  287,507.83 SAR         █
+  █  Total Standard Receipt amt               603,748.00 SAR         █
+  █  Difference                               316,240.17 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  287,507.83 SAR
+  Total Standard Receipt amt               603,748.00 SAR
+  Difference                               316,240.17 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0004605
+  >>> Next run START_TXN_SEQUENCE =        4606  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 20:59:51
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

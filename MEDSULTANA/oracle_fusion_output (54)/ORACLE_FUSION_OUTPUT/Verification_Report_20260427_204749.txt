@@ -1,0 +1,476 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 08:47:44 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         428,364.69 SAR     ║
+║  [ℹ] Standard Receipt Total                   880,594.00 SAR     ║
+║  [✗] Amount Reconciliation                    Diff: 452,229.31 SAR║
+║  [ℹ] Total Invoices                           2,082              ║
+║  [ℹ] Receipt Files Generated                  5                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          MEDSULTANA.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             MEDSULTANA_Payment_lines_5-31.xlsx
+  Segment 1 prefix                         96948363
+  Segment 2 prefix                         71994128
+
+  AR rows read                             9659
+  Unique invoices loaded                   2082
+  Unique transactions (BLK)                51
+  Total AR amount                          428,364.69 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Cash                       826           154,999.00            
+  Mada                       917           188,552.00            
+  Master                     95            33,598.00             
+  TAMARA                     138           52,121.00             
+  Visa                       243           63,148.00             
+  ----------------------------------------------------------------------
+  TOTAL                      2219          492,418.00            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  MEDSULTANA                      1944        440,297.00          
+  RYDGALLER                       138         52,121.00           
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 107
+    Total amount: 440,297.00 SAR
+    Payment methods included: ['Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              440,297.00 SAR
+    Per-method total:                440,297.00 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    Cash               27 rows          154,999.00 SAR  ✓
+    Mada               27 rows          188,552.00 SAR  ✓
+    Master             26 rows           33,598.00 SAR  ✓
+    Visa               27 rows           63,148.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    138
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   5
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       188,552.00 SAR
+    Cash                       154,999.00 SAR
+    Visa                        63,148.00 SAR
+    Master                      33,598.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TAMARA                      52,121.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          MEDSULTANA       Cash        2,155.00          Cash MEDSULTANA                    
+  Receipt_MADA.csv                          MEDSULTANA       Mada        9,861.00          157-95017321-MEDSULTANA            
+  Receipt_MASTER.csv                        MEDSULTANA       Master      537.00            157-95017321-MEDSULTANA            
+  Receipt_VISA.csv                          MEDSULTANA       Visa        1,885.00          157-95017321-MEDSULTANA            
+  Receipt_CASH.csv                          MEDSULTANA       Cash        5,678.00          Cash MEDSULTANA                    
+  Receipt_MADA.csv                          MEDSULTANA       Mada        7,255.00          157-95017321-MEDSULTANA            
+  Receipt_MASTER.csv                        MEDSULTANA       Master      357.00            157-95017321-MEDSULTANA            
+  Receipt_VISA.csv                          MEDSULTANA       Visa        2,464.00          157-95017321-MEDSULTANA            
+  Receipt_CASH.csv                          MEDSULTANA       Cash        9,893.00          Cash MEDSULTANA                    
+  Receipt_MADA.csv                          MEDSULTANA       Mada        4,731.00          157-95017321-MEDSULTANA            
+  Receipt_MASTER.csv                        MEDSULTANA       Master      650.00            157-95017321-MEDSULTANA            
+  Receipt_VISA.csv                          MEDSULTANA       Visa        5,785.00          157-95017321-MEDSULTANA            
+  Receipt_CASH.csv                          MEDSULTANA       Cash        7,151.00          Cash MEDSULTANA                    
+  Receipt_MADA.csv                          MEDSULTANA       Mada        7,075.00          157-95017321-MEDSULTANA            
+  Receipt_MASTER.csv                        MEDSULTANA       Master      357.00            157-95017321-MEDSULTANA            
+  Receipt_VISA.csv                          MEDSULTANA       Visa        1,829.00          157-95017321-MEDSULTANA            
+  Receipt_CASH.csv                          MEDSULTANA       Cash        7,374.00          Cash MEDSULTANA                    
+  Receipt_MADA.csv                          MEDSULTANA       Mada        7,111.00          157-95017321-MEDSULTANA            
+  Receipt_MASTER.csv                        MEDSULTANA       Master      920.00            157-95017321-MEDSULTANA            
+  Receipt_VISA.csv                          MEDSULTANA       Visa        4,233.00          157-95017321-MEDSULTANA            
+  Receipt_CASH.csv                          MEDSULTANA       Cash        7,387.00          Cash MEDSULTANA                    
+  Receipt_MADA.csv                          MEDSULTANA       Mada        8,097.00          157-95017321-MEDSULTANA            
+  Receipt_MASTER.csv                        MEDSULTANA       Master      1,123.00          157-95017321-MEDSULTANA            
+  Receipt_VISA.csv                          MEDSULTANA       Visa        2,749.00          157-95017321-MEDSULTANA            
+  Receipt_CASH.csv                          MEDSULTANA       Cash        4,049.00          Cash MEDSULTANA                    
+  Receipt_MADA.csv                          MEDSULTANA       Mada        9,107.00          157-95017321-MEDSULTANA            
+  Receipt_MASTER.csv                        MEDSULTANA       Master      869.00            157-95017321-MEDSULTANA            
+  Receipt_VISA.csv                          MEDSULTANA       Visa        2,877.00          157-95017321-MEDSULTANA            
+  Receipt_CASH.csv                          MEDSULTANA       Cash        8,810.00          Cash MEDSULTANA                    
+  Receipt_MADA.csv                          MEDSULTANA       Mada        6,058.00          157-95017321-MEDSULTANA            
+  Receipt_MASTER.csv                        MEDSULTANA       Master      1,916.00          157-95017321-MEDSULTANA            
+  Receipt_VISA.csv                          MEDSULTANA       Visa        2,770.00          157-95017321-MEDSULTANA            
+  Receipt_CASH.csv                          MEDSULTANA       Cash        6,902.00          Cash MEDSULTANA                    
+  Receipt_MADA.csv                          MEDSULTANA       Mada        4,632.00          157-95017321-MEDSULTANA            
+  Receipt_MASTER.csv                        MEDSULTANA       Master      724.00            157-95017321-MEDSULTANA            
+  Receipt_VISA.csv                          MEDSULTANA       Visa        1,545.00          157-95017321-MEDSULTANA            
+  Receipt_CASH.csv                          MEDSULTANA       Cash        6,257.00          Cash MEDSULTANA                    
+  Receipt_MADA.csv                          MEDSULTANA       Mada        9,499.00          157-95017321-MEDSULTANA            
+  Receipt_VISA.csv                          MEDSULTANA       Visa        2,582.00          157-95017321-MEDSULTANA            
+  Receipt_CASH.csv                          MEDSULTANA       Cash        15,224.00         Cash MEDSULTANA                    
+  Receipt_MADA.csv                          MEDSULTANA       Mada        10,744.00         157-95017321-MEDSULTANA            
+  Receipt_MASTER.csv                        MEDSULTANA       Master      4,362.00          157-95017321-MEDSULTANA            
+  Receipt_VISA.csv                          MEDSULTANA       Visa        3,419.00          157-95017321-MEDSULTANA            
+  Receipt_CASH.csv                          MEDSULTANA       Cash        7,385.00          Cash MEDSULTANA                    
+  Receipt_MADA.csv                          MEDSULTANA       Mada        16,109.00         157-95017321-MEDSULTANA            
+  Receipt_MASTER.csv                        MEDSULTANA       Master      931.00            157-95017321-MEDSULTANA            
+  Receipt_VISA.csv                          MEDSULTANA       Visa        4,027.00          157-95017321-MEDSULTANA            
+  Receipt_CASH.csv                          MEDSULTANA       Cash        8,944.00          Cash MEDSULTANA                    
+  Receipt_MADA.csv                          MEDSULTANA       Mada        11,916.00         157-95017321-MEDSULTANA            
+  Receipt_MASTER.csv                        MEDSULTANA       Master      348.00            157-95017321-MEDSULTANA            
+  Receipt_VISA.csv                          MEDSULTANA       Visa        5,427.00          157-95017321-MEDSULTANA            
+  Receipt_CASH.csv                          MEDSULTANA       Cash        6,923.00          Cash MEDSULTANA                    
+  Receipt_MADA.csv                          MEDSULTANA       Mada        23,741.00         157-95017321-MEDSULTANA            
+  Receipt_MASTER.csv                        MEDSULTANA       Master      1,061.00          157-95017321-MEDSULTANA            
+  Receipt_VISA.csv                          MEDSULTANA       Visa        4,810.00          157-95017321-MEDSULTANA            
+  Receipt_CASH.csv                          MEDSULTANA       Cash        13,537.00         Cash MEDSULTANA                    
+  Receipt_MADA.csv                          MEDSULTANA       Mada        12,568.00         157-95017321-MEDSULTANA            
+  Receipt_MASTER.csv                        MEDSULTANA       Master      1,794.00          157-95017321-MEDSULTANA            
+  Receipt_VISA.csv                          MEDSULTANA       Visa        3,004.00          157-95017321-MEDSULTANA            
+  Receipt_CASH.csv                          MEDSULTANA       Cash        2,395.00          Cash MEDSULTANA                    
+  Receipt_MADA.csv                          MEDSULTANA       Mada        4,494.00          157-95017321-MEDSULTANA            
+  Receipt_MASTER.csv                        MEDSULTANA       Master      1,094.00          157-95017321-MEDSULTANA            
+  Receipt_VISA.csv                          MEDSULTANA       Visa        2,215.00          157-95017321-MEDSULTANA            
+  Receipt_CASH.csv                          MEDSULTANA       Cash        3,103.00          Cash MEDSULTANA                    
+  Receipt_MADA.csv                          MEDSULTANA       Mada        2,667.00          157-95017321-MEDSULTANA            
+  Receipt_MASTER.csv                        MEDSULTANA       Master      907.00            157-95017321-MEDSULTANA            
+  Receipt_VISA.csv                          MEDSULTANA       Visa        1,201.00          157-95017321-MEDSULTANA            
+  Receipt_CASH.csv                          MEDSULTANA       Cash        4,094.00          Cash MEDSULTANA                    
+  Receipt_MADA.csv                          MEDSULTANA       Mada        5,169.00          157-95017321-MEDSULTANA            
+  Receipt_MASTER.csv                        MEDSULTANA       Master      861.00            157-95017321-MEDSULTANA            
+  Receipt_VISA.csv                          MEDSULTANA       Visa        1,230.00          157-95017321-MEDSULTANA            
+  Receipt_CASH.csv                          MEDSULTANA       Cash        3,648.00          Cash MEDSULTANA                    
+  Receipt_MADA.csv                          MEDSULTANA       Mada        3,808.00          157-95017321-MEDSULTANA            
+  Receipt_MASTER.csv                        MEDSULTANA       Master      299.00            157-95017321-MEDSULTANA            
+  Receipt_VISA.csv                          MEDSULTANA       Visa        758.00            157-95017321-MEDSULTANA            
+  Receipt_CASH.csv                          MEDSULTANA       Cash        3,885.00          Cash MEDSULTANA                    
+  Receipt_MADA.csv                          MEDSULTANA       Mada        4,419.00          157-95017321-MEDSULTANA            
+  Receipt_MASTER.csv                        MEDSULTANA       Master      299.00            157-95017321-MEDSULTANA            
+  Receipt_VISA.csv                          MEDSULTANA       Visa        998.00            157-95017321-MEDSULTANA            
+  Receipt_CASH.csv                          MEDSULTANA       Cash        229.00            Cash MEDSULTANA                    
+  Receipt_MADA.csv                          MEDSULTANA       Mada        3,833.00          157-95017321-MEDSULTANA            
+  Receipt_MASTER.csv                        MEDSULTANA       Master      2,747.00          157-95017321-MEDSULTANA            
+  Receipt_VISA.csv                          MEDSULTANA       Visa        997.00            157-95017321-MEDSULTANA            
+  Receipt_CASH.csv                          MEDSULTANA       Cash        2,002.00          Cash MEDSULTANA                    
+  Receipt_MADA.csv                          MEDSULTANA       Mada        4,801.00          157-95017321-MEDSULTANA            
+  Receipt_MASTER.csv                        MEDSULTANA       Master      433.00            157-95017321-MEDSULTANA            
+  Receipt_VISA.csv                          MEDSULTANA       Visa        1,835.00          157-95017321-MEDSULTANA            
+  Receipt_CASH.csv                          MEDSULTANA       Cash        3,083.00          Cash MEDSULTANA                    
+  Receipt_MADA.csv                          MEDSULTANA       Mada        1,954.00          157-95017321-MEDSULTANA            
+  Receipt_MASTER.csv                        MEDSULTANA       Master      5,185.00          157-95017321-MEDSULTANA            
+  Receipt_VISA.csv                          MEDSULTANA       Visa        773.00            157-95017321-MEDSULTANA            
+  Receipt_CASH.csv                          MEDSULTANA       Cash        5,256.00          Cash MEDSULTANA                    
+  Receipt_MADA.csv                          MEDSULTANA       Mada        2,367.00          157-95017321-MEDSULTANA            
+  Receipt_MASTER.csv                        MEDSULTANA       Master      1,013.00          157-95017321-MEDSULTANA            
+  Receipt_VISA.csv                          MEDSULTANA       Visa        1,190.00          157-95017321-MEDSULTANA            
+  Receipt_CASH.csv                          MEDSULTANA       Cash        3,750.00          Cash MEDSULTANA                    
+  Receipt_MADA.csv                          MEDSULTANA       Mada        1,811.00          157-95017321-MEDSULTANA            
+  Receipt_MASTER.csv                        MEDSULTANA       Master      777.00            157-95017321-MEDSULTANA            
+  Receipt_VISA.csv                          MEDSULTANA       Visa        598.00            157-95017321-MEDSULTANA            
+  Receipt_CASH.csv                          MEDSULTANA       Cash        1,492.00          Cash MEDSULTANA                    
+  Receipt_MADA.csv                          MEDSULTANA       Mada        1,827.00          157-95017321-MEDSULTANA            
+  Receipt_MASTER.csv                        MEDSULTANA       Master      1,261.00          157-95017321-MEDSULTANA            
+  Receipt_VISA.csv                          MEDSULTANA       Visa        1,062.00          157-95017321-MEDSULTANA            
+  Receipt_CASH.csv                          MEDSULTANA       Cash        4,393.00          Cash MEDSULTANA                    
+  Receipt_MADA.csv                          MEDSULTANA       Mada        2,898.00          157-95017321-MEDSULTANA            
+  Receipt_MASTER.csv                        MEDSULTANA       Master      2,773.00          157-95017321-MEDSULTANA            
+  Receipt_VISA.csv                          MEDSULTANA       Visa        885.00            157-95017321-MEDSULTANA            
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            440,297.00                                           
+
+  Per-method totals:
+    Cash             27 file(s)      154,999.00 SAR
+    Mada             27 file(s)      188,552.00 SAR
+    Master           26 file(s)       33,598.00 SAR
+    Visa             27 file(s)       63,148.00 SAR
+    Grand Total                       440,297.00 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Cash         Mada       Master         Visa          TOTAL
+  ----------------------------------------------------------------------------------
+  2026-03-05          2,155        9,861          537        1,885         14,438
+  2026-03-06          5,678        7,255          357        2,464         15,754
+  2026-03-07          9,893        4,731          650        5,785         21,059
+  2026-03-08          7,151        7,075          357        1,829         16,412
+  2026-03-09          7,374        7,111          920        4,233         19,638
+  2026-03-10          7,387        8,097        1,123        2,749         19,356
+  2026-03-11          4,049        9,107          869        2,877         16,902
+  2026-03-12          8,810        6,058        1,916        2,770         19,554
+  2026-03-13          6,902        4,632          724        1,545         13,803
+  2026-03-14          6,257        9,499            0        2,582         18,338
+  2026-03-15         15,224       10,744        4,362        3,419         33,749
+  2026-03-16          7,385       16,109          931        4,027         28,452
+  2026-03-17          8,944       11,916          348        5,427         26,635
+  2026-03-18          6,923       23,741        1,061        4,810         36,535
+  2026-03-19         13,537       12,568        1,794        3,004         30,903
+  2026-03-20          2,395        4,494        1,094        2,215         10,198
+  2026-03-21          3,103        2,667          907        1,201          7,878
+  2026-03-22          4,094        5,169          861        1,230         11,354
+  2026-03-23          3,648        3,808          299          758          8,513
+  2026-03-24          3,885        4,419          299          998          9,601
+  2026-03-25            229        3,833        2,747          997          7,806
+  2026-03-26          2,002        4,801          433        1,835          9,071
+  2026-03-27          3,083        1,954        5,185          773         10,995
+  2026-03-28          5,256        2,367        1,013        1,190          9,826
+  2026-03-29          3,750        1,811          777          598          6,936
+  2026-03-30          1,492        1,827        1,261        1,062          5,642
+  2026-03-31          4,393        2,898        2,773          885         10,949
+  ----------------------------------------------------------------------------------
+  TOTAL             154,999      188,552       33,598       63,148        440,297
+
+  VALIDATION:
+    Payment file total (for standard receipts):       440,297.00 SAR
+    Receipt files total:                              440,297.00 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Cash            Payment:   154,999.00  Receipt:   154,999.00  Diff:     0.00  ✓
+    Mada            Payment:   188,552.00  Receipt:   188,552.00  Diff:     0.00  ✓
+    Master          Payment:    33,598.00  Receipt:    33,598.00  Diff:     0.00  ✓
+    Visa            Payment:    63,148.00  Receipt:    63,148.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (107 rows, 440,297.00 SAR)
+  Per-method grand total                   440,297.00 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 80
+    Total amount: -3,420.6562 SAR
+    Payment methods included: ['Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -3,420.6562 SAR
+    Per-method total:               -3,420.6562 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    Mada               27 rows         -1,303.0650 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             26 rows           -737.3711 SAR  ⚠ 26 NEGATIVE AMOUNTS!
+    Visa               27 rows         -1,380.2201 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              4
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       188,850.00 SAR
+    Visa                        63,168.00 SAR
+    Master                      33,747.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                       190,790.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED              190,790.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  MEDSULTANA       Mada        9,861.00          0.01      -68.0409          157-95017321-MEDSULTANA       
+  MEDSULTANA       Master      537.00            0.02      -11.7334          157-95017321-MEDSULTANA       
+  MEDSULTANA       Visa        1,885.00          0.02      -41.1872          157-95017321-MEDSULTANA       
+  MEDSULTANA       Mada        7,255.00          0.01      -50.0595          157-95017321-MEDSULTANA       
+  MEDSULTANA       Master      357.00            0.02      -7.8004           157-95017321-MEDSULTANA       
+  MEDSULTANA       Visa        2,464.00          0.02      -53.8384          157-95017321-MEDSULTANA       
+  MEDSULTANA       Mada        4,731.00          0.01      -32.6439          157-95017321-MEDSULTANA       
+  MEDSULTANA       Master      650.00            0.02      -14.2025          157-95017321-MEDSULTANA       
+  MEDSULTANA       Visa        5,785.00          0.02      -126.4022         157-95017321-MEDSULTANA       
+  MEDSULTANA       Mada        7,075.00          0.01      -48.8175          157-95017321-MEDSULTANA       
+  MEDSULTANA       Master      357.00            0.02      -7.8004           157-95017321-MEDSULTANA       
+  MEDSULTANA       Visa        1,829.00          0.02      -39.9636          157-95017321-MEDSULTANA       
+  MEDSULTANA       Mada        7,111.00          0.01      -49.0659          157-95017321-MEDSULTANA       
+  MEDSULTANA       Master      920.00            0.02      -20.1020          157-95017321-MEDSULTANA       
+  MEDSULTANA       Visa        4,233.00          0.02      -92.4910          157-95017321-MEDSULTANA       
+  MEDSULTANA       Mada        8,097.00          0.01      -55.8693          157-95017321-MEDSULTANA       
+  MEDSULTANA       Master      1,123.00          0.02      -24.5375          157-95017321-MEDSULTANA       
+  MEDSULTANA       Visa        2,749.00          0.02      -60.0656          157-95017321-MEDSULTANA       
+  MEDSULTANA       Mada        9,107.00          0.01      -62.8383          157-95017321-MEDSULTANA       
+  MEDSULTANA       Master      869.00            0.02      -18.9876          157-95017321-MEDSULTANA       
+  MEDSULTANA       Visa        2,877.00          0.02      -62.8624          157-95017321-MEDSULTANA       
+  MEDSULTANA       Mada        6,058.00          0.01      -41.8002          157-95017321-MEDSULTANA       
+  MEDSULTANA       Master      1,916.00          0.02      -41.8646          157-95017321-MEDSULTANA       
+  MEDSULTANA       Visa        2,770.00          0.02      -60.5245          157-95017321-MEDSULTANA       
+  MEDSULTANA       Mada        4,632.00          0.01      -31.9608          157-95017321-MEDSULTANA       
+  MEDSULTANA       Master      724.00            0.02      -15.8194          157-95017321-MEDSULTANA       
+  MEDSULTANA       Visa        1,545.00          0.02      -33.7582          157-95017321-MEDSULTANA       
+  MEDSULTANA       Mada        9,499.00          0.01      -65.5431          157-95017321-MEDSULTANA       
+  MEDSULTANA       Visa        2,582.00          0.02      -56.4167          157-95017321-MEDSULTANA       
+  MEDSULTANA       Mada        10,744.00         0.01      -74.1336          157-95017321-MEDSULTANA       
+  MEDSULTANA       Master      4,511.00          0.02      -98.5653          157-95017321-MEDSULTANA       
+  MEDSULTANA       Visa        3,419.00          0.02      -74.7051          157-95017321-MEDSULTANA       
+  MEDSULTANA       Mada        16,109.00         0.01      -111.1521         157-95017321-MEDSULTANA       
+  MEDSULTANA       Master      931.00            0.02      -20.3423          157-95017321-MEDSULTANA       
+  MEDSULTANA       Visa        4,027.00          0.02      -87.9899          157-95017321-MEDSULTANA       
+  MEDSULTANA       Mada        12,115.00         0.01      -83.5935          157-95017321-MEDSULTANA       
+  MEDSULTANA       Master      348.00            0.02      -7.6038           157-95017321-MEDSULTANA       
+  MEDSULTANA       Visa        5,427.00          0.02      -118.5799         157-95017321-MEDSULTANA       
+  MEDSULTANA       Mada        23,741.00         0.01      -163.8129         157-95017321-MEDSULTANA       
+  MEDSULTANA       Master      1,061.00          0.02      -23.1828          157-95017321-MEDSULTANA       
+  MEDSULTANA       Visa        4,810.00          0.02      -105.0985         157-95017321-MEDSULTANA       
+  MEDSULTANA       Mada        12,568.00         0.01      -86.7192          157-95017321-MEDSULTANA       
+  MEDSULTANA       Master      1,794.00          0.02      -39.1989          157-95017321-MEDSULTANA       
+  MEDSULTANA       Visa        3,004.00          0.02      -65.6374          157-95017321-MEDSULTANA       
+  MEDSULTANA       Mada        4,494.00          0.01      -31.0086          157-95017321-MEDSULTANA       
+  MEDSULTANA       Master      1,094.00          0.02      -23.9039          157-95017321-MEDSULTANA       
+  MEDSULTANA       Visa        2,215.00          0.02      -48.3977          157-95017321-MEDSULTANA       
+  MEDSULTANA       Mada        2,667.00          0.01      -18.4023          157-95017321-MEDSULTANA       
+  MEDSULTANA       Master      907.00            0.02      -19.8179          157-95017321-MEDSULTANA       
+  MEDSULTANA       Visa        1,201.00          0.02      -26.2418          157-95017321-MEDSULTANA       
+  MEDSULTANA       Mada        5,169.00          0.01      -35.6661          157-95017321-MEDSULTANA       
+  MEDSULTANA       Master      861.00            0.02      -18.8128          157-95017321-MEDSULTANA       
+  MEDSULTANA       Visa        1,230.00          0.02      -26.8755          157-95017321-MEDSULTANA       
+  MEDSULTANA       Mada        3,808.00          0.01      -26.2752          157-95017321-MEDSULTANA       
+  MEDSULTANA       Master      299.00            0.02      -6.5331           157-95017321-MEDSULTANA       
+  MEDSULTANA       Visa        758.00            0.02      -16.5623          157-95017321-MEDSULTANA       
+  MEDSULTANA       Mada        4,419.00          0.01      -30.4911          157-95017321-MEDSULTANA       
+  MEDSULTANA       Master      299.00            0.02      -6.5331           157-95017321-MEDSULTANA       
+  MEDSULTANA       Visa        998.00            0.02      -21.8063          157-95017321-MEDSULTANA       
+  MEDSULTANA       Mada        3,932.00          0.01      -27.1308          157-95017321-MEDSULTANA       
+  MEDSULTANA       Master      2,747.00          0.02      -60.0219          157-95017321-MEDSULTANA       
+  MEDSULTANA       Visa        1,017.00          0.02      -22.2214          157-95017321-MEDSULTANA       
+  MEDSULTANA       Mada        4,801.00          0.01      -33.1269          157-95017321-MEDSULTANA       
+  MEDSULTANA       Master      433.00            0.02      -9.4611           157-95017321-MEDSULTANA       
+  MEDSULTANA       Visa        1,835.00          0.02      -40.0947          157-95017321-MEDSULTANA       
+  MEDSULTANA       Mada        1,954.00          0.01      -13.4826          157-95017321-MEDSULTANA       
+  MEDSULTANA       Master      5,185.00          0.02      -113.2922         157-95017321-MEDSULTANA       
+  MEDSULTANA       Visa        773.00            0.02      -16.8900          157-95017321-MEDSULTANA       
+  MEDSULTANA       Mada        2,367.00          0.01      -16.3323          157-95017321-MEDSULTANA       
+  MEDSULTANA       Master      1,013.00          0.02      -22.1340          157-95017321-MEDSULTANA       
+  MEDSULTANA       Visa        1,190.00          0.02      -26.0015          157-95017321-MEDSULTANA       
+  MEDSULTANA       Mada        1,811.00          0.01      -12.4959          157-95017321-MEDSULTANA       
+  MEDSULTANA       Master      777.00            0.02      -16.9774          157-95017321-MEDSULTANA       
+  MEDSULTANA       Visa        598.00            0.02      -13.0663          157-95017321-MEDSULTANA       
+  MEDSULTANA       Mada        1,827.00          0.01      -12.6063          157-95017321-MEDSULTANA       
+  MEDSULTANA       Master      1,261.00          0.02      -27.5528          157-95017321-MEDSULTANA       
+  MEDSULTANA       Visa        1,062.00          0.02      -23.2047          157-95017321-MEDSULTANA       
+  MEDSULTANA       Mada        2,898.00          0.01      -19.9962          157-95017321-MEDSULTANA       
+  MEDSULTANA       Master      2,773.00          0.02      -60.5900          157-95017321-MEDSULTANA       
+  MEDSULTANA       Visa        885.00            0.02      -19.3373          157-95017321-MEDSULTANA       
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -3,420.6562                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (80 rows, -3,420.6562 SAR)
+  Per-method grand total                   -3,420.6562 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  428,364.69 SAR         █
+  █  Total Standard Receipt amt               880,594.00 SAR         █
+  █  Difference                               452,229.31 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  428,364.69 SAR
+  Total Standard Receipt amt               880,594.00 SAR
+  Difference                               452,229.31 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0006426
+  >>> Next run START_TXN_SEQUENCE =        6427  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 20:47:49
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

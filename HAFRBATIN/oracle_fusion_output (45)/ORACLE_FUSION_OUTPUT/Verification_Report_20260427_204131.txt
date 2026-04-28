@@ -1,0 +1,449 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 08:41:29 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         141,106.85 SAR     ║
+║  [ℹ] Standard Receipt Total                   279,002.00 SAR     ║
+║  [✗] Amount Reconciliation                    Diff: 137,895.15 SAR║
+║  [ℹ] Total Invoices                           754                ║
+║  [ℹ] Receipt Files Generated                  5                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          HAFRBATIN.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             HAFRBATIN_payment_line_5_to_31_March.xlsx
+  Segment 1 prefix                         28979842
+  Segment 2 prefix                         61313486
+
+  AR rows read                             3270
+  Unique invoices loaded                   753
+  Unique transactions (BLK)                60
+  Total AR amount                          141,505.85 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Cash                       151           23,184.00             
+  Mada                       425           77,333.00             
+  Master                     48            22,828.00             
+  TABBY                      48            12,828.00             
+  TAMARA                     37            9,932.00              
+  Visa                       76            16,156.00             
+  ----------------------------------------------------------------------
+  TOTAL                      785           162,261.00            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  HAFRBATIN                       669         139,501.00          
+  RYDGALLER                       85          22,760.00           
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 92
+    Total amount: 139,501.00 SAR
+    Payment methods included: ['Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              139,501.00 SAR
+    Per-method total:                139,501.00 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    Cash               26 rows           23,184.00 SAR  ✓
+    Mada               27 rows           77,333.00 SAR  ✓
+    Master             17 rows           22,828.00 SAR  ✓
+    Visa               22 rows           16,156.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    85
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   5
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                        77,333.00 SAR
+    Cash                        23,184.00 SAR
+    Master                      22,828.00 SAR
+    Visa                        16,156.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TABBY                       12,828.00 SAR
+    TAMARA                       9,932.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          HAFRBATIN        Cash        25.00             CashHAFRBATIN                      
+  Receipt_MADA.csv                          HAFRBATIN        Mada        4,678.00          015795017321055                    
+  Receipt_MASTER.csv                        HAFRBATIN        Master      199.00            015795017321055                    
+  Receipt_VISA.csv                          HAFRBATIN        Visa        846.00            015795017321055                    
+  Receipt_CASH.csv                          HAFRBATIN        Cash        993.00            CashHAFRBATIN                      
+  Receipt_MADA.csv                          HAFRBATIN        Mada        3,848.00          015795017321055                    
+  Receipt_VISA.csv                          HAFRBATIN        Visa        153.00            015795017321055                    
+  Receipt_CASH.csv                          HAFRBATIN        Cash        974.00            CashHAFRBATIN                      
+  Receipt_MADA.csv                          HAFRBATIN        Mada        4,258.00          015795017321055                    
+  Receipt_MASTER.csv                        HAFRBATIN        Master      6,061.00          015795017321055                    
+  Receipt_VISA.csv                          HAFRBATIN        Visa        498.00            015795017321055                    
+  Receipt_CASH.csv                          HAFRBATIN        Cash        1,046.00          CashHAFRBATIN                      
+  Receipt_MADA.csv                          HAFRBATIN        Mada        3,778.00          015795017321055                    
+  Receipt_VISA.csv                          HAFRBATIN        Visa        797.00            015795017321055                    
+  Receipt_CASH.csv                          HAFRBATIN        Cash        2,310.00          CashHAFRBATIN                      
+  Receipt_MADA.csv                          HAFRBATIN        Mada        2,823.00          015795017321055                    
+  Receipt_MASTER.csv                        HAFRBATIN        Master      596.00            015795017321055                    
+  Receipt_VISA.csv                          HAFRBATIN        Visa        325.00            015795017321055                    
+  Receipt_CASH.csv                          HAFRBATIN        Cash        949.00            CashHAFRBATIN                      
+  Receipt_MADA.csv                          HAFRBATIN        Mada        3,878.00          015795017321055                    
+  Receipt_VISA.csv                          HAFRBATIN        Visa        299.00            015795017321055                    
+  Receipt_CASH.csv                          HAFRBATIN        Cash        1,291.00          CashHAFRBATIN                      
+  Receipt_MADA.csv                          HAFRBATIN        Mada        4,003.00          015795017321055                    
+  Receipt_VISA.csv                          HAFRBATIN        Visa        348.00            015795017321055                    
+  Receipt_CASH.csv                          HAFRBATIN        Cash        1,503.00          CashHAFRBATIN                      
+  Receipt_MADA.csv                          HAFRBATIN        Mada        3,414.00          015795017321055                    
+  Receipt_VISA.csv                          HAFRBATIN        Visa        614.00            015795017321055                    
+  Receipt_CASH.csv                          HAFRBATIN        Cash        1,452.00          CashHAFRBATIN                      
+  Receipt_MADA.csv                          HAFRBATIN        Mada        3,349.00          015795017321055                    
+  Receipt_MASTER.csv                        HAFRBATIN        Master      4,707.00          015795017321055                    
+  Receipt_VISA.csv                          HAFRBATIN        Visa        1,299.00          015795017321055                    
+  Receipt_CASH.csv                          HAFRBATIN        Cash        1,216.00          CashHAFRBATIN                      
+  Receipt_MADA.csv                          HAFRBATIN        Mada        3,590.00          015795017321055                    
+  Receipt_MASTER.csv                        HAFRBATIN        Master      598.00            015795017321055                    
+  Receipt_VISA.csv                          HAFRBATIN        Visa        328.00            015795017321055                    
+  Receipt_CASH.csv                          HAFRBATIN        Cash        1,528.00          CashHAFRBATIN                      
+  Receipt_MADA.csv                          HAFRBATIN        Mada        3,565.00          015795017321055                    
+  Receipt_MASTER.csv                        HAFRBATIN        Master      895.00            015795017321055                    
+  Receipt_VISA.csv                          HAFRBATIN        Visa        1,322.00          015795017321055                    
+  Receipt_CASH.csv                          HAFRBATIN        Cash        797.00            CashHAFRBATIN                      
+  Receipt_MADA.csv                          HAFRBATIN        Mada        4,098.00          015795017321055                    
+  Receipt_VISA.csv                          HAFRBATIN        Visa        922.00            015795017321055                    
+  Receipt_CASH.csv                          HAFRBATIN        Cash        2,061.00          CashHAFRBATIN                      
+  Receipt_MADA.csv                          HAFRBATIN        Mada        5,346.00          015795017321055                    
+  Receipt_VISA.csv                          HAFRBATIN        Visa        1,697.00          015795017321055                    
+  Receipt_CASH.csv                          HAFRBATIN        Cash        773.00            CashHAFRBATIN                      
+  Receipt_MADA.csv                          HAFRBATIN        Mada        4,588.00          015795017321055                    
+  Receipt_MASTER.csv                        HAFRBATIN        Master      3,113.00          015795017321055                    
+  Receipt_VISA.csv                          HAFRBATIN        Visa        2,820.00          015795017321055                    
+  Receipt_CASH.csv                          HAFRBATIN        Cash        1,135.00          CashHAFRBATIN                      
+  Receipt_MADA.csv                          HAFRBATIN        Mada        7,433.00          015795017321055                    
+  Receipt_MASTER.csv                        HAFRBATIN        Master      399.00            015795017321055                    
+  Receipt_VISA.csv                          HAFRBATIN        Visa        1,144.00          015795017321055                    
+  Receipt_CASH.csv                          HAFRBATIN        Cash        995.00            CashHAFRBATIN                      
+  Receipt_MADA.csv                          HAFRBATIN        Mada        506.00            015795017321055                    
+  Receipt_MASTER.csv                        HAFRBATIN        Master      316.00            015795017321055                    
+  Receipt_CASH.csv                          HAFRBATIN        Cash        497.00            CashHAFRBATIN                      
+  Receipt_MADA.csv                          HAFRBATIN        Mada        666.00            015795017321055                    
+  Receipt_VISA.csv                          HAFRBATIN        Visa        299.00            015795017321055                    
+  Receipt_CASH.csv                          HAFRBATIN        Cash        926.00            CashHAFRBATIN                      
+  Receipt_MADA.csv                          HAFRBATIN        Mada        1,541.00          015795017321055                    
+  Receipt_CASH.csv                          HAFRBATIN        Cash        150.00            CashHAFRBATIN                      
+  Receipt_MADA.csv                          HAFRBATIN        Mada        547.00            015795017321055                    
+  Receipt_MASTER.csv                        HAFRBATIN        Master      494.00            015795017321055                    
+  Receipt_CASH.csv                          HAFRBATIN        Cash        499.00            CashHAFRBATIN                      
+  Receipt_MADA.csv                          HAFRBATIN        Mada        369.00            015795017321055                    
+  Receipt_MASTER.csv                        HAFRBATIN        Master      199.00            015795017321055                    
+  Receipt_VISA.csv                          HAFRBATIN        Visa        489.00            015795017321055                    
+  Receipt_CASH.csv                          HAFRBATIN        Cash        100.00            CashHAFRBATIN                      
+  Receipt_MADA.csv                          HAFRBATIN        Mada        830.00            015795017321055                    
+  Receipt_MASTER.csv                        HAFRBATIN        Master      550.00            015795017321055                    
+  Receipt_VISA.csv                          HAFRBATIN        Visa        256.00            015795017321055                    
+  Receipt_CASH.csv                          HAFRBATIN        Cash        531.00            CashHAFRBATIN                      
+  Receipt_MADA.csv                          HAFRBATIN        Mada        2,488.00          015795017321055                    
+  Receipt_MASTER.csv                        HAFRBATIN        Master      1,621.00          015795017321055                    
+  Receipt_VISA.csv                          HAFRBATIN        Visa        497.00            015795017321055                    
+  Receipt_CASH.csv                          HAFRBATIN        Cash        99.00             CashHAFRBATIN                      
+  Receipt_MADA.csv                          HAFRBATIN        Mada        3,013.00          015795017321055                    
+  Receipt_MASTER.csv                        HAFRBATIN        Master      798.00            015795017321055                    
+  Receipt_CASH.csv                          HAFRBATIN        Cash        613.00            CashHAFRBATIN                      
+  Receipt_MADA.csv                          HAFRBATIN        Mada        1,507.00          015795017321055                    
+  Receipt_MASTER.csv                        HAFRBATIN        Master      487.00            015795017321055                    
+  Receipt_VISA.csv                          HAFRBATIN        Visa        348.00            015795017321055                    
+  Receipt_CASH.csv                          HAFRBATIN        Cash        84.00             CashHAFRBATIN                      
+  Receipt_MADA.csv                          HAFRBATIN        Mada        1,206.00          015795017321055                    
+  Receipt_MASTER.csv                        HAFRBATIN        Master      1,396.00          015795017321055                    
+  Receipt_VISA.csv                          HAFRBATIN        Visa        398.00            015795017321055                    
+  Receipt_MADA.csv                          HAFRBATIN        Mada        584.00            015795017321055                    
+  Receipt_CASH.csv                          HAFRBATIN        Cash        637.00            CashHAFRBATIN                      
+  Receipt_MADA.csv                          HAFRBATIN        Mada        1,427.00          015795017321055                    
+  Receipt_MASTER.csv                        HAFRBATIN        Master      399.00            015795017321055                    
+  Receipt_VISA.csv                          HAFRBATIN        Visa        457.00            015795017321055                    
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            139,501.00                                           
+
+  Per-method totals:
+    Cash             26 file(s)       23,184.00 SAR
+    Mada             27 file(s)       77,333.00 SAR
+    Master           17 file(s)       22,828.00 SAR
+    Visa             22 file(s)       16,156.00 SAR
+    Grand Total                       139,501.00 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Cash         Mada       Master         Visa          TOTAL
+  ----------------------------------------------------------------------------------
+  2026-03-05             25        4,678          199          846          5,748
+  2026-03-06            993        3,848            0          153          4,994
+  2026-03-07            974        4,258        6,061          498         11,791
+  2026-03-08          1,046        3,778            0          797          5,621
+  2026-03-09          2,310        2,823          596          325          6,054
+  2026-03-10            949        3,878            0          299          5,126
+  2026-03-11          1,291        4,003            0          348          5,642
+  2026-03-12          1,503        3,414            0          614          5,531
+  2026-03-13          1,452        3,349        4,707        1,299         10,807
+  2026-03-14          1,216        3,590          598          328          5,732
+  2026-03-15          1,528        3,565          895        1,322          7,310
+  2026-03-16            797        4,098            0          922          5,817
+  2026-03-17          2,061        5,346            0        1,697          9,104
+  2026-03-18            773        4,588        3,113        2,820         11,294
+  2026-03-19          1,135        7,433          399        1,144         10,111
+  2026-03-20            995          506          316            0          1,817
+  2026-03-21            497          666            0          299          1,462
+  2026-03-22            926        1,541            0            0          2,467
+  2026-03-23            150          547          494            0          1,191
+  2026-03-24            499          369          199          489          1,556
+  2026-03-25            100          830          550          256          1,736
+  2026-03-26            531        2,488        1,621          497          5,137
+  2026-03-27             99        3,013          798            0          3,910
+  2026-03-28            613        1,507          487          348          2,955
+  2026-03-29             84        1,206        1,396          398          3,084
+  2026-03-30              0          584            0            0            584
+  2026-03-31            637        1,427          399          457          2,920
+  ----------------------------------------------------------------------------------
+  TOTAL              23,184       77,333       22,828       16,156        139,501
+
+  VALIDATION:
+    Payment file total (for standard receipts):       139,501.00 SAR
+    Receipt files total:                              139,501.00 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Cash            Payment:    23,184.00  Receipt:    23,184.00  Diff:     0.00  ✓
+    Mada            Payment:    77,333.00  Receipt:    77,333.00  Diff:     0.00  ✓
+    Master          Payment:    22,828.00  Receipt:    22,828.00  Diff:     0.00  ✓
+    Visa            Payment:    16,156.00  Receipt:    16,156.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (92 rows, 139,501.00 SAR)
+  Per-method grand total                   139,501.00 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 66
+    Total amount: -1,389.9445 SAR
+    Payment methods included: ['Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -1,389.9445 SAR
+    Per-method total:               -1,389.9445 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    Mada               27 rows           -538.1448 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             17 rows           -498.7914 SAR  ⚠ 17 NEGATIVE AMOUNTS!
+    Visa               22 rows           -353.0083 SAR  ⚠ 22 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              4
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                        77,992.00 SAR
+    Master                      22,828.00 SAR
+    Visa                        16,156.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                        26,891.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED               26,891.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  HAFRBATIN        Mada        4,678.00          0.01      -32.2782          015795017321055               
+  HAFRBATIN        Master      199.00            0.02      -4.3481           015795017321055               
+  HAFRBATIN        Visa        846.00            0.02      -18.4851          015795017321055               
+  HAFRBATIN        Mada        3,848.00          0.01      -26.5512          015795017321055               
+  HAFRBATIN        Visa        153.00            0.02      -3.3430           015795017321055               
+  HAFRBATIN        Mada        4,258.00          0.01      -29.3802          015795017321055               
+  HAFRBATIN        Master      6,061.00          0.02      -132.4328         015795017321055               
+  HAFRBATIN        Visa        498.00            0.02      -10.8813          015795017321055               
+  HAFRBATIN        Mada        3,778.00          0.01      -26.0682          015795017321055               
+  HAFRBATIN        Visa        797.00            0.02      -17.4144          015795017321055               
+  HAFRBATIN        Mada        2,823.00          0.01      -19.4787          015795017321055               
+  HAFRBATIN        Master      596.00            0.02      -13.0226          015795017321055               
+  HAFRBATIN        Visa        325.00            0.02      -7.1012           015795017321055               
+  HAFRBATIN        Mada        3,878.00          0.01      -26.7582          015795017321055               
+  HAFRBATIN        Visa        299.00            0.02      -6.5331           015795017321055               
+  HAFRBATIN        Mada        4,003.00          0.01      -27.6207          015795017321055               
+  HAFRBATIN        Visa        348.00            0.02      -7.6038           015795017321055               
+  HAFRBATIN        Mada        3,613.00          0.01      -24.9297          015795017321055               
+  HAFRBATIN        Visa        614.00            0.02      -13.4159          015795017321055               
+  HAFRBATIN        Mada        3,809.00          0.01      -26.2821          015795017321055               
+  HAFRBATIN        Master      4,707.00          0.02      -102.8479         015795017321055               
+  HAFRBATIN        Visa        1,299.00          0.02      -28.3832          015795017321055               
+  HAFRBATIN        Mada        3,590.00          0.01      -24.7710          015795017321055               
+  HAFRBATIN        Master      598.00            0.02      -13.0663          015795017321055               
+  HAFRBATIN        Visa        328.00            0.02      -7.1668           015795017321055               
+  HAFRBATIN        Mada        3,565.00          0.01      -24.5985          015795017321055               
+  HAFRBATIN        Master      895.00            0.02      -19.5557          015795017321055               
+  HAFRBATIN        Visa        1,322.00          0.02      -28.8857          015795017321055               
+  HAFRBATIN        Mada        4,098.00          0.01      -28.2762          015795017321055               
+  HAFRBATIN        Visa        922.00            0.02      -20.1457          015795017321055               
+  HAFRBATIN        Mada        5,346.00          0.01      -36.8874          015795017321055               
+  HAFRBATIN        Visa        1,697.00          0.02      -37.0795          015795017321055               
+  HAFRBATIN        Mada        4,588.00          0.01      -31.6572          015795017321055               
+  HAFRBATIN        Master      3,113.00          0.02      -68.0190          015795017321055               
+  HAFRBATIN        Visa        2,820.00          0.02      -61.6170          015795017321055               
+  HAFRBATIN        Mada        7,433.00          0.01      -51.2877          015795017321055               
+  HAFRBATIN        Master      399.00            0.02      -8.7181           015795017321055               
+  HAFRBATIN        Visa        1,144.00          0.02      -24.9964          015795017321055               
+  HAFRBATIN        Mada        506.00            0.01      -3.4914           015795017321055               
+  HAFRBATIN        Master      316.00            0.02      -6.9046           015795017321055               
+  HAFRBATIN        Mada        666.00            0.01      -4.5954           015795017321055               
+  HAFRBATIN        Visa        299.00            0.02      -6.5331           015795017321055               
+  HAFRBATIN        Mada        1,541.00          0.01      -10.6329          015795017321055               
+  HAFRBATIN        Mada        547.00            0.01      -3.7743           015795017321055               
+  HAFRBATIN        Master      494.00            0.02      -10.7939          015795017321055               
+  HAFRBATIN        Mada        369.00            0.01      -2.5461           015795017321055               
+  HAFRBATIN        Master      199.00            0.02      -4.3481           015795017321055               
+  HAFRBATIN        Visa        489.00            0.02      -10.6846          015795017321055               
+  HAFRBATIN        Mada        830.00            0.01      -5.7270           015795017321055               
+  HAFRBATIN        Master      550.00            0.02      -12.0175          015795017321055               
+  HAFRBATIN        Visa        256.00            0.02      -5.5936           015795017321055               
+  HAFRBATIN        Mada        2,488.00          0.01      -17.1672          015795017321055               
+  HAFRBATIN        Master      1,621.00          0.02      -35.4188          015795017321055               
+  HAFRBATIN        Visa        497.00            0.02      -10.8594          015795017321055               
+  HAFRBATIN        Mada        3,013.00          0.01      -20.7897          015795017321055               
+  HAFRBATIN        Master      798.00            0.02      -17.4363          015795017321055               
+  HAFRBATIN        Mada        1,507.00          0.01      -10.3983          015795017321055               
+  HAFRBATIN        Master      487.00            0.02      -10.6410          015795017321055               
+  HAFRBATIN        Visa        348.00            0.02      -7.6038           015795017321055               
+  HAFRBATIN        Mada        1,206.00          0.01      -8.3214           015795017321055               
+  HAFRBATIN        Master      1,396.00          0.02      -30.5026          015795017321055               
+  HAFRBATIN        Visa        398.00            0.02      -8.6963           015795017321055               
+  HAFRBATIN        Mada        584.00            0.01      -4.0296           015795017321055               
+  HAFRBATIN        Mada        1,427.00          0.01      -9.8463           015795017321055               
+  HAFRBATIN        Master      399.00            0.02      -8.7181           015795017321055               
+  HAFRBATIN        Visa        457.00            0.02      -9.9854           015795017321055               
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -1,389.9445                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (66 rows, -1,389.9445 SAR)
+  Per-method grand total                   -1,389.9445 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  141,106.85 SAR         █
+  █  Total Standard Receipt amt               279,002.00 SAR         █
+  █  Difference                               137,895.15 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  141,106.85 SAR
+  Total Standard Receipt amt               279,002.00 SAR
+  Difference                               137,895.15 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0004065
+  >>> Next run START_TXN_SEQUENCE =        4066  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 20:41:31
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

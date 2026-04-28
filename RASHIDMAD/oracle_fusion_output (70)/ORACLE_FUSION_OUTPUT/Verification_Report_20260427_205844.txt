@@ -1,0 +1,491 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 08:58:39 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         364,643.02 SAR     ║
+║  [ℹ] Standard Receipt Total                   757,158.00 SAR     ║
+║  [✗] Amount Reconciliation                    Diff: 392,514.98 SAR║
+║  [ℹ] Total Invoices                           1,637              ║
+║  [ℹ] Receipt Files Generated                  6                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          RASHIDMAD.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             RASHIDMAD_payment_line_5_to_31_March.xlsx
+  Segment 1 prefix                         55283418
+  Segment 2 prefix                         24061011
+
+  AR rows read                             7881
+  Unique invoices loaded                   1635
+  Unique transactions (BLK)                74
+  Total AR amount                          365,128.02 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Amex                       3             1,107.00              
+  Cash                       505           117,665.00            
+  Mada                       795           174,869.00            
+  Master                     106           33,633.00             
+  TABBY                      49            14,303.00             
+  TAMARA                     85            26,412.00             
+  Visa                       208           51,305.00             
+  ----------------------------------------------------------------------
+  TOTAL                      1751          419,294.00            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  MEDALIYAT                       1           -199.00             
+  MEDANDLUSH                      1           -286.00             
+  RASHIDMAD                       1501        379,064.00          
+  RYDGALLER                       134         40,715.00           
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 110
+    Total amount: 378,579.00 SAR
+    Payment methods included: ['AMEX', 'Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              378,579.00 SAR
+    Per-method total:                378,579.00 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    AMEX                3 rows            1,107.00 SAR  ✓
+    Cash               29 rows          117,665.00 SAR  ⚠ 2 NEGATIVE AMOUNTS!
+    Mada               27 rows          174,869.00 SAR  ✓
+    Master             24 rows           33,633.00 SAR  ✓
+    Visa               27 rows           51,305.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    134
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   6
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       174,869.00 SAR
+    Cash                       117,665.00 SAR
+    Visa                        51,305.00 SAR
+    Master                      33,633.00 SAR
+    Amex                         1,107.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TAMARA                      26,412.00 SAR
+    TABBY                       14,303.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          MEDALIYAT        Cash        -199.00           Cash MEDALIYAT                     
+  Receipt_CASH.csv                          MEDANDLUSH       Cash        -286.00           CashMEDANDLUSH                     
+  Receipt_CASH.csv                          RASHIDMAD        Cash        664.00            Cash RASHIDMAD2                    
+  Receipt_MADA.csv                          RASHIDMAD        Mada        6,368.00          015795017321052                    
+  Receipt_MASTER.csv                        RASHIDMAD        Master      249.00            015795017321052                    
+  Receipt_VISA.csv                          RASHIDMAD        Visa        1,628.00          015795017321052                    
+  Receipt_CASH.csv                          RASHIDMAD        Cash        2,169.00          Cash RASHIDMAD2                    
+  Receipt_MADA.csv                          RASHIDMAD        Mada        6,731.00          015795017321052                    
+  Receipt_MASTER.csv                        RASHIDMAD        Master      1,993.00          015795017321052                    
+  Receipt_VISA.csv                          RASHIDMAD        Visa        1,488.00          015795017321052                    
+  Receipt_CASH.csv                          RASHIDMAD        Cash        9,714.00          Cash RASHIDMAD2                    
+  Receipt_MADA.csv                          RASHIDMAD        Mada        7,401.00          015795017321052                    
+  Receipt_MASTER.csv                        RASHIDMAD        Master      1,624.00          015795017321052                    
+  Receipt_VISA.csv                          RASHIDMAD        Visa        3,390.00          015795017321052                    
+  Receipt_CASH.csv                          RASHIDMAD        Cash        3,448.00          Cash RASHIDMAD2                    
+  Receipt_MADA.csv                          RASHIDMAD        Mada        7,416.00          015795017321052                    
+  Receipt_MASTER.csv                        RASHIDMAD        Master      2,852.00          015795017321052                    
+  Receipt_VISA.csv                          RASHIDMAD        Visa        2,284.00          015795017321052                    
+  Receipt_CASH.csv                          RASHIDMAD        Cash        3,875.00          Cash RASHIDMAD2                    
+  Receipt_MADA.csv                          RASHIDMAD        Mada        5,747.00          015795017321052                    
+  Receipt_MASTER.csv                        RASHIDMAD        Master      1,024.00          015795017321052                    
+  Receipt_VISA.csv                          RASHIDMAD        Visa        1,914.00          015795017321052                    
+  Receipt_CASH.csv                          RASHIDMAD        Cash        5,515.00          Cash RASHIDMAD2                    
+  Receipt_MADA.csv                          RASHIDMAD        Mada        6,266.00          015795017321052                    
+  Receipt_MASTER.csv                        RASHIDMAD        Master      1,532.00          015795017321052                    
+  Receipt_VISA.csv                          RASHIDMAD        Visa        2,069.00          015795017321052                    
+  Receipt_AMEX.csv                          RASHIDMAD        Amex        409.00            015795017321052                    
+  Receipt_CASH.csv                          RASHIDMAD        Cash        1,976.00          Cash RASHIDMAD2                    
+  Receipt_MADA.csv                          RASHIDMAD        Mada        7,700.00          015795017321052                    
+  Receipt_MASTER.csv                        RASHIDMAD        Master      199.00            015795017321052                    
+  Receipt_VISA.csv                          RASHIDMAD        Visa        3,885.00          015795017321052                    
+  Receipt_CASH.csv                          RASHIDMAD        Cash        5,975.00          Cash RASHIDMAD2                    
+  Receipt_MADA.csv                          RASHIDMAD        Mada        10,052.00         015795017321052                    
+  Receipt_MASTER.csv                        RASHIDMAD        Master      882.00            015795017321052                    
+  Receipt_VISA.csv                          RASHIDMAD        Visa        1,431.00          015795017321052                    
+  Receipt_CASH.csv                          RASHIDMAD        Cash        9,404.00          Cash RASHIDMAD2                    
+  Receipt_MADA.csv                          RASHIDMAD        Mada        9,009.00          015795017321052                    
+  Receipt_MASTER.csv                        RASHIDMAD        Master      813.00            015795017321052                    
+  Receipt_VISA.csv                          RASHIDMAD        Visa        1,947.00          015795017321052                    
+  Receipt_AMEX.csv                          RASHIDMAD        Amex        199.00            015795017321052                    
+  Receipt_CASH.csv                          RASHIDMAD        Cash        6,439.00          Cash RASHIDMAD2                    
+  Receipt_MADA.csv                          RASHIDMAD        Mada        9,659.00          015795017321052                    
+  Receipt_VISA.csv                          RASHIDMAD        Visa        1,982.00          015795017321052                    
+  Receipt_CASH.csv                          RASHIDMAD        Cash        5,453.00          Cash RASHIDMAD2                    
+  Receipt_MADA.csv                          RASHIDMAD        Mada        14,201.00         015795017321052                    
+  Receipt_MASTER.csv                        RASHIDMAD        Master      2,017.00          015795017321052                    
+  Receipt_VISA.csv                          RASHIDMAD        Visa        1,739.00          015795017321052                    
+  Receipt_CASH.csv                          RASHIDMAD        Cash        4,785.00          Cash RASHIDMAD2                    
+  Receipt_MADA.csv                          RASHIDMAD        Mada        12,231.00         015795017321052                    
+  Receipt_MASTER.csv                        RASHIDMAD        Master      4,287.00          015795017321052                    
+  Receipt_VISA.csv                          RASHIDMAD        Visa        2,377.00          015795017321052                    
+  Receipt_CASH.csv                          RASHIDMAD        Cash        7,678.00          Cash RASHIDMAD2                    
+  Receipt_MADA.csv                          RASHIDMAD        Mada        9,010.00          015795017321052                    
+  Receipt_MASTER.csv                        RASHIDMAD        Master      1,393.00          015795017321052                    
+  Receipt_VISA.csv                          RASHIDMAD        Visa        3,457.00          015795017321052                    
+  Receipt_CASH.csv                          RASHIDMAD        Cash        6,734.00          Cash RASHIDMAD2                    
+  Receipt_MADA.csv                          RASHIDMAD        Mada        11,144.00         015795017321052                    
+  Receipt_MASTER.csv                        RASHIDMAD        Master      1,963.00          015795017321052                    
+  Receipt_VISA.csv                          RASHIDMAD        Visa        2,795.00          015795017321052                    
+  Receipt_CASH.csv                          RASHIDMAD        Cash        9,554.00          Cash RASHIDMAD2                    
+  Receipt_MADA.csv                          RASHIDMAD        Mada        13,807.00         015795017321052                    
+  Receipt_MASTER.csv                        RASHIDMAD        Master      1,021.00          015795017321052                    
+  Receipt_VISA.csv                          RASHIDMAD        Visa        5,552.00          015795017321052                    
+  Receipt_CASH.csv                          RASHIDMAD        Cash        798.00            Cash RASHIDMAD2                    
+  Receipt_MADA.csv                          RASHIDMAD        Mada        5,175.00          015795017321052                    
+  Receipt_MASTER.csv                        RASHIDMAD        Master      1,915.00          015795017321052                    
+  Receipt_VISA.csv                          RASHIDMAD        Visa        558.00            015795017321052                    
+  Receipt_CASH.csv                          RASHIDMAD        Cash        3,424.00          Cash RASHIDMAD2                    
+  Receipt_MADA.csv                          RASHIDMAD        Mada        2,191.00          015795017321052                    
+  Receipt_MASTER.csv                        RASHIDMAD        Master      499.00            015795017321052                    
+  Receipt_VISA.csv                          RASHIDMAD        Visa        498.00            015795017321052                    
+  Receipt_CASH.csv                          RASHIDMAD        Cash        4,227.00          Cash RASHIDMAD2                    
+  Receipt_MADA.csv                          RASHIDMAD        Mada        6,270.00          015795017321052                    
+  Receipt_MASTER.csv                        RASHIDMAD        Master      798.00            015795017321052                    
+  Receipt_VISA.csv                          RASHIDMAD        Visa        1,166.00          015795017321052                    
+  Receipt_CASH.csv                          RASHIDMAD        Cash        4,028.00          Cash RASHIDMAD2                    
+  Receipt_MADA.csv                          RASHIDMAD        Mada        4,071.00          015795017321052                    
+  Receipt_MASTER.csv                        RASHIDMAD        Master      824.00            015795017321052                    
+  Receipt_VISA.csv                          RASHIDMAD        Visa        2,083.00          015795017321052                    
+  Receipt_CASH.csv                          RASHIDMAD        Cash        2,288.00          Cash RASHIDMAD2                    
+  Receipt_MADA.csv                          RASHIDMAD        Mada        3,972.00          015795017321052                    
+  Receipt_MASTER.csv                        RASHIDMAD        Master      647.00            015795017321052                    
+  Receipt_VISA.csv                          RASHIDMAD        Visa        1,964.00          015795017321052                    
+  Receipt_CASH.csv                          RASHIDMAD        Cash        3,808.00          Cash RASHIDMAD2                    
+  Receipt_MADA.csv                          RASHIDMAD        Mada        1,969.00          015795017321052                    
+  Receipt_MASTER.csv                        RASHIDMAD        Master      328.00            015795017321052                    
+  Receipt_VISA.csv                          RASHIDMAD        Visa        857.00            015795017321052                    
+  Receipt_CASH.csv                          RASHIDMAD        Cash        661.00            Cash RASHIDMAD2                    
+  Receipt_MADA.csv                          RASHIDMAD        Mada        2,892.00          015795017321052                    
+  Receipt_VISA.csv                          RASHIDMAD        Visa        1,250.00          015795017321052                    
+  Receipt_CASH.csv                          RASHIDMAD        Cash        2,464.00          Cash RASHIDMAD2                    
+  Receipt_MADA.csv                          RASHIDMAD        Mada        4,712.00          015795017321052                    
+  Receipt_MASTER.csv                        RASHIDMAD        Master      2,791.00          015795017321052                    
+  Receipt_VISA.csv                          RASHIDMAD        Visa        766.00            015795017321052                    
+  Receipt_CASH.csv                          RASHIDMAD        Cash        2,906.00          Cash RASHIDMAD2                    
+  Receipt_MADA.csv                          RASHIDMAD        Mada        2,022.00          015795017321052                    
+  Receipt_MASTER.csv                        RASHIDMAD        Master      2,324.00          015795017321052                    
+  Receipt_VISA.csv                          RASHIDMAD        Visa        877.00            015795017321052                    
+  Receipt_CASH.csv                          RASHIDMAD        Cash        2,916.00          Cash RASHIDMAD2                    
+  Receipt_MADA.csv                          RASHIDMAD        Mada        1,228.00          015795017321052                    
+  Receipt_VISA.csv                          RASHIDMAD        Visa        2,167.00          015795017321052                    
+  Receipt_AMEX.csv                          RASHIDMAD        Amex        499.00            015795017321052                    
+  Receipt_CASH.csv                          RASHIDMAD        Cash        3,507.00          Cash RASHIDMAD2                    
+  Receipt_MADA.csv                          RASHIDMAD        Mada        2,740.00          015795017321052                    
+  Receipt_MASTER.csv                        RASHIDMAD        Master      1,144.00          015795017321052                    
+  Receipt_VISA.csv                          RASHIDMAD        Visa        314.00            015795017321052                    
+  Receipt_CASH.csv                          RASHIDMAD        Cash        3,740.00          Cash RASHIDMAD2                    
+  Receipt_MADA.csv                          RASHIDMAD        Mada        885.00            015795017321052                    
+  Receipt_MASTER.csv                        RASHIDMAD        Master      514.00            015795017321052                    
+  Receipt_VISA.csv                          RASHIDMAD        Visa        867.00            015795017321052                    
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            378,579.00                                           
+
+  Per-method totals:
+    Amex              3 file(s)        1,107.00 SAR
+    Cash             29 file(s)      117,665.00 SAR
+    Mada             27 file(s)      174,869.00 SAR
+    Master           24 file(s)       33,633.00 SAR
+    Visa             27 file(s)       51,305.00 SAR
+    Grand Total                       378,579.00 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Amex         Cash         Mada       Master         Visa          TOTAL
+  ------------------------------------------------------------------------------------------------
+  2026-03-05              0          664        6,368          249        1,628          8,909
+  2026-03-06              0        2,169        6,731        1,993        1,488         12,381
+  2026-03-07              0        9,714        7,401        1,624        3,390         22,129
+  2026-03-08              0        3,448        7,416        2,852        2,284         16,000
+  2026-03-09              0        3,875        5,747        1,024        1,914         12,560
+  2026-03-10              0        5,515        6,266        1,532        2,069         15,382
+  2026-03-11            409        1,976        7,700          199        3,885         14,169
+  2026-03-12              0        5,975       10,052          882        1,431         18,340
+  2026-03-13              0        9,404        9,009          813        1,947         21,173
+  2026-03-14            199        6,439        9,659            0        1,982         18,279
+  2026-03-15              0        5,453       14,201        2,017        1,739         23,410
+  2026-03-16              0        4,785       12,231        4,287        2,377         23,680
+  2026-03-17              0        7,678        9,010        1,393        3,457         21,538
+  2026-03-18              0        6,734       11,144        1,963        2,795         22,636
+  2026-03-19              0        9,554       13,807        1,021        5,552         29,934
+  2026-03-20              0          798        5,175        1,915          558          8,446
+  2026-03-21              0        3,225        2,191          499          498          6,413
+  2026-03-22              0        4,227        6,270          798        1,166         12,461
+  2026-03-23              0        4,028        4,071          824        2,083         11,006
+  2026-03-24              0        2,288        3,972          647        1,964          8,871
+  2026-03-25              0        3,808        1,969          328          857          6,962
+  2026-03-26              0          661        2,892            0        1,250          4,803
+  2026-03-27              0        2,464        4,712        2,791          766         10,733
+  2026-03-28              0        2,906        2,022        2,324          877          8,129
+  2026-03-29              0        2,630        1,228            0        2,167          6,025
+  2026-03-30            499        3,507        2,740        1,144          314          8,204
+  2026-03-31              0        3,740          885          514          867          6,006
+  ------------------------------------------------------------------------------------------------
+  TOTAL               1,107      117,665      174,869       33,633       51,305        378,579
+
+  VALIDATION:
+    Payment file total (for standard receipts):       378,579.00 SAR
+    Receipt files total:                              378,579.00 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Amex            Payment:     1,107.00  Receipt:     1,107.00  Diff:     0.00  ✓
+    Cash            Payment:   117,665.00  Receipt:   117,665.00  Diff:     0.00  ✓
+    Mada            Payment:   174,869.00  Receipt:   174,869.00  Diff:     0.00  ✓
+    Master          Payment:    33,633.00  Receipt:    33,633.00  Diff:     0.00  ✓
+    Visa            Payment:    51,305.00  Receipt:    51,305.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (110 rows, 378,579.00 SAR)
+  Per-method grand total                   378,579.00 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 81
+    Total amount: -3,122.3107 SAR
+    Payment methods included: ['AMEX', 'Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -3,122.3107 SAR
+    Per-method total:               -3,122.3107 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    AMEX                3 rows            -47.1027 SAR  ⚠ 3 NEGATIVE AMOUNTS!
+    Mada               27 rows         -1,214.9658 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             24 rows           -739.2286 SAR  ⚠ 24 NEGATIVE AMOUNTS!
+    Visa               27 rows         -1,121.0136 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              5
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       176,082.00 SAR
+    Visa                        51,305.00 SAR
+    Master                      33,832.00 SAR
+    Amex                         1,107.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                       129,768.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED              129,768.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  RASHIDMAD        Mada        6,368.00          0.01      -43.9392          015795017321052               
+  RASHIDMAD        Master      249.00            0.02      -5.4406           015795017321052               
+  RASHIDMAD        Visa        1,628.00          0.02      -35.5718          015795017321052               
+  RASHIDMAD        Mada        6,731.00          0.01      -46.4439          015795017321052               
+  RASHIDMAD        Master      1,993.00          0.02      -43.5470          015795017321052               
+  RASHIDMAD        Visa        1,488.00          0.02      -32.5128          015795017321052               
+  RASHIDMAD        Mada        7,401.00          0.01      -51.0669          015795017321052               
+  RASHIDMAD        Master      1,624.00          0.02      -35.4844          015795017321052               
+  RASHIDMAD        Visa        3,390.00          0.02      -74.0715          015795017321052               
+  RASHIDMAD        Mada        7,416.00          0.01      -51.1704          015795017321052               
+  RASHIDMAD        Master      2,852.00          0.02      -62.3162          015795017321052               
+  RASHIDMAD        Visa        2,284.00          0.02      -49.9054          015795017321052               
+  RASHIDMAD        Mada        5,747.00          0.01      -39.6543          015795017321052               
+  RASHIDMAD        Master      1,024.00          0.02      -22.3744          015795017321052               
+  RASHIDMAD        Visa        1,914.00          0.02      -41.8209          015795017321052               
+  RASHIDMAD        Mada        6,266.00          0.01      -43.2354          015795017321052               
+  RASHIDMAD        Master      1,532.00          0.02      -33.4742          015795017321052               
+  RASHIDMAD        Visa        2,069.00          0.02      -45.2076          015795017321052               
+  RASHIDMAD        Amex        409.00            0.04      -17.4029          015795017321052               
+  RASHIDMAD        Mada        7,700.00          0.01      -53.1300          015795017321052               
+  RASHIDMAD        Master      199.00            0.02      -4.3481           015795017321052               
+  RASHIDMAD        Visa        3,885.00          0.02      -84.8872          015795017321052               
+  RASHIDMAD        Mada        10,052.00         0.01      -69.3588          015795017321052               
+  RASHIDMAD        Master      882.00            0.02      -19.2717          015795017321052               
+  RASHIDMAD        Visa        1,431.00          0.02      -31.2673          015795017321052               
+  RASHIDMAD        Mada        9,009.00          0.01      -62.1621          015795017321052               
+  RASHIDMAD        Master      813.00            0.02      -17.7640          015795017321052               
+  RASHIDMAD        Visa        1,947.00          0.02      -42.5419          015795017321052               
+  RASHIDMAD        Amex        199.00            0.04      -8.4674           015795017321052               
+  RASHIDMAD        Mada        9,659.00          0.01      -66.6471          015795017321052               
+  RASHIDMAD        Visa        1,982.00          0.02      -43.3067          015795017321052               
+  RASHIDMAD        Mada        14,433.00         0.01      -99.5877          015795017321052               
+  RASHIDMAD        Master      2,017.00          0.02      -44.0714          015795017321052               
+  RASHIDMAD        Visa        1,739.00          0.02      -37.9971          015795017321052               
+  RASHIDMAD        Mada        12,231.00         0.01      -84.3939          015795017321052               
+  RASHIDMAD        Master      4,287.00          0.02      -93.6709          015795017321052               
+  RASHIDMAD        Visa        2,377.00          0.02      -51.9374          015795017321052               
+  RASHIDMAD        Mada        9,010.00          0.01      -62.1690          015795017321052               
+  RASHIDMAD        Master      1,393.00          0.02      -30.4370          015795017321052               
+  RASHIDMAD        Visa        3,457.00          0.02      -75.5354          015795017321052               
+  RASHIDMAD        Mada        11,144.00         0.01      -76.8936          015795017321052               
+  RASHIDMAD        Master      1,963.00          0.02      -42.8915          015795017321052               
+  RASHIDMAD        Visa        2,795.00          0.02      -61.0707          015795017321052               
+  RASHIDMAD        Mada        13,991.00         0.01      -96.5379          015795017321052               
+  RASHIDMAD        Master      1,021.00          0.02      -22.3088          015795017321052               
+  RASHIDMAD        Visa        5,552.00          0.02      -121.3112         015795017321052               
+  RASHIDMAD        Mada        5,274.00          0.01      -36.3906          015795017321052               
+  RASHIDMAD        Master      1,915.00          0.02      -41.8427          015795017321052               
+  RASHIDMAD        Visa        558.00            0.02      -12.1923          015795017321052               
+  RASHIDMAD        Mada        2,191.00          0.01      -15.1179          015795017321052               
+  RASHIDMAD        Master      499.00            0.02      -10.9031          015795017321052               
+  RASHIDMAD        Visa        498.00            0.02      -10.8813          015795017321052               
+  RASHIDMAD        Mada        6,270.00          0.01      -43.2630          015795017321052               
+  RASHIDMAD        Master      798.00            0.02      -17.4363          015795017321052               
+  RASHIDMAD        Visa        1,166.00          0.02      -25.4771          015795017321052               
+  RASHIDMAD        Mada        4,370.00          0.01      -30.1530          015795017321052               
+  RASHIDMAD        Master      824.00            0.02      -18.0044          015795017321052               
+  RASHIDMAD        Visa        2,083.00          0.02      -45.5135          015795017321052               
+  RASHIDMAD        Mada        3,972.00          0.01      -27.4068          015795017321052               
+  RASHIDMAD        Master      647.00            0.02      -14.1369          015795017321052               
+  RASHIDMAD        Visa        1,964.00          0.02      -42.9134          015795017321052               
+  RASHIDMAD        Mada        1,969.00          0.01      -13.5861          015795017321052               
+  RASHIDMAD        Master      328.00            0.02      -7.1668           015795017321052               
+  RASHIDMAD        Visa        857.00            0.02      -18.7254          015795017321052               
+  RASHIDMAD        Mada        2,892.00          0.01      -19.9548          015795017321052               
+  RASHIDMAD        Visa        1,250.00          0.02      -27.3125          015795017321052               
+  RASHIDMAD        Mada        5,111.00          0.01      -35.2659          015795017321052               
+  RASHIDMAD        Master      2,990.00          0.02      -65.3315          015795017321052               
+  RASHIDMAD        Visa        766.00            0.02      -16.7371          015795017321052               
+  RASHIDMAD        Mada        2,022.00          0.01      -13.9518          015795017321052               
+  RASHIDMAD        Master      2,324.00          0.02      -50.7794          015795017321052               
+  RASHIDMAD        Visa        877.00            0.02      -19.1624          015795017321052               
+  RASHIDMAD        Mada        1,228.00          0.01      -8.4732           015795017321052               
+  RASHIDMAD        Visa        2,167.00          0.02      -47.3489          015795017321052               
+  RASHIDMAD        Amex        499.00            0.04      -21.2324          015795017321052               
+  RASHIDMAD        Mada        2,740.00          0.01      -18.9060          015795017321052               
+  RASHIDMAD        Master      1,144.00          0.02      -24.9964          015795017321052               
+  RASHIDMAD        Visa        314.00            0.02      -6.8609           015795017321052               
+  RASHIDMAD        Mada        885.00            0.01      -6.1065           015795017321052               
+  RASHIDMAD        Master      514.00            0.02      -11.2309          015795017321052               
+  RASHIDMAD        Visa        867.00            0.02      -18.9439          015795017321052               
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -3,122.3107                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (81 rows, -3,122.3107 SAR)
+  Per-method grand total                   -3,122.3107 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  364,643.02 SAR         █
+  █  Total Standard Receipt amt               757,158.00 SAR         █
+  █  Difference                               392,514.98 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  364,643.02 SAR
+  Total Standard Receipt amt               757,158.00 SAR
+  Difference                               392,514.98 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0002552
+  >>> Next run START_TXN_SEQUENCE =        2553  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 20:58:44
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

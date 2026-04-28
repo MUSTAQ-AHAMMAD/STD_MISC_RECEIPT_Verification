@@ -1,0 +1,7 @@
+﻿"ReceiptNumber","ReceiptMethod","ReceiptDate","BusinessUnit","CustomerAccountNumber","CustomerSite","Amount","Currency","RemittanceBankAccountNumber","AccountingDate"
+"AMEX-BLKU-0001526","AMEX","2026-03-13","AlQurashi-KSA","72017","55009","58.0","SAR","AL Jazeerah BankRYDPARK","2026-03-13"
+"AMEX-BLKU-0001527","AMEX","2026-03-14","AlQurashi-KSA","72017","55009","299.0","SAR","AL Jazeerah BankRYDPARK","2026-03-14"
+"AMEX-BLKU-0001530","AMEX","2026-03-17","AlQurashi-KSA","72017","55009","59.0","SAR","AL Jazeerah BankRYDPARK","2026-03-17"
+"AMEX-BLKU-0001534","AMEX","2026-03-20","AlQurashi-KSA","72017","55009","149.0","SAR","AL Jazeerah BankRYDPARK","2026-03-20"
+"AMEX-BLKU-0001536","AMEX","2026-03-22","AlQurashi-KSA","72017","55009","186.0","SAR","AL Jazeerah BankRYDPARK","2026-03-22"
+"AMEX-BLKU-0001539","AMEX","2026-03-25","AlQurashi-KSA","72017","55009","170.0","SAR","AL Jazeerah BankRYDPARK","2026-03-25"

@@ -1,0 +1,440 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 08:30:25 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         271,302.28 SAR     ║
+║  [ℹ] Standard Receipt Total                   580,528.00 SAR     ║
+║  [✗] Amount Reconciliation                    Diff: 309,225.72 SAR║
+║  [ℹ] Total Invoices                           1,626              ║
+║  [ℹ] Receipt Files Generated                  5                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          BUROTHAIM.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             BUROTHAIM_payment_line_5_to_31_March.xlsx
+  Segment 1 prefix                         87108132
+  Segment 2 prefix                         71169000
+
+  AR rows read                             5095
+  Unique invoices loaded                   1626
+  Unique transactions (BLK)                56
+  Total AR amount                          271,302.28 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Cash                       276           41,984.00             
+  Mada                       1121          204,083.00            
+  Master                     15            3,151.00              
+  TABBY                      38            10,979.00             
+  TAMARA                     45            10,568.00             
+  Visa                       194           41,046.00             
+  ----------------------------------------------------------------------
+  TOTAL                      1689          311,811.00            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  BUROTHAIM                       1543        290,264.00          
+  RYDGALLER                       83          21,547.00           
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 88
+    Total amount: 290,264.00 SAR
+    Payment methods included: ['Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              290,264.00 SAR
+    Per-method total:                290,264.00 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    Cash               27 rows           41,984.00 SAR  ✓
+    Mada               27 rows          204,083.00 SAR  ✓
+    Master              8 rows            3,151.00 SAR  ✓
+    Visa               26 rows           41,046.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    83
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   5
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       204,083.00 SAR
+    Cash                        41,984.00 SAR
+    Visa                        41,046.00 SAR
+    Master                       3,151.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TABBY                       10,979.00 SAR
+    TAMARA                      10,568.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          BUROTHAIM        Cash        1,683.00          CashBUROTHAIM                      
+  Receipt_MADA.csv                          BUROTHAIM        Mada        9,258.00          015795017321053                    
+  Receipt_VISA.csv                          BUROTHAIM        Visa        1,967.00          015795017321053                    
+  Receipt_CASH.csv                          BUROTHAIM        Cash        2,256.00          CashBUROTHAIM                      
+  Receipt_MADA.csv                          BUROTHAIM        Mada        10,202.00         015795017321053                    
+  Receipt_MASTER.csv                        BUROTHAIM        Master      299.00            015795017321053                    
+  Receipt_VISA.csv                          BUROTHAIM        Visa        1,956.00          015795017321053                    
+  Receipt_CASH.csv                          BUROTHAIM        Cash        1,403.00          CashBUROTHAIM                      
+  Receipt_MADA.csv                          BUROTHAIM        Mada        8,216.00          015795017321053                    
+  Receipt_MASTER.csv                        BUROTHAIM        Master      375.00            015795017321053                    
+  Receipt_VISA.csv                          BUROTHAIM        Visa        1,472.00          015795017321053                    
+  Receipt_CASH.csv                          BUROTHAIM        Cash        2,388.00          CashBUROTHAIM                      
+  Receipt_MADA.csv                          BUROTHAIM        Mada        8,842.00          015795017321053                    
+  Receipt_VISA.csv                          BUROTHAIM        Visa        1,439.00          015795017321053                    
+  Receipt_CASH.csv                          BUROTHAIM        Cash        3,417.00          CashBUROTHAIM                      
+  Receipt_MADA.csv                          BUROTHAIM        Mada        10,273.00         015795017321053                    
+  Receipt_VISA.csv                          BUROTHAIM        Visa        2,307.00          015795017321053                    
+  Receipt_CASH.csv                          BUROTHAIM        Cash        1,106.00          CashBUROTHAIM                      
+  Receipt_MADA.csv                          BUROTHAIM        Mada        16,379.00         015795017321053                    
+  Receipt_VISA.csv                          BUROTHAIM        Visa        3,961.00          015795017321053                    
+  Receipt_CASH.csv                          BUROTHAIM        Cash        2,160.00          CashBUROTHAIM                      
+  Receipt_MADA.csv                          BUROTHAIM        Mada        12,908.00         015795017321053                    
+  Receipt_VISA.csv                          BUROTHAIM        Visa        5,468.00          015795017321053                    
+  Receipt_CASH.csv                          BUROTHAIM        Cash        3,282.00          CashBUROTHAIM                      
+  Receipt_MADA.csv                          BUROTHAIM        Mada        5,173.00          015795017321053                    
+  Receipt_VISA.csv                          BUROTHAIM        Visa        1,205.00          015795017321053                    
+  Receipt_CASH.csv                          BUROTHAIM        Cash        2,928.00          CashBUROTHAIM                      
+  Receipt_MADA.csv                          BUROTHAIM        Mada        11,641.00         015795017321053                    
+  Receipt_MASTER.csv                        BUROTHAIM        Master      299.00            015795017321053                    
+  Receipt_VISA.csv                          BUROTHAIM        Visa        1,440.00          015795017321053                    
+  Receipt_CASH.csv                          BUROTHAIM        Cash        2,623.00          CashBUROTHAIM                      
+  Receipt_MADA.csv                          BUROTHAIM        Mada        15,845.00         015795017321053                    
+  Receipt_MASTER.csv                        BUROTHAIM        Master      498.00            015795017321053                    
+  Receipt_VISA.csv                          BUROTHAIM        Visa        2,767.00          015795017321053                    
+  Receipt_CASH.csv                          BUROTHAIM        Cash        2,364.00          CashBUROTHAIM                      
+  Receipt_MADA.csv                          BUROTHAIM        Mada        16,500.00         015795017321053                    
+  Receipt_MASTER.csv                        BUROTHAIM        Master      415.00            015795017321053                    
+  Receipt_VISA.csv                          BUROTHAIM        Visa        2,837.00          015795017321053                    
+  Receipt_CASH.csv                          BUROTHAIM        Cash        3,222.00          CashBUROTHAIM                      
+  Receipt_MADA.csv                          BUROTHAIM        Mada        18,842.00         015795017321053                    
+  Receipt_MASTER.csv                        BUROTHAIM        Master      764.00            015795017321053                    
+  Receipt_VISA.csv                          BUROTHAIM        Visa        3,376.00          015795017321053                    
+  Receipt_CASH.csv                          BUROTHAIM        Cash        1,233.00          CashBUROTHAIM                      
+  Receipt_MADA.csv                          BUROTHAIM        Mada        16,022.00         015795017321053                    
+  Receipt_MASTER.csv                        BUROTHAIM        Master      299.00            015795017321053                    
+  Receipt_VISA.csv                          BUROTHAIM        Visa        1,981.00          015795017321053                    
+  Receipt_CASH.csv                          BUROTHAIM        Cash        1,824.00          CashBUROTHAIM                      
+  Receipt_MADA.csv                          BUROTHAIM        Mada        13,909.00         015795017321053                    
+  Receipt_VISA.csv                          BUROTHAIM        Visa        3,180.00          015795017321053                    
+  Receipt_CASH.csv                          BUROTHAIM        Cash        5,129.00          CashBUROTHAIM                      
+  Receipt_MADA.csv                          BUROTHAIM        Mada        11,789.00         015795017321053                    
+  Receipt_MASTER.csv                        BUROTHAIM        Master      202.00            015795017321053                    
+  Receipt_VISA.csv                          BUROTHAIM        Visa        1,078.00          015795017321053                    
+  Receipt_CASH.csv                          BUROTHAIM        Cash        699.00            CashBUROTHAIM                      
+  Receipt_MADA.csv                          BUROTHAIM        Mada        2,252.00          015795017321053                    
+  Receipt_VISA.csv                          BUROTHAIM        Visa        1,116.00          015795017321053                    
+  Receipt_CASH.csv                          BUROTHAIM        Cash        163.00            CashBUROTHAIM                      
+  Receipt_MADA.csv                          BUROTHAIM        Mada        697.00            015795017321053                    
+  Receipt_CASH.csv                          BUROTHAIM        Cash        1,142.00          CashBUROTHAIM                      
+  Receipt_MADA.csv                          BUROTHAIM        Mada        2,125.00          015795017321053                    
+  Receipt_VISA.csv                          BUROTHAIM        Visa        697.00            015795017321053                    
+  Receipt_CASH.csv                          BUROTHAIM        Cash        299.00            CashBUROTHAIM                      
+  Receipt_MADA.csv                          BUROTHAIM        Mada        1,029.00          015795017321053                    
+  Receipt_VISA.csv                          BUROTHAIM        Visa        299.00            015795017321053                    
+  Receipt_CASH.csv                          BUROTHAIM        Cash        360.00            CashBUROTHAIM                      
+  Receipt_MADA.csv                          BUROTHAIM        Mada        1,246.00          015795017321053                    
+  Receipt_VISA.csv                          BUROTHAIM        Visa        199.00            015795017321053                    
+  Receipt_CASH.csv                          BUROTHAIM        Cash        618.00            CashBUROTHAIM                      
+  Receipt_MADA.csv                          BUROTHAIM        Mada        1,669.00          015795017321053                    
+  Receipt_VISA.csv                          BUROTHAIM        Visa        423.00            015795017321053                    
+  Receipt_CASH.csv                          BUROTHAIM        Cash        200.00            CashBUROTHAIM                      
+  Receipt_MADA.csv                          BUROTHAIM        Mada        1,547.00          015795017321053                    
+  Receipt_VISA.csv                          BUROTHAIM        Visa        160.00            015795017321053                    
+  Receipt_CASH.csv                          BUROTHAIM        Cash        115.00            CashBUROTHAIM                      
+  Receipt_MADA.csv                          BUROTHAIM        Mada        1,887.00          015795017321053                    
+  Receipt_VISA.csv                          BUROTHAIM        Visa        603.00            015795017321053                    
+  Receipt_CASH.csv                          BUROTHAIM        Cash        474.00            CashBUROTHAIM                      
+  Receipt_MADA.csv                          BUROTHAIM        Mada        1,229.00          015795017321053                    
+  Receipt_VISA.csv                          BUROTHAIM        Visa        348.00            015795017321053                    
+  Receipt_CASH.csv                          BUROTHAIM        Cash        199.00            CashBUROTHAIM                      
+  Receipt_MADA.csv                          BUROTHAIM        Mada        1,873.00          015795017321053                    
+  Receipt_VISA.csv                          BUROTHAIM        Visa        199.00            015795017321053                    
+  Receipt_CASH.csv                          BUROTHAIM        Cash        299.00            CashBUROTHAIM                      
+  Receipt_MADA.csv                          BUROTHAIM        Mada        718.00            015795017321053                    
+  Receipt_VISA.csv                          BUROTHAIM        Visa        70.00             015795017321053                    
+  Receipt_CASH.csv                          BUROTHAIM        Cash        398.00            CashBUROTHAIM                      
+  Receipt_MADA.csv                          BUROTHAIM        Mada        2,012.00          015795017321053                    
+  Receipt_VISA.csv                          BUROTHAIM        Visa        498.00            015795017321053                    
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            290,264.00                                           
+
+  Per-method totals:
+    Cash             27 file(s)       41,984.00 SAR
+    Mada             27 file(s)      204,083.00 SAR
+    Master            8 file(s)        3,151.00 SAR
+    Visa             26 file(s)       41,046.00 SAR
+    Grand Total                       290,264.00 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Cash         Mada       Master         Visa          TOTAL
+  ----------------------------------------------------------------------------------
+  2026-03-05          1,683        9,258            0        1,967         12,908
+  2026-03-06          2,256       10,202          299        1,956         14,713
+  2026-03-07          1,403        8,216          375        1,472         11,466
+  2026-03-08          2,388        8,842            0        1,439         12,669
+  2026-03-09          3,417       10,273            0        2,307         15,997
+  2026-03-10          1,106       16,379            0        3,961         21,446
+  2026-03-11          2,160       12,908            0        5,468         20,536
+  2026-03-12          3,282        5,173            0        1,205          9,660
+  2026-03-13          2,928       11,641          299        1,440         16,308
+  2026-03-14          2,623       15,845          498        2,767         21,733
+  2026-03-15          2,364       16,500          415        2,837         22,116
+  2026-03-16          3,222       18,842          764        3,376         26,204
+  2026-03-17          1,233       16,022          299        1,981         19,535
+  2026-03-18          1,824       13,909            0        3,180         18,913
+  2026-03-19          5,129       11,789          202        1,078         18,198
+  2026-03-20            699        2,252            0        1,116          4,067
+  2026-03-21            163          697            0            0            860
+  2026-03-22          1,142        2,125            0          697          3,964
+  2026-03-23            299        1,029            0          299          1,627
+  2026-03-24            360        1,246            0          199          1,805
+  2026-03-25            618        1,669            0          423          2,710
+  2026-03-26            200        1,547            0          160          1,907
+  2026-03-27            115        1,887            0          603          2,605
+  2026-03-28            474        1,229            0          348          2,051
+  2026-03-29            199        1,873            0          199          2,271
+  2026-03-30            299          718            0           70          1,087
+  2026-03-31            398        2,012            0          498          2,908
+  ----------------------------------------------------------------------------------
+  TOTAL              41,984      204,083        3,151       41,046        290,264
+
+  VALIDATION:
+    Payment file total (for standard receipts):       290,264.00 SAR
+    Receipt files total:                              290,264.00 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Cash            Payment:    41,984.00  Receipt:    41,984.00  Diff:     0.00  ✓
+    Mada            Payment:   204,083.00  Receipt:   204,083.00  Diff:     0.00  ✓
+    Master          Payment:     3,151.00  Receipt:     3,151.00  Diff:     0.00  ✓
+    Visa            Payment:    41,046.00  Receipt:    41,046.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (88 rows, 290,264.00 SAR)
+  Per-method grand total                   290,264.00 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 61
+    Total amount: -2,443.4271 SAR
+    Payment methods included: ['Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -2,443.4271 SAR
+    Per-method total:               -2,443.4271 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    Mada               27 rows         -1,449.4278 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master              8 rows            -68.8491 SAR  ⚠ 8 NEGATIVE AMOUNTS!
+    Visa               26 rows           -925.1502 SAR  ⚠ 26 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              4
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       210,062.00 SAR
+    Visa                        42,341.00 SAR
+    Master                       3,151.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                        45,859.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED               45,859.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  BUROTHAIM        Mada        10,105.00         0.01      -69.7245          015795017321053               
+  BUROTHAIM        Visa        1,967.00          0.02      -42.9789          015795017321053               
+  BUROTHAIM        Mada        10,202.00         0.01      -70.3938          015795017321053               
+  BUROTHAIM        Master      299.00            0.02      -6.5331           015795017321053               
+  BUROTHAIM        Visa        2,255.00          0.02      -49.2717          015795017321053               
+  BUROTHAIM        Mada        8,442.00          0.01      -58.2498          015795017321053               
+  BUROTHAIM        Master      375.00            0.02      -8.1937           015795017321053               
+  BUROTHAIM        Visa        1,472.00          0.02      -32.1632          015795017321053               
+  BUROTHAIM        Mada        9,141.00          0.01      -63.0729          015795017321053               
+  BUROTHAIM        Visa        1,439.00          0.02      -31.4421          015795017321053               
+  BUROTHAIM        Mada        10,273.00         0.01      -70.8837          015795017321053               
+  BUROTHAIM        Visa        2,307.00          0.02      -50.4079          015795017321053               
+  BUROTHAIM        Mada        17,137.00         0.01      -118.2453         015795017321053               
+  BUROTHAIM        Visa        4,160.00          0.02      -90.8960          015795017321053               
+  BUROTHAIM        Mada        13,237.00         0.01      -91.3353          015795017321053               
+  BUROTHAIM        Visa        5,468.00          0.02      -119.4758         015795017321053               
+  BUROTHAIM        Mada        5,173.00          0.01      -35.6937          015795017321053               
+  BUROTHAIM        Visa        1,205.00          0.02      -26.3292          015795017321053               
+  BUROTHAIM        Mada        11,840.00         0.01      -81.6960          015795017321053               
+  BUROTHAIM        Master      299.00            0.02      -6.5331           015795017321053               
+  BUROTHAIM        Visa        1,839.00          0.02      -40.1822          015795017321053               
+  BUROTHAIM        Mada        15,944.00         0.01      -110.0136         015795017321053               
+  BUROTHAIM        Master      498.00            0.02      -10.8813          015795017321053               
+  BUROTHAIM        Visa        3,165.00          0.02      -69.1552          015795017321053               
+  BUROTHAIM        Mada        17,692.00         0.01      -122.0748         015795017321053               
+  BUROTHAIM        Master      415.00            0.02      -9.0677           015795017321053               
+  BUROTHAIM        Visa        2,837.00          0.02      -61.9884          015795017321053               
+  BUROTHAIM        Mada        19,051.00         0.01      -131.4519         015795017321053               
+  BUROTHAIM        Master      764.00            0.02      -16.6934          015795017321053               
+  BUROTHAIM        Visa        3,376.00          0.02      -73.7656          015795017321053               
+  BUROTHAIM        Mada        16,326.00         0.01      -112.6494         015795017321053               
+  BUROTHAIM        Master      299.00            0.02      -6.5331           015795017321053               
+  BUROTHAIM        Visa        1,981.00          0.02      -43.2848          015795017321053               
+  BUROTHAIM        Mada        14,433.00         0.01      -99.5877          015795017321053               
+  BUROTHAIM        Visa        3,180.00          0.02      -69.4830          015795017321053               
+  BUROTHAIM        Mada        12,359.00         0.01      -85.2771          015795017321053               
+  BUROTHAIM        Master      202.00            0.02      -4.4137           015795017321053               
+  BUROTHAIM        Visa        1,078.00          0.02      -23.5543          015795017321053               
+  BUROTHAIM        Mada        2,327.00          0.01      -16.0563          015795017321053               
+  BUROTHAIM        Visa        1,116.00          0.02      -24.3846          015795017321053               
+  BUROTHAIM        Mada        697.00            0.01      -4.8093           015795017321053               
+  BUROTHAIM        Mada        2,125.00          0.01      -14.6625          015795017321053               
+  BUROTHAIM        Visa        697.00            0.02      -15.2294          015795017321053               
+  BUROTHAIM        Mada        1,228.00          0.01      -8.4732           015795017321053               
+  BUROTHAIM        Visa        299.00            0.02      -6.5331           015795017321053               
+  BUROTHAIM        Mada        1,246.00          0.01      -8.5974           015795017321053               
+  BUROTHAIM        Visa        199.00            0.02      -4.3481           015795017321053               
+  BUROTHAIM        Mada        1,669.00          0.01      -11.5161          015795017321053               
+  BUROTHAIM        Visa        423.00            0.02      -9.2425           015795017321053               
+  BUROTHAIM        Mada        1,547.00          0.01      -10.6743          015795017321053               
+  BUROTHAIM        Visa        160.00            0.02      -3.4960           015795017321053               
+  BUROTHAIM        Mada        1,887.00          0.01      -13.0203          015795017321053               
+  BUROTHAIM        Visa        603.00            0.02      -13.1755          015795017321053               
+  BUROTHAIM        Mada        1,229.00          0.01      -8.4801           015795017321053               
+  BUROTHAIM        Visa        348.00            0.02      -7.6038           015795017321053               
+  BUROTHAIM        Mada        1,873.00          0.01      -12.9237          015795017321053               
+  BUROTHAIM        Visa        199.00            0.02      -4.3481           015795017321053               
+  BUROTHAIM        Mada        718.00            0.01      -4.9542           015795017321053               
+  BUROTHAIM        Visa        70.00             0.02      -1.5295           015795017321053               
+  BUROTHAIM        Mada        2,161.00          0.01      -14.9109          015795017321053               
+  BUROTHAIM        Visa        498.00            0.02      -10.8813          015795017321053               
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -2,443.4271                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (61 rows, -2,443.4271 SAR)
+  Per-method grand total                   -2,443.4271 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  271,302.28 SAR         █
+  █  Total Standard Receipt amt               580,528.00 SAR         █
+  █  Difference                               309,225.72 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  271,302.28 SAR
+  Total Standard Receipt amt               580,528.00 SAR
+  Difference                               309,225.72 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0001040
+  >>> Next run START_TXN_SEQUENCE =        1041  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 20:30:27
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

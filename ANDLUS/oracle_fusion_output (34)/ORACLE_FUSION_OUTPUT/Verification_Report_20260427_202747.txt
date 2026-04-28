@@ -1,0 +1,490 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 08:27:43 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         444,114.08 SAR     ║
+║  [ℹ] Standard Receipt Total                   913,311.84 SAR     ║
+║  [✗] Amount Reconciliation                    Diff: 469,197.76 SAR║
+║  [ℹ] Total Invoices                           2,257              ║
+║  [ℹ] Receipt Files Generated                  6                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          ANDLUS.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             ANDLUS_Payment_line_5_to_31_March.xlsx
+  Segment 1 prefix                         86126314
+  Segment 2 prefix                         94012472
+
+  AR rows read                             7206
+  Unique invoices loaded                   2256
+  Unique transactions (BLK)                73
+  Total AR amount                          444,513.11 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Amex                       1             199.01                
+  Cash                       856           199,514.84            
+  Mada                       1141          207,536.26            
+  Master                     73            15,407.97             
+  TABBY                      78            21,614.34             
+  TAMARA                     101           32,752.15             
+  Visa                       145           33,997.83             
+  ----------------------------------------------------------------------
+  TOTAL                      2395          511,022.40            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  AJAWEED                         1           -73.92              
+  ANDLUS                          2077        461,119.11          
+  RYDGALLER                       178         50,376.24           
+  SALAMJED                        1           -399.03             
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 109
+    Total amount: 456,655.92 SAR
+    Payment methods included: ['AMEX', 'Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              456,655.92 SAR
+    Per-method total:                456,655.92 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    AMEX                1 rows              199.01 SAR  ✓
+    Cash               29 rows          199,514.85 SAR  ⚠ 2 NEGATIVE AMOUNTS!
+    Mada               27 rows          207,536.26 SAR  ✓
+    Master             25 rows           15,407.97 SAR  ✓
+    Visa               27 rows           33,997.83 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    179
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   6
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       207,536.26 SAR
+    Cash                       199,514.85 SAR
+    Visa                        33,997.83 SAR
+    Master                      15,407.97 SAR
+    Amex                           199.01 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TAMARA                      32,752.15 SAR
+    TABBY                       21,614.34 SAR
+    Cash                            -0.01 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          AJAWEED          Cash        -73.92            CashAJAWEED                        
+  Receipt_CASH.csv                          ANDLUS           Cash        4,462.52          CashMEDANDLUSH                     
+  Receipt_MADA.csv                          ANDLUS           Mada        9,752.67          157-95017321-JEDANDLUS2            
+  Receipt_MASTER.csv                        ANDLUS           Master      1,125.18          157-95017321-JEDANDLUS2            
+  Receipt_VISA.csv                          ANDLUS           Visa        599.03            157-95017321-JEDANDLUS2            
+  Receipt_CASH.csv                          ANDLUS           Cash        10,351.68         CashMEDANDLUSH                     
+  Receipt_MADA.csv                          ANDLUS           Mada        9,151.27          157-95017321-JEDANDLUS2            
+  Receipt_VISA.csv                          ANDLUS           Visa        1,648.22          157-95017321-JEDANDLUS2            
+  Receipt_CASH.csv                          ANDLUS           Cash        4,896.54          CashMEDANDLUSH                     
+  Receipt_MADA.csv                          ANDLUS           Mada        10,020.43         157-95017321-JEDANDLUS2            
+  Receipt_MASTER.csv                        ANDLUS           Master      199.03            157-95017321-JEDANDLUS2            
+  Receipt_VISA.csv                          ANDLUS           Visa        2,128.11          157-95017321-JEDANDLUS2            
+  Receipt_CASH.csv                          ANDLUS           Cash        18,665.98         CashMEDANDLUSH                     
+  Receipt_MADA.csv                          ANDLUS           Mada        12,161.04         157-95017321-JEDANDLUS2            
+  Receipt_MASTER.csv                        ANDLUS           Master      269.02            157-95017321-JEDANDLUS2            
+  Receipt_VISA.csv                          ANDLUS           Visa        858.17            157-95017321-JEDANDLUS2            
+  Receipt_CASH.csv                          ANDLUS           Cash        7,957.04          CashMEDANDLUSH                     
+  Receipt_MADA.csv                          ANDLUS           Mada        9,012.69          157-95017321-JEDANDLUS2            
+  Receipt_MASTER.csv                        ANDLUS           Master      1,000.11          157-95017321-JEDANDLUS2            
+  Receipt_VISA.csv                          ANDLUS           Visa        671.03            157-95017321-JEDANDLUS2            
+  Receipt_CASH.csv                          ANDLUS           Cash        6,888.53          CashMEDANDLUSH                     
+  Receipt_MADA.csv                          ANDLUS           Mada        12,394.22         157-95017321-JEDANDLUS2            
+  Receipt_MASTER.csv                        ANDLUS           Master      149.01            157-95017321-JEDANDLUS2            
+  Receipt_VISA.csv                          ANDLUS           Visa        1,940.82          157-95017321-JEDANDLUS2            
+  Receipt_CASH.csv                          ANDLUS           Cash        9,819.89          CashMEDANDLUSH                     
+  Receipt_MADA.csv                          ANDLUS           Mada        8,826.46          157-95017321-JEDANDLUS2            
+  Receipt_VISA.csv                          ANDLUS           Visa        839.22            157-95017321-JEDANDLUS2            
+  Receipt_CASH.csv                          ANDLUS           Cash        5,119.38          CashMEDANDLUSH                     
+  Receipt_MADA.csv                          ANDLUS           Mada        8,798.83          157-95017321-JEDANDLUS2            
+  Receipt_MASTER.csv                        ANDLUS           Master      398.00            157-95017321-JEDANDLUS2            
+  Receipt_VISA.csv                          ANDLUS           Visa        883.11            157-95017321-JEDANDLUS2            
+  Receipt_CASH.csv                          ANDLUS           Cash        3,631.16          CashMEDANDLUSH                     
+  Receipt_MADA.csv                          ANDLUS           Mada        10,164.05         157-95017321-JEDANDLUS2            
+  Receipt_MASTER.csv                        ANDLUS           Master      299.02            157-95017321-JEDANDLUS2            
+  Receipt_VISA.csv                          ANDLUS           Visa        853.02            157-95017321-JEDANDLUS2            
+  Receipt_CASH.csv                          ANDLUS           Cash        7,609.62          CashMEDANDLUSH                     
+  Receipt_MADA.csv                          ANDLUS           Mada        8,049.79          157-95017321-JEDANDLUS2            
+  Receipt_MASTER.csv                        ANDLUS           Master      1,089.01          157-95017321-JEDANDLUS2            
+  Receipt_VISA.csv                          ANDLUS           Visa        2,026.65          157-95017321-JEDANDLUS2            
+  Receipt_CASH.csv                          ANDLUS           Cash        6,773.71          CashMEDANDLUSH                     
+  Receipt_MADA.csv                          ANDLUS           Mada        10,019.35         157-95017321-JEDANDLUS2            
+  Receipt_MASTER.csv                        ANDLUS           Master      224.04            157-95017321-JEDANDLUS2            
+  Receipt_VISA.csv                          ANDLUS           Visa        584.06            157-95017321-JEDANDLUS2            
+  Receipt_CASH.csv                          ANDLUS           Cash        7,707.47          CashMEDANDLUSH                     
+  Receipt_MADA.csv                          ANDLUS           Mada        11,771.18         157-95017321-JEDANDLUS2            
+  Receipt_MASTER.csv                        ANDLUS           Master      757.62            157-95017321-JEDANDLUS2            
+  Receipt_VISA.csv                          ANDLUS           Visa        1,299.56          157-95017321-JEDANDLUS2            
+  Receipt_CASH.csv                          ANDLUS           Cash        24,008.08         CashMEDANDLUSH                     
+  Receipt_MADA.csv                          ANDLUS           Mada        13,357.72         157-95017321-JEDANDLUS2            
+  Receipt_MASTER.csv                        ANDLUS           Master      2,066.78          157-95017321-JEDANDLUS2            
+  Receipt_VISA.csv                          ANDLUS           Visa        2,480.25          157-95017321-JEDANDLUS2            
+  Receipt_CASH.csv                          ANDLUS           Cash        8,216.33          CashMEDANDLUSH                     
+  Receipt_MADA.csv                          ANDLUS           Mada        15,034.28         157-95017321-JEDANDLUS2            
+  Receipt_MASTER.csv                        ANDLUS           Master      190.00            157-95017321-JEDANDLUS2            
+  Receipt_VISA.csv                          ANDLUS           Visa        2,876.35          157-95017321-JEDANDLUS2            
+  Receipt_AMEX.csv                          ANDLUS           Amex        199.01            157-95017321-JEDANDLUS2            
+  Receipt_CASH.csv                          ANDLUS           Cash        15,086.42         CashMEDANDLUSH                     
+  Receipt_MADA.csv                          ANDLUS           Mada        16,543.26         157-95017321-JEDANDLUS2            
+  Receipt_MASTER.csv                        ANDLUS           Master      789.55            157-95017321-JEDANDLUS2            
+  Receipt_VISA.csv                          ANDLUS           Visa        2,136.63          157-95017321-JEDANDLUS2            
+  Receipt_CASH.csv                          ANDLUS           Cash        3,698.76          CashMEDANDLUSH                     
+  Receipt_MADA.csv                          ANDLUS           Mada        3,365.66          157-95017321-JEDANDLUS2            
+  Receipt_MASTER.csv                        ANDLUS           Master      227.00            157-95017321-JEDANDLUS2            
+  Receipt_VISA.csv                          ANDLUS           Visa        839.09            157-95017321-JEDANDLUS2            
+  Receipt_CASH.csv                          ANDLUS           Cash        4,587.22          CashMEDANDLUSH                     
+  Receipt_MADA.csv                          ANDLUS           Mada        1,539.58          157-95017321-JEDANDLUS2            
+  Receipt_MASTER.csv                        ANDLUS           Master      797.04            157-95017321-JEDANDLUS2            
+  Receipt_VISA.csv                          ANDLUS           Visa        456.02            157-95017321-JEDANDLUS2            
+  Receipt_CASH.csv                          ANDLUS           Cash        2,371.34          CashMEDANDLUSH                     
+  Receipt_MADA.csv                          ANDLUS           Mada        3,445.48          157-95017321-JEDANDLUS2            
+  Receipt_MASTER.csv                        ANDLUS           Master      547.01            157-95017321-JEDANDLUS2            
+  Receipt_VISA.csv                          ANDLUS           Visa        597.01            157-95017321-JEDANDLUS2            
+  Receipt_CASH.csv                          ANDLUS           Cash        3,569.52          CashMEDANDLUSH                     
+  Receipt_MADA.csv                          ANDLUS           Mada        2,667.19          157-95017321-JEDANDLUS2            
+  Receipt_MASTER.csv                        ANDLUS           Master      179.04            157-95017321-JEDANDLUS2            
+  Receipt_VISA.csv                          ANDLUS           Visa        2,209.59          157-95017321-JEDANDLUS2            
+  Receipt_CASH.csv                          ANDLUS           Cash        6,608.38          CashMEDANDLUSH                     
+  Receipt_MADA.csv                          ANDLUS           Mada        3,392.82          157-95017321-JEDANDLUS2            
+  Receipt_MASTER.csv                        ANDLUS           Master      1,173.04          157-95017321-JEDANDLUS2            
+  Receipt_VISA.csv                          ANDLUS           Visa        2,552.37          157-95017321-JEDANDLUS2            
+  Receipt_CASH.csv                          ANDLUS           Cash        2,721.94          CashMEDANDLUSH                     
+  Receipt_MADA.csv                          ANDLUS           Mada        6,965.22          157-95017321-JEDANDLUS2            
+  Receipt_MASTER.csv                        ANDLUS           Master      1,086.13          157-95017321-JEDANDLUS2            
+  Receipt_VISA.csv                          ANDLUS           Visa        649.03            157-95017321-JEDANDLUS2            
+  Receipt_CASH.csv                          ANDLUS           Cash        2,147.09          CashMEDANDLUSH                     
+  Receipt_MADA.csv                          ANDLUS           Mada        2,935.14          157-95017321-JEDANDLUS2            
+  Receipt_MASTER.csv                        ANDLUS           Master      3.01              157-95017321-JEDANDLUS2            
+  Receipt_VISA.csv                          ANDLUS           Visa        1,400.18          157-95017321-JEDANDLUS2            
+  Receipt_CASH.csv                          ANDLUS           Cash        19,347.27         CashMEDANDLUSH                     
+  Receipt_MADA.csv                          ANDLUS           Mada        2,600.10          157-95017321-JEDANDLUS2            
+  Receipt_MASTER.csv                        ANDLUS           Master      199.01            157-95017321-JEDANDLUS2            
+  Receipt_VISA.csv                          ANDLUS           Visa        199.01            157-95017321-JEDANDLUS2            
+  Receipt_CASH.csv                          ANDLUS           Cash        1,702.63          CashMEDANDLUSH                     
+  Receipt_MADA.csv                          ANDLUS           Mada        2,734.43          157-95017321-JEDANDLUS2            
+  Receipt_MASTER.csv                        ANDLUS           Master      199.01            157-95017321-JEDANDLUS2            
+  Receipt_VISA.csv                          ANDLUS           Visa        104.00            157-95017321-JEDANDLUS2            
+  Receipt_CASH.csv                          ANDLUS           Cash        6,920.77          CashMEDANDLUSH                     
+  Receipt_MADA.csv                          ANDLUS           Mada        7,098.50          157-95017321-JEDANDLUS2            
+  Receipt_MASTER.csv                        ANDLUS           Master      1,007.18          157-95017321-JEDANDLUS2            
+  Receipt_VISA.csv                          ANDLUS           Visa        180.00            157-95017321-JEDANDLUS2            
+  Receipt_CASH.csv                          ANDLUS           Cash        2,624.34          CashMEDANDLUSH                     
+  Receipt_MADA.csv                          ANDLUS           Mada        2,429.57          157-95017321-JEDANDLUS2            
+  Receipt_MASTER.csv                        ANDLUS           Master      836.13            157-95017321-JEDANDLUS2            
+  Receipt_VISA.csv                          ANDLUS           Visa        1,721.17          157-95017321-JEDANDLUS2            
+  Receipt_CASH.csv                          ANDLUS           Cash        2,494.19          CashMEDANDLUSH                     
+  Receipt_MADA.csv                          ANDLUS           Mada        3,305.33          157-95017321-JEDANDLUS2            
+  Receipt_MASTER.csv                        ANDLUS           Master      598.00            157-95017321-JEDANDLUS2            
+  Receipt_VISA.csv                          ANDLUS           Visa        1,266.13          157-95017321-JEDANDLUS2            
+  Receipt_CASH.csv                          SALAMJED         Cash        -399.03           015795017321009                    
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            456,655.92                                           
+
+  Per-method totals:
+    Amex              1 file(s)          199.01 SAR
+    Cash             29 file(s)      199,514.85 SAR
+    Mada             27 file(s)      207,536.26 SAR
+    Master           25 file(s)       15,407.97 SAR
+    Visa             27 file(s)       33,997.83 SAR
+    Grand Total                       456,655.92 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Amex         Cash         Mada       Master         Visa          TOTAL
+  ------------------------------------------------------------------------------------------------
+  2026-03-05              0        4,463        9,753        1,125          599         15,939
+  2026-03-06              0       10,352        9,151            0        1,648         21,151
+  2026-03-07              0        4,897       10,020          199        2,128         17,244
+  2026-03-08              0       18,666       12,161          269          858         31,954
+  2026-03-09              0        7,957        9,013        1,000          671         18,641
+  2026-03-10              0        6,889       12,394          149        1,941         21,373
+  2026-03-11              0        9,820        8,826            0          839         19,486
+  2026-03-12              0        5,119        8,799          398          883         15,199
+  2026-03-13              0        3,631       10,164          299          853         14,947
+  2026-03-14              0        7,610        8,050        1,089        2,027         18,775
+  2026-03-15              0        6,774       10,019          224          584         17,601
+  2026-03-16              0        7,634       11,771          758        1,300         21,462
+  2026-03-17              0       24,008       13,358        2,067        2,480         41,913
+  2026-03-18              0        8,216       15,034          190        2,876         26,317
+  2026-03-19            199       15,086       16,543          790        2,137         34,755
+  2026-03-20              0        3,699        3,366          227          839          8,131
+  2026-03-21              0        4,587        1,540          797          456          7,380
+  2026-03-22              0        2,371        3,445          547          597          6,961
+  2026-03-23              0        3,570        2,667          179        2,210          8,625
+  2026-03-24              0        6,608        3,393        1,173        2,552         13,727
+  2026-03-25              0        2,722        6,965        1,086          649         11,422
+  2026-03-26              0        2,147        2,935            3        1,400          6,485
+  2026-03-27              0       19,347        2,600          199          199         22,345
+  2026-03-28              0        1,703        2,734          199          104          4,740
+  2026-03-29              0        6,522        7,099        1,007          180         14,807
+  2026-03-30              0        2,624        2,430          836        1,721          7,611
+  2026-03-31              0        2,494        3,305          598        1,266          7,664
+  ------------------------------------------------------------------------------------------------
+  TOTAL                 199      199,515      207,536       15,408       33,998        456,656
+
+  VALIDATION:
+    Payment file total (for standard receipts):       456,655.92 SAR
+    Receipt files total:                              456,655.92 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Amex            Payment:       199.01  Receipt:       199.01  Diff:     0.00  ✓
+    Cash            Payment:   199,514.85  Receipt:   199,514.85  Diff:     0.00  ✓
+    Mada            Payment:   207,536.26  Receipt:   207,536.26  Diff:     0.00  ✓
+    Master          Payment:    15,407.97  Receipt:    15,407.97  Diff:     0.00  ✓
+    Visa            Payment:    33,997.83  Receipt:    33,997.83  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (109 rows, 456,655.92 SAR)
+  Per-method grand total                   456,655.92 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 80
+    Total amount: -2,530.4357 SAR
+    Payment methods included: ['AMEX', 'Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -2,530.4357 SAR
+    Per-method total:               -2,530.4357 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    AMEX                1 rows             -8.4679 SAR  ⚠ 1 NEGATIVE AMOUNTS!
+    Mada               27 rows         -1,438.0590 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             25 rows           -341.0562 SAR  ⚠ 25 NEGATIVE AMOUNTS!
+    Visa               27 rows           -742.8526 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              5
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       208,414.30 SAR
+    Visa                        33,997.83 SAR
+    Master                      15,608.98 SAR
+    Amex                           199.01 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                       217,455.35 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED              217,455.35 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  ANDLUS           Mada        9,752.67          0.01      -67.2934          157-95017321-JEDANDLUS2       
+  ANDLUS           Master      1,125.18          0.02      -24.5852          157-95017321-JEDANDLUS2       
+  ANDLUS           Visa        599.03            0.02      -13.0888          157-95017321-JEDANDLUS2       
+  ANDLUS           Mada        9,151.27          0.01      -63.1438          157-95017321-JEDANDLUS2       
+  ANDLUS           Visa        1,648.22          0.02      -36.0136          157-95017321-JEDANDLUS2       
+  ANDLUS           Mada        10,020.43         0.01      -69.1410          157-95017321-JEDANDLUS2       
+  ANDLUS           Master      199.03            0.02      -4.3488           157-95017321-JEDANDLUS2       
+  ANDLUS           Visa        2,128.11          0.02      -46.4992          157-95017321-JEDANDLUS2       
+  ANDLUS           Mada        12,161.04         0.01      -83.9112          157-95017321-JEDANDLUS2       
+  ANDLUS           Master      269.02            0.02      -5.8781           157-95017321-JEDANDLUS2       
+  ANDLUS           Visa        858.17            0.02      -18.7510          157-95017321-JEDANDLUS2       
+  ANDLUS           Mada        9,012.69          0.01      -62.1876          157-95017321-JEDANDLUS2       
+  ANDLUS           Master      1,000.11          0.02      -21.8524          157-95017321-JEDANDLUS2       
+  ANDLUS           Visa        671.03            0.02      -14.6620          157-95017321-JEDANDLUS2       
+  ANDLUS           Mada        12,593.23         0.01      -86.8933          157-95017321-JEDANDLUS2       
+  ANDLUS           Master      149.01            0.02      -3.2559           157-95017321-JEDANDLUS2       
+  ANDLUS           Visa        1,940.82          0.02      -42.4069          157-95017321-JEDANDLUS2       
+  ANDLUS           Mada        8,826.46          0.01      -60.9026          157-95017321-JEDANDLUS2       
+  ANDLUS           Visa        839.22            0.02      -18.3370          157-95017321-JEDANDLUS2       
+  ANDLUS           Mada        8,798.83          0.01      -60.7119          157-95017321-JEDANDLUS2       
+  ANDLUS           Master      398.00            0.02      -8.6963           157-95017321-JEDANDLUS2       
+  ANDLUS           Visa        883.11            0.02      -19.2960          157-95017321-JEDANDLUS2       
+  ANDLUS           Mada        10,462.07         0.01      -72.1883          157-95017321-JEDANDLUS2       
+  ANDLUS           Master      299.02            0.02      -6.5336           157-95017321-JEDANDLUS2       
+  ANDLUS           Visa        853.02            0.02      -18.6385          157-95017321-JEDANDLUS2       
+  ANDLUS           Mada        8,049.79          0.01      -55.5436          157-95017321-JEDANDLUS2       
+  ANDLUS           Master      1,089.01          0.02      -23.7949          157-95017321-JEDANDLUS2       
+  ANDLUS           Visa        2,026.65          0.02      -44.2823          157-95017321-JEDANDLUS2       
+  ANDLUS           Mada        10,019.35         0.01      -69.1335          157-95017321-JEDANDLUS2       
+  ANDLUS           Master      224.04            0.02      -4.8953           157-95017321-JEDANDLUS2       
+  ANDLUS           Visa        584.06            0.02      -12.7617          157-95017321-JEDANDLUS2       
+  ANDLUS           Mada        11,771.18         0.01      -81.2211          157-95017321-JEDANDLUS2       
+  ANDLUS           Master      757.62            0.02      -16.5540          157-95017321-JEDANDLUS2       
+  ANDLUS           Visa        1,299.56          0.02      -28.3954          157-95017321-JEDANDLUS2       
+  ANDLUS           Mada        13,357.72         0.01      -92.1683          157-95017321-JEDANDLUS2       
+  ANDLUS           Master      2,066.78          0.02      -45.1591          157-95017321-JEDANDLUS2       
+  ANDLUS           Visa        2,480.25          0.02      -54.1935          157-95017321-JEDANDLUS2       
+  ANDLUS           Mada        15,149.28         0.01      -104.5300         157-95017321-JEDANDLUS2       
+  ANDLUS           Master      190.00            0.02      -4.1515           157-95017321-JEDANDLUS2       
+  ANDLUS           Visa        2,876.35          0.02      -62.8482          157-95017321-JEDANDLUS2       
+  ANDLUS           Amex        199.01            0.04      -8.4679           157-95017321-JEDANDLUS2       
+  ANDLUS           Mada        16,543.26         0.01      -114.1485         157-95017321-JEDANDLUS2       
+  ANDLUS           Master      990.56            0.02      -21.6437          157-95017321-JEDANDLUS2       
+  ANDLUS           Visa        2,136.63          0.02      -46.6854          157-95017321-JEDANDLUS2       
+  ANDLUS           Mada        3,365.66          0.01      -23.2231          157-95017321-JEDANDLUS2       
+  ANDLUS           Master      227.00            0.02      -4.9599           157-95017321-JEDANDLUS2       
+  ANDLUS           Visa        839.09            0.02      -18.3341          157-95017321-JEDANDLUS2       
+  ANDLUS           Mada        1,539.58          0.01      -10.6231          157-95017321-JEDANDLUS2       
+  ANDLUS           Master      797.04            0.02      -17.4153          157-95017321-JEDANDLUS2       
+  ANDLUS           Visa        456.02            0.02      -9.9640           157-95017321-JEDANDLUS2       
+  ANDLUS           Mada        3,445.48          0.01      -23.7738          157-95017321-JEDANDLUS2       
+  ANDLUS           Master      547.01            0.02      -11.9522          157-95017321-JEDANDLUS2       
+  ANDLUS           Visa        597.01            0.02      -13.0447          157-95017321-JEDANDLUS2       
+  ANDLUS           Mada        2,933.20          0.01      -20.2391          157-95017321-JEDANDLUS2       
+  ANDLUS           Master      179.04            0.02      -3.9120           157-95017321-JEDANDLUS2       
+  ANDLUS           Visa        2,209.59          0.02      -48.2795          157-95017321-JEDANDLUS2       
+  ANDLUS           Mada        3,392.82          0.01      -23.4105          157-95017321-JEDANDLUS2       
+  ANDLUS           Master      1,173.04          0.02      -25.6309          157-95017321-JEDANDLUS2       
+  ANDLUS           Visa        2,552.37          0.02      -55.7693          157-95017321-JEDANDLUS2       
+  ANDLUS           Mada        6,965.22          0.01      -48.0600          157-95017321-JEDANDLUS2       
+  ANDLUS           Master      1,086.13          0.02      -23.7319          157-95017321-JEDANDLUS2       
+  ANDLUS           Visa        649.03            0.02      -14.1813          157-95017321-JEDANDLUS2       
+  ANDLUS           Mada        2,935.14          0.01      -20.2525          157-95017321-JEDANDLUS2       
+  ANDLUS           Master      3.01              0.02      -0.0658           157-95017321-JEDANDLUS2       
+  ANDLUS           Visa        1,400.18          0.02      -30.5939          157-95017321-JEDANDLUS2       
+  ANDLUS           Mada        2,600.10          0.01      -17.9407          157-95017321-JEDANDLUS2       
+  ANDLUS           Master      199.01            0.02      -4.3484           157-95017321-JEDANDLUS2       
+  ANDLUS           Visa        199.01            0.02      -4.3484           157-95017321-JEDANDLUS2       
+  ANDLUS           Mada        2,734.43          0.01      -18.8676          157-95017321-JEDANDLUS2       
+  ANDLUS           Master      199.01            0.02      -4.3484           157-95017321-JEDANDLUS2       
+  ANDLUS           Visa        104.00            0.02      -2.2724           157-95017321-JEDANDLUS2       
+  ANDLUS           Mada        7,098.50          0.01      -48.9797          157-95017321-JEDANDLUS2       
+  ANDLUS           Master      1,007.18          0.02      -22.0069          157-95017321-JEDANDLUS2       
+  ANDLUS           Visa        180.00            0.02      -3.9330           157-95017321-JEDANDLUS2       
+  ANDLUS           Mada        2,429.57          0.01      -16.7640          157-95017321-JEDANDLUS2       
+  ANDLUS           Master      836.13            0.02      -18.2694          157-95017321-JEDANDLUS2       
+  ANDLUS           Visa        1,721.17          0.02      -37.6076          157-95017321-JEDANDLUS2       
+  ANDLUS           Mada        3,305.33          0.01      -22.8068          157-95017321-JEDANDLUS2       
+  ANDLUS           Master      598.00            0.02      -13.0663          157-95017321-JEDANDLUS2       
+  ANDLUS           Visa        1,266.13          0.02      -27.6649          157-95017321-JEDANDLUS2       
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -2,530.4357                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (80 rows, -2,530.4357 SAR)
+  Per-method grand total                   -2,530.4357 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  444,114.08 SAR         █
+  █  Total Standard Receipt amt               913,311.84 SAR         █
+  █  Difference                               469,197.76 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  444,114.08 SAR
+  Total Standard Receipt amt               913,311.84 SAR
+  Difference                               469,197.76 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0000880
+  >>> Next run START_TXN_SEQUENCE =        881  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 20:27:47
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

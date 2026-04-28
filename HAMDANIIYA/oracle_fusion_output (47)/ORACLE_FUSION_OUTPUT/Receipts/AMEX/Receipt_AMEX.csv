@@ -1,0 +1,4 @@
+﻿"ReceiptNumber","ReceiptMethod","ReceiptDate","BusinessUnit","CustomerAccountNumber","CustomerSite","Amount","Currency","RemittanceBankAccountNumber","AccountingDate"
+"AMEX-BLKU-0001336","AMEX","2026-03-09","AlQurashi-KSA","72019","55011","29.0","SAR","AL Jazeerah BankHAMDANIIYA","2026-03-09"
+"AMEX-BLKU-0001353","AMEX","2026-03-20","AlQurashi-KSA","72019","55011","58.0","SAR","AL Jazeerah BankHAMDANIIYA","2026-03-20"
+"AMEX-BLKU-0001361","AMEX","2026-03-28","AlQurashi-KSA","72019","55011","0.0","SAR","AL Jazeerah BankHAMDANIIYA","2026-03-28"

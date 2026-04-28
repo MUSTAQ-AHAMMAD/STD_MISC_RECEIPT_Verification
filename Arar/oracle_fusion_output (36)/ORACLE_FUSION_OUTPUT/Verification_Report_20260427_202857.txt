@@ -1,0 +1,442 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 08:28:54 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         287,980.62 SAR     ║
+║  [ℹ] Standard Receipt Total                   569,848.00 SAR     ║
+║  [✗] Amount Reconciliation                    Diff: 281,867.38 SAR║
+║  [ℹ] Total Invoices                           948                ║
+║  [ℹ] Receipt Files Generated                  5                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          Arar.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             ARARMALL_payment_line_5_to_31_March.xlsx
+  Segment 1 prefix                         77917845
+  Segment 2 prefix                         00807202
+
+  AR rows read                             4693
+  Unique invoices loaded                   948
+  Unique transactions (BLK)                67
+  Total AR amount                          287,980.62 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Cash                       195           36,732.00             
+  Mada                       547           135,271.00            
+  Master                     34            43,181.00             
+  TABBY                      54            15,502.00             
+  TAMARA                     83            30,654.00             
+  Visa                       115           69,740.00             
+  ----------------------------------------------------------------------
+  TOTAL                      1028          331,080.00            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  ARARMALL                        811         284,924.00          
+  RYDGALLER                       137         46,156.00           
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 89
+    Total amount: 284,924.00 SAR
+    Payment methods included: ['Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              284,924.00 SAR
+    Per-method total:                284,924.00 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    Cash               26 rows           36,732.00 SAR  ✓
+    Mada               27 rows          135,271.00 SAR  ✓
+    Master             14 rows           43,181.00 SAR  ⚠ 1 NEGATIVE AMOUNTS!
+    Visa               22 rows           69,740.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    137
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   5
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       135,271.00 SAR
+    Visa                        69,740.00 SAR
+    Master                      43,181.00 SAR
+    Cash                        36,732.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TAMARA                      30,654.00 SAR
+    TABBY                       15,502.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          ARARMALL         Cash        1,946.00          Cash Ararmall                      
+  Receipt_MADA.csv                          ARARMALL         Mada        7,413.00          015795017321048                    
+  Receipt_VISA.csv                          ARARMALL         Visa        1,745.00          015795017321048                    
+  Receipt_CASH.csv                          ARARMALL         Cash        525.00            Cash Ararmall                      
+  Receipt_MADA.csv                          ARARMALL         Mada        5,313.00          015795017321048                    
+  Receipt_VISA.csv                          ARARMALL         Visa        6,101.00          015795017321048                    
+  Receipt_CASH.csv                          ARARMALL         Cash        1,647.00          Cash Ararmall                      
+  Receipt_MADA.csv                          ARARMALL         Mada        6,059.00          015795017321048                    
+  Receipt_MASTER.csv                        ARARMALL         Master      1,044.00          015795017321048                    
+  Receipt_VISA.csv                          ARARMALL         Visa        11,521.00         015795017321048                    
+  Receipt_CASH.csv                          ARARMALL         Cash        383.00            Cash Ararmall                      
+  Receipt_MADA.csv                          ARARMALL         Mada        3,944.00          015795017321048                    
+  Receipt_VISA.csv                          ARARMALL         Visa        1,900.00          015795017321048                    
+  Receipt_CASH.csv                          ARARMALL         Cash        751.00            Cash Ararmall                      
+  Receipt_MADA.csv                          ARARMALL         Mada        7,061.00          015795017321048                    
+  Receipt_VISA.csv                          ARARMALL         Visa        1,869.00          015795017321048                    
+  Receipt_CASH.csv                          ARARMALL         Cash        2,292.00          Cash Ararmall                      
+  Receipt_MADA.csv                          ARARMALL         Mada        8,019.00          015795017321048                    
+  Receipt_MASTER.csv                        ARARMALL         Master      150.00            015795017321048                    
+  Receipt_VISA.csv                          ARARMALL         Visa        3,338.00          015795017321048                    
+  Receipt_CASH.csv                          ARARMALL         Cash        1,716.00          Cash Ararmall                      
+  Receipt_MADA.csv                          ARARMALL         Mada        8,224.00          015795017321048                    
+  Receipt_VISA.csv                          ARARMALL         Visa        22,027.00         015795017321048                    
+  Receipt_CASH.csv                          ARARMALL         Cash        3,578.00          Cash Ararmall                      
+  Receipt_MADA.csv                          ARARMALL         Mada        4,643.00          015795017321048                    
+  Receipt_VISA.csv                          ARARMALL         Visa        537.00            015795017321048                    
+  Receipt_CASH.csv                          ARARMALL         Cash        4,825.00          Cash Ararmall                      
+  Receipt_MADA.csv                          ARARMALL         Mada        15,799.00         015795017321048                    
+  Receipt_MASTER.csv                        ARARMALL         Master      299.00            015795017321048                    
+  Receipt_VISA.csv                          ARARMALL         Visa        1,439.00          015795017321048                    
+  Receipt_CASH.csv                          ARARMALL         Cash        2,359.00          Cash Ararmall                      
+  Receipt_MADA.csv                          ARARMALL         Mada        5,283.00          015795017321048                    
+  Receipt_VISA.csv                          ARARMALL         Visa        697.00            015795017321048                    
+  Receipt_CASH.csv                          ARARMALL         Cash        1,357.00          Cash Ararmall                      
+  Receipt_MADA.csv                          ARARMALL         Mada        7,856.00          015795017321048                    
+  Receipt_VISA.csv                          ARARMALL         Visa        895.00            015795017321048                    
+  Receipt_CASH.csv                          ARARMALL         Cash        1,141.00          Cash Ararmall                      
+  Receipt_MADA.csv                          ARARMALL         Mada        8,560.00          015795017321048                    
+  Receipt_MASTER.csv                        ARARMALL         Master      1,311.00          015795017321048                    
+  Receipt_VISA.csv                          ARARMALL         Visa        1,993.00          015795017321048                    
+  Receipt_CASH.csv                          ARARMALL         Cash        1,093.00          Cash Ararmall                      
+  Receipt_MADA.csv                          ARARMALL         Mada        4,569.00          015795017321048                    
+  Receipt_VISA.csv                          ARARMALL         Visa        553.00            015795017321048                    
+  Receipt_CASH.csv                          ARARMALL         Cash        3,357.00          Cash Ararmall                      
+  Receipt_MADA.csv                          ARARMALL         Mada        7,791.00          015795017321048                    
+  Receipt_MASTER.csv                        ARARMALL         Master      1,123.00          015795017321048                    
+  Receipt_VISA.csv                          ARARMALL         Visa        1,229.00          015795017321048                    
+  Receipt_CASH.csv                          ARARMALL         Cash        2,121.00          Cash Ararmall                      
+  Receipt_MADA.csv                          ARARMALL         Mada        9,882.00          015795017321048                    
+  Receipt_VISA.csv                          ARARMALL         Visa        2,445.00          015795017321048                    
+  Receipt_CASH.csv                          ARARMALL         Cash        1,962.00          Cash Ararmall                      
+  Receipt_MADA.csv                          ARARMALL         Mada        2,640.00          015795017321048                    
+  Receipt_MASTER.csv                        ARARMALL         Master      33,415.00         015795017321048                    
+  Receipt_CASH.csv                          ARARMALL         Cash        505.00            Cash Ararmall                      
+  Receipt_MADA.csv                          ARARMALL         Mada        281.00            015795017321048                    
+  Receipt_MASTER.csv                        ARARMALL         Master      896.00            015795017321048                    
+  Receipt_CASH.csv                          ARARMALL         Cash        1,301.00          Cash Ararmall                      
+  Receipt_MADA.csv                          ARARMALL         Mada        2,082.00          015795017321048                    
+  Receipt_MASTER.csv                        ARARMALL         Master      1,355.00          015795017321048                    
+  Receipt_VISA.csv                          ARARMALL         Visa        349.00            015795017321048                    
+  Receipt_CASH.csv                          ARARMALL         Cash        348.00            Cash Ararmall                      
+  Receipt_MADA.csv                          ARARMALL         Mada        1,472.00          015795017321048                    
+  Receipt_VISA.csv                          ARARMALL         Visa        199.00            015795017321048                    
+  Receipt_CASH.csv                          ARARMALL         Cash        178.00            Cash Ararmall                      
+  Receipt_MADA.csv                          ARARMALL         Mada        746.00            015795017321048                    
+  Receipt_MASTER.csv                        ARARMALL         Master      2,017.00          015795017321048                    
+  Receipt_VISA.csv                          ARARMALL         Visa        2,493.00          015795017321048                    
+  Receipt_CASH.csv                          ARARMALL         Cash        569.00            Cash Ararmall                      
+  Receipt_MADA.csv                          ARARMALL         Mada        2,899.00          015795017321048                    
+  Receipt_VISA.csv                          ARARMALL         Visa        998.00            015795017321048                    
+  Receipt_CASH.csv                          ARARMALL         Cash        1,105.00          Cash Ararmall                      
+  Receipt_MADA.csv                          ARARMALL         Mada        3,974.00          015795017321048                    
+  Receipt_MASTER.csv                        ARARMALL         Master      697.00            015795017321048                    
+  Receipt_CASH.csv                          ARARMALL         Cash        0.00              Cash Ararmall                      
+  Receipt_MADA.csv                          ARARMALL         Mada        2,908.00          015795017321048                    
+  Receipt_MASTER.csv                        ARARMALL         Master      449.00            015795017321048                    
+  Receipt_VISA.csv                          ARARMALL         Visa        909.00            015795017321048                    
+  Receipt_CASH.csv                          ARARMALL         Cash        748.00            Cash Ararmall                      
+  Receipt_MADA.csv                          ARARMALL         Mada        2,019.00          015795017321048                    
+  Receipt_MASTER.csv                        ARARMALL         Master      499.00            015795017321048                    
+  Receipt_VISA.csv                          ARARMALL         Visa        1,517.00          015795017321048                    
+  Receipt_MADA.csv                          ARARMALL         Mada        1,656.00          015795017321048                    
+  Receipt_MASTER.csv                        ARARMALL         Master      -499.00           015795017321048                    
+  Receipt_VISA.csv                          ARARMALL         Visa        4,986.00          015795017321048                    
+  Receipt_CASH.csv                          ARARMALL         Cash        498.00            Cash Ararmall                      
+  Receipt_MADA.csv                          ARARMALL         Mada        2,890.00          015795017321048                    
+  Receipt_CASH.csv                          ARARMALL         Cash        427.00            Cash Ararmall                      
+  Receipt_MADA.csv                          ARARMALL         Mada        1,288.00          015795017321048                    
+  Receipt_MASTER.csv                        ARARMALL         Master      425.00            015795017321048                    
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            284,924.00                                           
+
+  Per-method totals:
+    Cash             26 file(s)       36,732.00 SAR
+    Mada             27 file(s)      135,271.00 SAR
+    Master           14 file(s)       43,181.00 SAR
+    Visa             22 file(s)       69,740.00 SAR
+    Grand Total                       284,924.00 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Cash         Mada       Master         Visa          TOTAL
+  ----------------------------------------------------------------------------------
+  2026-03-05          1,946        7,413            0        1,745         11,104
+  2026-03-06            525        5,313            0        6,101         11,939
+  2026-03-07          1,647        6,059        1,044       11,521         20,271
+  2026-03-08            383        3,944            0        1,900          6,227
+  2026-03-09            751        7,061            0        1,869          9,681
+  2026-03-10          2,292        8,019          150        3,338         13,799
+  2026-03-11          1,716        8,224            0       22,027         31,967
+  2026-03-12          3,578        4,643            0          537          8,758
+  2026-03-13          4,825       15,799          299        1,439         22,362
+  2026-03-14          2,359        5,283            0          697          8,339
+  2026-03-15          1,357        7,856            0          895         10,108
+  2026-03-16          1,141        8,560        1,311        1,993         13,005
+  2026-03-17          1,093        4,569            0          553          6,215
+  2026-03-18          3,357        7,791        1,123        1,229         13,500
+  2026-03-19          2,121        9,882            0        2,445         14,448
+  2026-03-20          1,962        2,640       33,415            0         38,017
+  2026-03-21            505          281          896            0          1,682
+  2026-03-22          1,301        2,082        1,355          349          5,087
+  2026-03-23            348        1,472            0          199          2,019
+  2026-03-24            178          746        2,017        2,493          5,434
+  2026-03-25            569        2,899            0          998          4,466
+  2026-03-26          1,105        3,974          697            0          5,776
+  2026-03-27              0        2,908          449          909          4,266
+  2026-03-28            748        2,019          499        1,517          4,783
+  2026-03-29              0        1,656         -499        4,986          6,143
+  2026-03-30            498        2,890            0            0          3,388
+  2026-03-31            427        1,288          425            0          2,140
+  ----------------------------------------------------------------------------------
+  TOTAL              36,732      135,271       43,181       69,740        284,924
+
+  VALIDATION:
+    Payment file total (for standard receipts):       284,924.00 SAR
+    Receipt files total:                              284,924.00 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Cash            Payment:    36,732.00  Receipt:    36,732.00  Diff:     0.00  ✓
+    Mada            Payment:   135,271.00  Receipt:   135,271.00  Diff:     0.00  ✓
+    Master          Payment:    43,181.00  Receipt:    43,181.00  Diff:     0.00  ✓
+    Visa            Payment:    69,740.00  Receipt:    69,740.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (89 rows, 284,924.00 SAR)
+  Per-method grand total                   284,924.00 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 62
+    Total amount: -3,419.2479 SAR
+    Payment methods included: ['Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -3,419.2479 SAR
+    Per-method total:               -3,419.2479 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    Mada               27 rows           -938.2689 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             13 rows           -954.4076 SAR  ⚠ 13 NEGATIVE AMOUNTS!
+    Visa               22 rows         -1,526.5714 SAR  ⚠ 22 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              4
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       135,981.00 SAR
+    Visa                        69,866.00 SAR
+    Master                      43,680.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                        40,036.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED               40,036.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  ARARMALL         Mada        7,413.00          0.01      -51.1497          015795017321048               
+  ARARMALL         Visa        1,745.00          0.02      -38.1283          015795017321048               
+  ARARMALL         Mada        5,313.00          0.01      -36.6597          015795017321048               
+  ARARMALL         Visa        6,101.00          0.02      -133.3068         015795017321048               
+  ARARMALL         Mada        6,059.00          0.01      -41.8071          015795017321048               
+  ARARMALL         Master      1,044.00          0.02      -22.8114          015795017321048               
+  ARARMALL         Visa        11,521.00         0.02      -251.7338         015795017321048               
+  ARARMALL         Mada        3,944.00          0.01      -27.2136          015795017321048               
+  ARARMALL         Visa        1,900.00          0.02      -41.5150          015795017321048               
+  ARARMALL         Mada        7,061.00          0.01      -48.7209          015795017321048               
+  ARARMALL         Visa        1,869.00          0.02      -40.8376          015795017321048               
+  ARARMALL         Mada        8,019.00          0.01      -55.3311          015795017321048               
+  ARARMALL         Master      150.00            0.02      -3.2775           015795017321048               
+  ARARMALL         Visa        3,338.00          0.02      -72.9353          015795017321048               
+  ARARMALL         Mada        8,465.00          0.01      -58.4085          015795017321048               
+  ARARMALL         Visa        22,027.00         0.02      -481.2899         015795017321048               
+  ARARMALL         Mada        4,884.00          0.01      -33.6996          015795017321048               
+  ARARMALL         Visa        663.00            0.02      -14.4865          015795017321048               
+  ARARMALL         Mada        15,799.00         0.01      -109.0131         015795017321048               
+  ARARMALL         Master      299.00            0.02      -6.5331           015795017321048               
+  ARARMALL         Visa        1,439.00          0.02      -31.4421          015795017321048               
+  ARARMALL         Mada        5,283.00          0.01      -36.4527          015795017321048               
+  ARARMALL         Visa        697.00            0.02      -15.2294          015795017321048               
+  ARARMALL         Mada        7,856.00          0.01      -54.2064          015795017321048               
+  ARARMALL         Visa        895.00            0.02      -19.5557          015795017321048               
+  ARARMALL         Mada        8,560.00          0.01      -59.0640          015795017321048               
+  ARARMALL         Master      1,311.00          0.02      -28.6453          015795017321048               
+  ARARMALL         Visa        1,993.00          0.02      -43.5470          015795017321048               
+  ARARMALL         Mada        4,569.00          0.01      -31.5261          015795017321048               
+  ARARMALL         Visa        553.00            0.02      -12.0830          015795017321048               
+  ARARMALL         Mada        8,019.00          0.01      -55.3311          015795017321048               
+  ARARMALL         Master      1,123.00          0.02      -24.5375          015795017321048               
+  ARARMALL         Visa        1,229.00          0.02      -26.8536          015795017321048               
+  ARARMALL         Mada        9,882.00          0.01      -68.1858          015795017321048               
+  ARARMALL         Visa        2,445.00          0.02      -53.4232          015795017321048               
+  ARARMALL         Mada        2,640.00          0.01      -18.2160          015795017321048               
+  ARARMALL         Master      33,415.00         0.02      -730.1177         015795017321048               
+  ARARMALL         Mada        281.00            0.01      -1.9389           015795017321048               
+  ARARMALL         Master      896.00            0.02      -19.5776          015795017321048               
+  ARARMALL         Mada        2,082.00          0.01      -14.3658          015795017321048               
+  ARARMALL         Master      1,355.00          0.02      -29.6067          015795017321048               
+  ARARMALL         Visa        349.00            0.02      -7.6256           015795017321048               
+  ARARMALL         Mada        1,472.00          0.01      -10.1568          015795017321048               
+  ARARMALL         Visa        199.00            0.02      -4.3481           015795017321048               
+  ARARMALL         Mada        746.00            0.01      -5.1474           015795017321048               
+  ARARMALL         Master      2,017.00          0.02      -44.0714          015795017321048               
+  ARARMALL         Visa        2,493.00          0.02      -54.4720          015795017321048               
+  ARARMALL         Mada        2,899.00          0.01      -20.0031          015795017321048               
+  ARARMALL         Visa        998.00            0.02      -21.8063          015795017321048               
+  ARARMALL         Mada        3,974.00          0.01      -27.4206          015795017321048               
+  ARARMALL         Master      697.00            0.02      -15.2294          015795017321048               
+  ARARMALL         Mada        2,908.00          0.01      -20.0652          015795017321048               
+  ARARMALL         Master      449.00            0.02      -9.8107           015795017321048               
+  ARARMALL         Visa        909.00            0.02      -19.8617          015795017321048               
+  ARARMALL         Mada        2,019.00          0.01      -13.9311          015795017321048               
+  ARARMALL         Master      499.00            0.02      -10.9031          015795017321048               
+  ARARMALL         Visa        1,517.00          0.02      -33.1464          015795017321048               
+  ARARMALL         Mada        1,656.00          0.01      -11.4264          015795017321048               
+  ARARMALL         Visa        4,986.00          0.02      -108.9441         015795017321048               
+  ARARMALL         Mada        2,890.00          0.01      -19.9410          015795017321048               
+  ARARMALL         Mada        1,288.00          0.01      -8.8872           015795017321048               
+  ARARMALL         Master      425.00            0.02      -9.2862           015795017321048               
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -3,419.2479                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (62 rows, -3,419.2479 SAR)
+  Per-method grand total                   -3,419.2479 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  287,980.62 SAR         █
+  █  Total Standard Receipt amt               569,848.00 SAR         █
+  █  Difference                               281,867.38 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  287,980.62 SAR
+  Total Standard Receipt amt               569,848.00 SAR
+  Difference                               281,867.38 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0000965
+  >>> Next run START_TXN_SEQUENCE =        966  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 20:28:57
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

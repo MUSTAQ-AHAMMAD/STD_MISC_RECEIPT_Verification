@@ -1,0 +1,471 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 09:03:40 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         424,239.44 SAR     ║
+║  [ℹ] Standard Receipt Total                   898,084.00 SAR     ║
+║  [✗] Amount Reconciliation                    Diff: 473,844.56 SAR║
+║  [ℹ] Total Invoices                           2,430              ║
+║  [ℹ] Receipt Files Generated                  6                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          SALAMRYD2.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             SALAMRYD2_Payment_lines_5-31.xlsx
+  Segment 1 prefix                         73712882
+  Segment 2 prefix                         65806450
+
+  AR rows read                             8893
+  Unique invoices loaded                   2429
+  Unique transactions (BLK)                59
+  Total AR amount                          424,438.44 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Amex                       5             976.00                
+  Cash                       486           81,642.00             
+  Mada                       1636          306,533.00            
+  Master                     35            7,551.00              
+  TABBY                      123           32,226.00             
+  TAMARA                     26            7,053.00              
+  Visa                       253           52,340.00             
+  ----------------------------------------------------------------------
+  TOTAL                      2564          488,321.00            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  RYDGALLER                       149         39,279.00           
+  RYDSHIFA                        1           -199.00             
+  SALAMRYD2                       2280        449,241.00          
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 100
+    Total amount: 449,042.00 SAR
+    Payment methods included: ['AMEX', 'Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              449,042.00 SAR
+    Per-method total:                449,042.00 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    AMEX                4 rows              976.00 SAR  ✓
+    Cash               28 rows           81,642.00 SAR  ⚠ 1 NEGATIVE AMOUNTS!
+    Mada               27 rows          306,533.00 SAR  ✓
+    Master             16 rows            7,551.00 SAR  ✓
+    Visa               25 rows           52,340.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    149
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   6
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       306,533.00 SAR
+    Cash                        81,642.00 SAR
+    Visa                        52,340.00 SAR
+    Master                       7,551.00 SAR
+    Amex                           976.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TABBY                       32,226.00 SAR
+    TAMARA                       7,053.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          RYDSHIFA         Cash        -199.00           Cash RYDSHIFA                      
+  Receipt_CASH.csv                          SALAMRYD2        Cash        2,535.00          Cash SALAMRYD2                     
+  Receipt_MADA.csv                          SALAMRYD2        Mada        14,166.00         015795017321-SALAMRYD2             
+  Receipt_MASTER.csv                        SALAMRYD2        Master      498.00            015795017321-SALAMRYD2             
+  Receipt_VISA.csv                          SALAMRYD2        Visa        864.00            015795017321-SALAMRYD2             
+  Receipt_CASH.csv                          SALAMRYD2        Cash        5,011.00          Cash SALAMRYD2                     
+  Receipt_MADA.csv                          SALAMRYD2        Mada        15,239.00         015795017321-SALAMRYD2             
+  Receipt_MASTER.csv                        SALAMRYD2        Master      598.00            015795017321-SALAMRYD2             
+  Receipt_VISA.csv                          SALAMRYD2        Visa        3,850.00          015795017321-SALAMRYD2             
+  Receipt_CASH.csv                          SALAMRYD2        Cash        2,626.00          Cash SALAMRYD2                     
+  Receipt_MADA.csv                          SALAMRYD2        Mada        21,192.00         015795017321-SALAMRYD2             
+  Receipt_MASTER.csv                        SALAMRYD2        Master      199.00            015795017321-SALAMRYD2             
+  Receipt_VISA.csv                          SALAMRYD2        Visa        3,478.00          015795017321-SALAMRYD2             
+  Receipt_CASH.csv                          SALAMRYD2        Cash        5,801.00          Cash SALAMRYD2                     
+  Receipt_MADA.csv                          SALAMRYD2        Mada        16,048.00         015795017321-SALAMRYD2             
+  Receipt_MASTER.csv                        SALAMRYD2        Master      498.00            015795017321-SALAMRYD2             
+  Receipt_VISA.csv                          SALAMRYD2        Visa        1,541.00          015795017321-SALAMRYD2             
+  Receipt_CASH.csv                          SALAMRYD2        Cash        2,558.00          Cash SALAMRYD2                     
+  Receipt_MADA.csv                          SALAMRYD2        Mada        13,666.00         015795017321-SALAMRYD2             
+  Receipt_MASTER.csv                        SALAMRYD2        Master      439.00            015795017321-SALAMRYD2             
+  Receipt_VISA.csv                          SALAMRYD2        Visa        4,229.00          015795017321-SALAMRYD2             
+  Receipt_AMEX.csv                          SALAMRYD2        Amex        180.00            015795017321-SALAMRYD2             
+  Receipt_CASH.csv                          SALAMRYD2        Cash        2,020.00          Cash SALAMRYD2                     
+  Receipt_MADA.csv                          SALAMRYD2        Mada        14,322.00         015795017321-SALAMRYD2             
+  Receipt_MASTER.csv                        SALAMRYD2        Master      464.00            015795017321-SALAMRYD2             
+  Receipt_VISA.csv                          SALAMRYD2        Visa        2,854.00          015795017321-SALAMRYD2             
+  Receipt_CASH.csv                          SALAMRYD2        Cash        5,093.00          Cash SALAMRYD2                     
+  Receipt_MADA.csv                          SALAMRYD2        Mada        18,758.00         015795017321-SALAMRYD2             
+  Receipt_MASTER.csv                        SALAMRYD2        Master      115.00            015795017321-SALAMRYD2             
+  Receipt_VISA.csv                          SALAMRYD2        Visa        1,559.00          015795017321-SALAMRYD2             
+  Receipt_CASH.csv                          SALAMRYD2        Cash        3,674.00          Cash SALAMRYD2                     
+  Receipt_MADA.csv                          SALAMRYD2        Mada        10,251.00         015795017321-SALAMRYD2             
+  Receipt_VISA.csv                          SALAMRYD2        Visa        2,329.00          015795017321-SALAMRYD2             
+  Receipt_AMEX.csv                          SALAMRYD2        Amex        199.00            015795017321-SALAMRYD2             
+  Receipt_CASH.csv                          SALAMRYD2        Cash        5,341.00          Cash SALAMRYD2                     
+  Receipt_MADA.csv                          SALAMRYD2        Mada        17,090.00         015795017321-SALAMRYD2             
+  Receipt_MASTER.csv                        SALAMRYD2        Master      398.00            015795017321-SALAMRYD2             
+  Receipt_VISA.csv                          SALAMRYD2        Visa        2,146.00          015795017321-SALAMRYD2             
+  Receipt_CASH.csv                          SALAMRYD2        Cash        4,945.00          Cash SALAMRYD2                     
+  Receipt_MADA.csv                          SALAMRYD2        Mada        20,612.00         015795017321-SALAMRYD2             
+  Receipt_MASTER.csv                        SALAMRYD2        Master      859.00            015795017321-SALAMRYD2             
+  Receipt_VISA.csv                          SALAMRYD2        Visa        3,629.00          015795017321-SALAMRYD2             
+  Receipt_CASH.csv                          SALAMRYD2        Cash        4,101.00          Cash SALAMRYD2                     
+  Receipt_MADA.csv                          SALAMRYD2        Mada        20,378.00         015795017321-SALAMRYD2             
+  Receipt_MASTER.csv                        SALAMRYD2        Master      769.00            015795017321-SALAMRYD2             
+  Receipt_VISA.csv                          SALAMRYD2        Visa        3,861.00          015795017321-SALAMRYD2             
+  Receipt_CASH.csv                          SALAMRYD2        Cash        5,424.00          Cash SALAMRYD2                     
+  Receipt_MADA.csv                          SALAMRYD2        Mada        18,190.00         015795017321-SALAMRYD2             
+  Receipt_MASTER.csv                        SALAMRYD2        Master      238.00            015795017321-SALAMRYD2             
+  Receipt_VISA.csv                          SALAMRYD2        Visa        3,765.00          015795017321-SALAMRYD2             
+  Receipt_CASH.csv                          SALAMRYD2        Cash        5,307.00          Cash SALAMRYD2                     
+  Receipt_MADA.csv                          SALAMRYD2        Mada        17,188.00         015795017321-SALAMRYD2             
+  Receipt_MASTER.csv                        SALAMRYD2        Master      675.00            015795017321-SALAMRYD2             
+  Receipt_VISA.csv                          SALAMRYD2        Visa        3,250.00          015795017321-SALAMRYD2             
+  Receipt_CASH.csv                          SALAMRYD2        Cash        5,953.00          Cash SALAMRYD2                     
+  Receipt_MADA.csv                          SALAMRYD2        Mada        19,854.00         015795017321-SALAMRYD2             
+  Receipt_MASTER.csv                        SALAMRYD2        Master      222.00            015795017321-SALAMRYD2             
+  Receipt_VISA.csv                          SALAMRYD2        Visa        3,128.00          015795017321-SALAMRYD2             
+  Receipt_AMEX.csv                          SALAMRYD2        Amex        398.00            015795017321-SALAMRYD2             
+  Receipt_CASH.csv                          SALAMRYD2        Cash        8,011.00          Cash SALAMRYD2                     
+  Receipt_MADA.csv                          SALAMRYD2        Mada        21,195.00         015795017321-SALAMRYD2             
+  Receipt_MASTER.csv                        SALAMRYD2        Master      1,015.00          015795017321-SALAMRYD2             
+  Receipt_VISA.csv                          SALAMRYD2        Visa        4,682.00          015795017321-SALAMRYD2             
+  Receipt_CASH.csv                          SALAMRYD2        Cash        1,705.00          Cash SALAMRYD2                     
+  Receipt_MADA.csv                          SALAMRYD2        Mada        4,423.00          015795017321-SALAMRYD2             
+  Receipt_MASTER.csv                        SALAMRYD2        Master      249.00            015795017321-SALAMRYD2             
+  Receipt_VISA.csv                          SALAMRYD2        Visa        740.00            015795017321-SALAMRYD2             
+  Receipt_CASH.csv                          SALAMRYD2        Cash        1,380.00          Cash SALAMRYD2                     
+  Receipt_MADA.csv                          SALAMRYD2        Mada        1,463.00          015795017321-SALAMRYD2             
+  Receipt_CASH.csv                          SALAMRYD2        Cash        263.00            Cash SALAMRYD2                     
+  Receipt_MADA.csv                          SALAMRYD2        Mada        3,060.00          015795017321-SALAMRYD2             
+  Receipt_VISA.csv                          SALAMRYD2        Visa        947.00            015795017321-SALAMRYD2             
+  Receipt_CASH.csv                          SALAMRYD2        Cash        912.00            Cash SALAMRYD2                     
+  Receipt_MADA.csv                          SALAMRYD2        Mada        1,542.00          015795017321-SALAMRYD2             
+  Receipt_VISA.csv                          SALAMRYD2        Visa        298.00            015795017321-SALAMRYD2             
+  Receipt_CASH.csv                          SALAMRYD2        Cash        799.00            Cash SALAMRYD2                     
+  Receipt_MADA.csv                          SALAMRYD2        Mada        1,811.00          015795017321-SALAMRYD2             
+  Receipt_VISA.csv                          SALAMRYD2        Visa        731.00            015795017321-SALAMRYD2             
+  Receipt_CASH.csv                          SALAMRYD2        Cash        1,423.00          Cash SALAMRYD2                     
+  Receipt_MADA.csv                          SALAMRYD2        Mada        4,039.00          015795017321-SALAMRYD2             
+  Receipt_VISA.csv                          SALAMRYD2        Visa        54.00             015795017321-SALAMRYD2             
+  Receipt_CASH.csv                          SALAMRYD2        Cash        971.00            Cash SALAMRYD2                     
+  Receipt_MADA.csv                          SALAMRYD2        Mada        9,614.00          015795017321-SALAMRYD2             
+  Receipt_VISA.csv                          SALAMRYD2        Visa        898.00            015795017321-SALAMRYD2             
+  Receipt_CASH.csv                          SALAMRYD2        Cash        1,014.00          Cash SALAMRYD2                     
+  Receipt_MADA.csv                          SALAMRYD2        Mada        7,686.00          015795017321-SALAMRYD2             
+  Receipt_MASTER.csv                        SALAMRYD2        Master      315.00            015795017321-SALAMRYD2             
+  Receipt_VISA.csv                          SALAMRYD2        Visa        1,496.00          015795017321-SALAMRYD2             
+  Receipt_CASH.csv                          SALAMRYD2        Cash        2,385.00          Cash SALAMRYD2                     
+  Receipt_MADA.csv                          SALAMRYD2        Mada        6,356.00          015795017321-SALAMRYD2             
+  Receipt_VISA.csv                          SALAMRYD2        Visa        1,294.00          015795017321-SALAMRYD2             
+  Receipt_CASH.csv                          SALAMRYD2        Cash        545.00            Cash SALAMRYD2                     
+  Receipt_MADA.csv                          SALAMRYD2        Mada        2,551.00          015795017321-SALAMRYD2             
+  Receipt_VISA.csv                          SALAMRYD2        Visa        126.00            015795017321-SALAMRYD2             
+  Receipt_AMEX.csv                          SALAMRYD2        Amex        199.00            015795017321-SALAMRYD2             
+  Receipt_CASH.csv                          SALAMRYD2        Cash        747.00            Cash SALAMRYD2                     
+  Receipt_MADA.csv                          SALAMRYD2        Mada        1,507.00          015795017321-SALAMRYD2             
+  Receipt_CASH.csv                          SALAMRYD2        Cash        1,297.00          Cash SALAMRYD2                     
+  Receipt_MADA.csv                          SALAMRYD2        Mada        4,332.00          015795017321-SALAMRYD2             
+  Receipt_VISA.csv                          SALAMRYD2        Visa        591.00            015795017321-SALAMRYD2             
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            449,042.00                                           
+
+  Per-method totals:
+    Amex              4 file(s)          976.00 SAR
+    Cash             28 file(s)       81,642.00 SAR
+    Mada             27 file(s)      306,533.00 SAR
+    Master           16 file(s)        7,551.00 SAR
+    Visa             25 file(s)       52,340.00 SAR
+    Grand Total                       449,042.00 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Amex         Cash         Mada       Master         Visa          TOTAL
+  ------------------------------------------------------------------------------------------------
+  2026-03-05              0        2,535       14,166          498          864         18,063
+  2026-03-06              0        5,011       15,239          598        3,850         24,698
+  2026-03-07              0        2,626       21,192          199        3,478         27,495
+  2026-03-08              0        5,801       16,048          498        1,541         23,888
+  2026-03-09              0        2,558       13,666          439        4,229         20,892
+  2026-03-10            180        2,020       14,322          464        2,854         19,840
+  2026-03-11              0        5,093       18,758          115        1,559         25,525
+  2026-03-12              0        3,674       10,251            0        2,329         16,254
+  2026-03-13            199        5,341       17,090          398        2,146         25,174
+  2026-03-14              0        4,945       20,612          859        3,629         30,045
+  2026-03-15              0        4,101       20,378          769        3,861         29,109
+  2026-03-16              0        5,424       18,190          238        3,765         27,617
+  2026-03-17              0        5,307       17,188          675        3,250         26,420
+  2026-03-18              0        5,953       19,854          222        3,128         29,157
+  2026-03-19            398        7,812       21,195        1,015        4,682         35,102
+  2026-03-20              0        1,705        4,423          249          740          7,117
+  2026-03-21              0        1,380        1,463            0            0          2,843
+  2026-03-22              0          263        3,060            0          947          4,270
+  2026-03-23              0          912        1,542            0          298          2,752
+  2026-03-24              0          799        1,811            0          731          3,341
+  2026-03-25              0        1,423        4,039            0           54          5,516
+  2026-03-26              0          971        9,614            0          898         11,483
+  2026-03-27              0        1,014        7,686          315        1,496         10,511
+  2026-03-28              0        2,385        6,356            0        1,294         10,035
+  2026-03-29              0          545        2,551            0          126          3,222
+  2026-03-30            199          747        1,507            0            0          2,453
+  2026-03-31              0        1,297        4,332            0          591          6,220
+  ------------------------------------------------------------------------------------------------
+  TOTAL                 976       81,642      306,533        7,551       52,340        449,042
+
+  VALIDATION:
+    Payment file total (for standard receipts):       449,042.00 SAR
+    Receipt files total:                              449,042.00 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Amex            Payment:       976.00  Receipt:       976.00  Diff:     0.00  ✓
+    Cash            Payment:    81,642.00  Receipt:    81,642.00  Diff:     0.00  ✓
+    Mada            Payment:   306,533.00  Receipt:   306,533.00  Diff:     0.00  ✓
+    Master          Payment:     7,551.00  Receipt:     7,551.00  Diff:     0.00  ✓
+    Visa            Payment:    52,340.00  Receipt:    52,340.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (100 rows, 449,042.00 SAR)
+  Per-method grand total                   449,042.00 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 72
+    Total amount: -3,465.2239 SAR
+    Payment methods included: ['AMEX', 'Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -3,465.2239 SAR
+    Per-method total:               -3,465.2239 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    AMEX                4 rows            -41.5287 SAR  ⚠ 4 NEGATIVE AMOUNTS!
+    Mada               27 rows         -2,115.0777 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             16 rows           -164.9890 SAR  ⚠ 16 NEGATIVE AMOUNTS!
+    Visa               25 rows         -1,143.6285 SAR  ⚠ 25 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              5
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       306,533.00 SAR
+    Visa                        52,340.00 SAR
+    Master                       7,551.00 SAR
+    Amex                           976.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                        84,692.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED               84,692.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  SALAMRYD2        Mada        14,166.00         0.01      -97.7454          015795017321-SALAMRYD2        
+  SALAMRYD2        Master      498.00            0.02      -10.8813          015795017321-SALAMRYD2        
+  SALAMRYD2        Visa        864.00            0.02      -18.8784          015795017321-SALAMRYD2        
+  SALAMRYD2        Mada        15,239.00         0.01      -105.1491         015795017321-SALAMRYD2        
+  SALAMRYD2        Master      598.00            0.02      -13.0663          015795017321-SALAMRYD2        
+  SALAMRYD2        Visa        3,850.00          0.02      -84.1225          015795017321-SALAMRYD2        
+  SALAMRYD2        Mada        21,192.00         0.01      -146.2248         015795017321-SALAMRYD2        
+  SALAMRYD2        Master      199.00            0.02      -4.3481           015795017321-SALAMRYD2        
+  SALAMRYD2        Visa        3,478.00          0.02      -75.9943          015795017321-SALAMRYD2        
+  SALAMRYD2        Mada        16,048.00         0.01      -110.7312         015795017321-SALAMRYD2        
+  SALAMRYD2        Master      498.00            0.02      -10.8813          015795017321-SALAMRYD2        
+  SALAMRYD2        Visa        1,541.00          0.02      -33.6708          015795017321-SALAMRYD2        
+  SALAMRYD2        Mada        13,666.00         0.01      -94.2954          015795017321-SALAMRYD2        
+  SALAMRYD2        Master      439.00            0.02      -9.5921           015795017321-SALAMRYD2        
+  SALAMRYD2        Visa        4,229.00          0.02      -92.4036          015795017321-SALAMRYD2        
+  SALAMRYD2        Amex        180.00            0.04      -7.6590           015795017321-SALAMRYD2        
+  SALAMRYD2        Mada        14,322.00         0.01      -98.8218          015795017321-SALAMRYD2        
+  SALAMRYD2        Master      464.00            0.02      -10.1384          015795017321-SALAMRYD2        
+  SALAMRYD2        Visa        2,854.00          0.02      -62.3599          015795017321-SALAMRYD2        
+  SALAMRYD2        Mada        18,758.00         0.01      -129.4302         015795017321-SALAMRYD2        
+  SALAMRYD2        Master      115.00            0.02      -2.5128           015795017321-SALAMRYD2        
+  SALAMRYD2        Visa        1,559.00          0.02      -34.0641          015795017321-SALAMRYD2        
+  SALAMRYD2        Mada        10,251.00         0.01      -70.7319          015795017321-SALAMRYD2        
+  SALAMRYD2        Visa        2,329.00          0.02      -50.8886          015795017321-SALAMRYD2        
+  SALAMRYD2        Amex        199.00            0.04      -8.4674           015795017321-SALAMRYD2        
+  SALAMRYD2        Mada        17,090.00         0.01      -117.9210         015795017321-SALAMRYD2        
+  SALAMRYD2        Master      398.00            0.02      -8.6963           015795017321-SALAMRYD2        
+  SALAMRYD2        Visa        2,146.00          0.02      -46.8901          015795017321-SALAMRYD2        
+  SALAMRYD2        Mada        20,612.00         0.01      -142.2228         015795017321-SALAMRYD2        
+  SALAMRYD2        Master      859.00            0.02      -18.7691          015795017321-SALAMRYD2        
+  SALAMRYD2        Visa        3,629.00          0.02      -79.2936          015795017321-SALAMRYD2        
+  SALAMRYD2        Mada        20,378.00         0.01      -140.6082         015795017321-SALAMRYD2        
+  SALAMRYD2        Master      769.00            0.02      -16.8026          015795017321-SALAMRYD2        
+  SALAMRYD2        Visa        3,861.00          0.02      -84.3628          015795017321-SALAMRYD2        
+  SALAMRYD2        Mada        18,190.00         0.01      -125.5110         015795017321-SALAMRYD2        
+  SALAMRYD2        Master      238.00            0.02      -5.2003           015795017321-SALAMRYD2        
+  SALAMRYD2        Visa        3,765.00          0.02      -82.2652          015795017321-SALAMRYD2        
+  SALAMRYD2        Mada        17,188.00         0.01      -118.5972         015795017321-SALAMRYD2        
+  SALAMRYD2        Master      675.00            0.02      -14.7487          015795017321-SALAMRYD2        
+  SALAMRYD2        Visa        3,250.00          0.02      -71.0125          015795017321-SALAMRYD2        
+  SALAMRYD2        Mada        19,854.00         0.01      -136.9926         015795017321-SALAMRYD2        
+  SALAMRYD2        Master      222.00            0.02      -4.8507           015795017321-SALAMRYD2        
+  SALAMRYD2        Visa        3,128.00          0.02      -68.3468          015795017321-SALAMRYD2        
+  SALAMRYD2        Amex        398.00            0.04      -16.9349          015795017321-SALAMRYD2        
+  SALAMRYD2        Mada        21,195.00         0.01      -146.2455         015795017321-SALAMRYD2        
+  SALAMRYD2        Master      1,015.00          0.02      -22.1777          015795017321-SALAMRYD2        
+  SALAMRYD2        Visa        4,682.00          0.02      -102.3017         015795017321-SALAMRYD2        
+  SALAMRYD2        Mada        4,423.00          0.01      -30.5187          015795017321-SALAMRYD2        
+  SALAMRYD2        Master      249.00            0.02      -5.4406           015795017321-SALAMRYD2        
+  SALAMRYD2        Visa        740.00            0.02      -16.1690          015795017321-SALAMRYD2        
+  SALAMRYD2        Mada        1,463.00          0.01      -10.0947          015795017321-SALAMRYD2        
+  SALAMRYD2        Mada        3,060.00          0.01      -21.1140          015795017321-SALAMRYD2        
+  SALAMRYD2        Visa        947.00            0.02      -20.6919          015795017321-SALAMRYD2        
+  SALAMRYD2        Mada        1,542.00          0.01      -10.6398          015795017321-SALAMRYD2        
+  SALAMRYD2        Visa        298.00            0.02      -6.5113           015795017321-SALAMRYD2        
+  SALAMRYD2        Mada        1,811.00          0.01      -12.4959          015795017321-SALAMRYD2        
+  SALAMRYD2        Visa        731.00            0.02      -15.9723          015795017321-SALAMRYD2        
+  SALAMRYD2        Mada        4,039.00          0.01      -27.8691          015795017321-SALAMRYD2        
+  SALAMRYD2        Visa        54.00             0.02      -1.1799           015795017321-SALAMRYD2        
+  SALAMRYD2        Mada        9,614.00          0.01      -66.3366          015795017321-SALAMRYD2        
+  SALAMRYD2        Visa        898.00            0.02      -19.6213          015795017321-SALAMRYD2        
+  SALAMRYD2        Mada        7,686.00          0.01      -53.0334          015795017321-SALAMRYD2        
+  SALAMRYD2        Master      315.00            0.02      -6.8827           015795017321-SALAMRYD2        
+  SALAMRYD2        Visa        1,496.00          0.02      -32.6876          015795017321-SALAMRYD2        
+  SALAMRYD2        Mada        6,356.00          0.01      -43.8564          015795017321-SALAMRYD2        
+  SALAMRYD2        Visa        1,294.00          0.02      -28.2739          015795017321-SALAMRYD2        
+  SALAMRYD2        Mada        2,551.00          0.01      -17.6019          015795017321-SALAMRYD2        
+  SALAMRYD2        Visa        126.00            0.02      -2.7531           015795017321-SALAMRYD2        
+  SALAMRYD2        Amex        199.00            0.04      -8.4674           015795017321-SALAMRYD2        
+  SALAMRYD2        Mada        1,507.00          0.01      -10.3983          015795017321-SALAMRYD2        
+  SALAMRYD2        Mada        4,332.00          0.01      -29.8908          015795017321-SALAMRYD2        
+  SALAMRYD2        Visa        591.00            0.02      -12.9133          015795017321-SALAMRYD2        
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -3,465.2239                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (72 rows, -3,465.2239 SAR)
+  Per-method grand total                   -3,465.2239 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  424,239.44 SAR         █
+  █  Total Standard Receipt amt               898,084.00 SAR         █
+  █  Difference                               473,844.56 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  424,239.44 SAR
+  Total Standard Receipt amt               898,084.00 SAR
+  Difference                               473,844.56 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0008174
+  >>> Next run START_TXN_SEQUENCE =        8175  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 21:03:45
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

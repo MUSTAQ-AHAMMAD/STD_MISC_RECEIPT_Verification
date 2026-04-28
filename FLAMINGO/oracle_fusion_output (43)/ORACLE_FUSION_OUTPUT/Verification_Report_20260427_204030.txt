@@ -1,0 +1,478 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 08:40:27 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         301,324.22 SAR     ║
+║  [ℹ] Standard Receipt Total                   617,054.02 SAR     ║
+║  [✗] Amount Reconciliation                    Diff: 315,729.80 SAR║
+║  [ℹ] Total Invoices                           1,710              ║
+║  [ℹ] Receipt Files Generated                  6                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          FLAMINGO.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             FLAMINGO_Payment_line_5_to_31_March.xlsx
+  Segment 1 prefix                         41540512
+  Segment 2 prefix                         65284717
+
+  AR rows read                             6400
+  Unique invoices loaded                   1710
+  Unique transactions (BLK)                74
+  Total AR amount                          301,324.22 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Amex                       4             348.00                
+  Cash                       758           142,169.01            
+  Mada                       700           127,927.00            
+  Master                     67            14,678.00             
+  TABBY                      85            22,229.00             
+  TAMARA                     58            15,889.00             
+  Visa                       102           23,405.00             
+  ----------------------------------------------------------------------
+  TOTAL                      1774          346,645.01            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  AZIZMALL                        2           -593.99             
+  FLAMINGO                        1565        309,121.00          
+  RYDGALLER                       143         38,118.00           
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 104
+    Total amount: 308,527.01 SAR
+    Payment methods included: ['AMEX', 'Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              308,527.01 SAR
+    Per-method total:                308,527.01 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    AMEX                3 rows              348.00 SAR  ✓
+    Cash               29 rows          142,169.01 SAR  ⚠ 2 NEGATIVE AMOUNTS!
+    Mada               27 rows          127,927.00 SAR  ✓
+    Master             21 rows           14,678.00 SAR  ✓
+    Visa               24 rows           23,405.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    143
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   6
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Cash                       142,169.01 SAR
+    Mada                       127,927.00 SAR
+    Visa                        23,405.00 SAR
+    Master                      14,678.00 SAR
+    Amex                           348.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TABBY                       22,229.00 SAR
+    TAMARA                      15,889.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          AZIZMALL         Cash        -333.97           CashOth Mall Hail                  
+  Receipt_CASH.csv                          AZIZMALL         Cash        -260.02           CashOth Mall Hail                  
+  Receipt_CASH.csv                          FLAMINGO         Cash        14,455.00         CashOth Mall Hail                  
+  Receipt_MADA.csv                          FLAMINGO         Mada        6,529.00          015795017321014                    
+  Receipt_CASH.csv                          FLAMINGO         Cash        4,645.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          FLAMINGO         Mada        6,117.00          015795017321014                    
+  Receipt_MASTER.csv                        FLAMINGO         Master      150.00            015795017321014                    
+  Receipt_VISA.csv                          FLAMINGO         Visa        1,828.00          015795017321014                    
+  Receipt_AMEX.csv                          FLAMINGO         Amex        0.00              015795017321014                    
+  Receipt_CASH.csv                          FLAMINGO         Cash        5,321.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          FLAMINGO         Mada        6,182.00          015795017321014                    
+  Receipt_MASTER.csv                        FLAMINGO         Master      421.00            015795017321014                    
+  Receipt_VISA.csv                          FLAMINGO         Visa        393.00            015795017321014                    
+  Receipt_CASH.csv                          FLAMINGO         Cash        6,227.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          FLAMINGO         Mada        6,764.00          015795017321014                    
+  Receipt_MASTER.csv                        FLAMINGO         Master      273.00            015795017321014                    
+  Receipt_VISA.csv                          FLAMINGO         Visa        1,892.00          015795017321014                    
+  Receipt_AMEX.csv                          FLAMINGO         Amex        149.00            015795017321014                    
+  Receipt_CASH.csv                          FLAMINGO         Cash        5,266.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          FLAMINGO         Mada        6,088.00          015795017321014                    
+  Receipt_MASTER.csv                        FLAMINGO         Master      1,662.00          015795017321014                    
+  Receipt_VISA.csv                          FLAMINGO         Visa        402.00            015795017321014                    
+  Receipt_CASH.csv                          FLAMINGO         Cash        3,683.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          FLAMINGO         Mada        7,946.00          015795017321014                    
+  Receipt_MASTER.csv                        FLAMINGO         Master      348.00            015795017321014                    
+  Receipt_VISA.csv                          FLAMINGO         Visa        1,399.00          015795017321014                    
+  Receipt_CASH.csv                          FLAMINGO         Cash        8,810.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          FLAMINGO         Mada        8,891.00          015795017321014                    
+  Receipt_MASTER.csv                        FLAMINGO         Master      2,123.00          015795017321014                    
+  Receipt_VISA.csv                          FLAMINGO         Visa        1,988.00          015795017321014                    
+  Receipt_CASH.csv                          FLAMINGO         Cash        6,895.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          FLAMINGO         Mada        4,913.00          015795017321014                    
+  Receipt_MASTER.csv                        FLAMINGO         Master      757.00            015795017321014                    
+  Receipt_VISA.csv                          FLAMINGO         Visa        1,122.00          015795017321014                    
+  Receipt_CASH.csv                          FLAMINGO         Cash        6,884.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          FLAMINGO         Mada        4,207.00          015795017321014                    
+  Receipt_MASTER.csv                        FLAMINGO         Master      825.00            015795017321014                    
+  Receipt_VISA.csv                          FLAMINGO         Visa        1,881.00          015795017321014                    
+  Receipt_CASH.csv                          FLAMINGO         Cash        7,152.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          FLAMINGO         Mada        9,918.00          015795017321014                    
+  Receipt_MASTER.csv                        FLAMINGO         Master      587.00            015795017321014                    
+  Receipt_VISA.csv                          FLAMINGO         Visa        891.00            015795017321014                    
+  Receipt_CASH.csv                          FLAMINGO         Cash        6,707.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          FLAMINGO         Mada        5,993.00          015795017321014                    
+  Receipt_MASTER.csv                        FLAMINGO         Master      436.00            015795017321014                    
+  Receipt_VISA.csv                          FLAMINGO         Visa        1,852.00          015795017321014                    
+  Receipt_CASH.csv                          FLAMINGO         Cash        6,279.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          FLAMINGO         Mada        7,766.00          015795017321014                    
+  Receipt_MASTER.csv                        FLAMINGO         Master      895.00            015795017321014                    
+  Receipt_VISA.csv                          FLAMINGO         Visa        1,340.00          015795017321014                    
+  Receipt_CASH.csv                          FLAMINGO         Cash        6,849.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          FLAMINGO         Mada        7,216.00          015795017321014                    
+  Receipt_MASTER.csv                        FLAMINGO         Master      1,053.00          015795017321014                    
+  Receipt_VISA.csv                          FLAMINGO         Visa        596.00            015795017321014                    
+  Receipt_CASH.csv                          FLAMINGO         Cash        6,414.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          FLAMINGO         Mada        6,313.00          015795017321014                    
+  Receipt_VISA.csv                          FLAMINGO         Visa        443.00            015795017321014                    
+  Receipt_CASH.csv                          FLAMINGO         Cash        8,514.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          FLAMINGO         Mada        9,569.00          015795017321014                    
+  Receipt_MASTER.csv                        FLAMINGO         Master      1,023.00          015795017321014                    
+  Receipt_VISA.csv                          FLAMINGO         Visa        1,157.00          015795017321014                    
+  Receipt_AMEX.csv                          FLAMINGO         Amex        199.00            015795017321014                    
+  Receipt_CASH.csv                          FLAMINGO         Cash        7,315.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          FLAMINGO         Mada        4,961.00          015795017321014                    
+  Receipt_MASTER.csv                        FLAMINGO         Master      75.00             015795017321014                    
+  Receipt_VISA.csv                          FLAMINGO         Visa        1,521.00          015795017321014                    
+  Receipt_CASH.csv                          FLAMINGO         Cash        3,055.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          FLAMINGO         Mada        1,910.00          015795017321014                    
+  Receipt_MASTER.csv                        FLAMINGO         Master      299.00            015795017321014                    
+  Receipt_CASH.csv                          FLAMINGO         Cash        3,408.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          FLAMINGO         Mada        1,469.00          015795017321014                    
+  Receipt_VISA.csv                          FLAMINGO         Visa        199.00            015795017321014                    
+  Receipt_CASH.csv                          FLAMINGO         Cash        3,483.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          FLAMINGO         Mada        737.00            015795017321014                    
+  Receipt_MASTER.csv                        FLAMINGO         Master      589.00            015795017321014                    
+  Receipt_VISA.csv                          FLAMINGO         Visa        735.00            015795017321014                    
+  Receipt_CASH.csv                          FLAMINGO         Cash        3,999.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          FLAMINGO         Mada        2,480.00          015795017321014                    
+  Receipt_MASTER.csv                        FLAMINGO         Master      497.00            015795017321014                    
+  Receipt_VISA.csv                          FLAMINGO         Visa        677.00            015795017321014                    
+  Receipt_CASH.csv                          FLAMINGO         Cash        1,614.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          FLAMINGO         Mada        1,748.00          015795017321014                    
+  Receipt_MASTER.csv                        FLAMINGO         Master      742.00            015795017321014                    
+  Receipt_VISA.csv                          FLAMINGO         Visa        199.00            015795017321014                    
+  Receipt_CASH.csv                          FLAMINGO         Cash        1,344.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          FLAMINGO         Mada        1,572.00          015795017321014                    
+  Receipt_MASTER.csv                        FLAMINGO         Master      1,169.00          015795017321014                    
+  Receipt_VISA.csv                          FLAMINGO         Visa        236.00            015795017321014                    
+  Receipt_CASH.csv                          FLAMINGO         Cash        2,427.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          FLAMINGO         Mada        1,806.00          015795017321014                    
+  Receipt_MASTER.csv                        FLAMINGO         Master      357.00            015795017321014                    
+  Receipt_CASH.csv                          FLAMINGO         Cash        3,587.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          FLAMINGO         Mada        3,249.00          015795017321014                    
+  Receipt_MASTER.csv                        FLAMINGO         Master      397.00            015795017321014                    
+  Receipt_VISA.csv                          FLAMINGO         Visa        1,197.00          015795017321014                    
+  Receipt_CASH.csv                          FLAMINGO         Cash        4,236.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          FLAMINGO         Mada        751.00            015795017321014                    
+  Receipt_VISA.csv                          FLAMINGO         Visa        299.00            015795017321014                    
+  Receipt_CASH.csv                          FLAMINGO         Cash        1,057.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          FLAMINGO         Mada        701.00            015795017321014                    
+  Receipt_VISA.csv                          FLAMINGO         Visa        1,043.00          015795017321014                    
+  Receipt_CASH.csv                          FLAMINGO         Cash        3,137.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          FLAMINGO         Mada        2,131.00          015795017321014                    
+  Receipt_VISA.csv                          FLAMINGO         Visa        115.00            015795017321014                    
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            308,527.01                                           
+
+  Per-method totals:
+    Amex              3 file(s)          348.00 SAR
+    Cash             29 file(s)      142,169.01 SAR
+    Mada             27 file(s)      127,927.00 SAR
+    Master           21 file(s)       14,678.00 SAR
+    Visa             24 file(s)       23,405.00 SAR
+    Grand Total                       308,527.01 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Amex         Cash         Mada       Master         Visa          TOTAL
+  ------------------------------------------------------------------------------------------------
+  2026-03-05              0       14,455        6,529            0            0         20,984
+  2026-03-06              0        4,645        6,117          150        1,828         12,740
+  2026-03-07              0        5,321        6,182          421          393         12,317
+  2026-03-08              0        6,227        6,764          273        1,892         15,156
+  2026-03-09            149        5,266        6,088        1,662          402         13,567
+  2026-03-10              0        3,683        7,946          348        1,399         13,376
+  2026-03-11              0        8,810        8,891        2,123        1,988         21,812
+  2026-03-12              0        6,895        4,913          757        1,122         13,687
+  2026-03-13              0        6,550        4,207          825        1,881         13,463
+  2026-03-14              0        7,152        9,918          587          891         18,548
+  2026-03-15              0        6,707        5,993          436        1,852         14,988
+  2026-03-16              0        6,279        7,766          895        1,340         16,280
+  2026-03-17              0        6,849        7,216        1,053          596         15,714
+  2026-03-18              0        6,414        6,313            0          443         13,170
+  2026-03-19              0        8,514        9,569        1,023        1,157         20,263
+  2026-03-20            199        7,315        4,961           75        1,521         14,071
+  2026-03-21              0        3,055        1,910          299            0          5,264
+  2026-03-22              0        3,408        1,469            0          199          5,076
+  2026-03-23              0        3,483          737          589          735          5,544
+  2026-03-24              0        3,999        2,480          497          677          7,653
+  2026-03-25              0        1,614        1,748          742          199          4,303
+  2026-03-26              0        1,344        1,572        1,169          236          4,321
+  2026-03-27              0        2,427        1,806          357            0          4,590
+  2026-03-28              0        3,587        3,249          397        1,197          8,430
+  2026-03-29              0        4,236          751            0          299          5,286
+  2026-03-30              0          797          701            0        1,043          2,541
+  2026-03-31              0        3,137        2,131            0          115          5,383
+  ------------------------------------------------------------------------------------------------
+  TOTAL                 348      142,169      127,927       14,678       23,405        308,527
+
+  VALIDATION:
+    Payment file total (for standard receipts):       308,527.01 SAR
+    Receipt files total:                              308,527.01 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Amex            Payment:       348.00  Receipt:       348.00  Diff:     0.00  ✓
+    Cash            Payment:   142,169.01  Receipt:   142,169.01  Diff:     0.00  ✓
+    Mada            Payment:   127,927.00  Receipt:   127,927.00  Diff:     0.00  ✓
+    Master          Payment:    14,678.00  Receipt:    14,678.00  Diff:     0.00  ✓
+    Visa            Payment:    23,405.00  Receipt:    23,405.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (104 rows, 308,527.01 SAR)
+  Per-method grand total                   308,527.01 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 75
+    Total amount: -1,756.8306 SAR
+    Payment methods included: ['AMEX', 'Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -1,756.8306 SAR
+    Per-method total:               -1,756.8306 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    AMEX                3 rows            -36.0397 SAR  ⚠ 3 NEGATIVE AMOUNTS!
+    Mada               27 rows           -888.6786 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             21 rows           -320.7137 SAR  ⚠ 21 NEGATIVE AMOUNTS!
+    Visa               24 rows           -511.3986 SAR  ⚠ 24 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              5
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       128,794.00 SAR
+    Visa                        23,405.00 SAR
+    Master                      14,678.00 SAR
+    Amex                           847.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                       148,908.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED              148,908.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  FLAMINGO         Mada        6,529.00          0.01      -45.0501          015795017321014               
+  FLAMINGO         Mada        6,117.00          0.01      -42.2073          015795017321014               
+  FLAMINGO         Master      150.00            0.02      -3.2775           015795017321014               
+  FLAMINGO         Visa        1,828.00          0.02      -39.9418          015795017321014               
+  FLAMINGO         Amex        499.00            0.04      -21.2324          015795017321014               
+  FLAMINGO         Mada        6,252.00          0.01      -43.1388          015795017321014               
+  FLAMINGO         Master      421.00            0.02      -9.1988           015795017321014               
+  FLAMINGO         Visa        393.00            0.02      -8.5870           015795017321014               
+  FLAMINGO         Mada        6,963.00          0.01      -48.0447          015795017321014               
+  FLAMINGO         Master      273.00            0.02      -5.9650           015795017321014               
+  FLAMINGO         Visa        1,892.00          0.02      -41.3402          015795017321014               
+  FLAMINGO         Amex        149.00            0.04      -6.3399           015795017321014               
+  FLAMINGO         Mada        6,088.00          0.01      -42.0072          015795017321014               
+  FLAMINGO         Master      1,662.00          0.02      -36.3147          015795017321014               
+  FLAMINGO         Visa        402.00            0.02      -8.7837           015795017321014               
+  FLAMINGO         Mada        8,196.00          0.01      -56.5524          015795017321014               
+  FLAMINGO         Master      348.00            0.02      -7.6038           015795017321014               
+  FLAMINGO         Visa        1,399.00          0.02      -30.5681          015795017321014               
+  FLAMINGO         Mada        8,891.00          0.01      -61.3479          015795017321014               
+  FLAMINGO         Master      2,123.00          0.02      -46.3875          015795017321014               
+  FLAMINGO         Visa        1,988.00          0.02      -43.4378          015795017321014               
+  FLAMINGO         Mada        4,913.00          0.01      -33.8997          015795017321014               
+  FLAMINGO         Master      757.00            0.02      -16.5404          015795017321014               
+  FLAMINGO         Visa        1,122.00          0.02      -24.5157          015795017321014               
+  FLAMINGO         Mada        4,207.00          0.01      -29.0283          015795017321014               
+  FLAMINGO         Master      825.00            0.02      -18.0262          015795017321014               
+  FLAMINGO         Visa        1,881.00          0.02      -41.0998          015795017321014               
+  FLAMINGO         Mada        9,918.00          0.01      -68.4342          015795017321014               
+  FLAMINGO         Master      587.00            0.02      -12.8259          015795017321014               
+  FLAMINGO         Visa        891.00            0.02      -19.4683          015795017321014               
+  FLAMINGO         Mada        6,142.00          0.01      -42.3798          015795017321014               
+  FLAMINGO         Master      436.00            0.02      -9.5266           015795017321014               
+  FLAMINGO         Visa        1,852.00          0.02      -40.4662          015795017321014               
+  FLAMINGO         Mada        7,766.00          0.01      -53.5854          015795017321014               
+  FLAMINGO         Master      895.00            0.02      -19.5557          015795017321014               
+  FLAMINGO         Visa        1,340.00          0.02      -29.2790          015795017321014               
+  FLAMINGO         Mada        7,216.00          0.01      -49.7904          015795017321014               
+  FLAMINGO         Master      1,053.00          0.02      -23.0080          015795017321014               
+  FLAMINGO         Visa        596.00            0.02      -13.0226          015795017321014               
+  FLAMINGO         Mada        6,313.00          0.01      -43.5597          015795017321014               
+  FLAMINGO         Visa        443.00            0.02      -9.6795           015795017321014               
+  FLAMINGO         Mada        9,768.00          0.01      -67.3992          015795017321014               
+  FLAMINGO         Master      1,023.00          0.02      -22.3526          015795017321014               
+  FLAMINGO         Visa        1,157.00          0.02      -25.2804          015795017321014               
+  FLAMINGO         Amex        199.00            0.04      -8.4674           015795017321014               
+  FLAMINGO         Mada        4,961.00          0.01      -34.2309          015795017321014               
+  FLAMINGO         Master      75.00             0.02      -1.6387           015795017321014               
+  FLAMINGO         Visa        1,521.00          0.02      -33.2338          015795017321014               
+  FLAMINGO         Mada        1,910.00          0.01      -13.1790          015795017321014               
+  FLAMINGO         Master      299.00            0.02      -6.5331           015795017321014               
+  FLAMINGO         Mada        1,469.00          0.01      -10.1361          015795017321014               
+  FLAMINGO         Visa        199.00            0.02      -4.3481           015795017321014               
+  FLAMINGO         Mada        737.00            0.01      -5.0853           015795017321014               
+  FLAMINGO         Master      589.00            0.02      -12.8696          015795017321014               
+  FLAMINGO         Visa        735.00            0.02      -16.0597          015795017321014               
+  FLAMINGO         Mada        2,480.00          0.01      -17.1120          015795017321014               
+  FLAMINGO         Master      497.00            0.02      -10.8594          015795017321014               
+  FLAMINGO         Visa        677.00            0.02      -14.7924          015795017321014               
+  FLAMINGO         Mada        1,748.00          0.01      -12.0612          015795017321014               
+  FLAMINGO         Master      742.00            0.02      -16.2127          015795017321014               
+  FLAMINGO         Visa        199.00            0.02      -4.3481           015795017321014               
+  FLAMINGO         Mada        1,572.00          0.01      -10.8468          015795017321014               
+  FLAMINGO         Master      1,169.00          0.02      -25.5426          015795017321014               
+  FLAMINGO         Visa        236.00            0.02      -5.1566           015795017321014               
+  FLAMINGO         Mada        1,806.00          0.01      -12.4614          015795017321014               
+  FLAMINGO         Master      357.00            0.02      -7.8004           015795017321014               
+  FLAMINGO         Mada        3,249.00          0.01      -22.4181          015795017321014               
+  FLAMINGO         Master      397.00            0.02      -8.6745           015795017321014               
+  FLAMINGO         Visa        1,197.00          0.02      -26.1544          015795017321014               
+  FLAMINGO         Mada        751.00            0.01      -5.1819           015795017321014               
+  FLAMINGO         Visa        299.00            0.02      -6.5331           015795017321014               
+  FLAMINGO         Mada        701.00            0.01      -4.8369           015795017321014               
+  FLAMINGO         Visa        1,043.00          0.02      -22.7895          015795017321014               
+  FLAMINGO         Mada        2,131.00          0.01      -14.7039          015795017321014               
+  FLAMINGO         Visa        115.00            0.02      -2.5128           015795017321014               
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -1,756.8306                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (75 rows, -1,756.8306 SAR)
+  Per-method grand total                   -1,756.8306 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  301,324.22 SAR         █
+  █  Total Standard Receipt amt               617,054.02 SAR         █
+  █  Difference                               315,729.80 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  301,324.22 SAR
+  Total Standard Receipt amt               617,054.02 SAR
+  Difference                               315,729.80 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0001209
+  >>> Next run START_TXN_SEQUENCE =        1210  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 20:40:30
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

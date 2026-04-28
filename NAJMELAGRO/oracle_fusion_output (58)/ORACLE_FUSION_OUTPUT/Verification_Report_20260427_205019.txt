@@ -1,0 +1,426 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 08:50:17 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         187,265.56 SAR     ║
+║  [ℹ] Standard Receipt Total                   373,216.00 SAR     ║
+║  [✗] Amount Reconciliation                    Diff: 185,950.44 SAR║
+║  [ℹ] Total Invoices                           871                ║
+║  [ℹ] Receipt Files Generated                  5                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          NAJMELAGRO.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             NAJMELAGRO_payment_line_5_to_31_March.xlsx
+  Segment 1 prefix                         62186607
+  Segment 2 prefix                         09778594
+
+  AR rows read                             4689
+  Unique invoices loaded                   870
+  Unique transactions (BLK)                65
+  Total AR amount                          187,352.56 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Cash                       230           44,083.00             
+  Mada                       539           121,207.00            
+  Master                     15            4,415.00              
+  TABBY                      36            9,379.00              
+  TAMARA                     66            19,316.00             
+  Visa                       80            16,903.00             
+  ----------------------------------------------------------------------
+  TOTAL                      966           215,303.00            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  NAJMELAGRO                      768         186,695.00          
+  NAJPARK                         1           -87.00              
+  RYDGALLER                       102         28,695.00           
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 80
+    Total amount: 186,608.00 SAR
+    Payment methods included: ['Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              186,608.00 SAR
+    Per-method total:                186,608.00 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    Cash               25 rows           44,083.00 SAR  ⚠ 2 NEGATIVE AMOUNTS!
+    Mada               27 rows          121,207.00 SAR  ✓
+    Master              8 rows            4,415.00 SAR  ✓
+    Visa               20 rows           16,903.00 SAR  ⚠ 1 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    102
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   5
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       121,207.00 SAR
+    Cash                        44,083.00 SAR
+    Visa                        16,903.00 SAR
+    Master                       4,415.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TAMARA                      19,316.00 SAR
+    TABBY                        9,379.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          NAJMELAGRO       Cash        1,624.00          Cash NAJMELAGRO                    
+  Receipt_MADA.csv                          NAJMELAGRO       Mada        5,776.00          157-95017321-NAJMELAGRO            
+  Receipt_VISA.csv                          NAJMELAGRO       Visa        1,004.00          157-95017321-NAJMELAGRO            
+  Receipt_CASH.csv                          NAJMELAGRO       Cash        817.00            Cash NAJMELAGRO                    
+  Receipt_MADA.csv                          NAJMELAGRO       Mada        3,842.00          157-95017321-NAJMELAGRO            
+  Receipt_VISA.csv                          NAJMELAGRO       Visa        710.00            157-95017321-NAJMELAGRO            
+  Receipt_CASH.csv                          NAJMELAGRO       Cash        1,365.00          Cash NAJMELAGRO                    
+  Receipt_MADA.csv                          NAJMELAGRO       Mada        8,256.00          157-95017321-NAJMELAGRO            
+  Receipt_VISA.csv                          NAJMELAGRO       Visa        -115.00           157-95017321-NAJMELAGRO            
+  Receipt_CASH.csv                          NAJMELAGRO       Cash        1,365.00          Cash NAJMELAGRO                    
+  Receipt_MADA.csv                          NAJMELAGRO       Mada        6,269.00          157-95017321-NAJMELAGRO            
+  Receipt_VISA.csv                          NAJMELAGRO       Visa        598.00            157-95017321-NAJMELAGRO            
+  Receipt_CASH.csv                          NAJMELAGRO       Cash        1,703.00          Cash NAJMELAGRO                    
+  Receipt_MADA.csv                          NAJMELAGRO       Mada        7,346.00          157-95017321-NAJMELAGRO            
+  Receipt_VISA.csv                          NAJMELAGRO       Visa        1,141.00          157-95017321-NAJMELAGRO            
+  Receipt_CASH.csv                          NAJMELAGRO       Cash        1,866.00          Cash NAJMELAGRO                    
+  Receipt_MADA.csv                          NAJMELAGRO       Mada        4,209.00          157-95017321-NAJMELAGRO            
+  Receipt_MASTER.csv                        NAJMELAGRO       Master      627.00            157-95017321-NAJMELAGRO            
+  Receipt_VISA.csv                          NAJMELAGRO       Visa        924.00            157-95017321-NAJMELAGRO            
+  Receipt_CASH.csv                          NAJMELAGRO       Cash        4,361.00          Cash NAJMELAGRO                    
+  Receipt_MADA.csv                          NAJMELAGRO       Mada        8,490.00          157-95017321-NAJMELAGRO            
+  Receipt_VISA.csv                          NAJMELAGRO       Visa        2,592.00          157-95017321-NAJMELAGRO            
+  Receipt_CASH.csv                          NAJMELAGRO       Cash        3,118.00          Cash NAJMELAGRO                    
+  Receipt_MADA.csv                          NAJMELAGRO       Mada        5,472.00          157-95017321-NAJMELAGRO            
+  Receipt_MASTER.csv                        NAJMELAGRO       Master      545.00            157-95017321-NAJMELAGRO            
+  Receipt_VISA.csv                          NAJMELAGRO       Visa        450.00            157-95017321-NAJMELAGRO            
+  Receipt_CASH.csv                          NAJMELAGRO       Cash        3,379.00          Cash NAJMELAGRO                    
+  Receipt_MADA.csv                          NAJMELAGRO       Mada        5,162.00          157-95017321-NAJMELAGRO            
+  Receipt_MASTER.csv                        NAJMELAGRO       Master      475.00            157-95017321-NAJMELAGRO            
+  Receipt_VISA.csv                          NAJMELAGRO       Visa        548.00            157-95017321-NAJMELAGRO            
+  Receipt_CASH.csv                          NAJMELAGRO       Cash        2,503.00          Cash NAJMELAGRO                    
+  Receipt_MADA.csv                          NAJMELAGRO       Mada        7,690.00          157-95017321-NAJMELAGRO            
+  Receipt_VISA.csv                          NAJMELAGRO       Visa        421.00            157-95017321-NAJMELAGRO            
+  Receipt_CASH.csv                          NAJMELAGRO       Cash        2,301.00          Cash NAJMELAGRO                    
+  Receipt_MADA.csv                          NAJMELAGRO       Mada        6,536.00          157-95017321-NAJMELAGRO            
+  Receipt_VISA.csv                          NAJMELAGRO       Visa        2,138.00          157-95017321-NAJMELAGRO            
+  Receipt_CASH.csv                          NAJMELAGRO       Cash        3,860.00          Cash NAJMELAGRO                    
+  Receipt_MADA.csv                          NAJMELAGRO       Mada        8,319.00          157-95017321-NAJMELAGRO            
+  Receipt_VISA.csv                          NAJMELAGRO       Visa        1,667.00          157-95017321-NAJMELAGRO            
+  Receipt_CASH.csv                          NAJMELAGRO       Cash        2,607.00          Cash NAJMELAGRO                    
+  Receipt_MADA.csv                          NAJMELAGRO       Mada        10,093.00         157-95017321-NAJMELAGRO            
+  Receipt_MASTER.csv                        NAJMELAGRO       Master      536.00            157-95017321-NAJMELAGRO            
+  Receipt_VISA.csv                          NAJMELAGRO       Visa        199.00            157-95017321-NAJMELAGRO            
+  Receipt_CASH.csv                          NAJMELAGRO       Cash        3,792.00          Cash NAJMELAGRO                    
+  Receipt_MADA.csv                          NAJMELAGRO       Mada        10,185.00         157-95017321-NAJMELAGRO            
+  Receipt_MASTER.csv                        NAJMELAGRO       Master      547.00            157-95017321-NAJMELAGRO            
+  Receipt_VISA.csv                          NAJMELAGRO       Visa        1,907.00          157-95017321-NAJMELAGRO            
+  Receipt_CASH.csv                          NAJMELAGRO       Cash        5,155.00          Cash NAJMELAGRO                    
+  Receipt_MADA.csv                          NAJMELAGRO       Mada        8,193.00          157-95017321-NAJMELAGRO            
+  Receipt_VISA.csv                          NAJMELAGRO       Visa        802.00            157-95017321-NAJMELAGRO            
+  Receipt_CASH.csv                          NAJMELAGRO       Cash        1,129.00          Cash NAJMELAGRO                    
+  Receipt_MADA.csv                          NAJMELAGRO       Mada        2,443.00          157-95017321-NAJMELAGRO            
+  Receipt_CASH.csv                          NAJMELAGRO       Cash        259.00            Cash NAJMELAGRO                    
+  Receipt_MADA.csv                          NAJMELAGRO       Mada        70.00             157-95017321-NAJMELAGRO            
+  Receipt_MASTER.csv                        NAJMELAGRO       Master      15.00             157-95017321-NAJMELAGRO            
+  Receipt_CASH.csv                          NAJMELAGRO       Cash        398.00            Cash NAJMELAGRO                    
+  Receipt_MADA.csv                          NAJMELAGRO       Mada        574.00            157-95017321-NAJMELAGRO            
+  Receipt_VISA.csv                          NAJMELAGRO       Visa        250.00            157-95017321-NAJMELAGRO            
+  Receipt_MADA.csv                          NAJMELAGRO       Mada        1,272.00          157-95017321-NAJMELAGRO            
+  Receipt_VISA.csv                          NAJMELAGRO       Visa        525.00            157-95017321-NAJMELAGRO            
+  Receipt_MADA.csv                          NAJMELAGRO       Mada        521.00            157-95017321-NAJMELAGRO            
+  Receipt_CASH.csv                          NAJMELAGRO       Cash        835.00            Cash NAJMELAGRO                    
+  Receipt_MADA.csv                          NAJMELAGRO       Mada        809.00            157-95017321-NAJMELAGRO            
+  Receipt_MADA.csv                          NAJMELAGRO       Mada        1,296.00          157-95017321-NAJMELAGRO            
+  Receipt_VISA.csv                          NAJMELAGRO       Visa        199.00            157-95017321-NAJMELAGRO            
+  Receipt_CASH.csv                          NAJMELAGRO       Cash        -149.00           Cash NAJMELAGRO                    
+  Receipt_MADA.csv                          NAJMELAGRO       Mada        3,156.00          157-95017321-NAJMELAGRO            
+  Receipt_MASTER.csv                        NAJMELAGRO       Master      326.00            157-95017321-NAJMELAGRO            
+  Receipt_CASH.csv                          NAJMELAGRO       Cash        1,048.00          Cash NAJMELAGRO                    
+  Receipt_MADA.csv                          NAJMELAGRO       Mada        1,261.00          157-95017321-NAJMELAGRO            
+  Receipt_MASTER.csv                        NAJMELAGRO       Master      1,344.00          157-95017321-NAJMELAGRO            
+  Receipt_CASH.csv                          NAJMELAGRO       Cash        448.00            Cash NAJMELAGRO                    
+  Receipt_MADA.csv                          NAJMELAGRO       Mada        1,007.00          157-95017321-NAJMELAGRO            
+  Receipt_VISA.csv                          NAJMELAGRO       Visa        195.00            157-95017321-NAJMELAGRO            
+  Receipt_CASH.csv                          NAJMELAGRO       Cash        87.00             Cash NAJMELAGRO                    
+  Receipt_MADA.csv                          NAJMELAGRO       Mada        1,521.00          157-95017321-NAJMELAGRO            
+  Receipt_CASH.csv                          NAJMELAGRO       Cash        299.00            Cash NAJMELAGRO                    
+  Receipt_MADA.csv                          NAJMELAGRO       Mada        1,439.00          157-95017321-NAJMELAGRO            
+  Receipt_VISA.csv                          NAJMELAGRO       Visa        748.00            157-95017321-NAJMELAGRO            
+  Receipt_CASH.csv                          NAJPARK          Cash        -87.00            Cash NAJPARK                       
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            186,608.00                                           
+
+  Per-method totals:
+    Cash             25 file(s)       44,083.00 SAR
+    Mada             27 file(s)      121,207.00 SAR
+    Master            8 file(s)        4,415.00 SAR
+    Visa             20 file(s)       16,903.00 SAR
+    Grand Total                       186,608.00 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Cash         Mada       Master         Visa          TOTAL
+  ----------------------------------------------------------------------------------
+  2026-03-05          1,624        5,776            0        1,004          8,404
+  2026-03-06            817        3,842            0          710          5,369
+  2026-03-07          1,365        8,256            0         -115          9,506
+  2026-03-08          1,365        6,269            0          598          8,232
+  2026-03-09          1,703        7,346            0        1,141         10,190
+  2026-03-10          1,866        4,209          627          924          7,626
+  2026-03-11          4,361        8,490            0        2,592         15,443
+  2026-03-12          3,118        5,472          545          450          9,585
+  2026-03-13          3,379        5,162          475          548          9,564
+  2026-03-14          2,503        7,690            0          421         10,614
+  2026-03-15          2,301        6,536            0        2,138         10,975
+  2026-03-16          3,860        8,319            0        1,667         13,846
+  2026-03-17          2,607       10,093          536          199         13,435
+  2026-03-18          3,792       10,185          547        1,907         16,431
+  2026-03-19          5,155        8,193            0          802         14,150
+  2026-03-20          1,129        2,443            0            0          3,572
+  2026-03-21            259           70           15            0            344
+  2026-03-22            398          574            0          250          1,222
+  2026-03-23              0        1,272            0          525          1,797
+  2026-03-24              0          521            0            0            521
+  2026-03-25            748          809            0            0          1,557
+  2026-03-26              0        1,296            0          199          1,495
+  2026-03-27           -149        3,156          326            0          3,333
+  2026-03-28          1,048        1,261        1,344            0          3,653
+  2026-03-29            448        1,007            0          195          1,650
+  2026-03-30             87        1,521            0            0          1,608
+  2026-03-31            299        1,439            0          748          2,486
+  ----------------------------------------------------------------------------------
+  TOTAL              44,083      121,207        4,415       16,903        186,608
+
+  VALIDATION:
+    Payment file total (for standard receipts):       186,608.00 SAR
+    Receipt files total:                              186,608.00 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Cash            Payment:    44,083.00  Receipt:    44,083.00  Diff:     0.00  ✓
+    Mada            Payment:   121,207.00  Receipt:   121,207.00  Diff:     0.00  ✓
+    Master          Payment:     4,415.00  Receipt:     4,415.00  Diff:     0.00  ✓
+    Visa            Payment:    16,903.00  Receipt:    16,903.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (80 rows, 186,608.00 SAR)
+  Per-method grand total                   186,608.00 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 54
+    Total amount: -1,316.1871 SAR
+    Payment methods included: ['Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -1,316.1871 SAR
+    Per-method total:               -1,316.1871 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    Mada               27 rows           -846.6093 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master              8 rows            -96.4676 SAR  ⚠ 8 NEGATIVE AMOUNTS!
+    Visa               19 rows           -373.1102 SAR  ⚠ 19 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              4
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       122,697.00 SAR
+    Visa                        17,076.00 SAR
+    Master                       4,415.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                        45,184.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED               45,184.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  NAJMELAGRO       Mada        5,776.00          0.01      -39.8544          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Visa        1,004.00          0.02      -21.9374          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Mada        3,842.00          0.01      -26.5098          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Visa        710.00            0.02      -15.5135          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Mada        8,256.00          0.01      -56.9664          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Mada        6,568.00          0.01      -45.3192          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Visa        598.00            0.02      -13.0663          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Mada        7,346.00          0.01      -50.6874          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Visa        1,141.00          0.02      -24.9308          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Mada        4,209.00          0.01      -29.0421          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Master      627.00            0.02      -13.6999          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Visa        924.00            0.02      -20.1894          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Mada        8,639.00          0.01      -59.6091          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Visa        2,592.00          0.02      -56.6352          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Mada        5,472.00          0.01      -37.7568          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Master      545.00            0.02      -11.9082          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Visa        450.00            0.02      -9.8325           157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Mada        5,361.00          0.01      -36.9909          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Master      475.00            0.02      -10.3788          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Visa        548.00            0.02      -11.9738          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Mada        7,690.00          0.01      -53.0610          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Visa        421.00            0.02      -9.1988           157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Mada        6,536.00          0.01      -45.0984          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Visa        2,138.00          0.02      -46.7153          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Mada        8,319.00          0.01      -57.4011          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Visa        1,667.00          0.02      -36.4239          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Mada        10,093.00         0.01      -69.6417          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Master      536.00            0.02      -11.7116          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Visa        199.00            0.02      -4.3481           157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Mada        10,604.00         0.01      -73.1676          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Master      547.00            0.02      -11.9519          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Visa        1,907.00          0.02      -41.6679          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Mada        8,530.00          0.01      -58.8570          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Visa        802.00            0.02      -17.5237          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Mada        2,443.00          0.01      -16.8567          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Mada        70.00             0.01      -0.4830           157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Master      15.00             0.02      -0.3277           157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Mada        574.00            0.01      -3.9606           157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Visa        250.00            0.02      -5.4625           157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Mada        1,272.00          0.01      -8.7768           157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Visa        525.00            0.02      -11.4712          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Mada        521.00            0.01      -3.5949           157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Mada        809.00            0.01      -5.5821           157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Mada        1,296.00          0.01      -8.9424           157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Visa        199.00            0.02      -4.3481           157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Mada        3,156.00          0.01      -21.7764          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Master      326.00            0.02      -7.1231           157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Mada        1,261.00          0.01      -8.7009           157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Master      1,344.00          0.02      -29.3664          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Mada        1,007.00          0.01      -6.9483           157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Visa        195.00            0.02      -4.2607           157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Mada        1,521.00          0.01      -10.4949          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Mada        1,526.00          0.01      -10.5294          157-95017321-NAJMELAGRO       
+  NAJMELAGRO       Visa        806.00            0.02      -17.6111          157-95017321-NAJMELAGRO       
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -1,316.1871                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (54 rows, -1,316.1871 SAR)
+  Per-method grand total                   -1,316.1871 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  187,265.56 SAR         █
+  █  Total Standard Receipt amt               373,216.00 SAR         █
+  █  Difference                               185,950.44 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  187,265.56 SAR
+  Total Standard Receipt amt               373,216.00 SAR
+  Difference                               185,950.44 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0002012
+  >>> Next run START_TXN_SEQUENCE =        2013  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 20:50:19
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

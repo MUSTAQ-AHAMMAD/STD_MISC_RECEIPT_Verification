@@ -1,0 +1,464 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 08:56:28 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         475,222.63 SAR     ║
+║  [ℹ] Standard Receipt Total                   933,219.30 SAR     ║
+║  [✗] Amount Reconciliation                    Diff: 457,996.67 SAR║
+║  [ℹ] Total Invoices                           2,431              ║
+║  [ℹ] Receipt Files Generated                  6                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          QUNKYLPLZA.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             QUNKYLPLZA_payment_line_5_to_31_March.xlsx
+  Segment 1 prefix                         42539852
+  Segment 2 prefix                         08440999
+
+  AR rows read                             12127
+  Unique invoices loaded                   2431
+  Unique transactions (BLK)                73
+  Total AR amount                          475,222.63 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Amex                       2             0.00                  
+  Cash                       474           76,183.65             
+  Mada                       1685          356,595.00            
+  Master                     24            5,675.00              
+  TABBY                      148           39,232.00             
+  TAMARA                     156           40,608.00             
+  Visa                       131           28,156.00             
+  ----------------------------------------------------------------------
+  TOTAL                      2620          546,449.65            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  QUNKYLPLZA                      2127        466,609.65          
+  RYDGALLER                       304         79,840.00           
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 97
+    Total amount: 466,609.65 SAR
+    Payment methods included: ['AMEX', 'Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              466,609.65 SAR
+    Per-method total:                466,609.65 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    AMEX                2 rows                0.00 SAR  ⚠ 1 NEGATIVE AMOUNTS!
+    Cash               27 rows           76,183.65 SAR  ✓
+    Mada               27 rows          356,595.00 SAR  ✓
+    Master             15 rows            5,675.00 SAR  ✓
+    Visa               26 rows           28,156.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    304
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   6
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       356,595.00 SAR
+    Cash                        76,183.65 SAR
+    Visa                        28,156.00 SAR
+    Master                       5,675.00 SAR
+    Amex                             0.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TAMARA                      40,608.00 SAR
+    TABBY                       39,232.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          QUNKYLPLZA       Cash        3,269.00          Cash QUNKYLPLZA                    
+  Receipt_MADA.csv                          QUNKYLPLZA       Mada        19,841.00         157-95017321-QUNKYLPLZA            
+  Receipt_MASTER.csv                        QUNKYLPLZA       Master      299.00            157-95017321-QUNKYLPLZA            
+  Receipt_VISA.csv                          QUNKYLPLZA       Visa        568.00            157-95017321-QUNKYLPLZA            
+  Receipt_CASH.csv                          QUNKYLPLZA       Cash        390.00            Cash QUNKYLPLZA                    
+  Receipt_MADA.csv                          QUNKYLPLZA       Mada        14,440.00         157-95017321-QUNKYLPLZA            
+  Receipt_VISA.csv                          QUNKYLPLZA       Visa        797.00            157-95017321-QUNKYLPLZA            
+  Receipt_CASH.csv                          QUNKYLPLZA       Cash        1,195.00          Cash QUNKYLPLZA                    
+  Receipt_MADA.csv                          QUNKYLPLZA       Mada        15,980.00         157-95017321-QUNKYLPLZA            
+  Receipt_MASTER.csv                        QUNKYLPLZA       Master      249.00            157-95017321-QUNKYLPLZA            
+  Receipt_VISA.csv                          QUNKYLPLZA       Visa        887.00            157-95017321-QUNKYLPLZA            
+  Receipt_CASH.csv                          QUNKYLPLZA       Cash        942.00            Cash QUNKYLPLZA                    
+  Receipt_MADA.csv                          QUNKYLPLZA       Mada        21,848.00         157-95017321-QUNKYLPLZA            
+  Receipt_MASTER.csv                        QUNKYLPLZA       Master      299.00            157-95017321-QUNKYLPLZA            
+  Receipt_VISA.csv                          QUNKYLPLZA       Visa        1,312.00          157-95017321-QUNKYLPLZA            
+  Receipt_CASH.csv                          QUNKYLPLZA       Cash        3,665.00          Cash QUNKYLPLZA                    
+  Receipt_MADA.csv                          QUNKYLPLZA       Mada        15,810.00         157-95017321-QUNKYLPLZA            
+  Receipt_MASTER.csv                        QUNKYLPLZA       Master      199.00            157-95017321-QUNKYLPLZA            
+  Receipt_VISA.csv                          QUNKYLPLZA       Visa        538.00            157-95017321-QUNKYLPLZA            
+  Receipt_AMEX.csv                          QUNKYLPLZA       Amex        199.00            157-95017321-QUNKYLPLZA            
+  Receipt_CASH.csv                          QUNKYLPLZA       Cash        2,737.00          Cash QUNKYLPLZA                    
+  Receipt_MADA.csv                          QUNKYLPLZA       Mada        15,981.00         157-95017321-QUNKYLPLZA            
+  Receipt_MASTER.csv                        QUNKYLPLZA       Master      299.00            157-95017321-QUNKYLPLZA            
+  Receipt_VISA.csv                          QUNKYLPLZA       Visa        1,035.00          157-95017321-QUNKYLPLZA            
+  Receipt_AMEX.csv                          QUNKYLPLZA       Amex        -199.00           157-95017321-QUNKYLPLZA            
+  Receipt_CASH.csv                          QUNKYLPLZA       Cash        3,000.00          Cash QUNKYLPLZA                    
+  Receipt_MADA.csv                          QUNKYLPLZA       Mada        24,345.00         157-95017321-QUNKYLPLZA            
+  Receipt_MASTER.csv                        QUNKYLPLZA       Master      199.00            157-95017321-QUNKYLPLZA            
+  Receipt_VISA.csv                          QUNKYLPLZA       Visa        735.00            157-95017321-QUNKYLPLZA            
+  Receipt_CASH.csv                          QUNKYLPLZA       Cash        4,727.00          Cash QUNKYLPLZA                    
+  Receipt_MADA.csv                          QUNKYLPLZA       Mada        22,925.00         157-95017321-QUNKYLPLZA            
+  Receipt_VISA.csv                          QUNKYLPLZA       Visa        1,107.00          157-95017321-QUNKYLPLZA            
+  Receipt_CASH.csv                          QUNKYLPLZA       Cash        9,382.00          Cash QUNKYLPLZA                    
+  Receipt_MADA.csv                          QUNKYLPLZA       Mada        14,068.00         157-95017321-QUNKYLPLZA            
+  Receipt_MASTER.csv                        QUNKYLPLZA       Master      116.00            157-95017321-QUNKYLPLZA            
+  Receipt_VISA.csv                          QUNKYLPLZA       Visa        573.00            157-95017321-QUNKYLPLZA            
+  Receipt_CASH.csv                          QUNKYLPLZA       Cash        4,582.00          Cash QUNKYLPLZA                    
+  Receipt_MADA.csv                          QUNKYLPLZA       Mada        20,257.00         157-95017321-QUNKYLPLZA            
+  Receipt_MASTER.csv                        QUNKYLPLZA       Master      513.00            157-95017321-QUNKYLPLZA            
+  Receipt_VISA.csv                          QUNKYLPLZA       Visa        1,397.00          157-95017321-QUNKYLPLZA            
+  Receipt_CASH.csv                          QUNKYLPLZA       Cash        5,329.00          Cash QUNKYLPLZA                    
+  Receipt_MADA.csv                          QUNKYLPLZA       Mada        22,818.00         157-95017321-QUNKYLPLZA            
+  Receipt_MASTER.csv                        QUNKYLPLZA       Master      199.00            157-95017321-QUNKYLPLZA            
+  Receipt_VISA.csv                          QUNKYLPLZA       Visa        929.00            157-95017321-QUNKYLPLZA            
+  Receipt_CASH.csv                          QUNKYLPLZA       Cash        2,236.00          Cash QUNKYLPLZA                    
+  Receipt_MADA.csv                          QUNKYLPLZA       Mada        24,235.00         157-95017321-QUNKYLPLZA            
+  Receipt_MASTER.csv                        QUNKYLPLZA       Master      628.00            157-95017321-QUNKYLPLZA            
+  Receipt_VISA.csv                          QUNKYLPLZA       Visa        1,082.00          157-95017321-QUNKYLPLZA            
+  Receipt_CASH.csv                          QUNKYLPLZA       Cash        4,246.00          Cash QUNKYLPLZA                    
+  Receipt_MADA.csv                          QUNKYLPLZA       Mada        30,985.00         157-95017321-QUNKYLPLZA            
+  Receipt_MASTER.csv                        QUNKYLPLZA       Master      85.00             157-95017321-QUNKYLPLZA            
+  Receipt_VISA.csv                          QUNKYLPLZA       Visa        1,933.00          157-95017321-QUNKYLPLZA            
+  Receipt_CASH.csv                          QUNKYLPLZA       Cash        4,942.00          Cash QUNKYLPLZA                    
+  Receipt_MADA.csv                          QUNKYLPLZA       Mada        22,698.00         157-95017321-QUNKYLPLZA            
+  Receipt_MASTER.csv                        QUNKYLPLZA       Master      1,041.00          157-95017321-QUNKYLPLZA            
+  Receipt_VISA.csv                          QUNKYLPLZA       Visa        1,389.00          157-95017321-QUNKYLPLZA            
+  Receipt_CASH.csv                          QUNKYLPLZA       Cash        9,436.00          Cash QUNKYLPLZA                    
+  Receipt_MADA.csv                          QUNKYLPLZA       Mada        26,687.00         157-95017321-QUNKYLPLZA            
+  Receipt_MASTER.csv                        QUNKYLPLZA       Master      597.00            157-95017321-QUNKYLPLZA            
+  Receipt_VISA.csv                          QUNKYLPLZA       Visa        1,954.00          157-95017321-QUNKYLPLZA            
+  Receipt_CASH.csv                          QUNKYLPLZA       Cash        4,239.00          Cash QUNKYLPLZA                    
+  Receipt_MADA.csv                          QUNKYLPLZA       Mada        7,158.00          157-95017321-QUNKYLPLZA            
+  Receipt_MASTER.csv                        QUNKYLPLZA       Master      728.00            157-95017321-QUNKYLPLZA            
+  Receipt_VISA.csv                          QUNKYLPLZA       Visa        1,111.00          157-95017321-QUNKYLPLZA            
+  Receipt_CASH.csv                          QUNKYLPLZA       Cash        1,407.00          Cash QUNKYLPLZA                    
+  Receipt_MADA.csv                          QUNKYLPLZA       Mada        1,722.00          157-95017321-QUNKYLPLZA            
+  Receipt_VISA.csv                          QUNKYLPLZA       Visa        571.00            157-95017321-QUNKYLPLZA            
+  Receipt_CASH.csv                          QUNKYLPLZA       Cash        100.00            Cash QUNKYLPLZA                    
+  Receipt_MADA.csv                          QUNKYLPLZA       Mada        2,694.00          157-95017321-QUNKYLPLZA            
+  Receipt_VISA.csv                          QUNKYLPLZA       Visa        29.00             157-95017321-QUNKYLPLZA            
+  Receipt_CASH.csv                          QUNKYLPLZA       Cash        1,320.00          Cash QUNKYLPLZA                    
+  Receipt_MADA.csv                          QUNKYLPLZA       Mada        1,100.00          157-95017321-QUNKYLPLZA            
+  Receipt_MASTER.csv                        QUNKYLPLZA       Master      224.00            157-95017321-QUNKYLPLZA            
+  Receipt_VISA.csv                          QUNKYLPLZA       Visa        498.00            157-95017321-QUNKYLPLZA            
+  Receipt_CASH.csv                          QUNKYLPLZA       Cash        506.00            Cash QUNKYLPLZA                    
+  Receipt_MADA.csv                          QUNKYLPLZA       Mada        946.00            157-95017321-QUNKYLPLZA            
+  Receipt_VISA.csv                          QUNKYLPLZA       Visa        975.00            157-95017321-QUNKYLPLZA            
+  Receipt_CASH.csv                          QUNKYLPLZA       Cash        130.00            Cash QUNKYLPLZA                    
+  Receipt_MADA.csv                          QUNKYLPLZA       Mada        3,345.00          157-95017321-QUNKYLPLZA            
+  Receipt_CASH.csv                          QUNKYLPLZA       Cash        718.00            Cash QUNKYLPLZA                    
+  Receipt_MADA.csv                          QUNKYLPLZA       Mada        5,067.00          157-95017321-QUNKYLPLZA            
+  Receipt_VISA.csv                          QUNKYLPLZA       Visa        58.00             157-95017321-QUNKYLPLZA            
+  Receipt_CASH.csv                          QUNKYLPLZA       Cash        661.00            Cash QUNKYLPLZA                    
+  Receipt_MADA.csv                          QUNKYLPLZA       Mada        9,038.00          157-95017321-QUNKYLPLZA            
+  Receipt_VISA.csv                          QUNKYLPLZA       Visa        1,344.00          157-95017321-QUNKYLPLZA            
+  Receipt_CASH.csv                          QUNKYLPLZA       Cash        2,056.00          Cash QUNKYLPLZA                    
+  Receipt_MADA.csv                          QUNKYLPLZA       Mada        6,018.00          157-95017321-QUNKYLPLZA            
+  Receipt_VISA.csv                          QUNKYLPLZA       Visa        409.00            157-95017321-QUNKYLPLZA            
+  Receipt_CASH.csv                          QUNKYLPLZA       Cash        1,449.00          Cash QUNKYLPLZA                    
+  Receipt_MADA.csv                          QUNKYLPLZA       Mada        2,901.00          157-95017321-QUNKYLPLZA            
+  Receipt_VISA.csv                          QUNKYLPLZA       Visa        298.00            157-95017321-QUNKYLPLZA            
+  Receipt_CASH.csv                          QUNKYLPLZA       Cash        3,009.65          Cash QUNKYLPLZA                    
+  Receipt_MADA.csv                          QUNKYLPLZA       Mada        1,605.00          157-95017321-QUNKYLPLZA            
+  Receipt_VISA.csv                          QUNKYLPLZA       Visa        6,598.00          157-95017321-QUNKYLPLZA            
+  Receipt_CASH.csv                          QUNKYLPLZA       Cash        510.00            Cash QUNKYLPLZA                    
+  Receipt_MADA.csv                          QUNKYLPLZA       Mada        2,083.00          157-95017321-QUNKYLPLZA            
+  Receipt_VISA.csv                          QUNKYLPLZA       Visa        29.00             157-95017321-QUNKYLPLZA            
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            466,609.65                                           
+
+  Per-method totals:
+    Amex              2 file(s)            0.00 SAR
+    Cash             27 file(s)       76,183.65 SAR
+    Mada             27 file(s)      356,595.00 SAR
+    Master           15 file(s)        5,675.00 SAR
+    Visa             26 file(s)       28,156.00 SAR
+    Grand Total                       466,609.65 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Amex         Cash         Mada       Master         Visa          TOTAL
+  ------------------------------------------------------------------------------------------------
+  2026-03-05              0        3,269       19,841          299          568         23,977
+  2026-03-06              0          390       14,440            0          797         15,627
+  2026-03-07              0        1,195       15,980          249          887         18,311
+  2026-03-08              0          942       21,848          299        1,312         24,401
+  2026-03-09              0        3,665       15,810          199          538         20,212
+  2026-03-10            199        2,737       15,981          299        1,035         20,251
+  2026-03-11           -199        3,000       24,345          199          735         28,080
+  2026-03-12              0        4,727       22,925            0        1,107         28,759
+  2026-03-13              0        9,382       14,068          116          573         24,139
+  2026-03-14              0        4,582       20,257          513        1,397         26,749
+  2026-03-15              0        5,329       22,818          199          929         29,275
+  2026-03-16              0        2,236       24,235          628        1,082         28,181
+  2026-03-17              0        4,246       30,985           85        1,933         37,249
+  2026-03-18              0        4,942       22,698        1,041        1,389         30,070
+  2026-03-19              0        9,436       26,687          597        1,954         38,674
+  2026-03-20              0        4,239        7,158          728        1,111         13,236
+  2026-03-21              0        1,407        1,722            0          571          3,700
+  2026-03-22              0          100        2,694            0           29          2,823
+  2026-03-23              0        1,320        1,100          224          498          3,142
+  2026-03-24              0          506          946            0          975          2,427
+  2026-03-25              0          130        3,345            0            0          3,475
+  2026-03-26              0          718        5,067            0           58          5,843
+  2026-03-27              0          661        9,038            0        1,344         11,043
+  2026-03-28              0        2,056        6,018            0          409          8,483
+  2026-03-29              0        1,449        2,901            0          298          4,648
+  2026-03-30              0        3,010        1,605            0        6,598         11,213
+  2026-03-31              0          510        2,083            0           29          2,622
+  ------------------------------------------------------------------------------------------------
+  TOTAL                   0       76,184      356,595        5,675       28,156        466,610
+
+  VALIDATION:
+    Payment file total (for standard receipts):       466,609.65 SAR
+    Receipt files total:                              466,609.65 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Amex            Payment:         0.00  Receipt:         0.00  Diff:     0.00  ✓
+    Cash            Payment:    76,183.65  Receipt:    76,183.65  Diff:     0.00  ✓
+    Mada            Payment:   356,595.00  Receipt:   356,595.00  Diff:     0.00  ✓
+    Master          Payment:     5,675.00  Receipt:     5,675.00  Diff:     0.00  ✓
+    Visa            Payment:    28,156.00  Receipt:    28,156.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (97 rows, 466,609.65 SAR)
+  Per-method grand total                   466,609.65 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 69
+    Total amount: -3,235.2903 SAR
+    Payment methods included: ['AMEX', 'Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -3,235.2903 SAR
+    Per-method total:               -3,235.2903 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    AMEX                1 rows             -8.4674 SAR  ⚠ 1 NEGATIVE AMOUNTS!
+    Mada               27 rows         -2,483.2686 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             15 rows           -123.9982 SAR  ⚠ 15 NEGATIVE AMOUNTS!
+    Visa               26 rows           -619.5561 SAR  ⚠ 26 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              5
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       359,894.00 SAR
+    Visa                        28,355.00 SAR
+    Master                       5,675.00 SAR
+    Amex                           199.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                        83,737.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED               83,737.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  QUNKYLPLZA       Mada        19,841.00         0.01      -136.9029         157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Master      299.00            0.02      -6.5331           157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Visa        568.00            0.02      -12.4108          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Mada        14,440.00         0.01      -99.6360          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Visa        797.00            0.02      -17.4144          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Mada        15,980.00         0.01      -110.2620         157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Master      249.00            0.02      -5.4406           157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Visa        887.00            0.02      -19.3809          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Mada        21,848.00         0.01      -150.7512         157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Master      299.00            0.02      -6.5331           157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Visa        1,312.00          0.02      -28.6672          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Mada        15,810.00         0.01      -109.0890         157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Master      199.00            0.02      -4.3481           157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Visa        737.00            0.02      -16.1034          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Amex        199.00            0.04      -8.4674           157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Mada        15,981.00         0.01      -110.2689         157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Master      299.00            0.02      -6.5331           157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Visa        1,035.00          0.02      -22.6147          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Mada        24,729.00         0.01      -170.6301         157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Master      199.00            0.02      -4.3481           157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Visa        735.00            0.02      -16.0597          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Mada        23,075.00         0.01      -159.2175         157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Visa        1,107.00          0.02      -24.1880          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Mada        14,602.00         0.01      -100.7538         157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Master      116.00            0.02      -2.5346           157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Visa        573.00            0.02      -12.5200          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Mada        20,441.00         0.01      -141.0429         157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Master      513.00            0.02      -11.2090          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Visa        1,397.00          0.02      -30.5244          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Mada        22,818.00         0.01      -157.4442         157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Master      199.00            0.02      -4.3481           157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Visa        929.00            0.02      -20.2986          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Mada        24,235.00         0.01      -167.2215         157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Master      628.00            0.02      -13.7218          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Visa        1,082.00          0.02      -23.6417          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Mada        30,985.00         0.01      -213.7965         157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Master      85.00             0.02      -1.8572           157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Visa        1,933.00          0.02      -42.2360          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Mada        22,698.00         0.01      -156.6162         157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Master      1,041.00          0.02      -22.7458          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Visa        1,389.00          0.02      -30.3496          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Mada        26,687.00         0.01      -184.1403         157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Master      597.00            0.02      -13.0444          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Visa        1,954.00          0.02      -42.6949          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Mada        7,313.00          0.01      -50.4597          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Master      728.00            0.02      -15.9068          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Visa        1,111.00          0.02      -24.2753          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Mada        1,722.00          0.01      -11.8818          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Visa        571.00            0.02      -12.4764          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Mada        2,694.00          0.01      -18.5886          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Visa        29.00             0.02      -0.6336           157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Mada        1,100.00          0.01      -7.5900           157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Master      224.00            0.02      -4.8944           157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Visa        498.00            0.02      -10.8813          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Mada        946.00            0.01      -6.5274           157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Visa        975.00            0.02      -21.3037          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Mada        3,345.00          0.01      -23.0805          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Mada        5,067.00          0.01      -34.9623          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Visa        58.00             0.02      -1.2673           157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Mada        9,437.00          0.01      -65.1153          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Visa        1,344.00          0.02      -29.3664          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Mada        7,511.00          0.01      -51.8259          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Visa        409.00            0.02      -8.9366           157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Mada        2,901.00          0.01      -20.0169          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Visa        298.00            0.02      -6.5113           157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Mada        1,605.00          0.01      -11.0745          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Visa        6,598.00          0.02      -144.1663         157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Mada        2,083.00          0.01      -14.3727          157-95017321-QUNKYLPLZA       
+  QUNKYLPLZA       Visa        29.00             0.02      -0.6336           157-95017321-QUNKYLPLZA       
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -3,235.2903                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (69 rows, -3,235.2903 SAR)
+  Per-method grand total                   -3,235.2903 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  475,222.63 SAR         █
+  █  Total Standard Receipt amt               933,219.30 SAR         █
+  █  Difference                               457,996.67 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  475,222.63 SAR
+  Total Standard Receipt amt               933,219.30 SAR
+  Difference                               457,996.67 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0002380
+  >>> Next run START_TXN_SEQUENCE =        2381  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 20:56:34
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
