@@ -1,0 +1,421 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 09:11:16 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         186,813.95 SAR     ║
+║  [ℹ] Standard Receipt Total                   365,138.00 SAR     ║
+║  [✗] Amount Reconciliation                    Diff: 178,324.05 SAR║
+║  [ℹ] Total Invoices                           985                ║
+║  [ℹ] Receipt Files Generated                  5                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          WADIDAWSER.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             WADIDAWSER_Payment_lines_5-31.xlsx
+  Segment 1 prefix                         50598820
+  Segment 2 prefix                         10097037
+
+  AR rows read                             4067
+  Unique invoices loaded                   985
+  Unique transactions (BLK)                51
+  Total AR amount                          186,813.95 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Cash                       278           50,125.00             
+  Mada                       584           117,528.00            
+  Master                     2             693.00                
+  TABBY                      8             2,447.00              
+  TAMARA                     101           29,748.00             
+  Visa                       61            14,223.00             
+  ----------------------------------------------------------------------
+  TOTAL                      1034          214,764.00            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  RYDGALLER                       109         32,195.00           
+  WADIDAWSER                      876         182,569.00          
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 77
+    Total amount: 182,569.00 SAR
+    Payment methods included: ['Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              182,569.00 SAR
+    Per-method total:                182,569.00 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    Cash               24 rows           50,125.00 SAR  ✓
+    Mada               27 rows          117,528.00 SAR  ✓
+    Master              2 rows              693.00 SAR  ✓
+    Visa               24 rows           14,223.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    109
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   5
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       117,528.00 SAR
+    Cash                        50,125.00 SAR
+    Visa                        14,223.00 SAR
+    Master                         693.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TAMARA                      29,748.00 SAR
+    TABBY                        2,447.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          WADIDAWSER       Cash        1,920.00          Cash WADIDAWSER                    
+  Receipt_MADA.csv                          WADIDAWSER       Mada        7,359.00          015795017321-WADIDAWSER            
+  Receipt_VISA.csv                          WADIDAWSER       Visa        421.00            015795017321-WADIDAWSER            
+  Receipt_CASH.csv                          WADIDAWSER       Cash        3,507.00          Cash WADIDAWSER                    
+  Receipt_MADA.csv                          WADIDAWSER       Mada        3,570.00          015795017321-WADIDAWSER            
+  Receipt_VISA.csv                          WADIDAWSER       Visa        1,202.00          015795017321-WADIDAWSER            
+  Receipt_CASH.csv                          WADIDAWSER       Cash        1,667.00          Cash WADIDAWSER                    
+  Receipt_MADA.csv                          WADIDAWSER       Mada        5,310.00          015795017321-WADIDAWSER            
+  Receipt_CASH.csv                          WADIDAWSER       Cash        1,495.00          Cash WADIDAWSER                    
+  Receipt_MADA.csv                          WADIDAWSER       Mada        6,071.00          015795017321-WADIDAWSER            
+  Receipt_VISA.csv                          WADIDAWSER       Visa        1,161.00          015795017321-WADIDAWSER            
+  Receipt_CASH.csv                          WADIDAWSER       Cash        1,318.00          Cash WADIDAWSER                    
+  Receipt_MADA.csv                          WADIDAWSER       Mada        6,198.00          015795017321-WADIDAWSER            
+  Receipt_VISA.csv                          WADIDAWSER       Visa        927.00            015795017321-WADIDAWSER            
+  Receipt_CASH.csv                          WADIDAWSER       Cash        1,781.00          Cash WADIDAWSER                    
+  Receipt_MADA.csv                          WADIDAWSER       Mada        10,139.00         015795017321-WADIDAWSER            
+  Receipt_VISA.csv                          WADIDAWSER       Visa        299.00            015795017321-WADIDAWSER            
+  Receipt_CASH.csv                          WADIDAWSER       Cash        4,812.00          Cash WADIDAWSER                    
+  Receipt_MADA.csv                          WADIDAWSER       Mada        7,621.00          015795017321-WADIDAWSER            
+  Receipt_MASTER.csv                        WADIDAWSER       Master      394.00            015795017321-WADIDAWSER            
+  Receipt_VISA.csv                          WADIDAWSER       Visa        1,150.00          015795017321-WADIDAWSER            
+  Receipt_CASH.csv                          WADIDAWSER       Cash        3,757.00          Cash WADIDAWSER                    
+  Receipt_MADA.csv                          WADIDAWSER       Mada        3,772.00          015795017321-WADIDAWSER            
+  Receipt_MASTER.csv                        WADIDAWSER       Master      299.00            015795017321-WADIDAWSER            
+  Receipt_VISA.csv                          WADIDAWSER       Visa        149.00            015795017321-WADIDAWSER            
+  Receipt_CASH.csv                          WADIDAWSER       Cash        3,772.00          Cash WADIDAWSER                    
+  Receipt_MADA.csv                          WADIDAWSER       Mada        4,432.00          015795017321-WADIDAWSER            
+  Receipt_CASH.csv                          WADIDAWSER       Cash        4,131.00          Cash WADIDAWSER                    
+  Receipt_MADA.csv                          WADIDAWSER       Mada        7,584.00          015795017321-WADIDAWSER            
+  Receipt_VISA.csv                          WADIDAWSER       Visa        85.00             015795017321-WADIDAWSER            
+  Receipt_CASH.csv                          WADIDAWSER       Cash        4,053.00          Cash WADIDAWSER                    
+  Receipt_MADA.csv                          WADIDAWSER       Mada        6,167.00          015795017321-WADIDAWSER            
+  Receipt_VISA.csv                          WADIDAWSER       Visa        847.00            015795017321-WADIDAWSER            
+  Receipt_CASH.csv                          WADIDAWSER       Cash        3,645.00          Cash WADIDAWSER                    
+  Receipt_MADA.csv                          WADIDAWSER       Mada        7,974.00          015795017321-WADIDAWSER            
+  Receipt_VISA.csv                          WADIDAWSER       Visa        497.00            015795017321-WADIDAWSER            
+  Receipt_CASH.csv                          WADIDAWSER       Cash        3,156.00          Cash WADIDAWSER                    
+  Receipt_MADA.csv                          WADIDAWSER       Mada        7,655.00          015795017321-WADIDAWSER            
+  Receipt_VISA.csv                          WADIDAWSER       Visa        199.00            015795017321-WADIDAWSER            
+  Receipt_CASH.csv                          WADIDAWSER       Cash        2,337.00          Cash WADIDAWSER                    
+  Receipt_MADA.csv                          WADIDAWSER       Mada        8,307.00          015795017321-WADIDAWSER            
+  Receipt_VISA.csv                          WADIDAWSER       Visa        1,472.00          015795017321-WADIDAWSER            
+  Receipt_CASH.csv                          WADIDAWSER       Cash        2,911.00          Cash WADIDAWSER                    
+  Receipt_MADA.csv                          WADIDAWSER       Mada        10,429.00         015795017321-WADIDAWSER            
+  Receipt_VISA.csv                          WADIDAWSER       Visa        847.00            015795017321-WADIDAWSER            
+  Receipt_CASH.csv                          WADIDAWSER       Cash        1,433.00          Cash WADIDAWSER                    
+  Receipt_MADA.csv                          WADIDAWSER       Mada        1,546.00          015795017321-WADIDAWSER            
+  Receipt_VISA.csv                          WADIDAWSER       Visa        1,171.00          015795017321-WADIDAWSER            
+  Receipt_MADA.csv                          WADIDAWSER       Mada        911.00            015795017321-WADIDAWSER            
+  Receipt_VISA.csv                          WADIDAWSER       Visa        442.00            015795017321-WADIDAWSER            
+  Receipt_CASH.csv                          WADIDAWSER       Cash        299.00            Cash WADIDAWSER                    
+  Receipt_MADA.csv                          WADIDAWSER       Mada        996.00            015795017321-WADIDAWSER            
+  Receipt_VISA.csv                          WADIDAWSER       Visa        299.00            015795017321-WADIDAWSER            
+  Receipt_MADA.csv                          WADIDAWSER       Mada        1,424.00          015795017321-WADIDAWSER            
+  Receipt_VISA.csv                          WADIDAWSER       Visa        126.00            015795017321-WADIDAWSER            
+  Receipt_CASH.csv                          WADIDAWSER       Cash        747.00            Cash WADIDAWSER                    
+  Receipt_MADA.csv                          WADIDAWSER       Mada        1,033.00          015795017321-WADIDAWSER            
+  Receipt_VISA.csv                          WADIDAWSER       Visa        170.00            015795017321-WADIDAWSER            
+  Receipt_MADA.csv                          WADIDAWSER       Mada        498.00            015795017321-WADIDAWSER            
+  Receipt_CASH.csv                          WADIDAWSER       Cash        0.00              Cash WADIDAWSER                    
+  Receipt_MADA.csv                          WADIDAWSER       Mada        2,220.00          015795017321-WADIDAWSER            
+  Receipt_VISA.csv                          WADIDAWSER       Visa        591.00            015795017321-WADIDAWSER            
+  Receipt_CASH.csv                          WADIDAWSER       Cash        1,098.00          Cash WADIDAWSER                    
+  Receipt_MADA.csv                          WADIDAWSER       Mada        1,620.00          015795017321-WADIDAWSER            
+  Receipt_VISA.csv                          WADIDAWSER       Visa        729.00            015795017321-WADIDAWSER            
+  Receipt_CASH.csv                          WADIDAWSER       Cash        85.00             Cash WADIDAWSER                    
+  Receipt_MADA.csv                          WADIDAWSER       Mada        2,372.00          015795017321-WADIDAWSER            
+  Receipt_VISA.csv                          WADIDAWSER       Visa        336.00            015795017321-WADIDAWSER            
+  Receipt_CASH.csv                          WADIDAWSER       Cash        493.00            Cash WADIDAWSER                    
+  Receipt_MADA.csv                          WADIDAWSER       Mada        777.00            015795017321-WADIDAWSER            
+  Receipt_VISA.csv                          WADIDAWSER       Visa        249.00            015795017321-WADIDAWSER            
+  Receipt_CASH.csv                          WADIDAWSER       Cash        749.00            Cash WADIDAWSER                    
+  Receipt_MADA.csv                          WADIDAWSER       Mada        1,112.00          015795017321-WADIDAWSER            
+  Receipt_VISA.csv                          WADIDAWSER       Visa        374.00            015795017321-WADIDAWSER            
+  Receipt_CASH.csv                          WADIDAWSER       Cash        959.00            Cash WADIDAWSER                    
+  Receipt_MADA.csv                          WADIDAWSER       Mada        431.00            015795017321-WADIDAWSER            
+  Receipt_VISA.csv                          WADIDAWSER       Visa        480.00            015795017321-WADIDAWSER            
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            182,569.00                                           
+
+  Per-method totals:
+    Cash             24 file(s)       50,125.00 SAR
+    Mada             27 file(s)      117,528.00 SAR
+    Master            2 file(s)          693.00 SAR
+    Visa             24 file(s)       14,223.00 SAR
+    Grand Total                       182,569.00 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Cash         Mada       Master         Visa          TOTAL
+  ----------------------------------------------------------------------------------
+  2026-03-05          1,920        7,359            0          421          9,700
+  2026-03-06          3,507        3,570            0        1,202          8,279
+  2026-03-07          1,667        5,310            0            0          6,977
+  2026-03-08          1,495        6,071            0        1,161          8,727
+  2026-03-09          1,318        6,198            0          927          8,443
+  2026-03-10          1,781       10,139            0          299         12,219
+  2026-03-11          4,812        7,621          394        1,150         13,977
+  2026-03-12          3,757        3,772          299          149          7,977
+  2026-03-13          3,772        4,432            0            0          8,204
+  2026-03-14          4,131        7,584            0           85         11,800
+  2026-03-15          4,053        6,167            0          847         11,067
+  2026-03-16          3,645        7,974            0          497         12,116
+  2026-03-17          3,156        7,655            0          199         11,010
+  2026-03-18          2,337        8,307            0        1,472         12,116
+  2026-03-19          2,911       10,429            0          847         14,187
+  2026-03-20          1,433        1,546            0        1,171          4,150
+  2026-03-21              0          911            0          442          1,353
+  2026-03-22            299          996            0          299          1,594
+  2026-03-23              0        1,424            0          126          1,550
+  2026-03-24            747        1,033            0          170          1,950
+  2026-03-25              0          498            0            0            498
+  2026-03-26              0        2,220            0          591          2,811
+  2026-03-27          1,098        1,620            0          729          3,447
+  2026-03-28             85        2,372            0          336          2,793
+  2026-03-29            493          777            0          249          1,519
+  2026-03-30            749        1,112            0          374          2,235
+  2026-03-31            959          431            0          480          1,870
+  ----------------------------------------------------------------------------------
+  TOTAL              50,125      117,528          693       14,223        182,569
+
+  VALIDATION:
+    Payment file total (for standard receipts):       182,569.00 SAR
+    Receipt files total:                              182,569.00 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Cash            Payment:    50,125.00  Receipt:    50,125.00  Diff:     0.00  ✓
+    Mada            Payment:   117,528.00  Receipt:   117,528.00  Diff:     0.00  ✓
+    Master          Payment:       693.00  Receipt:       693.00  Diff:     0.00  ✓
+    Visa            Payment:    14,223.00  Receipt:    14,223.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (77 rows, 182,569.00 SAR)
+  Per-method grand total                   182,569.00 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 53
+    Total amount: -1,136.8571 SAR
+    Payment methods included: ['Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -1,136.8571 SAR
+    Per-method total:               -1,136.8571 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    Mada               27 rows           -810.9432 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master              2 rows            -15.1420 SAR  ⚠ 2 NEGATIVE AMOUNTS!
+    Visa               24 rows           -310.7719 SAR  ⚠ 24 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              4
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       117,528.00 SAR
+    Visa                        14,223.00 SAR
+    Master                         693.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                        54,178.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED               54,178.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  WADIDAWSER       Mada        7,359.00          0.01      -50.7771          015795017321-WADIDAWSER       
+  WADIDAWSER       Visa        421.00            0.02      -9.1988           015795017321-WADIDAWSER       
+  WADIDAWSER       Mada        3,570.00          0.01      -24.6330          015795017321-WADIDAWSER       
+  WADIDAWSER       Visa        1,202.00          0.02      -26.2637          015795017321-WADIDAWSER       
+  WADIDAWSER       Mada        5,310.00          0.01      -36.6390          015795017321-WADIDAWSER       
+  WADIDAWSER       Mada        6,071.00          0.01      -41.8899          015795017321-WADIDAWSER       
+  WADIDAWSER       Visa        1,161.00          0.02      -25.3679          015795017321-WADIDAWSER       
+  WADIDAWSER       Mada        6,198.00          0.01      -42.7662          015795017321-WADIDAWSER       
+  WADIDAWSER       Visa        927.00            0.02      -20.2549          015795017321-WADIDAWSER       
+  WADIDAWSER       Mada        10,139.00         0.01      -69.9591          015795017321-WADIDAWSER       
+  WADIDAWSER       Visa        299.00            0.02      -6.5331           015795017321-WADIDAWSER       
+  WADIDAWSER       Mada        7,621.00          0.01      -52.5849          015795017321-WADIDAWSER       
+  WADIDAWSER       Master      394.00            0.02      -8.6089           015795017321-WADIDAWSER       
+  WADIDAWSER       Visa        1,150.00          0.02      -25.1275          015795017321-WADIDAWSER       
+  WADIDAWSER       Mada        3,772.00          0.01      -26.0268          015795017321-WADIDAWSER       
+  WADIDAWSER       Master      299.00            0.02      -6.5331           015795017321-WADIDAWSER       
+  WADIDAWSER       Visa        149.00            0.02      -3.2556           015795017321-WADIDAWSER       
+  WADIDAWSER       Mada        4,432.00          0.01      -30.5808          015795017321-WADIDAWSER       
+  WADIDAWSER       Mada        7,584.00          0.01      -52.3296          015795017321-WADIDAWSER       
+  WADIDAWSER       Visa        85.00             0.02      -1.8572           015795017321-WADIDAWSER       
+  WADIDAWSER       Mada        6,167.00          0.01      -42.5523          015795017321-WADIDAWSER       
+  WADIDAWSER       Visa        847.00            0.02      -18.5069          015795017321-WADIDAWSER       
+  WADIDAWSER       Mada        7,974.00          0.01      -55.0206          015795017321-WADIDAWSER       
+  WADIDAWSER       Visa        497.00            0.02      -10.8594          015795017321-WADIDAWSER       
+  WADIDAWSER       Mada        7,655.00          0.01      -52.8195          015795017321-WADIDAWSER       
+  WADIDAWSER       Visa        199.00            0.02      -4.3481           015795017321-WADIDAWSER       
+  WADIDAWSER       Mada        8,307.00          0.01      -57.3183          015795017321-WADIDAWSER       
+  WADIDAWSER       Visa        1,472.00          0.02      -32.1632          015795017321-WADIDAWSER       
+  WADIDAWSER       Mada        10,429.00         0.01      -71.9601          015795017321-WADIDAWSER       
+  WADIDAWSER       Visa        847.00            0.02      -18.5069          015795017321-WADIDAWSER       
+  WADIDAWSER       Mada        1,546.00          0.01      -10.6674          015795017321-WADIDAWSER       
+  WADIDAWSER       Visa        1,171.00          0.02      -25.5863          015795017321-WADIDAWSER       
+  WADIDAWSER       Mada        911.00            0.01      -6.2859           015795017321-WADIDAWSER       
+  WADIDAWSER       Visa        442.00            0.02      -9.6577           015795017321-WADIDAWSER       
+  WADIDAWSER       Mada        996.00            0.01      -6.8724           015795017321-WADIDAWSER       
+  WADIDAWSER       Visa        299.00            0.02      -6.5331           015795017321-WADIDAWSER       
+  WADIDAWSER       Mada        1,424.00          0.01      -9.8256           015795017321-WADIDAWSER       
+  WADIDAWSER       Visa        126.00            0.02      -2.7531           015795017321-WADIDAWSER       
+  WADIDAWSER       Mada        1,033.00          0.01      -7.1277           015795017321-WADIDAWSER       
+  WADIDAWSER       Visa        170.00            0.02      -3.7145           015795017321-WADIDAWSER       
+  WADIDAWSER       Mada        498.00            0.01      -3.4362           015795017321-WADIDAWSER       
+  WADIDAWSER       Mada        2,220.00          0.01      -15.3180          015795017321-WADIDAWSER       
+  WADIDAWSER       Visa        591.00            0.02      -12.9133          015795017321-WADIDAWSER       
+  WADIDAWSER       Mada        1,620.00          0.01      -11.1780          015795017321-WADIDAWSER       
+  WADIDAWSER       Visa        729.00            0.02      -15.9286          015795017321-WADIDAWSER       
+  WADIDAWSER       Mada        2,372.00          0.01      -16.3668          015795017321-WADIDAWSER       
+  WADIDAWSER       Visa        336.00            0.02      -7.3416           015795017321-WADIDAWSER       
+  WADIDAWSER       Mada        777.00            0.01      -5.3613           015795017321-WADIDAWSER       
+  WADIDAWSER       Visa        249.00            0.02      -5.4406           015795017321-WADIDAWSER       
+  WADIDAWSER       Mada        1,112.00          0.01      -7.6728           015795017321-WADIDAWSER       
+  WADIDAWSER       Visa        374.00            0.02      -8.1719           015795017321-WADIDAWSER       
+  WADIDAWSER       Mada        431.00            0.01      -2.9739           015795017321-WADIDAWSER       
+  WADIDAWSER       Visa        480.00            0.02      -10.4880          015795017321-WADIDAWSER       
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -1,136.8571                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (53 rows, -1,136.8571 SAR)
+  Per-method grand total                   -1,136.8571 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  186,813.95 SAR         █
+  █  Total Standard Receipt amt               365,138.00 SAR         █
+  █  Difference                               178,324.05 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  186,813.95 SAR
+  Total Standard Receipt amt               365,138.00 SAR
+  Difference                               178,324.05 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0007739
+  >>> Next run START_TXN_SEQUENCE =        7740  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 21:11:19
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

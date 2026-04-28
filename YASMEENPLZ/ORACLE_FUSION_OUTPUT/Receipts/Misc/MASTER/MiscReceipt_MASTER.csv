@@ -1,0 +1,4 @@
+﻿"Amount","CurrencyCode","DepositDate","ReceiptDate","GlDate","OrgId","ReceiptNumber","ReceiptMethodName","ReceivableActivityName","BankAccountNumber"
+"-37.1013","SAR","2026-04-27","2026-04-27","2026-04-27","300000001421038","Master-BLKU-0004434-MISC","Master","Bank Charge","157-95017321-YASMEENPLZ"
+"-4.3481","SAR","2026-10-01","2026-10-01","2026-10-01","300000001421038","Master-BLKU-0004431-MISC","Master","Bank Charge","157-95017321-YASMEENPLZ"
+"-6.5331","SAR","2026-11-01","2026-11-01","2026-11-01","300000001421038","Master-BLKU-0004432-MISC","Master","Bank Charge","157-95017321-YASMEENPLZ"

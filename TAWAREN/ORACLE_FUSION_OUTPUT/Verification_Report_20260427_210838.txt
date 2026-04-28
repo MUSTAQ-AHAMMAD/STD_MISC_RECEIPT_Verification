@@ -1,0 +1,503 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 09:08:32 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         701,924.68 SAR     ║
+║  [ℹ] Standard Receipt Total                   1,482,671.98 SAR   ║
+║  [✗] Amount Reconciliation                    Diff: 780,747.30 SAR║
+║  [ℹ] Total Invoices                           2,157              ║
+║  [ℹ] Receipt Files Generated                  6                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          TAWAREN.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             TAWAREN_payment_line_5_to_31_March.xlsx
+  Segment 1 prefix                         40028989
+  Segment 2 prefix                         40471987
+
+  AR rows read                             11344
+  Unique invoices loaded                   2155
+  Unique transactions (BLK)                74
+  Total AR amount                          702,458.68 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Amex                       9             2,394.00              
+  Cash                       492           115,163.99            
+  Mada                       1042          314,725.00            
+  Master                     123           49,252.00             
+  TABBY                      85            27,083.00             
+  TAMARA                     110           38,157.00             
+  Visa                       456           259,801.00            
+  ----------------------------------------------------------------------
+  TOTAL                      2317          806,575.99            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  NAKHELMALL                      1           -135.00             
+  RYDGALLER                       195         65,240.00           
+  TALAMALL                        1           -399.00             
+  TAWAREN                         1960        741,869.99          
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 116
+    Total amount: 741,335.99 SAR
+    Payment methods included: ['AMEX', 'Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              741,335.99 SAR
+    Per-method total:                741,335.99 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    AMEX                8 rows            2,394.00 SAR  ✓
+    Cash               29 rows          115,163.99 SAR  ⚠ 2 NEGATIVE AMOUNTS!
+    Mada               27 rows          314,725.00 SAR  ✓
+    Master             25 rows           49,252.00 SAR  ✓
+    Visa               27 rows          259,801.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    195
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   6
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       314,725.00 SAR
+    Visa                       259,801.00 SAR
+    Cash                       115,163.99 SAR
+    Master                      49,252.00 SAR
+    Amex                         2,394.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TAMARA                      38,157.00 SAR
+    TABBY                       27,083.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          NAKHELMALL       Cash        -135.00           CashOth Mall Hail                  
+  Receipt_CASH.csv                          TALAMALL         Cash        -399.00           CashOth Mall Hail                  
+  Receipt_AMEX.csv                          TAWAREN          Amex        698.00            1831434139959                      
+  Receipt_CASH.csv                          TAWAREN          Cash        3,095.00          CASH Tawaren Center Branch         
+  Receipt_MADA.csv                          TAWAREN          Mada        13,086.00         1831434139959                      
+  Receipt_MASTER.csv                        TAWAREN          Master      783.00            1831434139959                      
+  Receipt_VISA.csv                          TAWAREN          Visa        7,479.00          1831434139959                      
+  Receipt_CASH.csv                          TAWAREN          Cash        5,956.00          CASH Tawaren Center Branch         
+  Receipt_MADA.csv                          TAWAREN          Mada        12,765.00         1831434139959                      
+  Receipt_MASTER.csv                        TAWAREN          Master      697.00            1831434139959                      
+  Receipt_VISA.csv                          TAWAREN          Visa        4,348.00          1831434139959                      
+  Receipt_CASH.csv                          TAWAREN          Cash        1,434.00          CASH Tawaren Center Branch         
+  Receipt_MADA.csv                          TAWAREN          Mada        8,138.00          1831434139959                      
+  Receipt_MASTER.csv                        TAWAREN          Master      987.00            1831434139959                      
+  Receipt_VISA.csv                          TAWAREN          Visa        10,469.00         1831434139959                      
+  Receipt_CASH.csv                          TAWAREN          Cash        3,898.00          CASH Tawaren Center Branch         
+  Receipt_MADA.csv                          TAWAREN          Mada        13,748.00         1831434139959                      
+  Receipt_VISA.csv                          TAWAREN          Visa        3,101.00          1831434139959                      
+  Receipt_CASH.csv                          TAWAREN          Cash        3,357.00          CASH Tawaren Center Branch         
+  Receipt_MADA.csv                          TAWAREN          Mada        8,814.00          1831434139959                      
+  Receipt_MASTER.csv                        TAWAREN          Master      149.00            1831434139959                      
+  Receipt_VISA.csv                          TAWAREN          Visa        5,383.00          1831434139959                      
+  Receipt_CASH.csv                          TAWAREN          Cash        4,146.00          CASH Tawaren Center Branch         
+  Receipt_MADA.csv                          TAWAREN          Mada        13,531.00         1831434139959                      
+  Receipt_MASTER.csv                        TAWAREN          Master      835.00            1831434139959                      
+  Receipt_VISA.csv                          TAWAREN          Visa        6,266.00          1831434139959                      
+  Receipt_AMEX.csv                          TAWAREN          Amex        222.00            1831434139959                      
+  Receipt_CASH.csv                          TAWAREN          Cash        746.99            CASH Tawaren Center Branch         
+  Receipt_MADA.csv                          TAWAREN          Mada        21,799.00         1831434139959                      
+  Receipt_MASTER.csv                        TAWAREN          Master      11,127.00         1831434139959                      
+  Receipt_VISA.csv                          TAWAREN          Visa        9,152.00          1831434139959                      
+  Receipt_CASH.csv                          TAWAREN          Cash        2,807.00          CASH Tawaren Center Branch         
+  Receipt_MADA.csv                          TAWAREN          Mada        11,322.00         1831434139959                      
+  Receipt_MASTER.csv                        TAWAREN          Master      760.00            1831434139959                      
+  Receipt_VISA.csv                          TAWAREN          Visa        6,131.00          1831434139959                      
+  Receipt_CASH.csv                          TAWAREN          Cash        4,398.00          CASH Tawaren Center Branch         
+  Receipt_MADA.csv                          TAWAREN          Mada        9,383.00          1831434139959                      
+  Receipt_MASTER.csv                        TAWAREN          Master      2,454.00          1831434139959                      
+  Receipt_VISA.csv                          TAWAREN          Visa        3,297.00          1831434139959                      
+  Receipt_AMEX.csv                          TAWAREN          Amex        199.00            1831434139959                      
+  Receipt_CASH.csv                          TAWAREN          Cash        4,523.00          CASH Tawaren Center Branch         
+  Receipt_MADA.csv                          TAWAREN          Mada        13,532.00         1831434139959                      
+  Receipt_MASTER.csv                        TAWAREN          Master      1,761.00          1831434139959                      
+  Receipt_VISA.csv                          TAWAREN          Visa        7,227.00          1831434139959                      
+  Receipt_CASH.csv                          TAWAREN          Cash        2,332.00          CASH Tawaren Center Branch         
+  Receipt_MADA.csv                          TAWAREN          Mada        13,788.00         1831434139959                      
+  Receipt_MASTER.csv                        TAWAREN          Master      2,918.00          1831434139959                      
+  Receipt_VISA.csv                          TAWAREN          Visa        8,186.00          1831434139959                      
+  Receipt_CASH.csv                          TAWAREN          Cash        2,744.00          CASH Tawaren Center Branch         
+  Receipt_MADA.csv                          TAWAREN          Mada        18,669.00         1831434139959                      
+  Receipt_MASTER.csv                        TAWAREN          Master      2,132.00          1831434139959                      
+  Receipt_VISA.csv                          TAWAREN          Visa        8,726.00          1831434139959                      
+  Receipt_CASH.csv                          TAWAREN          Cash        2,135.00          CASH Tawaren Center Branch         
+  Receipt_MADA.csv                          TAWAREN          Mada        18,512.00         1831434139959                      
+  Receipt_MASTER.csv                        TAWAREN          Master      2,323.00          1831434139959                      
+  Receipt_VISA.csv                          TAWAREN          Visa        11,828.00         1831434139959                      
+  Receipt_AMEX.csv                          TAWAREN          Amex        149.00            1831434139959                      
+  Receipt_CASH.csv                          TAWAREN          Cash        3,416.00          CASH Tawaren Center Branch         
+  Receipt_MADA.csv                          TAWAREN          Mada        14,332.00         1831434139959                      
+  Receipt_MASTER.csv                        TAWAREN          Master      724.00            1831434139959                      
+  Receipt_VISA.csv                          TAWAREN          Visa        6,902.00          1831434139959                      
+  Receipt_AMEX.csv                          TAWAREN          Amex        422.00            1831434139959                      
+  Receipt_CASH.csv                          TAWAREN          Cash        5,007.00          CASH Tawaren Center Branch         
+  Receipt_MADA.csv                          TAWAREN          Mada        20,211.00         1831434139959                      
+  Receipt_MASTER.csv                        TAWAREN          Master      9,631.00          1831434139959                      
+  Receipt_VISA.csv                          TAWAREN          Visa        63,868.00         1831434139959                      
+  Receipt_CASH.csv                          TAWAREN          Cash        91.00             CASH Tawaren Center Branch         
+  Receipt_MADA.csv                          TAWAREN          Mada        12,555.00         1831434139959                      
+  Receipt_VISA.csv                          TAWAREN          Visa        67,302.00         1831434139959                      
+  Receipt_AMEX.csv                          TAWAREN          Amex        299.00            1831434139959                      
+  Receipt_CASH.csv                          TAWAREN          Cash        2,741.00          CASH Tawaren Center Branch         
+  Receipt_MADA.csv                          TAWAREN          Mada        4,526.00          1831434139959                      
+  Receipt_MASTER.csv                        TAWAREN          Master      160.00            1831434139959                      
+  Receipt_VISA.csv                          TAWAREN          Visa        2,391.00          1831434139959                      
+  Receipt_CASH.csv                          TAWAREN          Cash        2,516.00          CASH Tawaren Center Branch         
+  Receipt_MADA.csv                          TAWAREN          Mada        5,267.00          1831434139959                      
+  Receipt_MASTER.csv                        TAWAREN          Master      4,476.00          1831434139959                      
+  Receipt_VISA.csv                          TAWAREN          Visa        3,099.00          1831434139959                      
+  Receipt_CASH.csv                          TAWAREN          Cash        1,684.00          CASH Tawaren Center Branch         
+  Receipt_MADA.csv                          TAWAREN          Mada        7,897.00          1831434139959                      
+  Receipt_MASTER.csv                        TAWAREN          Master      796.00            1831434139959                      
+  Receipt_VISA.csv                          TAWAREN          Visa        3,801.00          1831434139959                      
+  Receipt_CASH.csv                          TAWAREN          Cash        1,396.00          CASH Tawaren Center Branch         
+  Receipt_MADA.csv                          TAWAREN          Mada        2,855.00          1831434139959                      
+  Receipt_MASTER.csv                        TAWAREN          Master      160.00            1831434139959                      
+  Receipt_VISA.csv                          TAWAREN          Visa        1,828.00          1831434139959                      
+  Receipt_CASH.csv                          TAWAREN          Cash        3,146.00          CASH Tawaren Center Branch         
+  Receipt_MADA.csv                          TAWAREN          Mada        5,771.00          1831434139959                      
+  Receipt_MASTER.csv                        TAWAREN          Master      770.00            1831434139959                      
+  Receipt_VISA.csv                          TAWAREN          Visa        2,846.00          1831434139959                      
+  Receipt_CASH.csv                          TAWAREN          Cash        4,775.00          CASH Tawaren Center Branch         
+  Receipt_MADA.csv                          TAWAREN          Mada        9,448.00          1831434139959                      
+  Receipt_MASTER.csv                        TAWAREN          Master      781.00            1831434139959                      
+  Receipt_VISA.csv                          TAWAREN          Visa        4,340.00          1831434139959                      
+  Receipt_CASH.csv                          TAWAREN          Cash        3,393.00          CASH Tawaren Center Branch         
+  Receipt_MADA.csv                          TAWAREN          Mada        4,352.00          1831434139959                      
+  Receipt_MASTER.csv                        TAWAREN          Master      1,011.00          1831434139959                      
+  Receipt_VISA.csv                          TAWAREN          Visa        1,604.00          1831434139959                      
+  Receipt_AMEX.csv                          TAWAREN          Amex        215.00            1831434139959                      
+  Receipt_CASH.csv                          TAWAREN          Cash        1,195.00          CASH Tawaren Center Branch         
+  Receipt_MADA.csv                          TAWAREN          Mada        8,600.00          1831434139959                      
+  Receipt_MASTER.csv                        TAWAREN          Master      770.00            1831434139959                      
+  Receipt_VISA.csv                          TAWAREN          Visa        3,096.00          1831434139959                      
+  Receipt_CASH.csv                          TAWAREN          Cash        1,201.00          CASH Tawaren Center Branch         
+  Receipt_MADA.csv                          TAWAREN          Mada        30,782.00         1831434139959                      
+  Receipt_MASTER.csv                        TAWAREN          Master      856.00            1831434139959                      
+  Receipt_VISA.csv                          TAWAREN          Visa        2,726.00          1831434139959                      
+  Receipt_CASH.csv                          TAWAREN          Cash        21,890.00         CASH Tawaren Center Branch         
+  Receipt_MADA.csv                          TAWAREN          Mada        6,733.00          1831434139959                      
+  Receipt_MASTER.csv                        TAWAREN          Master      1,045.00          1831434139959                      
+  Receipt_VISA.csv                          TAWAREN          Visa        2,301.00          1831434139959                      
+  Receipt_AMEX.csv                          TAWAREN          Amex        190.00            1831434139959                      
+  Receipt_CASH.csv                          TAWAREN          Cash        21,675.00         CASH Tawaren Center Branch         
+  Receipt_MADA.csv                          TAWAREN          Mada        4,309.00          1831434139959                      
+  Receipt_MASTER.csv                        TAWAREN          Master      1,146.00          1831434139959                      
+  Receipt_VISA.csv                          TAWAREN          Visa        2,104.00          1831434139959                      
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            741,335.99                                           
+
+  Per-method totals:
+    Amex              8 file(s)        2,394.00 SAR
+    Cash             29 file(s)      115,163.99 SAR
+    Mada             27 file(s)      314,725.00 SAR
+    Master           25 file(s)       49,252.00 SAR
+    Visa             27 file(s)      259,801.00 SAR
+    Grand Total                       741,335.99 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Amex         Cash         Mada       Master         Visa          TOTAL
+  ------------------------------------------------------------------------------------------------
+  2026-03-05            698        3,095       13,086          783        7,479         25,141
+  2026-03-06              0        5,557       12,765          697        4,348         23,367
+  2026-03-07              0        1,434        8,138          987       10,469         21,028
+  2026-03-08              0        3,898       13,748            0        3,101         20,747
+  2026-03-09              0        3,357        8,814          149        5,383         17,703
+  2026-03-10              0        4,146       13,531          835        6,266         24,778
+  2026-03-11            222          747       21,799       11,127        9,152         43,047
+  2026-03-12              0        2,807       11,322          760        6,131         21,020
+  2026-03-13              0        4,398        9,383        2,454        3,297         19,532
+  2026-03-14            199        4,523       13,532        1,761        7,227         27,242
+  2026-03-15              0        2,332       13,788        2,918        8,186         27,224
+  2026-03-16              0        2,744       18,669        2,132        8,726         32,271
+  2026-03-17              0        2,135       18,512        2,323       11,828         34,798
+  2026-03-18            149        3,416       14,332          724        6,902         25,523
+  2026-03-19            422        5,007       20,211        9,631       63,868         99,139
+  2026-03-20              0           91       12,555            0       67,302         79,948
+  2026-03-21            299        2,741        4,526          160        2,391         10,117
+  2026-03-22              0        2,516        5,267        4,476        3,099         15,358
+  2026-03-23              0        1,684        7,897          796        3,801         14,178
+  2026-03-24              0        1,396        2,855          160        1,828          6,239
+  2026-03-25              0        3,146        5,771          770        2,846         12,533
+  2026-03-26              0        4,775        9,448          781        4,340         19,344
+  2026-03-27              0        3,258        4,352        1,011        1,604         10,225
+  2026-03-28            215        1,195        8,600          770        3,096         13,876
+  2026-03-29              0        1,201       30,782          856        2,726         35,565
+  2026-03-30              0       21,890        6,733        1,045        2,301         31,969
+  2026-03-31            190       21,675        4,309        1,146        2,104         29,424
+  ------------------------------------------------------------------------------------------------
+  TOTAL               2,394      115,164      314,725       49,252      259,801        741,336
+
+  VALIDATION:
+    Payment file total (for standard receipts):       741,335.99 SAR
+    Receipt files total:                              741,335.99 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Amex            Payment:     2,394.00  Receipt:     2,394.00  Diff:     0.00  ✓
+    Cash            Payment:   115,163.99  Receipt:   115,163.99  Diff:     0.00  ✓
+    Mada            Payment:   314,725.00  Receipt:   314,725.00  Diff:     0.00  ✓
+    Master          Payment:    49,252.00  Receipt:    49,252.00  Diff:     0.00  ✓
+    Visa            Payment:   259,801.00  Receipt:   259,801.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (116 rows, 741,335.99 SAR)
+  Per-method grand total                   741,335.99 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 87
+    Total amount: -9,046.9854 SAR
+    Payment methods included: ['AMEX', 'Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -9,046.9854 SAR
+    Per-method total:               -9,046.9854 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    AMEX                8 rows           -101.8645 SAR  ⚠ 8 NEGATIVE AMOUNTS!
+    Mada               27 rows         -2,177.0190 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             25 rows         -1,082.6887 SAR  ⚠ 25 NEGATIVE AMOUNTS!
+    Visa               27 rows         -5,685.4132 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              5
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       315,510.00 SAR
+    Visa                       260,202.00 SAR
+    Master                      49,551.00 SAR
+    Amex                         2,394.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                       144,185.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED              144,185.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  TAWAREN          Amex        698.00            0.04      -29.6999          1831434139959                 
+  TAWAREN          Mada        13,086.00         0.01      -90.2934          1831434139959                 
+  TAWAREN          Master      783.00            0.02      -17.1085          1831434139959                 
+  TAWAREN          Visa        7,479.00          0.02      -163.4161         1831434139959                 
+  TAWAREN          Mada        12,889.00         0.01      -88.9341          1831434139959                 
+  TAWAREN          Master      697.00            0.02      -15.2294          1831434139959                 
+  TAWAREN          Visa        4,350.00          0.02      -95.0475          1831434139959                 
+  TAWAREN          Mada        8,138.00          0.01      -56.1522          1831434139959                 
+  TAWAREN          Master      987.00            0.02      -21.5659          1831434139959                 
+  TAWAREN          Visa        10,469.00         0.02      -228.7476         1831434139959                 
+  TAWAREN          Mada        13,748.00         0.01      -94.8612          1831434139959                 
+  TAWAREN          Visa        3,101.00          0.02      -67.7568          1831434139959                 
+  TAWAREN          Mada        8,814.00          0.01      -60.8166          1831434139959                 
+  TAWAREN          Master      149.00            0.02      -3.2556           1831434139959                 
+  TAWAREN          Visa        5,383.00          0.02      -117.6185         1831434139959                 
+  TAWAREN          Mada        13,531.00         0.01      -93.3639          1831434139959                 
+  TAWAREN          Master      835.00            0.02      -18.2447          1831434139959                 
+  TAWAREN          Visa        6,266.00          0.02      -136.9121         1831434139959                 
+  TAWAREN          Amex        222.00            0.04      -9.4461           1831434139959                 
+  TAWAREN          Mada        21,799.00         0.01      -150.4131         1831434139959                 
+  TAWAREN          Master      11,127.00         0.02      -243.1249         1831434139959                 
+  TAWAREN          Visa        9,152.00          0.02      -199.9712         1831434139959                 
+  TAWAREN          Mada        11,322.00         0.01      -78.1218          1831434139959                 
+  TAWAREN          Master      760.00            0.02      -16.6060          1831434139959                 
+  TAWAREN          Visa        6,131.00          0.02      -133.9623         1831434139959                 
+  TAWAREN          Mada        9,383.00          0.01      -64.7427          1831434139959                 
+  TAWAREN          Master      2,454.00          0.02      -53.6199          1831434139959                 
+  TAWAREN          Visa        3,297.00          0.02      -72.0395          1831434139959                 
+  TAWAREN          Amex        199.00            0.04      -8.4674           1831434139959                 
+  TAWAREN          Mada        13,712.00         0.01      -94.6128          1831434139959                 
+  TAWAREN          Master      1,761.00          0.02      -38.4778          1831434139959                 
+  TAWAREN          Visa        7,227.00          0.02      -157.9099         1831434139959                 
+  TAWAREN          Mada        13,788.00         0.01      -95.1372          1831434139959                 
+  TAWAREN          Master      2,918.00          0.02      -63.7583          1831434139959                 
+  TAWAREN          Visa        8,186.00          0.02      -178.8641         1831434139959                 
+  TAWAREN          Mada        18,669.00         0.01      -128.8161         1831434139959                 
+  TAWAREN          Master      2,132.00          0.02      -46.5842          1831434139959                 
+  TAWAREN          Visa        8,726.00          0.02      -190.6631         1831434139959                 
+  TAWAREN          Mada        18,744.00         0.01      -129.3336         1831434139959                 
+  TAWAREN          Master      2,323.00          0.02      -50.7575          1831434139959                 
+  TAWAREN          Visa        11,828.00         0.02      -258.4418         1831434139959                 
+  TAWAREN          Amex        149.00            0.04      -6.3399           1831434139959                 
+  TAWAREN          Mada        14,332.00         0.01      -98.8908          1831434139959                 
+  TAWAREN          Master      724.00            0.02      -15.8194          1831434139959                 
+  TAWAREN          Visa        6,902.00          0.02      -150.8087         1831434139959                 
+  TAWAREN          Amex        422.00            0.04      -17.9561          1831434139959                 
+  TAWAREN          Mada        20,460.00         0.01      -141.1740         1831434139959                 
+  TAWAREN          Master      9,631.00          0.02      -210.4373         1831434139959                 
+  TAWAREN          Visa        64,267.00         0.02      -1,404.2339       1831434139959                 
+  TAWAREN          Mada        12,555.00         0.01      -86.6295          1831434139959                 
+  TAWAREN          Visa        67,302.00         0.02      -1,470.5487       1831434139959                 
+  TAWAREN          Amex        299.00            0.04      -12.7224          1831434139959                 
+  TAWAREN          Mada        4,526.00          0.01      -31.2294          1831434139959                 
+  TAWAREN          Master      160.00            0.02      -3.4960           1831434139959                 
+  TAWAREN          Visa        2,391.00          0.02      -52.2433          1831434139959                 
+  TAWAREN          Mada        5,267.00          0.01      -36.3423          1831434139959                 
+  TAWAREN          Master      4,476.00          0.02      -97.8006          1831434139959                 
+  TAWAREN          Visa        3,099.00          0.02      -67.7131          1831434139959                 
+  TAWAREN          Mada        7,897.00          0.01      -54.4893          1831434139959                 
+  TAWAREN          Master      796.00            0.02      -17.3926          1831434139959                 
+  TAWAREN          Visa        3,801.00          0.02      -83.0518          1831434139959                 
+  TAWAREN          Mada        2,855.00          0.01      -19.6995          1831434139959                 
+  TAWAREN          Master      160.00            0.02      -3.4960           1831434139959                 
+  TAWAREN          Visa        1,828.00          0.02      -39.9418          1831434139959                 
+  TAWAREN          Mada        5,771.00          0.01      -39.8199          1831434139959                 
+  TAWAREN          Master      770.00            0.02      -16.8245          1831434139959                 
+  TAWAREN          Visa        2,846.00          0.02      -62.1851          1831434139959                 
+  TAWAREN          Mada        9,448.00          0.01      -65.1912          1831434139959                 
+  TAWAREN          Master      781.00            0.02      -17.0648          1831434139959                 
+  TAWAREN          Visa        4,340.00          0.02      -94.8290          1831434139959                 
+  TAWAREN          Mada        4,352.00          0.01      -30.0288          1831434139959                 
+  TAWAREN          Master      1,011.00          0.02      -22.0903          1831434139959                 
+  TAWAREN          Visa        1,604.00          0.02      -35.0474          1831434139959                 
+  TAWAREN          Amex        215.00            0.04      -9.1482           1831434139959                 
+  TAWAREN          Mada        8,600.00          0.01      -59.3400          1831434139959                 
+  TAWAREN          Master      770.00            0.02      -16.8245          1831434139959                 
+  TAWAREN          Visa        3,096.00          0.02      -67.6476          1831434139959                 
+  TAWAREN          Mada        30,782.00         0.01      -212.3958         1831434139959                 
+  TAWAREN          Master      856.00            0.02      -18.7036          1831434139959                 
+  TAWAREN          Visa        2,726.00          0.02      -59.5631          1831434139959                 
+  TAWAREN          Mada        6,733.00          0.01      -46.4577          1831434139959                 
+  TAWAREN          Master      1,045.00          0.02      -22.8332          1831434139959                 
+  TAWAREN          Visa        2,301.00          0.02      -50.2768          1831434139959                 
+  TAWAREN          Amex        190.00            0.04      -8.0845           1831434139959                 
+  TAWAREN          Mada        4,309.00          0.01      -29.7321          1831434139959                 
+  TAWAREN          Master      1,445.00          0.02      -31.5732          1831434139959                 
+  TAWAREN          Visa        2,104.00          0.02      -45.9724          1831434139959                 
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -9,046.9854                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (87 rows, -9,046.9854 SAR)
+  Per-method grand total                   -9,046.9854 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  701,924.68 SAR         █
+  █  Total Standard Receipt amt               1,482,671.98 SAR       █
+  █  Difference                               780,747.30 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  701,924.68 SAR
+  Total Standard Receipt amt               1,482,671.98 SAR
+  Difference                               780,747.30 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0001860
+  >>> Next run START_TXN_SEQUENCE =        1861  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 21:08:38
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

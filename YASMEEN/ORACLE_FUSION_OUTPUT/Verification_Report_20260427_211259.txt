@@ -1,0 +1,511 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 09:12:53 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         634,816.88 SAR     ║
+║  [ℹ] Standard Receipt Total                   1,315,944.64 SAR   ║
+║  [✗] Amount Reconciliation                    Diff: 681,127.76 SAR║
+║  [ℹ] Total Invoices                           3,432              ║
+║  [ℹ] Receipt Files Generated                  6                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          YASMEEN.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             YASMEEN_payment_line_5_to_31_March.xlsx
+  Segment 1 prefix                         32141143
+  Segment 2 prefix                         84968877
+
+  AR rows read                             12878
+  Unique invoices loaded                   3421
+  Unique transactions (BLK)                77
+  Total AR amount                          637,519.52 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Amex                       3             597.11                
+  Cash                       840           161,754.79            
+  Mada                       2017          389,636.12            
+  Master                     119           27,676.35             
+  TABBY                      131           37,558.67             
+  TAMARA                     130           34,928.96             
+  Visa                       348           78,307.95             
+  ----------------------------------------------------------------------
+  TOTAL                      3588          730,459.95            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  AZIZMALL                        5           -1,034.05           
+  HAMDANIIYA                      1           -99.50              
+  JEDANDLUS2                      2           -544.01             
+  JEDNUJOD                        1           -115.00             
+  JEDWAHBLVD                      1           -299.03             
+  MURJANJED                       2           -284.01             
+  OBHURMALL                       1           -399.03             
+  RYDGALLER                       261         72,487.63           
+  SALAMJED                        1           -199.01             
+  UWALKJED                        1           -299.03             
+  YASMEEN                         3156        661,244.99          
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 123
+    Total amount: 657,972.32 SAR
+    Payment methods included: ['AMEX', 'Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              657,972.32 SAR
+    Per-method total:                657,972.32 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    AMEX                2 rows              597.11 SAR  ✓
+    Cash               42 rows          161,754.79 SAR  ⚠ 15 NEGATIVE AMOUNTS!
+    Mada               27 rows          389,636.12 SAR  ✓
+    Master             25 rows           27,676.35 SAR  ✓
+    Visa               27 rows           78,307.95 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    261
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   6
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       389,636.12 SAR
+    Cash                       161,754.79 SAR
+    Visa                        78,307.95 SAR
+    Master                      27,676.35 SAR
+    Amex                           597.11 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TABBY                       37,558.67 SAR
+    TAMARA                      34,928.96 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          AZIZMALL         Cash        -173.05           CashOth Mall Hail                  
+  Receipt_CASH.csv                          AZIZMALL         Cash        -86.52            CashOth Mall Hail                  
+  Receipt_CASH.csv                          AZIZMALL         Cash        -260.02           CashOth Mall Hail                  
+  Receipt_CASH.csv                          AZIZMALL         Cash        -50.44            CashOth Mall Hail                  
+  Receipt_CASH.csv                          AZIZMALL         Cash        -464.02           CashOth Mall Hail                  
+  Receipt_CASH.csv                          HAMDANIIYA       Cash        -99.50            CashHAMDANIIYA                     
+  Receipt_CASH.csv                          JEDANDLUS2       Cash        -199.01           Cash JEDANDLUS2                    
+  Receipt_CASH.csv                          JEDANDLUS2       Cash        -345.00           Cash JEDANDLUS2                    
+  Receipt_CASH.csv                          JEDNUJOD         Cash        -115.00           Cash JEDNUJOD                      
+  Receipt_CASH.csv                          JEDWAHBLVD       Cash        -299.03           Cash JEDWAHBLVD                    
+  Receipt_CASH.csv                          MURJANJED        Cash        -149.01           Cash MURJANJED                     
+  Receipt_CASH.csv                          MURJANJED        Cash        -135.00           Cash MURJANJED                     
+  Receipt_CASH.csv                          OBHURMALL        Cash        -399.03           CashOBHURMALL                      
+  Receipt_CASH.csv                          SALAMJED         Cash        -199.01           015795017321009                    
+  Receipt_CASH.csv                          UWALKJED         Cash        -299.03           Cash UWALKJED                      
+  Receipt_CASH.csv                          YASMEEN          Cash        5,624.27          CASH Yasmeen Mall Branch           
+  Receipt_MADA.csv                          YASMEEN          Mada        18,590.12         0022555612010                      
+  Receipt_MASTER.csv                        YASMEEN          Master      1,061.62          0022555612010                      
+  Receipt_VISA.csv                          YASMEEN          Visa        2,433.25          0022555612010                      
+  Receipt_CASH.csv                          YASMEEN          Cash        3,913.40          CASH Yasmeen Mall Branch           
+  Receipt_MADA.csv                          YASMEEN          Mada        13,291.92         0022555612010                      
+  Receipt_MASTER.csv                        YASMEEN          Master      872.14            0022555612010                      
+  Receipt_VISA.csv                          YASMEEN          Visa        3,556.61          0022555612010                      
+  Receipt_CASH.csv                          YASMEEN          Cash        4,784.84          CASH Yasmeen Mall Branch           
+  Receipt_MADA.csv                          YASMEEN          Mada        17,772.04         0022555612010                      
+  Receipt_MASTER.csv                        YASMEEN          Master      1,808.19          0022555612010                      
+  Receipt_VISA.csv                          YASMEEN          Visa        4,608.87          0022555612010                      
+  Receipt_CASH.csv                          YASMEEN          Cash        3,196.88          CASH Yasmeen Mall Branch           
+  Receipt_MADA.csv                          YASMEEN          Mada        19,457.05         0022555612010                      
+  Receipt_MASTER.csv                        YASMEEN          Master      421.06            0022555612010                      
+  Receipt_VISA.csv                          YASMEEN          Visa        3,166.00          0022555612010                      
+  Receipt_CASH.csv                          YASMEEN          Cash        4,568.99          CASH Yasmeen Mall Branch           
+  Receipt_MADA.csv                          YASMEEN          Mada        14,686.86         0022555612010                      
+  Receipt_MASTER.csv                        YASMEEN          Master      1,569.12          0022555612010                      
+  Receipt_VISA.csv                          YASMEEN          Visa        3,660.92          0022555612010                      
+  Receipt_CASH.csv                          YASMEEN          Cash        6,189.93          CASH Yasmeen Mall Branch           
+  Receipt_MADA.csv                          YASMEEN          Mada        23,473.30         0022555612010                      
+  Receipt_MASTER.csv                        YASMEEN          Master      1,773.04          0022555612010                      
+  Receipt_VISA.csv                          YASMEEN          Visa        8,840.80          0022555612010                      
+  Receipt_AMEX.csv                          YASMEEN          Amex        448.11            0022555612010                      
+  Receipt_CASH.csv                          YASMEEN          Cash        8,579.71          CASH Yasmeen Mall Branch           
+  Receipt_MADA.csv                          YASMEEN          Mada        24,114.70         0022555612010                      
+  Receipt_MASTER.csv                        YASMEEN          Master      914.09            0022555612010                      
+  Receipt_VISA.csv                          YASMEEN          Visa        2,839.90          0022555612010                      
+  Receipt_CASH.csv                          YASMEEN          Cash        5,445.18          CASH Yasmeen Mall Branch           
+  Receipt_MADA.csv                          YASMEEN          Mada        17,346.86         0022555612010                      
+  Receipt_MASTER.csv                        YASMEEN          Master      548.05            0022555612010                      
+  Receipt_VISA.csv                          YASMEEN          Visa        2,834.48          0022555612010                      
+  Receipt_CASH.csv                          YASMEEN          Cash        16,410.43         CASH Yasmeen Mall Branch           
+  Receipt_MADA.csv                          YASMEEN          Mada        16,368.66         0022555612010                      
+  Receipt_MASTER.csv                        YASMEEN          Master      647.12            0022555612010                      
+  Receipt_VISA.csv                          YASMEEN          Visa        2,586.76          0022555612010                      
+  Receipt_CASH.csv                          YASMEEN          Cash        9,766.96          CASH Yasmeen Mall Branch           
+  Receipt_MADA.csv                          YASMEEN          Mada        23,492.86         0022555612010                      
+  Receipt_MASTER.csv                        YASMEEN          Master      1,875.23          0022555612010                      
+  Receipt_VISA.csv                          YASMEEN          Visa        7,353.56          0022555612010                      
+  Receipt_CASH.csv                          YASMEEN          Cash        8,091.44          CASH Yasmeen Mall Branch           
+  Receipt_MADA.csv                          YASMEEN          Mada        24,656.23         0022555612010                      
+  Receipt_MASTER.csv                        YASMEEN          Master      1,532.31          0022555612010                      
+  Receipt_VISA.csv                          YASMEEN          Visa        3,234.50          0022555612010                      
+  Receipt_CASH.csv                          YASMEEN          Cash        12,635.53         CASH Yasmeen Mall Branch           
+  Receipt_MADA.csv                          YASMEEN          Mada        24,103.28         0022555612010                      
+  Receipt_MASTER.csv                        YASMEEN          Master      1,848.62          0022555612010                      
+  Receipt_VISA.csv                          YASMEEN          Visa        4,109.55          0022555612010                      
+  Receipt_AMEX.csv                          YASMEEN          Amex        149.00            0022555612010                      
+  Receipt_CASH.csv                          YASMEEN          Cash        11,409.15         CASH Yasmeen Mall Branch           
+  Receipt_MADA.csv                          YASMEEN          Mada        27,172.90         0022555612010                      
+  Receipt_MASTER.csv                        YASMEEN          Master      3,053.46          0022555612010                      
+  Receipt_VISA.csv                          YASMEEN          Visa        3,190.10          0022555612010                      
+  Receipt_CASH.csv                          YASMEEN          Cash        8,464.70          CASH Yasmeen Mall Branch           
+  Receipt_MADA.csv                          YASMEEN          Mada        26,541.99         0022555612010                      
+  Receipt_MASTER.csv                        YASMEEN          Master      1,821.13          0022555612010                      
+  Receipt_VISA.csv                          YASMEEN          Visa        5,193.89          0022555612010                      
+  Receipt_CASH.csv                          YASMEEN          Cash        17,694.25         CASH Yasmeen Mall Branch           
+  Receipt_MADA.csv                          YASMEEN          Mada        32,081.76         0022555612010                      
+  Receipt_MASTER.csv                        YASMEEN          Master      2,542.14          0022555612010                      
+  Receipt_VISA.csv                          YASMEEN          Visa        6,925.58          0022555612010                      
+  Receipt_CASH.csv                          YASMEEN          Cash        6,084.02          CASH Yasmeen Mall Branch           
+  Receipt_MADA.csv                          YASMEEN          Mada        10,929.24         0022555612010                      
+  Receipt_MASTER.csv                        YASMEEN          Master      648.03            0022555612010                      
+  Receipt_VISA.csv                          YASMEEN          Visa        458.02            0022555612010                      
+  Receipt_CASH.csv                          YASMEEN          Cash        2,294.11          CASH Yasmeen Mall Branch           
+  Receipt_MADA.csv                          YASMEEN          Mada        2,715.63          0022555612010                      
+  Receipt_VISA.csv                          YASMEEN          Visa        470.06            0022555612010                      
+  Receipt_CASH.csv                          YASMEEN          Cash        3,922.48          CASH Yasmeen Mall Branch           
+  Receipt_MADA.csv                          YASMEEN          Mada        7,760.39          0022555612010                      
+  Receipt_MASTER.csv                        YASMEEN          Master      826.01            0022555612010                      
+  Receipt_VISA.csv                          YASMEEN          Visa        1,532.58          0022555612010                      
+  Receipt_CASH.csv                          YASMEEN          Cash        3,385.27          CASH Yasmeen Mall Branch           
+  Receipt_MADA.csv                          YASMEEN          Mada        4,788.77          0022555612010                      
+  Receipt_MASTER.csv                        YASMEEN          Master      349.03            0022555612010                      
+  Receipt_VISA.csv                          YASMEEN          Visa        1,129.09          0022555612010                      
+  Receipt_CASH.csv                          YASMEEN          Cash        2,397.22          CASH Yasmeen Mall Branch           
+  Receipt_MADA.csv                          YASMEEN          Mada        5,142.21          0022555612010                      
+  Receipt_VISA.csv                          YASMEEN          Visa        1,607.49          0022555612010                      
+  Receipt_CASH.csv                          YASMEEN          Cash        4,680.73          CASH Yasmeen Mall Branch           
+  Receipt_MADA.csv                          YASMEEN          Mada        5,718.38          0022555612010                      
+  Receipt_MASTER.csv                        YASMEEN          Master      428.50            0022555612010                      
+  Receipt_VISA.csv                          YASMEEN          Visa        2,155.20          0022555612010                      
+  Receipt_CASH.csv                          YASMEEN          Cash        3,143.46          CASH Yasmeen Mall Branch           
+  Receipt_MADA.csv                          YASMEEN          Mada        7,959.11          0022555612010                      
+  Receipt_MASTER.csv                        YASMEEN          Master      379.09            0022555612010                      
+  Receipt_VISA.csv                          YASMEEN          Visa        902.10            0022555612010                      
+  Receipt_CASH.csv                          YASMEEN          Cash        2,515.28          CASH Yasmeen Mall Branch           
+  Receipt_MADA.csv                          YASMEEN          Mada        5,412.54          0022555612010                      
+  Receipt_MASTER.csv                        YASMEEN          Master      448.03            0022555612010                      
+  Receipt_VISA.csv                          YASMEEN          Visa        1,477.08          0022555612010                      
+  Receipt_CASH.csv                          YASMEEN          Cash        2,978.26          CASH Yasmeen Mall Branch           
+  Receipt_MADA.csv                          YASMEEN          Mada        5,056.16          0022555612010                      
+  Receipt_MASTER.csv                        YASMEEN          Master      199.01            0022555612010                      
+  Receipt_VISA.csv                          YASMEEN          Visa        560.02            0022555612010                      
+  Receipt_CASH.csv                          YASMEEN          Cash        2,264.10          CASH Yasmeen Mall Branch           
+  Receipt_MADA.csv                          YASMEEN          Mada        3,251.28          0022555612010                      
+  Receipt_MASTER.csv                        YASMEEN          Master      1,154.25          0022555612010                      
+  Receipt_VISA.csv                          YASMEEN          Visa        1,541.13          0022555612010                      
+  Receipt_CASH.csv                          YASMEEN          Cash        1,953.14          CASH Yasmeen Mall Branch           
+  Receipt_MADA.csv                          YASMEEN          Mada        3,859.84          0022555612010                      
+  Receipt_MASTER.csv                        YASMEEN          Master      199.00            0022555612010                      
+  Receipt_VISA.csv                          YASMEEN          Visa        1,045.21          0022555612010                      
+  Receipt_CASH.csv                          YASMEEN          Cash        2,633.73          CASH Yasmeen Mall Branch           
+  Receipt_MADA.csv                          YASMEEN          Mada        3,892.04          0022555612010                      
+  Receipt_MASTER.csv                        YASMEEN          Master      758.08            0022555612010                      
+  Receipt_VISA.csv                          YASMEEN          Visa        895.20            0022555612010                      
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            657,972.32                                           
+
+  Per-method totals:
+    Amex              2 file(s)          597.11 SAR
+    Cash             42 file(s)      161,754.79 SAR
+    Mada             27 file(s)      389,636.12 SAR
+    Master           25 file(s)       27,676.35 SAR
+    Visa             27 file(s)       78,307.95 SAR
+    Grand Total                       657,972.32 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Amex         Cash         Mada       Master         Visa          TOTAL
+  ------------------------------------------------------------------------------------------------
+  2026-03-05              0        5,624       18,590        1,062        2,433         27,709
+  2026-03-06              0        3,764       13,292          872        3,557         21,485
+  2026-03-07              0        4,785       17,772        1,808        4,609         28,974
+  2026-03-08              0        3,197       19,457          421        3,166         26,241
+  2026-03-09              0        3,637       14,687        1,569        3,661         23,554
+  2026-03-10              0        6,017       23,473        1,773        8,841         40,104
+  2026-03-11            448        8,493       24,115          914        2,840         36,810
+  2026-03-12              0        5,445       17,347          548        2,834         26,175
+  2026-03-13              0       16,410       16,369          647        2,587         36,013
+  2026-03-14              0        9,767       23,493        1,875        7,354         42,489
+  2026-03-15              0        8,091       24,656        1,532        3,235         37,514
+  2026-03-16              0       11,792       24,103        1,849        4,110         41,853
+  2026-03-17            149       11,409       27,173        3,053        3,190         44,975
+  2026-03-18              0        8,205       26,542        1,821        5,194         41,762
+  2026-03-19              0       17,529       32,082        2,542        6,926         59,078
+  2026-03-20              0        6,084       10,929          648          458         18,119
+  2026-03-21              0        2,294        2,716            0          470          5,480
+  2026-03-22              0        3,922        7,760          826        1,533         14,041
+  2026-03-23              0        3,385        4,789          349        1,129          9,652
+  2026-03-24              0        2,397        5,142            0        1,607          9,147
+  2026-03-25              0        4,018        5,718          428        2,155         12,320
+  2026-03-26              0        3,143        7,959          379          902         12,384
+  2026-03-27              0        2,515        5,413          448        1,477          9,853
+  2026-03-28              0        2,978        5,056          199          560          8,793
+  2026-03-29              0        2,264        3,251        1,154        1,541          8,211
+  2026-03-30              0        1,953        3,860          199        1,045          7,057
+  2026-03-31              0        2,634        3,892          758          895          8,179
+  ------------------------------------------------------------------------------------------------
+  TOTAL                 597      161,755      389,636       27,676       78,308        657,972
+
+  VALIDATION:
+    Payment file total (for standard receipts):       657,972.32 SAR
+    Receipt files total:                              657,972.32 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Amex            Payment:       597.11  Receipt:       597.11  Diff:     0.00  ✓
+    Cash            Payment:   161,754.79  Receipt:   161,754.79  Diff:     0.00  ✓
+    Mada            Payment:   389,636.12  Receipt:   389,636.12  Diff:     0.00  ✓
+    Master          Payment:    27,676.35  Receipt:    27,676.35  Diff:     0.00  ✓
+    Visa            Payment:    78,307.95  Receipt:    78,307.95  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (123 rows, 657,972.32 SAR)
+  Per-method grand total                   657,972.32 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 81
+    Total amount: -5,035.4913 SAR
+    Payment methods included: ['AMEX', 'Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -5,035.4913 SAR
+    Per-method total:               -5,035.4913 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    AMEX                2 rows            -25.4070 SAR  ⚠ 2 NEGATIVE AMOUNTS!
+    Mada               27 rows         -2,694.3272 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             25 rows           -604.7285 SAR  ⚠ 25 NEGATIVE AMOUNTS!
+    Visa               27 rows         -1,711.0286 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              5
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       390,482.24 SAR
+    Visa                        78,307.95 SAR
+    Master                      27,676.35 SAR
+    Amex                           597.11 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                       175,247.89 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED              175,247.89 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  YASMEEN          Mada        18,590.12         0.01      -128.2718         0022555612010                 
+  YASMEEN          Master      1,061.62          0.02      -23.1964          0022555612010                 
+  YASMEEN          Visa        2,433.25          0.02      -53.1665          0022555612010                 
+  YASMEEN          Mada        13,291.92         0.01      -91.7142          0022555612010                 
+  YASMEEN          Master      872.14            0.02      -19.0563          0022555612010                 
+  YASMEEN          Visa        3,556.61          0.02      -77.7119          0022555612010                 
+  YASMEEN          Mada        17,971.05         0.01      -124.0002         0022555612010                 
+  YASMEEN          Master      1,808.19          0.02      -39.5090          0022555612010                 
+  YASMEEN          Visa        4,608.87          0.02      -100.7038         0022555612010                 
+  YASMEEN          Mada        19,457.05         0.01      -134.2536         0022555612010                 
+  YASMEEN          Master      421.06            0.02      -9.2002           0022555612010                 
+  YASMEEN          Visa        3,166.00          0.02      -69.1771          0022555612010                 
+  YASMEEN          Mada        14,686.86         0.01      -101.3393         0022555612010                 
+  YASMEEN          Master      1,569.12          0.02      -34.2853          0022555612010                 
+  YASMEEN          Visa        3,660.92          0.02      -79.9911          0022555612010                 
+  YASMEEN          Mada        23,473.30         0.01      -161.9658         0022555612010                 
+  YASMEEN          Master      1,773.04          0.02      -38.7409          0022555612010                 
+  YASMEEN          Visa        8,840.80          0.02      -193.1715         0022555612010                 
+  YASMEEN          Amex        448.11            0.04      -19.0671          0022555612010                 
+  YASMEEN          Mada        24,114.70         0.01      -166.3914         0022555612010                 
+  YASMEEN          Master      914.09            0.02      -19.9729          0022555612010                 
+  YASMEEN          Visa        2,839.90          0.02      -62.0518          0022555612010                 
+  YASMEEN          Mada        17,346.86         0.01      -119.6933         0022555612010                 
+  YASMEEN          Master      548.05            0.02      -11.9749          0022555612010                 
+  YASMEEN          Visa        2,834.48          0.02      -61.9334          0022555612010                 
+  YASMEEN          Mada        16,368.66         0.01      -112.9438         0022555612010                 
+  YASMEEN          Master      647.12            0.02      -14.1396          0022555612010                 
+  YASMEEN          Visa        2,586.76          0.02      -56.5207          0022555612010                 
+  YASMEEN          Mada        23,492.86         0.01      -162.1007         0022555612010                 
+  YASMEEN          Master      1,875.23          0.02      -40.9738          0022555612010                 
+  YASMEEN          Visa        7,353.56          0.02      -160.6753         0022555612010                 
+  YASMEEN          Mada        24,805.24         0.01      -171.1562         0022555612010                 
+  YASMEEN          Master      1,532.31          0.02      -33.4810          0022555612010                 
+  YASMEEN          Visa        3,234.50          0.02      -70.6738          0022555612010                 
+  YASMEEN          Mada        24,103.28         0.01      -166.3126         0022555612010                 
+  YASMEEN          Master      1,848.62          0.02      -40.3923          0022555612010                 
+  YASMEEN          Visa        4,109.55          0.02      -89.7937          0022555612010                 
+  YASMEEN          Amex        149.00            0.04      -6.3399           0022555612010                 
+  YASMEEN          Mada        27,172.90         0.01      -187.4930         0022555612010                 
+  YASMEEN          Master      3,053.46          0.02      -66.7181          0022555612010                 
+  YASMEEN          Visa        3,190.10          0.02      -69.7037          0022555612010                 
+  YASMEEN          Mada        26,541.99         0.01      -183.1397         0022555612010                 
+  YASMEEN          Master      1,821.13          0.02      -39.7917          0022555612010                 
+  YASMEEN          Visa        5,193.89          0.02      -113.4865         0022555612010                 
+  YASMEEN          Mada        32,280.85         0.01      -222.7379         0022555612010                 
+  YASMEEN          Master      2,542.14          0.02      -55.5458          0022555612010                 
+  YASMEEN          Visa        6,925.58          0.02      -151.3239         0022555612010                 
+  YASMEEN          Mada        10,929.24         0.01      -75.4118          0022555612010                 
+  YASMEEN          Master      648.03            0.02      -14.1595          0022555612010                 
+  YASMEEN          Visa        458.02            0.02      -10.0077          0022555612010                 
+  YASMEEN          Mada        2,715.63          0.01      -18.7378          0022555612010                 
+  YASMEEN          Visa        470.06            0.02      -10.2708          0022555612010                 
+  YASMEEN          Mada        8,059.40          0.01      -55.6099          0022555612010                 
+  YASMEEN          Master      826.01            0.02      -18.0483          0022555612010                 
+  YASMEEN          Visa        1,532.58          0.02      -33.4869          0022555612010                 
+  YASMEEN          Mada        4,788.77          0.01      -33.0425          0022555612010                 
+  YASMEEN          Master      349.03            0.02      -7.6263           0022555612010                 
+  YASMEEN          Visa        1,129.09          0.02      -24.6706          0022555612010                 
+  YASMEEN          Mada        5,142.21          0.01      -35.4812          0022555612010                 
+  YASMEEN          Visa        1,607.49          0.02      -35.1237          0022555612010                 
+  YASMEEN          Mada        5,718.38          0.01      -39.4568          0022555612010                 
+  YASMEEN          Master      428.50            0.02      -9.3627           0022555612010                 
+  YASMEEN          Visa        2,155.20          0.02      -47.0911          0022555612010                 
+  YASMEEN          Mada        7,959.11          0.01      -54.9179          0022555612010                 
+  YASMEEN          Master      379.09            0.02      -8.2831           0022555612010                 
+  YASMEEN          Visa        902.10            0.02      -19.7109          0022555612010                 
+  YASMEEN          Mada        5,412.54          0.01      -37.3465          0022555612010                 
+  YASMEEN          Master      448.03            0.02      -9.7895           0022555612010                 
+  YASMEEN          Visa        1,477.08          0.02      -32.2742          0022555612010                 
+  YASMEEN          Mada        5,056.16          0.01      -34.8875          0022555612010                 
+  YASMEEN          Master      199.01            0.02      -4.3484           0022555612010                 
+  YASMEEN          Visa        560.02            0.02      -12.2364          0022555612010                 
+  YASMEEN          Mada        3,251.28          0.01      -22.4338          0022555612010                 
+  YASMEEN          Master      1,154.25          0.02      -25.2204          0022555612010                 
+  YASMEEN          Visa        1,541.13          0.02      -33.6737          0022555612010                 
+  YASMEEN          Mada        3,859.84          0.01      -26.6329          0022555612010                 
+  YASMEEN          Master      199.00            0.02      -4.3481           0022555612010                 
+  YASMEEN          Visa        1,045.21          0.02      -22.8378          0022555612010                 
+  YASMEEN          Mada        3,892.04          0.01      -26.8551          0022555612010                 
+  YASMEEN          Master      758.08            0.02      -16.5640          0022555612010                 
+  YASMEEN          Visa        895.20            0.02      -19.5601          0022555612010                 
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -5,035.4913                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (81 rows, -5,035.4913 SAR)
+  Per-method grand total                   -5,035.4913 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  634,816.88 SAR         █
+  █  Total Standard Receipt amt               1,315,944.64 SAR       █
+  █  Difference                               681,127.76 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  634,816.88 SAR
+  Total Standard Receipt amt               1,315,944.64 SAR
+  Difference                               681,127.76 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0001468
+  >>> Next run START_TXN_SEQUENCE =        1469  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 21:12:59
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

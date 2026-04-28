@@ -1,0 +1,506 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 09:13:52 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         610,593.47 SAR     ║
+║  [ℹ] Standard Receipt Total                   1,293,330.00 SAR   ║
+║  [✗] Amount Reconciliation                    Diff: 682,736.53 SAR║
+║  [ℹ] Total Invoices                           3,145              ║
+║  [ℹ] Receipt Files Generated                  6                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          ZAHRAN.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             ZAHRAN_payment_line_5_to_31_March.xlsx
+  Segment 1 prefix                         05424232
+  Segment 2 prefix                         82780036
+
+  AR rows read                             12303
+  Unique invoices loaded                   3138
+  Unique transactions (BLK)                76
+  Total AR amount                          612,555.47 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Amex                       7             1,516.00              
+  Cash                       558           89,251.00             
+  Mada                       1786          382,433.00            
+  Master                     207           57,085.00             
+  TABBY                      89            28,139.00             
+  TAMARA                     99            27,686.00             
+  Visa                       519           116,380.00            
+  ----------------------------------------------------------------------
+  TOTAL                      3265          702,490.00            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  AMWAJ                           2           -509.00             
+  DAMMOTHAIM                      1           -299.00             
+  KHOQOSAIBI                      3           -897.00             
+  QATIFCFRNT                      1           -257.00             
+  RYDGALLER                       188         55,825.00           
+  ZAHRAN                          2950        648,627.00          
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 119
+    Total amount: 646,665.00 SAR
+    Payment methods included: ['AMEX', 'Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              646,665.00 SAR
+    Per-method total:                646,665.00 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    AMEX                4 rows            1,516.00 SAR  ✓
+    Cash               34 rows           89,251.00 SAR  ⚠ 8 NEGATIVE AMOUNTS!
+    Mada               27 rows          382,433.00 SAR  ✓
+    Master             27 rows           57,085.00 SAR  ✓
+    Visa               27 rows          116,380.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    188
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   6
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       382,433.00 SAR
+    Visa                       116,380.00 SAR
+    Cash                        89,251.00 SAR
+    Master                      57,085.00 SAR
+    Amex                         1,516.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TABBY                       28,139.00 SAR
+    TAMARA                      27,686.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          AMWAJ            Cash        -299.00           CASH Amwaj Mall Branch             
+  Receipt_CASH.csv                          AMWAJ            Cash        -210.00           CASH Amwaj Mall Branch             
+  Receipt_CASH.csv                          DAMMOTHAIM       Cash        -299.00           CashDAMMOTHAIM                     
+  Receipt_CASH.csv                          KHOQOSAIBI       Cash        -399.00           Cash KHOQOSAIBI                    
+  Receipt_CASH.csv                          KHOQOSAIBI       Cash        -299.00           Cash KHOQOSAIBI                    
+  Receipt_CASH.csv                          KHOQOSAIBI       Cash        -199.00           Cash KHOQOSAIBI                    
+  Receipt_CASH.csv                          QATIFCFRNT       Cash        -257.00           Cash QATIFCFRNT                    
+  Receipt_CASH.csv                          ZAHRAN           Cash        3,685.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          ZAHRAN           Mada        15,149.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        ZAHRAN           Master      2,807.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          ZAHRAN           Visa        7,912.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          ZAHRAN           Cash        2,733.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          ZAHRAN           Mada        23,122.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        ZAHRAN           Master      2,769.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          ZAHRAN           Visa        3,911.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          ZAHRAN           Cash        3,995.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          ZAHRAN           Mada        17,935.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        ZAHRAN           Master      1,834.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          ZAHRAN           Visa        3,343.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          ZAHRAN           Cash        3,761.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          ZAHRAN           Mada        16,318.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        ZAHRAN           Master      1,046.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          ZAHRAN           Visa        6,454.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          ZAHRAN           Cash        5,032.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          ZAHRAN           Mada        21,082.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        ZAHRAN           Master      3,235.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          ZAHRAN           Visa        4,199.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          ZAHRAN           Cash        2,151.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          ZAHRAN           Mada        14,907.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        ZAHRAN           Master      3,142.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          ZAHRAN           Visa        4,066.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          ZAHRAN           Cash        11,032.00         CashOth Mall Hail                  
+  Receipt_MADA.csv                          ZAHRAN           Mada        17,106.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        ZAHRAN           Master      4,518.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          ZAHRAN           Visa        6,062.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          ZAHRAN           Cash        3,250.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          ZAHRAN           Mada        15,957.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        ZAHRAN           Master      1,635.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          ZAHRAN           Visa        1,403.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          ZAHRAN           Cash        5,716.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          ZAHRAN           Mada        17,819.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        ZAHRAN           Master      1,248.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          ZAHRAN           Visa        4,970.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          ZAHRAN           Cash        3,943.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          ZAHRAN           Mada        22,376.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        ZAHRAN           Master      3,173.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          ZAHRAN           Visa        7,096.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          ZAHRAN           Cash        3,960.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          ZAHRAN           Mada        17,683.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        ZAHRAN           Master      1,669.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          ZAHRAN           Visa        4,880.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          ZAHRAN           Cash        5,022.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          ZAHRAN           Mada        22,291.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        ZAHRAN           Master      2,049.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          ZAHRAN           Visa        5,767.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_AMEX.csv                          ZAHRAN           Amex        398.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          ZAHRAN           Cash        3,023.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          ZAHRAN           Mada        22,847.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        ZAHRAN           Master      2,129.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          ZAHRAN           Visa        5,654.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          ZAHRAN           Cash        4,218.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          ZAHRAN           Mada        20,046.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        ZAHRAN           Master      3,515.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          ZAHRAN           Visa        7,425.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          ZAHRAN           Cash        6,793.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          ZAHRAN           Mada        25,461.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        ZAHRAN           Master      4,241.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          ZAHRAN           Visa        8,766.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          ZAHRAN           Cash        661.00            CashOth Mall Hail                  
+  Receipt_MADA.csv                          ZAHRAN           Mada        7,678.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        ZAHRAN           Master      498.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          ZAHRAN           Visa        2,288.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          ZAHRAN           Cash        2,887.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          ZAHRAN           Mada        2,737.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        ZAHRAN           Master      772.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          ZAHRAN           Visa        1,165.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          ZAHRAN           Cash        2,538.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          ZAHRAN           Mada        4,830.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        ZAHRAN           Master      922.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          ZAHRAN           Visa        2,617.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_AMEX.csv                          ZAHRAN           Amex        199.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          ZAHRAN           Cash        1,898.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          ZAHRAN           Mada        7,946.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        ZAHRAN           Master      2,806.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          ZAHRAN           Visa        2,748.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          ZAHRAN           Cash        1,493.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          ZAHRAN           Mada        8,989.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        ZAHRAN           Master      1,913.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          ZAHRAN           Visa        1,188.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          ZAHRAN           Cash        3,455.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          ZAHRAN           Mada        6,925.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        ZAHRAN           Master      1,412.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          ZAHRAN           Visa        3,412.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          ZAHRAN           Cash        2,999.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          ZAHRAN           Mada        8,786.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        ZAHRAN           Master      1,691.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          ZAHRAN           Visa        1,613.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          ZAHRAN           Cash        1,896.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          ZAHRAN           Mada        5,921.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        ZAHRAN           Master      498.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          ZAHRAN           Visa        3,054.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          ZAHRAN           Cash        2,239.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          ZAHRAN           Mada        14,515.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        ZAHRAN           Master      3,132.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          ZAHRAN           Visa        4,859.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_AMEX.csv                          ZAHRAN           Amex        720.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          ZAHRAN           Cash        2,552.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          ZAHRAN           Mada        6,353.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        ZAHRAN           Master      2,997.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          ZAHRAN           Visa        4,556.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          ZAHRAN           Cash        1,386.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          ZAHRAN           Mada        10,353.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        ZAHRAN           Master      1,036.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          ZAHRAN           Visa        1,583.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_AMEX.csv                          ZAHRAN           Amex        199.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          ZAHRAN           Cash        -1,105.00         CashOth Mall Hail                  
+  Receipt_MADA.csv                          ZAHRAN           Mada        7,301.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        ZAHRAN           Master      398.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          ZAHRAN           Visa        5,389.00          AL Jazeerah Bank MJMAKRMMAL        
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            646,665.00                                           
+
+  Per-method totals:
+    Amex              4 file(s)        1,516.00 SAR
+    Cash             34 file(s)       89,251.00 SAR
+    Mada             27 file(s)      382,433.00 SAR
+    Master           27 file(s)       57,085.00 SAR
+    Visa             27 file(s)      116,380.00 SAR
+    Grand Total                       646,665.00 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Amex         Cash         Mada       Master         Visa          TOTAL
+  ------------------------------------------------------------------------------------------------
+  2026-03-05              0        3,685       15,149        2,807        7,912         29,553
+  2026-03-06              0        2,733       23,122        2,769        3,911         32,535
+  2026-03-07              0        3,995       17,935        1,834        3,343         27,107
+  2026-03-08              0        3,761       16,318        1,046        6,454         27,579
+  2026-03-09              0        5,032       21,082        3,235        4,199         33,548
+  2026-03-10              0        1,852       14,907        3,142        4,066         23,967
+  2026-03-11              0       11,032       17,106        4,518        6,062         38,718
+  2026-03-12              0        3,250       15,957        1,635        1,403         22,245
+  2026-03-13              0        5,716       17,819        1,248        4,970         29,753
+  2026-03-14              0        3,943       22,376        3,173        7,096         36,588
+  2026-03-15              0        3,661       17,683        1,669        4,880         27,893
+  2026-03-16              0        5,022       22,291        2,049        5,767         35,129
+  2026-03-17            398        2,367       22,847        2,129        5,654         33,395
+  2026-03-18              0        4,218       20,046        3,515        7,425         35,204
+  2026-03-19              0        6,793       25,461        4,241        8,766         45,261
+  2026-03-20              0          362        7,678          498        2,288         10,826
+  2026-03-21              0        2,887        2,737          772        1,165          7,561
+  2026-03-22              0        2,538        4,830          922        2,617         10,907
+  2026-03-23            199        1,898        7,946        2,806        2,748         15,597
+  2026-03-24              0        1,493        8,989        1,913        1,188         13,583
+  2026-03-25              0        3,455        6,925        1,412        3,412         15,204
+  2026-03-26              0        2,999        8,786        1,691        1,613         15,089
+  2026-03-27              0        1,896        5,921          498        3,054         11,369
+  2026-03-28              0        2,040       14,515        3,132        4,859         24,546
+  2026-03-29            720        2,342        6,353        2,997        4,556         16,968
+  2026-03-30              0        1,386       10,353        1,036        1,583         14,358
+  2026-03-31            199       -1,105        7,301          398        5,389         12,182
+  ------------------------------------------------------------------------------------------------
+  TOTAL               1,516       89,251      382,433       57,085      116,380        646,665
+
+  VALIDATION:
+    Payment file total (for standard receipts):       646,665.00 SAR
+    Receipt files total:                              646,665.00 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Amex            Payment:     1,516.00  Receipt:     1,516.00  Diff:     0.00  ✓
+    Cash            Payment:    89,251.00  Receipt:    89,251.00  Diff:     0.00  ✓
+    Mada            Payment:   382,433.00  Receipt:   382,433.00  Diff:     0.00  ✓
+    Master          Payment:    57,085.00  Receipt:    57,085.00  Diff:     0.00  ✓
+    Visa            Payment:   116,380.00  Receipt:   116,380.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (119 rows, 646,665.00 SAR)
+  Per-method grand total                   646,665.00 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 85
+    Total amount: -6,493.5025 SAR
+    Payment methods included: ['AMEX', 'Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -6,493.5025 SAR
+    Per-method total:               -6,493.5025 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    AMEX                4 rows            -64.5057 SAR  ⚠ 4 NEGATIVE AMOUNTS!
+    Mada               27 rows         -2,638.7877 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             27 rows         -1,247.3067 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Visa               27 rows         -2,542.9024 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              5
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       382,433.00 SAR
+    Visa                       116,380.00 SAR
+    Master                      57,085.00 SAR
+    Amex                         1,516.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                       109,970.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED              109,970.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  ZAHRAN           Mada        15,149.00         0.01      -104.5281         AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Master      2,807.00          0.02      -61.3329          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Visa        7,912.00          0.02      -172.8772         AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Mada        23,122.00         0.01      -159.5418         AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Master      2,769.00          0.02      -60.5026          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Visa        3,911.00          0.02      -85.4553          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Mada        17,935.00         0.01      -123.7515         AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Master      1,834.00          0.02      -40.0729          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Visa        3,343.00          0.02      -73.0445          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Mada        16,318.00         0.01      -112.5942         AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Master      1,046.00          0.02      -22.8551          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Visa        6,454.00          0.02      -141.0199         AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Mada        21,082.00         0.01      -145.4658         AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Master      3,235.00          0.02      -70.6847          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Visa        4,199.00          0.02      -91.7481          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Mada        14,907.00         0.01      -102.8583         AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Master      3,142.00          0.02      -68.6527          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Visa        4,066.00          0.02      -88.8421          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Mada        17,106.00         0.01      -118.0314         AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Master      4,518.00          0.02      -98.7183          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Visa        6,062.00          0.02      -132.4547         AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Mada        15,957.00         0.01      -110.1033         AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Master      1,635.00          0.02      -35.7247          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Visa        1,403.00          0.02      -30.6555          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Mada        17,819.00         0.01      -122.9511         AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Master      1,248.00          0.02      -27.2688          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Visa        4,970.00          0.02      -108.5945         AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Mada        22,376.00         0.01      -154.3944         AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Master      3,173.00          0.02      -69.3300          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Visa        7,096.00          0.02      -155.0476         AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Mada        17,683.00         0.01      -122.0127         AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Master      1,669.00          0.02      -36.4676          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Visa        4,880.00          0.02      -106.6280         AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Mada        22,291.00         0.01      -153.8079         AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Master      2,049.00          0.02      -44.7706          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Visa        5,767.00          0.02      -126.0089         AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Amex        398.00            0.04      -16.9349          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Mada        22,847.00         0.01      -157.6443         AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Master      2,129.00          0.02      -46.5186          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Visa        5,654.00          0.02      -123.5399         AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Mada        20,046.00         0.01      -138.3174         AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Master      3,515.00          0.02      -76.8027          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Visa        7,425.00          0.02      -162.2362         AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Mada        25,461.00         0.01      -175.6809         AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Master      4,241.00          0.02      -92.6658          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Visa        8,766.00          0.02      -191.5371         AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Mada        7,678.00          0.01      -52.9782          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Master      498.00            0.02      -10.8813          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Visa        2,288.00          0.02      -49.9928          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Mada        2,737.00          0.01      -18.8853          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Master      772.00            0.02      -16.8682          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Visa        1,165.00          0.02      -25.4552          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Mada        4,830.00          0.01      -33.3270          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Master      922.00            0.02      -20.1457          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Visa        2,617.00          0.02      -57.1814          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Amex        199.00            0.04      -8.4674           AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Mada        7,946.00          0.01      -54.8274          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Master      2,806.00          0.02      -61.3111          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Visa        2,748.00          0.02      -60.0438          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Mada        8,989.00          0.01      -62.0241          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Master      1,913.00          0.02      -41.7991          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Visa        1,188.00          0.02      -25.9578          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Mada        6,925.00          0.01      -47.7825          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Master      1,412.00          0.02      -30.8522          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Visa        3,412.00          0.02      -74.5522          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Mada        8,786.00          0.01      -60.6234          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Master      1,691.00          0.02      -36.9483          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Visa        1,613.00          0.02      -35.2440          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Mada        5,921.00          0.01      -40.8549          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Master      498.00            0.02      -10.8813          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Visa        3,054.00          0.02      -66.7299          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Mada        14,515.00         0.01      -100.1535         AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Master      3,132.00          0.02      -68.4342          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Visa        4,859.00          0.02      -106.1691         AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Amex        720.00            0.04      -30.6360          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Mada        6,353.00          0.01      -43.8357          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Master      2,997.00          0.02      -65.4844          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Visa        4,556.00          0.02      -99.5486          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Mada        10,353.00         0.01      -71.4357          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Master      1,036.00          0.02      -22.6366          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Visa        1,583.00          0.02      -34.5885          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Amex        199.00            0.04      -8.4674           AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Mada        7,301.00          0.01      -50.3769          AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Master      398.00            0.02      -8.6963           AL Jazeerah Bank MJMAKRMMAL   
+  ZAHRAN           Visa        5,389.00          0.02      -117.7496         AL Jazeerah Bank MJMAKRMMAL   
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -6,493.5025                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (85 rows, -6,493.5025 SAR)
+  Per-method grand total                   -6,493.5025 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  610,593.47 SAR         █
+  █  Total Standard Receipt amt               1,293,330.00 SAR       █
+  █  Difference                               682,736.53 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  610,593.47 SAR
+  Total Standard Receipt amt               1,293,330.00 SAR
+  Difference                               682,736.53 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0001517
+  >>> Next run START_TXN_SEQUENCE =        1518  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 21:13:58
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

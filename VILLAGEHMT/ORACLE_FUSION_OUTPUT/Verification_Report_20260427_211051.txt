@@ -1,0 +1,504 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 09:10:45 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         584,354.10 SAR     ║
+║  [ℹ] Standard Receipt Total                   1,258,114.00 SAR   ║
+║  [✗] Amount Reconciliation                    Diff: 673,759.90 SAR║
+║  [ℹ] Total Invoices                           3,235              ║
+║  [ℹ] Receipt Files Generated                  6                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          VILLAGEHMT.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             VILLAGEHMT_payment_line_5_to_31_March.xlsx
+  Segment 1 prefix                         22307546
+  Segment 2 prefix                         00860397
+
+  AR rows read                             12291
+  Unique invoices loaded                   3230
+  Unique transactions (BLK)                68
+  Total AR amount                          585,338.10 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Amex                       5             1,030.00              
+  Cash                       536           86,604.00             
+  Mada                       2074          395,723.00            
+  Master                     159           57,627.00             
+  TABBY                      143           36,475.00             
+  TAMARA                     43            9,536.00              
+  Visa                       438           88,073.00             
+  ----------------------------------------------------------------------
+  TOTAL                      3398          675,068.00            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  ARABMALL                        2           -334.00             
+  JEDNRTHWLK                      1           -199.00             
+  OBHURMALL                       1           -252.00             
+  RYDGALLER                       186         46,011.00           
+  VILLAGEHMT                      3044        630,041.00          
+  YASMEEN                         1           -199.00             
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 117
+    Total amount: 629,057.00 SAR
+    Payment methods included: ['AMEX', 'Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              629,057.00 SAR
+    Per-method total:                629,057.00 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    AMEX                5 rows            1,030.00 SAR  ✓
+    Cash               32 rows           86,604.00 SAR  ⚠ 5 NEGATIVE AMOUNTS!
+    Mada               27 rows          395,723.00 SAR  ✓
+    Master             26 rows           57,627.00 SAR  ✓
+    Visa               27 rows           88,073.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    186
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   6
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       395,723.00 SAR
+    Visa                        88,073.00 SAR
+    Cash                        86,604.00 SAR
+    Master                      57,627.00 SAR
+    Amex                         1,030.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TABBY                       36,475.00 SAR
+    TAMARA                       9,536.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          ARABMALL         Cash        -199.00           CashOth Mall Hail                  
+  Receipt_CASH.csv                          ARABMALL         Cash        -135.00           CashOth Mall Hail                  
+  Receipt_CASH.csv                          JEDNRTHWLK       Cash        -199.00           Cash JEDNRTHWLK                    
+  Receipt_CASH.csv                          OBHURMALL        Cash        -252.00           CashOBHURMALL                      
+  Receipt_CASH.csv                          VILLAGEHMT       Cash        3,945.00          CashVILLAGEHMT                     
+  Receipt_MADA.csv                          VILLAGEHMT       Mada        19,143.00         015795017321057                    
+  Receipt_MASTER.csv                        VILLAGEHMT       Master      719.00            015795017321057                    
+  Receipt_VISA.csv                          VILLAGEHMT       Visa        4,179.00          015795017321057                    
+  Receipt_CASH.csv                          VILLAGEHMT       Cash        629.00            CashVILLAGEHMT                     
+  Receipt_MADA.csv                          VILLAGEHMT       Mada        14,305.00         015795017321057                    
+  Receipt_MASTER.csv                        VILLAGEHMT       Master      1,319.00          015795017321057                    
+  Receipt_VISA.csv                          VILLAGEHMT       Visa        3,252.00          015795017321057                    
+  Receipt_CASH.csv                          VILLAGEHMT       Cash        1,844.00          CashVILLAGEHMT                     
+  Receipt_MADA.csv                          VILLAGEHMT       Mada        15,211.00         015795017321057                    
+  Receipt_MASTER.csv                        VILLAGEHMT       Master      1,205.00          015795017321057                    
+  Receipt_VISA.csv                          VILLAGEHMT       Visa        3,703.00          015795017321057                    
+  Receipt_CASH.csv                          VILLAGEHMT       Cash        2,711.00          CashVILLAGEHMT                     
+  Receipt_MADA.csv                          VILLAGEHMT       Mada        19,801.00         015795017321057                    
+  Receipt_MASTER.csv                        VILLAGEHMT       Master      2,437.00          015795017321057                    
+  Receipt_VISA.csv                          VILLAGEHMT       Visa        3,439.00          015795017321057                    
+  Receipt_CASH.csv                          VILLAGEHMT       Cash        4,038.00          CashVILLAGEHMT                     
+  Receipt_MADA.csv                          VILLAGEHMT       Mada        19,414.00         015795017321057                    
+  Receipt_MASTER.csv                        VILLAGEHMT       Master      1,673.00          015795017321057                    
+  Receipt_VISA.csv                          VILLAGEHMT       Visa        3,964.00          015795017321057                    
+  Receipt_CASH.csv                          VILLAGEHMT       Cash        4,944.00          CashVILLAGEHMT                     
+  Receipt_MADA.csv                          VILLAGEHMT       Mada        27,242.00         015795017321057                    
+  Receipt_MASTER.csv                        VILLAGEHMT       Master      2,104.00          015795017321057                    
+  Receipt_VISA.csv                          VILLAGEHMT       Visa        3,023.00          015795017321057                    
+  Receipt_CASH.csv                          VILLAGEHMT       Cash        4,328.00          CashVILLAGEHMT                     
+  Receipt_MADA.csv                          VILLAGEHMT       Mada        26,667.00         015795017321057                    
+  Receipt_MASTER.csv                        VILLAGEHMT       Master      1,568.00          015795017321057                    
+  Receipt_VISA.csv                          VILLAGEHMT       Visa        5,428.00          015795017321057                    
+  Receipt_CASH.csv                          VILLAGEHMT       Cash        7,530.00          CashVILLAGEHMT                     
+  Receipt_MADA.csv                          VILLAGEHMT       Mada        18,058.00         015795017321057                    
+  Receipt_MASTER.csv                        VILLAGEHMT       Master      809.00            015795017321057                    
+  Receipt_VISA.csv                          VILLAGEHMT       Visa        3,880.00          015795017321057                    
+  Receipt_AMEX.csv                          VILLAGEHMT       Amex        126.00            015795017321057                    
+  Receipt_CASH.csv                          VILLAGEHMT       Cash        4,365.00          CashVILLAGEHMT                     
+  Receipt_MADA.csv                          VILLAGEHMT       Mada        13,866.00         015795017321057                    
+  Receipt_MASTER.csv                        VILLAGEHMT       Master      1,875.00          015795017321057                    
+  Receipt_VISA.csv                          VILLAGEHMT       Visa        4,308.00          015795017321057                    
+  Receipt_CASH.csv                          VILLAGEHMT       Cash        5,139.00          CashVILLAGEHMT                     
+  Receipt_MADA.csv                          VILLAGEHMT       Mada        25,877.00         015795017321057                    
+  Receipt_MASTER.csv                        VILLAGEHMT       Master      1,261.00          015795017321057                    
+  Receipt_VISA.csv                          VILLAGEHMT       Visa        4,649.00          015795017321057                    
+  Receipt_CASH.csv                          VILLAGEHMT       Cash        2,622.00          CashVILLAGEHMT                     
+  Receipt_MADA.csv                          VILLAGEHMT       Mada        22,728.00         015795017321057                    
+  Receipt_MASTER.csv                        VILLAGEHMT       Master      1,757.00          015795017321057                    
+  Receipt_VISA.csv                          VILLAGEHMT       Visa        4,613.00          015795017321057                    
+  Receipt_AMEX.csv                          VILLAGEHMT       Amex        58.00             015795017321057                    
+  Receipt_CASH.csv                          VILLAGEHMT       Cash        3,687.00          CashVILLAGEHMT                     
+  Receipt_MADA.csv                          VILLAGEHMT       Mada        17,901.00         015795017321057                    
+  Receipt_MASTER.csv                        VILLAGEHMT       Master      2,117.00          015795017321057                    
+  Receipt_VISA.csv                          VILLAGEHMT       Visa        4,108.00          015795017321057                    
+  Receipt_CASH.csv                          VILLAGEHMT       Cash        5,593.00          CashVILLAGEHMT                     
+  Receipt_MADA.csv                          VILLAGEHMT       Mada        23,866.00         015795017321057                    
+  Receipt_MASTER.csv                        VILLAGEHMT       Master      4,054.00          015795017321057                    
+  Receipt_VISA.csv                          VILLAGEHMT       Visa        6,130.00          015795017321057                    
+  Receipt_AMEX.csv                          VILLAGEHMT       Amex        298.00            015795017321057                    
+  Receipt_CASH.csv                          VILLAGEHMT       Cash        5,835.00          CashVILLAGEHMT                     
+  Receipt_MADA.csv                          VILLAGEHMT       Mada        30,477.00         015795017321057                    
+  Receipt_MASTER.csv                        VILLAGEHMT       Master      2,362.00          015795017321057                    
+  Receipt_VISA.csv                          VILLAGEHMT       Visa        12,290.00         015795017321057                    
+  Receipt_CASH.csv                          VILLAGEHMT       Cash        5,457.00          CashVILLAGEHMT                     
+  Receipt_MADA.csv                          VILLAGEHMT       Mada        25,910.00         015795017321057                    
+  Receipt_MASTER.csv                        VILLAGEHMT       Master      2,379.00          015795017321057                    
+  Receipt_VISA.csv                          VILLAGEHMT       Visa        6,468.00          015795017321057                    
+  Receipt_AMEX.csv                          VILLAGEHMT       Amex        299.00            015795017321057                    
+  Receipt_CASH.csv                          VILLAGEHMT       Cash        2,525.00          CashVILLAGEHMT                     
+  Receipt_MADA.csv                          VILLAGEHMT       Mada        9,557.00          015795017321057                    
+  Receipt_MASTER.csv                        VILLAGEHMT       Master      722.00            015795017321057                    
+  Receipt_VISA.csv                          VILLAGEHMT       Visa        1,073.00          015795017321057                    
+  Receipt_CASH.csv                          VILLAGEHMT       Cash        2,784.00          CashVILLAGEHMT                     
+  Receipt_MADA.csv                          VILLAGEHMT       Mada        4,870.00          015795017321057                    
+  Receipt_VISA.csv                          VILLAGEHMT       Visa        575.00            015795017321057                    
+  Receipt_CASH.csv                          VILLAGEHMT       Cash        2,623.00          CashVILLAGEHMT                     
+  Receipt_MADA.csv                          VILLAGEHMT       Mada        6,713.00          015795017321057                    
+  Receipt_MASTER.csv                        VILLAGEHMT       Master      796.00            015795017321057                    
+  Receipt_VISA.csv                          VILLAGEHMT       Visa        1,681.00          015795017321057                    
+  Receipt_CASH.csv                          VILLAGEHMT       Cash        2,670.00          CashVILLAGEHMT                     
+  Receipt_MADA.csv                          VILLAGEHMT       Mada        5,535.00          015795017321057                    
+  Receipt_MASTER.csv                        VILLAGEHMT       Master      646.00            015795017321057                    
+  Receipt_VISA.csv                          VILLAGEHMT       Visa        716.00            015795017321057                    
+  Receipt_CASH.csv                          VILLAGEHMT       Cash        1,539.00          CashVILLAGEHMT                     
+  Receipt_MADA.csv                          VILLAGEHMT       Mada        8,869.00          015795017321057                    
+  Receipt_MASTER.csv                        VILLAGEHMT       Master      398.00            015795017321057                    
+  Receipt_VISA.csv                          VILLAGEHMT       Visa        3,435.00          015795017321057                    
+  Receipt_AMEX.csv                          VILLAGEHMT       Amex        249.00            015795017321057                    
+  Receipt_CASH.csv                          VILLAGEHMT       Cash        2,063.00          CashVILLAGEHMT                     
+  Receipt_MADA.csv                          VILLAGEHMT       Mada        7,921.00          015795017321057                    
+  Receipt_MASTER.csv                        VILLAGEHMT       Master      25,549.00         015795017321057                    
+  Receipt_VISA.csv                          VILLAGEHMT       Visa        775.00            015795017321057                    
+  Receipt_CASH.csv                          VILLAGEHMT       Cash        2,113.00          CashVILLAGEHMT                     
+  Receipt_MADA.csv                          VILLAGEHMT       Mada        10,222.00         015795017321057                    
+  Receipt_MASTER.csv                        VILLAGEHMT       Master      348.00            015795017321057                    
+  Receipt_VISA.csv                          VILLAGEHMT       Visa        1,115.00          015795017321057                    
+  Receipt_CASH.csv                          VILLAGEHMT       Cash        2,232.00          CashVILLAGEHMT                     
+  Receipt_MADA.csv                          VILLAGEHMT       Mada        5,800.00          015795017321057                    
+  Receipt_MASTER.csv                        VILLAGEHMT       Master      150.00            015795017321057                    
+  Receipt_VISA.csv                          VILLAGEHMT       Visa        1,862.00          015795017321057                    
+  Receipt_CASH.csv                          VILLAGEHMT       Cash        2,212.00          CashVILLAGEHMT                     
+  Receipt_MADA.csv                          VILLAGEHMT       Mada        6,602.00          015795017321057                    
+  Receipt_MASTER.csv                        VILLAGEHMT       Master      228.00            015795017321057                    
+  Receipt_VISA.csv                          VILLAGEHMT       Visa        1,586.00          015795017321057                    
+  Receipt_CASH.csv                          VILLAGEHMT       Cash        1,649.00          CashVILLAGEHMT                     
+  Receipt_MADA.csv                          VILLAGEHMT       Mada        3,400.00          015795017321057                    
+  Receipt_MASTER.csv                        VILLAGEHMT       Master      574.00            015795017321057                    
+  Receipt_VISA.csv                          VILLAGEHMT       Visa        1,181.00          015795017321057                    
+  Receipt_CASH.csv                          VILLAGEHMT       Cash        1,264.00          CashVILLAGEHMT                     
+  Receipt_MADA.csv                          VILLAGEHMT       Mada        2,398.00          015795017321057                    
+  Receipt_MASTER.csv                        VILLAGEHMT       Master      398.00            015795017321057                    
+  Receipt_VISA.csv                          VILLAGEHMT       Visa        257.00            015795017321057                    
+  Receipt_CASH.csv                          VILLAGEHMT       Cash        1,247.00          CashVILLAGEHMT                     
+  Receipt_MADA.csv                          VILLAGEHMT       Mada        3,370.00          015795017321057                    
+  Receipt_MASTER.csv                        VILLAGEHMT       Master      179.00            015795017321057                    
+  Receipt_VISA.csv                          VILLAGEHMT       Visa        383.00            015795017321057                    
+  Receipt_CASH.csv                          YASMEEN          Cash        -199.00           CASH Yasmeen Mall Branch           
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            629,057.00                                           
+
+  Per-method totals:
+    Amex              5 file(s)        1,030.00 SAR
+    Cash             32 file(s)       86,604.00 SAR
+    Mada             27 file(s)      395,723.00 SAR
+    Master           26 file(s)       57,627.00 SAR
+    Visa             27 file(s)       88,073.00 SAR
+    Grand Total                       629,057.00 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Amex         Cash         Mada       Master         Visa          TOTAL
+  ------------------------------------------------------------------------------------------------
+  2026-03-05              0        3,746       19,143          719        4,179         27,787
+  2026-03-06              0          629       14,305        1,319        3,252         19,505
+  2026-03-07              0        1,645       15,211        1,205        3,703         21,764
+  2026-03-08              0        2,512       19,801        2,437        3,439         28,189
+  2026-03-09              0        4,038       19,414        1,673        3,964         29,089
+  2026-03-10              0        4,809       27,242        2,104        3,023         37,178
+  2026-03-11              0        4,328       26,667        1,568        5,428         37,991
+  2026-03-12              0        7,530       18,058          809        3,880         30,277
+  2026-03-13            126        4,365       13,866        1,875        4,308         24,540
+  2026-03-14              0        5,139       25,877        1,261        4,649         36,926
+  2026-03-15              0        2,622       22,728        1,757        4,613         31,720
+  2026-03-16             58        3,435       17,901        2,117        4,108         27,619
+  2026-03-17              0        5,593       23,866        4,054        6,130         39,643
+  2026-03-18            298        5,835       30,477        2,362       12,290         51,262
+  2026-03-19              0        5,457       25,910        2,379        6,468         40,214
+  2026-03-20            299        2,525        9,557          722        1,073         14,176
+  2026-03-21              0        2,784        4,870            0          575          8,229
+  2026-03-22              0        2,623        6,713          796        1,681         11,813
+  2026-03-23              0        2,670        5,535          646          716          9,567
+  2026-03-24              0        1,539        8,869          398        3,435         14,241
+  2026-03-25            249        2,063        7,921       25,549          775         36,557
+  2026-03-26              0        2,113       10,222          348        1,115         13,798
+  2026-03-27              0        2,232        5,800          150        1,862         10,044
+  2026-03-28              0        2,212        6,602          228        1,586         10,628
+  2026-03-29              0        1,649        3,400          574        1,181          6,804
+  2026-03-30              0        1,264        2,398          398          257          4,317
+  2026-03-31              0        1,247        3,370          179          383          5,179
+  ------------------------------------------------------------------------------------------------
+  TOTAL               1,030       86,604      395,723       57,627       88,073        629,057
+
+  VALIDATION:
+    Payment file total (for standard receipts):       629,057.00 SAR
+    Receipt files total:                              629,057.00 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Amex            Payment:     1,030.00  Receipt:     1,030.00  Diff:     0.00  ✓
+    Cash            Payment:    86,604.00  Receipt:    86,604.00  Diff:     0.00  ✓
+    Mada            Payment:   395,723.00  Receipt:   395,723.00  Diff:     0.00  ✓
+    Master          Payment:    57,627.00  Receipt:    57,627.00  Diff:     0.00  ✓
+    Visa            Payment:    88,073.00  Receipt:    88,073.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (117 rows, 629,057.00 SAR)
+  Per-method grand total                   629,057.00 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 85
+    Total amount: -6,023.5745 SAR
+    Payment methods included: ['AMEX', 'Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -6,023.5745 SAR
+    Per-method total:               -6,023.5745 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    AMEX                5 rows            -43.8264 SAR  ⚠ 5 NEGATIVE AMOUNTS!
+    Mada               27 rows         -2,759.6274 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             26 rows         -1,276.1488 SAR  ⚠ 26 NEGATIVE AMOUNTS!
+    Visa               27 rows         -1,943.9719 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              5
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       399,946.00 SAR
+    Visa                        88,969.00 SAR
+    Master                      58,405.00 SAR
+    Amex                         1,030.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                        92,925.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED               92,925.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  VILLAGEHMT       Mada        19,143.00         0.01      -132.0867         015795017321057               
+  VILLAGEHMT       Master      719.00            0.02      -15.7101          015795017321057               
+  VILLAGEHMT       Visa        4,179.00          0.02      -91.3111          015795017321057               
+  VILLAGEHMT       Mada        14,701.00         0.01      -101.4369         015795017321057               
+  VILLAGEHMT       Master      1,319.00          0.02      -28.8201          015795017321057               
+  VILLAGEHMT       Visa        3,252.00          0.02      -71.0562          015795017321057               
+  VILLAGEHMT       Mada        15,211.00         0.01      -104.9559         015795017321057               
+  VILLAGEHMT       Master      1,205.00          0.02      -26.3292          015795017321057               
+  VILLAGEHMT       Visa        3,703.00          0.02      -80.9105          015795017321057               
+  VILLAGEHMT       Mada        20,499.00         0.01      -141.4431         015795017321057               
+  VILLAGEHMT       Master      2,437.00          0.02      -53.2484          015795017321057               
+  VILLAGEHMT       Visa        3,439.00          0.02      -75.1421          015795017321057               
+  VILLAGEHMT       Mada        19,613.00         0.01      -135.3297         015795017321057               
+  VILLAGEHMT       Master      1,673.00          0.02      -36.5550          015795017321057               
+  VILLAGEHMT       Visa        3,964.00          0.02      -86.6134          015795017321057               
+  VILLAGEHMT       Mada        27,242.00         0.01      -187.9698         015795017321057               
+  VILLAGEHMT       Master      2,104.00          0.02      -45.9724          015795017321057               
+  VILLAGEHMT       Visa        3,023.00          0.02      -66.0525          015795017321057               
+  VILLAGEHMT       Mada        27,313.00         0.01      -188.4597         015795017321057               
+  VILLAGEHMT       Master      2,346.00          0.02      -51.2601          015795017321057               
+  VILLAGEHMT       Visa        5,428.00          0.02      -118.6018         015795017321057               
+  VILLAGEHMT       Mada        18,058.00         0.01      -124.6002         015795017321057               
+  VILLAGEHMT       Master      809.00            0.02      -17.6766          015795017321057               
+  VILLAGEHMT       Visa        3,880.00          0.02      -84.7780          015795017321057               
+  VILLAGEHMT       Amex        126.00            0.04      -5.3613           015795017321057               
+  VILLAGEHMT       Mada        13,866.00         0.01      -95.6754          015795017321057               
+  VILLAGEHMT       Master      1,875.00          0.02      -40.9688          015795017321057               
+  VILLAGEHMT       Visa        4,308.00          0.02      -94.1298          015795017321057               
+  VILLAGEHMT       Mada        26,886.00         0.01      -185.5134         015795017321057               
+  VILLAGEHMT       Master      1,261.00          0.02      -27.5528          015795017321057               
+  VILLAGEHMT       Visa        4,848.00          0.02      -105.9288         015795017321057               
+  VILLAGEHMT       Mada        22,728.00         0.01      -156.8232         015795017321057               
+  VILLAGEHMT       Master      1,757.00          0.02      -38.3905          015795017321057               
+  VILLAGEHMT       Visa        4,613.00          0.02      -100.7940         015795017321057               
+  VILLAGEHMT       Amex        58.00             0.04      -2.4679           015795017321057               
+  VILLAGEHMT       Mada        18,200.00         0.01      -125.5800         015795017321057               
+  VILLAGEHMT       Master      2,117.00          0.02      -46.2564          015795017321057               
+  VILLAGEHMT       Visa        4,108.00          0.02      -89.7598          015795017321057               
+  VILLAGEHMT       Mada        23,866.00         0.01      -164.6754         015795017321057               
+  VILLAGEHMT       Master      4,054.00          0.02      -88.5799          015795017321057               
+  VILLAGEHMT       Visa        6,130.00          0.02      -133.9405         015795017321057               
+  VILLAGEHMT       Amex        298.00            0.04      -12.6799          015795017321057               
+  VILLAGEHMT       Mada        30,576.00         0.01      -210.9744         015795017321057               
+  VILLAGEHMT       Master      2,362.00          0.02      -51.6097          015795017321057               
+  VILLAGEHMT       Visa        12,290.00         0.02      -268.5365         015795017321057               
+  VILLAGEHMT       Mada        26,136.00         0.01      -180.3384         015795017321057               
+  VILLAGEHMT       Master      2,379.00          0.02      -51.9811          015795017321057               
+  VILLAGEHMT       Visa        6,468.00          0.02      -141.3258         015795017321057               
+  VILLAGEHMT       Amex        299.00            0.04      -12.7224          015795017321057               
+  VILLAGEHMT       Mada        9,557.00          0.01      -65.9433          015795017321057               
+  VILLAGEHMT       Master      722.00            0.02      -15.7757          015795017321057               
+  VILLAGEHMT       Visa        1,073.00          0.02      -23.4450          015795017321057               
+  VILLAGEHMT       Mada        4,870.00          0.01      -33.6030          015795017321057               
+  VILLAGEHMT       Visa        575.00            0.02      -12.5637          015795017321057               
+  VILLAGEHMT       Mada        6,713.00          0.01      -46.3197          015795017321057               
+  VILLAGEHMT       Master      796.00            0.02      -17.3926          015795017321057               
+  VILLAGEHMT       Visa        1,681.00          0.02      -36.7298          015795017321057               
+  VILLAGEHMT       Mada        5,535.00          0.01      -38.1915          015795017321057               
+  VILLAGEHMT       Master      646.00            0.02      -14.1151          015795017321057               
+  VILLAGEHMT       Visa        1,015.00          0.02      -22.1777          015795017321057               
+  VILLAGEHMT       Mada        8,984.00          0.01      -61.9896          015795017321057               
+  VILLAGEHMT       Master      398.00            0.02      -8.6963           015795017321057               
+  VILLAGEHMT       Visa        3,833.00          0.02      -83.7510          015795017321057               
+  VILLAGEHMT       Amex        249.00            0.04      -10.5949          015795017321057               
+  VILLAGEHMT       Mada        8,008.00          0.01      -55.2552          015795017321057               
+  VILLAGEHMT       Master      25,549.00         0.02      -558.2456         015795017321057               
+  VILLAGEHMT       Visa        775.00            0.02      -16.9337          015795017321057               
+  VILLAGEHMT       Mada        10,222.00         0.01      -70.5318          015795017321057               
+  VILLAGEHMT       Master      348.00            0.02      -7.6038           015795017321057               
+  VILLAGEHMT       Visa        1,115.00          0.02      -24.3627          015795017321057               
+  VILLAGEHMT       Mada        6,050.00          0.01      -41.7450          015795017321057               
+  VILLAGEHMT       Master      150.00            0.02      -3.2775           015795017321057               
+  VILLAGEHMT       Visa        1,862.00          0.02      -40.6847          015795017321057               
+  VILLAGEHMT       Mada        6,801.00          0.01      -46.9269          015795017321057               
+  VILLAGEHMT       Master      228.00            0.02      -4.9818           015795017321057               
+  VILLAGEHMT       Visa        1,586.00          0.02      -34.6541          015795017321057               
+  VILLAGEHMT       Mada        3,400.00          0.01      -23.4600          015795017321057               
+  VILLAGEHMT       Master      574.00            0.02      -12.5419          015795017321057               
+  VILLAGEHMT       Visa        1,181.00          0.02      -25.8048          015795017321057               
+  VILLAGEHMT       Mada        2,398.00          0.01      -16.5462          015795017321057               
+  VILLAGEHMT       Master      398.00            0.02      -8.6963           015795017321057               
+  VILLAGEHMT       Visa        257.00            0.02      -5.6154           015795017321057               
+  VILLAGEHMT       Mada        3,370.00          0.01      -23.2530          015795017321057               
+  VILLAGEHMT       Master      179.00            0.02      -3.9111           015795017321057               
+  VILLAGEHMT       Visa        383.00            0.02      -8.3685           015795017321057               
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -6,023.5745                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (85 rows, -6,023.5745 SAR)
+  Per-method grand total                   -6,023.5745 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  584,354.10 SAR         █
+  █  Total Standard Receipt amt               1,258,114.00 SAR       █
+  █  Difference                               673,759.90 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  584,354.10 SAR
+  Total Standard Receipt amt               1,258,114.00 SAR
+  Difference                               673,759.90 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0001901
+  >>> Next run START_TXN_SEQUENCE =        1902  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 21:10:51
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
