@@ -1,0 +1,16 @@
+﻿Oracle Fusion Integration - Verification Summary
+Generated: 2026-04-27 21:01:23
+
+Summary Statistics
+Total Checks,Passed,Failed,Warnings
+5,0,1,0
+
+Overall Status,ACTION REQUIRED
+
+Verification Details
+Item,Value,Status,Result
+AR Invoice Total,"339,750.09 SAR",INFO,ℹ INFO
+Standard Receipt Total,"615,262.00 SAR",INFO,ℹ INFO
+Amount Reconciliation,"Diff: 275,511.91 SAR",FAIL,✗ FAIL
+Total Invoices,"1,877",INFO,ℹ INFO
+Receipt Files Generated,6,INFO,ℹ INFO

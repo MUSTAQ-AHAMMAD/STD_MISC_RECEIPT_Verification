@@ -1,0 +1,487 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 08:45:24 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         769,452.35 SAR     ║
+║  [ℹ] Standard Receipt Total                   1,735,818.00 SAR   ║
+║  [✗] Amount Reconciliation                    Diff: 966,365.65 SAR║
+║  [ℹ] Total Invoices                           2,237              ║
+║  [ℹ] Receipt Files Generated                  5                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          MEDMAYAS.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             MEDMAYAS_Payment_Lines_5_to_31_March.xlsx
+  Segment 1 prefix                         83464474
+  Segment 2 prefix                         07196611
+
+  AR rows read                             14617
+  Unique invoices loaded                   2235
+  Unique transactions (BLK)                55
+  Total AR amount                          770,569.35 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Cash                       1390          514,680.00            
+  HUNGER CREDIT              2             0.00                  
+  Mada                       235           67,493.00             
+  Master                     325           132,067.00            
+  TABBY                      19            5,448.00              
+  TAMARA                     34            11,555.00             
+  Visa                       393           153,669.00            
+  ----------------------------------------------------------------------
+  TOTAL                      2398          884,912.00            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  HILTONMAK2                      1           -957.00             
+  MAKABRAJ1                       1           -160.00             
+  MEDMAYAS                        2182        869,026.00          
+  RYDGALLER                       53          17,003.00           
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 110
+    Total amount: 867,909.00 SAR
+    Payment methods included: ['Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              867,909.00 SAR
+    Per-method total:                867,909.00 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    Cash               28 rows          514,680.00 SAR  ⚠ 1 NEGATIVE AMOUNTS!
+    Mada               27 rows           67,493.00 SAR  ✓
+    Master             28 rows          132,067.00 SAR  ⚠ 1 NEGATIVE AMOUNTS!
+    Visa               27 rows          153,669.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    53
+  Unknown method rows skipped              2
+  Skipped (no AR txn number)               0
+  Receipt files to write                   5
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Cash                       514,680.00 SAR
+    Visa                       153,669.00 SAR
+    Master                     132,067.00 SAR
+    Mada                        67,493.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    HUNGER CREDIT                    0.00 SAR  ← NOT GENERATING RECEIPTS!
+    TOTAL SKIPPED                    0.00 SAR
+
+  ⊗ BNPL Methods (excluded by design):
+    TAMARA                      11,555.00 SAR
+    TABBY                        5,448.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          HILTONMAK2       Cash        -957.00           Cash HILTONMAK2                    
+  Receipt_MASTER.csv                        MAKABRAJ1        Master      -160.00           157-95017321-MAKABRAJ1             
+  Receipt_CASH.csv                          MEDMAYAS         Cash        14,074.00         Cash MEDMAYAS                      
+  Receipt_MADA.csv                          MEDMAYAS         Mada        1,270.00          015795017321119                    
+  Receipt_MASTER.csv                        MEDMAYAS         Master      5,793.00          015795017321119                    
+  Receipt_VISA.csv                          MEDMAYAS         Visa        8,907.00          015795017321119                    
+  Receipt_CASH.csv                          MEDMAYAS         Cash        15,765.00         Cash MEDMAYAS                      
+  Receipt_MADA.csv                          MEDMAYAS         Mada        3,816.00          015795017321119                    
+  Receipt_MASTER.csv                        MEDMAYAS         Master      4,219.00          015795017321119                    
+  Receipt_VISA.csv                          MEDMAYAS         Visa        2,607.00          015795017321119                    
+  Receipt_CASH.csv                          MEDMAYAS         Cash        28,429.00         Cash MEDMAYAS                      
+  Receipt_MADA.csv                          MEDMAYAS         Mada        1,021.00          015795017321119                    
+  Receipt_MASTER.csv                        MEDMAYAS         Master      11,251.00         015795017321119                    
+  Receipt_VISA.csv                          MEDMAYAS         Visa        9,433.00          015795017321119                    
+  Receipt_CASH.csv                          MEDMAYAS         Cash        24,654.00         Cash MEDMAYAS                      
+  Receipt_MADA.csv                          MEDMAYAS         Mada        667.00            015795017321119                    
+  Receipt_MASTER.csv                        MEDMAYAS         Master      2,909.00          015795017321119                    
+  Receipt_VISA.csv                          MEDMAYAS         Visa        6,632.00          015795017321119                    
+  Receipt_CASH.csv                          MEDMAYAS         Cash        35,814.00         Cash MEDMAYAS                      
+  Receipt_MADA.csv                          MEDMAYAS         Mada        1,527.00          015795017321119                    
+  Receipt_MASTER.csv                        MEDMAYAS         Master      6,095.00          015795017321119                    
+  Receipt_VISA.csv                          MEDMAYAS         Visa        7,396.00          015795017321119                    
+  Receipt_CASH.csv                          MEDMAYAS         Cash        18,271.00         Cash MEDMAYAS                      
+  Receipt_MADA.csv                          MEDMAYAS         Mada        651.00            015795017321119                    
+  Receipt_MASTER.csv                        MEDMAYAS         Master      5,765.00          015795017321119                    
+  Receipt_VISA.csv                          MEDMAYAS         Visa        7,161.00          015795017321119                    
+  Receipt_CASH.csv                          MEDMAYAS         Cash        15,391.00         Cash MEDMAYAS                      
+  Receipt_MADA.csv                          MEDMAYAS         Mada        3,359.00          015795017321119                    
+  Receipt_MASTER.csv                        MEDMAYAS         Master      8,338.00          015795017321119                    
+  Receipt_VISA.csv                          MEDMAYAS         Visa        5,610.00          015795017321119                    
+  Receipt_CASH.csv                          MEDMAYAS         Cash        16,913.00         Cash MEDMAYAS                      
+  Receipt_MADA.csv                          MEDMAYAS         Mada        1,681.00          015795017321119                    
+  Receipt_MASTER.csv                        MEDMAYAS         Master      5,087.00          015795017321119                    
+  Receipt_VISA.csv                          MEDMAYAS         Visa        3,336.00          015795017321119                    
+  Receipt_CASH.csv                          MEDMAYAS         Cash        20,819.00         Cash MEDMAYAS                      
+  Receipt_MADA.csv                          MEDMAYAS         Mada        3,134.00          015795017321119                    
+  Receipt_MASTER.csv                        MEDMAYAS         Master      2,841.00          015795017321119                    
+  Receipt_VISA.csv                          MEDMAYAS         Visa        3,061.00          015795017321119                    
+  Receipt_CASH.csv                          MEDMAYAS         Cash        15,898.00         Cash MEDMAYAS                      
+  Receipt_MADA.csv                          MEDMAYAS         Mada        4,894.00          015795017321119                    
+  Receipt_MASTER.csv                        MEDMAYAS         Master      2,611.00          015795017321119                    
+  Receipt_VISA.csv                          MEDMAYAS         Visa        9,114.00          015795017321119                    
+  Receipt_CASH.csv                          MEDMAYAS         Cash        20,995.00         Cash MEDMAYAS                      
+  Receipt_MADA.csv                          MEDMAYAS         Mada        820.00            015795017321119                    
+  Receipt_MASTER.csv                        MEDMAYAS         Master      4,155.00          015795017321119                    
+  Receipt_VISA.csv                          MEDMAYAS         Visa        4,071.00          015795017321119                    
+  Receipt_CASH.csv                          MEDMAYAS         Cash        24,913.00         Cash MEDMAYAS                      
+  Receipt_MADA.csv                          MEDMAYAS         Mada        3,497.00          015795017321119                    
+  Receipt_MASTER.csv                        MEDMAYAS         Master      3,250.00          015795017321119                    
+  Receipt_VISA.csv                          MEDMAYAS         Visa        9,428.00          015795017321119                    
+  Receipt_CASH.csv                          MEDMAYAS         Cash        16,773.00         Cash MEDMAYAS                      
+  Receipt_MADA.csv                          MEDMAYAS         Mada        2,792.00          015795017321119                    
+  Receipt_MASTER.csv                        MEDMAYAS         Master      6,533.00          015795017321119                    
+  Receipt_VISA.csv                          MEDMAYAS         Visa        8,376.00          015795017321119                    
+  Receipt_CASH.csv                          MEDMAYAS         Cash        30,484.00         Cash MEDMAYAS                      
+  Receipt_MADA.csv                          MEDMAYAS         Mada        8,152.00          015795017321119                    
+  Receipt_MASTER.csv                        MEDMAYAS         Master      7,060.00          015795017321119                    
+  Receipt_VISA.csv                          MEDMAYAS         Visa        11,674.00         015795017321119                    
+  Receipt_CASH.csv                          MEDMAYAS         Cash        28,909.00         Cash MEDMAYAS                      
+  Receipt_MADA.csv                          MEDMAYAS         Mada        3,357.00          015795017321119                    
+  Receipt_MASTER.csv                        MEDMAYAS         Master      8,907.00          015795017321119                    
+  Receipt_VISA.csv                          MEDMAYAS         Visa        10,806.00         015795017321119                    
+  Receipt_CASH.csv                          MEDMAYAS         Cash        17,909.00         Cash MEDMAYAS                      
+  Receipt_MADA.csv                          MEDMAYAS         Mada        2,830.00          015795017321119                    
+  Receipt_MASTER.csv                        MEDMAYAS         Master      4,320.00          015795017321119                    
+  Receipt_VISA.csv                          MEDMAYAS         Visa        6,297.00          015795017321119                    
+  Receipt_CASH.csv                          MEDMAYAS         Cash        24,618.00         Cash MEDMAYAS                      
+  Receipt_MADA.csv                          MEDMAYAS         Mada        2,233.00          015795017321119                    
+  Receipt_MASTER.csv                        MEDMAYAS         Master      10,377.00         015795017321119                    
+  Receipt_VISA.csv                          MEDMAYAS         Visa        4,673.00          015795017321119                    
+  Receipt_CASH.csv                          MEDMAYAS         Cash        19,572.00         Cash MEDMAYAS                      
+  Receipt_MADA.csv                          MEDMAYAS         Mada        2,421.00          015795017321119                    
+  Receipt_MASTER.csv                        MEDMAYAS         Master      4,565.00          015795017321119                    
+  Receipt_VISA.csv                          MEDMAYAS         Visa        2,725.00          015795017321119                    
+  Receipt_CASH.csv                          MEDMAYAS         Cash        15,017.00         Cash MEDMAYAS                      
+  Receipt_MADA.csv                          MEDMAYAS         Mada        791.00            015795017321119                    
+  Receipt_MASTER.csv                        MEDMAYAS         Master      3,736.00          015795017321119                    
+  Receipt_VISA.csv                          MEDMAYAS         Visa        2,509.00          015795017321119                    
+  Receipt_CASH.csv                          MEDMAYAS         Cash        17,783.00         Cash MEDMAYAS                      
+  Receipt_MADA.csv                          MEDMAYAS         Mada        1,244.00          015795017321119                    
+  Receipt_MASTER.csv                        MEDMAYAS         Master      2,420.00          015795017321119                    
+  Receipt_VISA.csv                          MEDMAYAS         Visa        1,292.00          015795017321119                    
+  Receipt_CASH.csv                          MEDMAYAS         Cash        14,170.00         Cash MEDMAYAS                      
+  Receipt_MADA.csv                          MEDMAYAS         Mada        5,642.00          015795017321119                    
+  Receipt_MASTER.csv                        MEDMAYAS         Master      3,232.00          015795017321119                    
+  Receipt_VISA.csv                          MEDMAYAS         Visa        5,348.00          015795017321119                    
+  Receipt_CASH.csv                          MEDMAYAS         Cash        17,244.00         Cash MEDMAYAS                      
+  Receipt_MADA.csv                          MEDMAYAS         Mada        765.00            015795017321119                    
+  Receipt_MASTER.csv                        MEDMAYAS         Master      2,084.00          015795017321119                    
+  Receipt_VISA.csv                          MEDMAYAS         Visa        4,536.00          015795017321119                    
+  Receipt_CASH.csv                          MEDMAYAS         Cash        23,504.00         Cash MEDMAYAS                      
+  Receipt_MADA.csv                          MEDMAYAS         Mada        5,884.00          015795017321119                    
+  Receipt_MASTER.csv                        MEDMAYAS         Master      2,195.00          015795017321119                    
+  Receipt_VISA.csv                          MEDMAYAS         Visa        3,867.00          015795017321119                    
+  Receipt_CASH.csv                          MEDMAYAS         Cash        9,881.00          Cash MEDMAYAS                      
+  Receipt_MADA.csv                          MEDMAYAS         Mada        1,058.00          015795017321119                    
+  Receipt_MASTER.csv                        MEDMAYAS         Master      2,166.00          015795017321119                    
+  Receipt_VISA.csv                          MEDMAYAS         Visa        1,935.00          015795017321119                    
+  Receipt_CASH.csv                          MEDMAYAS         Cash        11,325.00         Cash MEDMAYAS                      
+  Receipt_MADA.csv                          MEDMAYAS         Mada        1,344.00          015795017321119                    
+  Receipt_MASTER.csv                        MEDMAYAS         Master      8,487.00          015795017321119                    
+  Receipt_VISA.csv                          MEDMAYAS         Visa        5,416.00          015795017321119                    
+  Receipt_CASH.csv                          MEDMAYAS         Cash        5,643.00          Cash MEDMAYAS                      
+  Receipt_MADA.csv                          MEDMAYAS         Mada        1,647.00          015795017321119                    
+  Receipt_MASTER.csv                        MEDMAYAS         Master      1,393.00          015795017321119                    
+  Receipt_VISA.csv                          MEDMAYAS         Visa        3,579.00          015795017321119                    
+  Receipt_CASH.csv                          MEDMAYAS         Cash        10,869.00         Cash MEDMAYAS                      
+  Receipt_MADA.csv                          MEDMAYAS         Mada        996.00            015795017321119                    
+  Receipt_MASTER.csv                        MEDMAYAS         Master      2,438.00          015795017321119                    
+  Receipt_VISA.csv                          MEDMAYAS         Visa        3,880.00          015795017321119                    
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            867,909.00                                           
+
+  Per-method totals:
+    Cash             28 file(s)      514,680.00 SAR
+    Mada             27 file(s)       67,493.00 SAR
+    Master           28 file(s)      132,067.00 SAR
+    Visa             27 file(s)      153,669.00 SAR
+    Grand Total                       867,909.00 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Cash         Mada       Master         Visa          TOTAL
+  ----------------------------------------------------------------------------------
+  2026-03-05         14,074        1,270        5,793        8,907         30,044
+  2026-03-06         15,765        3,816        4,219        2,607         26,407
+  2026-03-07         28,429        1,021       11,251        9,433         50,134
+  2026-03-08         24,654          667        2,909        6,632         34,862
+  2026-03-09         35,814        1,527        6,095        7,396         50,832
+  2026-03-10         18,271          651        5,765        7,161         31,848
+  2026-03-11         15,391        3,359        8,338        5,610         32,698
+  2026-03-12         16,913        1,681        5,087        3,336         27,017
+  2026-03-13         20,819        3,134        2,841        3,061         29,855
+  2026-03-14         15,898        4,894        2,611        9,114         32,517
+  2026-03-15         20,995          820        4,155        4,071         30,041
+  2026-03-16         24,913        3,497        3,250        9,428         41,088
+  2026-03-17         16,773        2,792        6,533        8,376         34,474
+  2026-03-18         30,484        8,152        7,060       11,674         57,370
+  2026-03-19         28,909        3,357        8,907       10,806         51,979
+  2026-03-20         17,909        2,830        4,320        6,297         31,356
+  2026-03-21         24,618        2,233       10,377        4,673         41,901
+  2026-03-22         19,572        2,421        4,565        2,725         29,283
+  2026-03-23         15,017          791        3,736        2,509         22,053
+  2026-03-24         17,783        1,244        2,420        1,292         22,739
+  2026-03-25         14,170        5,642        3,232        5,348         28,392
+  2026-03-26         17,244          765        1,924        4,536         24,469
+  2026-03-27         23,504        5,884        2,195        3,867         35,450
+  2026-03-28          9,881        1,058        2,166        1,935         15,040
+  2026-03-29         11,325        1,344        8,487        5,416         26,572
+  2026-03-30          5,643        1,647        1,393        3,579         12,262
+  2026-03-31          9,912          996        2,438        3,880         17,226
+  ----------------------------------------------------------------------------------
+  TOTAL             514,680       67,493      132,067      153,669        867,909
+
+  VALIDATION:
+    Payment file total (for standard receipts):       867,909.00 SAR
+    Receipt files total:                              867,909.00 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Cash            Payment:   514,680.00  Receipt:   514,680.00  Diff:     0.00  ✓
+    Mada            Payment:    67,493.00  Receipt:    67,493.00  Diff:     0.00  ✓
+    Master          Payment:   132,067.00  Receipt:   132,067.00  Diff:     0.00  ✓
+    Visa            Payment:   153,669.00  Receipt:   153,669.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (110 rows, 867,909.00 SAR)
+  Per-method grand total                   867,909.00 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 81
+    Total amount: -6,771.9599 SAR
+    Payment methods included: ['Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -6,771.9599 SAR
+    Per-method total:               -6,771.9599 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    Mada               27 rows           -479.4672 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             27 rows         -2,912.0580 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Visa               27 rows         -3,380.4347 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              4
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Visa                       154,711.00 SAR
+    Master                     133,275.00 SAR
+    Mada                        69,488.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                       531,657.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    HUNGER CREDIT                  498.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED              532,155.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  MEDMAYAS         Mada        1,270.00          0.01      -8.7630           015795017321119               
+  MEDMAYAS         Master      5,793.00          0.02      -126.5770         015795017321119               
+  MEDMAYAS         Visa        8,907.00          0.02      -194.6179         015795017321119               
+  MEDMAYAS         Mada        3,816.00          0.01      -26.3304          015795017321119               
+  MEDMAYAS         Master      4,518.00          0.02      -98.7183          015795017321119               
+  MEDMAYAS         Visa        2,607.00          0.02      -56.9629          015795017321119               
+  MEDMAYAS         Mada        1,021.00          0.01      -7.0449           015795017321119               
+  MEDMAYAS         Master      11,750.00         0.02      -256.7375         015795017321119               
+  MEDMAYAS         Visa        9,433.00          0.02      -206.1110         015795017321119               
+  MEDMAYAS         Mada        667.00            0.01      -4.6023           015795017321119               
+  MEDMAYAS         Master      2,909.00          0.02      -63.5616          015795017321119               
+  MEDMAYAS         Visa        6,632.00          0.02      -144.9092         015795017321119               
+  MEDMAYAS         Mada        1,527.00          0.01      -10.5363          015795017321119               
+  MEDMAYAS         Master      6,095.00          0.02      -133.1757         015795017321119               
+  MEDMAYAS         Visa        7,396.00          0.02      -161.6026         015795017321119               
+  MEDMAYAS         Mada        651.00            0.01      -4.4919           015795017321119               
+  MEDMAYAS         Master      5,765.00          0.02      -125.9652         015795017321119               
+  MEDMAYAS         Visa        7,161.00          0.02      -156.4678         015795017321119               
+  MEDMAYAS         Mada        3,359.00          0.01      -23.1771          015795017321119               
+  MEDMAYAS         Master      8,588.00          0.02      -187.6478         015795017321119               
+  MEDMAYAS         Visa        5,610.00          0.02      -122.5785         015795017321119               
+  MEDMAYAS         Mada        1,681.00          0.01      -11.5989          015795017321119               
+  MEDMAYAS         Master      5,087.00          0.02      -111.1509         015795017321119               
+  MEDMAYAS         Visa        3,336.00          0.02      -72.8916          015795017321119               
+  MEDMAYAS         Mada        3,134.00          0.01      -21.6246          015795017321119               
+  MEDMAYAS         Master      2,841.00          0.02      -62.0758          015795017321119               
+  MEDMAYAS         Visa        3,061.00          0.02      -66.8828          015795017321119               
+  MEDMAYAS         Mada        4,894.00          0.01      -33.7686          015795017321119               
+  MEDMAYAS         Master      2,611.00          0.02      -57.0503          015795017321119               
+  MEDMAYAS         Visa        9,712.00          0.02      -212.2072         015795017321119               
+  MEDMAYAS         Mada        820.00            0.01      -5.6580           015795017321119               
+  MEDMAYAS         Master      4,155.00          0.02      -90.7867          015795017321119               
+  MEDMAYAS         Visa        4,071.00          0.02      -88.9513          015795017321119               
+  MEDMAYAS         Mada        3,497.00          0.01      -24.1293          015795017321119               
+  MEDMAYAS         Master      3,250.00          0.02      -71.0125          015795017321119               
+  MEDMAYAS         Visa        9,428.00          0.02      -206.0018         015795017321119               
+  MEDMAYAS         Mada        2,792.00          0.01      -19.2648          015795017321119               
+  MEDMAYAS         Master      6,533.00          0.02      -142.7460         015795017321119               
+  MEDMAYAS         Visa        8,521.00          0.02      -186.1838         015795017321119               
+  MEDMAYAS         Mada        8,152.00          0.01      -56.2488          015795017321119               
+  MEDMAYAS         Master      7,060.00          0.02      -154.2610         015795017321119               
+  MEDMAYAS         Visa        11,674.00         0.02      -255.0769         015795017321119               
+  MEDMAYAS         Mada        3,357.00          0.01      -23.1633          015795017321119               
+  MEDMAYAS         Master      8,907.00          0.02      -194.6179         015795017321119               
+  MEDMAYAS         Visa        10,806.00         0.02      -236.1111         015795017321119               
+  MEDMAYAS         Mada        2,830.00          0.01      -19.5270          015795017321119               
+  MEDMAYAS         Master      4,320.00          0.02      -94.3920          015795017321119               
+  MEDMAYAS         Visa        6,596.00          0.02      -144.1226         015795017321119               
+  MEDMAYAS         Mada        2,233.00          0.01      -15.4077          015795017321119               
+  MEDMAYAS         Master      10,377.00         0.02      -226.7374         015795017321119               
+  MEDMAYAS         Visa        4,673.00          0.02      -102.1050         015795017321119               
+  MEDMAYAS         Mada        2,421.00          0.01      -16.7049          015795017321119               
+  MEDMAYAS         Master      4,565.00          0.02      -99.7452          015795017321119               
+  MEDMAYAS         Visa        2,725.00          0.02      -59.5412          015795017321119               
+  MEDMAYAS         Mada        791.00            0.01      -5.4579           015795017321119               
+  MEDMAYAS         Master      3,736.00          0.02      -81.6316          015795017321119               
+  MEDMAYAS         Visa        2,509.00          0.02      -54.8216          015795017321119               
+  MEDMAYAS         Mada        1,244.00          0.01      -8.5836           015795017321119               
+  MEDMAYAS         Master      2,420.00          0.02      -52.8770          015795017321119               
+  MEDMAYAS         Visa        1,292.00          0.02      -28.2302          015795017321119               
+  MEDMAYAS         Mada        5,642.00          0.01      -38.9298          015795017321119               
+  MEDMAYAS         Master      3,232.00          0.02      -70.6192          015795017321119               
+  MEDMAYAS         Visa        5,348.00          0.02      -116.8538         015795017321119               
+  MEDMAYAS         Mada        765.00            0.01      -5.2785           015795017321119               
+  MEDMAYAS         Master      2,084.00          0.02      -45.5354          015795017321119               
+  MEDMAYAS         Visa        4,536.00          0.02      -99.1116          015795017321119               
+  MEDMAYAS         Mada        7,879.00          0.01      -54.3651          015795017321119               
+  MEDMAYAS         Master      2,195.00          0.02      -47.9607          015795017321119               
+  MEDMAYAS         Visa        3,867.00          0.02      -84.4939          015795017321119               
+  MEDMAYAS         Mada        1,058.00          0.01      -7.3002           015795017321119               
+  MEDMAYAS         Master      2,166.00          0.02      -47.3271          015795017321119               
+  MEDMAYAS         Visa        1,935.00          0.02      -42.2797          015795017321119               
+  MEDMAYAS         Mada        1,344.00          0.01      -9.2736           015795017321119               
+  MEDMAYAS         Master      8,487.00          0.02      -185.4409         015795017321119               
+  MEDMAYAS         Visa        5,416.00          0.02      -118.3396         015795017321119               
+  MEDMAYAS         Mada        1,647.00          0.01      -11.3643          015795017321119               
+  MEDMAYAS         Master      1,393.00          0.02      -30.4370          015795017321119               
+  MEDMAYAS         Visa        3,579.00          0.02      -78.2011          015795017321119               
+  MEDMAYAS         Mada        996.00            0.01      -6.8724           015795017321119               
+  MEDMAYAS         Master      2,438.00          0.02      -53.2703          015795017321119               
+  MEDMAYAS         Visa        3,880.00          0.02      -84.7780          015795017321119               
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -6,771.9599                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (81 rows, -6,771.9599 SAR)
+  Per-method grand total                   -6,771.9599 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  769,452.35 SAR         █
+  █  Total Standard Receipt amt               1,735,818.00 SAR       █
+  █  Difference                               966,365.65 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  769,452.35 SAR
+  Total Standard Receipt amt               1,735,818.00 SAR
+  Difference                               966,365.65 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0006399
+  >>> Next run START_TXN_SEQUENCE =        6400  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 20:45:32
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

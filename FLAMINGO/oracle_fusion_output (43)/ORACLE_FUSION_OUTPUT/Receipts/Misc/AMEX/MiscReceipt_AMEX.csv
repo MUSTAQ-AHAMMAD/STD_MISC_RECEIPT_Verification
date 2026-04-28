@@ -1,0 +1,4 @@
+﻿"Amount","CurrencyCode","DepositDate","ReceiptDate","GlDate","OrgId","ReceiptNumber","ReceiptMethodName","ReceivableActivityName","BankAccountNumber"
+"-21.2324","SAR","2026-03-07","2026-03-07","2026-03-07","300000001421038","AMEX-BLKU-0001167-MISC","AMEX","Bank Charge","015795017321014"
+"-6.3399","SAR","2026-03-09","2026-03-09","2026-03-09","300000001421038","AMEX-BLKU-0001169-MISC","AMEX","Bank Charge","015795017321014"
+"-8.4674","SAR","2026-03-20","2026-03-20","2026-03-20","300000001421038","AMEX-BLKU-0001180-MISC","AMEX","Bank Charge","015795017321014"

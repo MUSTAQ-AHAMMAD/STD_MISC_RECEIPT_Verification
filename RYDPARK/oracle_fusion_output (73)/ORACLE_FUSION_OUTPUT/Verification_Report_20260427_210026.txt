@@ -1,0 +1,493 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 09:00:22 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         321,997.19 SAR     ║
+║  [ℹ] Standard Receipt Total                   686,248.00 SAR     ║
+║  [✗] Amount Reconciliation                    Diff: 364,250.81 SAR║
+║  [ℹ] Total Invoices                           1,619              ║
+║  [ℹ] Receipt Files Generated                  6                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          RYDPARK.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             RYDPARK_payment_line_5_to_31_March.xlsx
+  Segment 1 prefix                         08516110
+  Segment 2 prefix                         41585553
+
+  AR rows read                             6672
+  Unique invoices loaded                   1618
+  Unique transactions (BLK)                65
+  Total AR amount                          322,196.19 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Amex                       6             921.00                
+  Cash                       245           45,143.00             
+  Mada                       885           184,306.00            
+  Master                     83            22,146.00             
+  TABBY                      67            19,631.00             
+  TAMARA                     27            7,425.00              
+  Visa                       370           90,608.00             
+  ----------------------------------------------------------------------
+  TOTAL                      1683          370,180.00            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  NAKHELMALL                      1           -199.00             
+  RYDGALLER                       94          27,056.00           
+  RYDPARK                         1524        343,323.00          
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 111
+    Total amount: 343,124.00 SAR
+    Payment methods included: ['AMEX', 'Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              343,124.00 SAR
+    Per-method total:                343,124.00 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    AMEX                6 rows              921.00 SAR  ✓
+    Cash               28 rows           45,143.00 SAR  ⚠ 2 NEGATIVE AMOUNTS!
+    Mada               27 rows          184,306.00 SAR  ✓
+    Master             23 rows           22,146.00 SAR  ✓
+    Visa               27 rows           90,608.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    94
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   6
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       184,306.00 SAR
+    Visa                        90,608.00 SAR
+    Cash                        45,143.00 SAR
+    Master                      22,146.00 SAR
+    Amex                           921.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TABBY                       19,631.00 SAR
+    TAMARA                       7,425.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          NAKHELMALL       Cash        -199.00           CashOth Mall Hail                  
+  Receipt_CASH.csv                          RYDPARK          Cash        1,222.00          CashRYDPARK                        
+  Receipt_MADA.csv                          RYDPARK          Mada        7,277.00          AL Jazeerah BankRYDPARK            
+  Receipt_VISA.csv                          RYDPARK          Visa        6,880.00          AL Jazeerah BankRYDPARK            
+  Receipt_CASH.csv                          RYDPARK          Cash        587.00            CashRYDPARK                        
+  Receipt_MADA.csv                          RYDPARK          Mada        7,642.00          AL Jazeerah BankRYDPARK            
+  Receipt_MASTER.csv                        RYDPARK          Master      374.00            AL Jazeerah BankRYDPARK            
+  Receipt_VISA.csv                          RYDPARK          Visa        4,029.00          AL Jazeerah BankRYDPARK            
+  Receipt_CASH.csv                          RYDPARK          Cash        1,929.00          CashRYDPARK                        
+  Receipt_MADA.csv                          RYDPARK          Mada        8,528.00          AL Jazeerah BankRYDPARK            
+  Receipt_MASTER.csv                        RYDPARK          Master      1,779.00          AL Jazeerah BankRYDPARK            
+  Receipt_VISA.csv                          RYDPARK          Visa        1,901.00          AL Jazeerah BankRYDPARK            
+  Receipt_CASH.csv                          RYDPARK          Cash        1,400.00          CashRYDPARK                        
+  Receipt_MADA.csv                          RYDPARK          Mada        8,262.00          AL Jazeerah BankRYDPARK            
+  Receipt_MASTER.csv                        RYDPARK          Master      508.00            AL Jazeerah BankRYDPARK            
+  Receipt_VISA.csv                          RYDPARK          Visa        3,995.00          AL Jazeerah BankRYDPARK            
+  Receipt_CASH.csv                          RYDPARK          Cash        2,304.00          CashRYDPARK                        
+  Receipt_MADA.csv                          RYDPARK          Mada        7,883.00          AL Jazeerah BankRYDPARK            
+  Receipt_MASTER.csv                        RYDPARK          Master      520.00            AL Jazeerah BankRYDPARK            
+  Receipt_VISA.csv                          RYDPARK          Visa        4,336.00          AL Jazeerah BankRYDPARK            
+  Receipt_CASH.csv                          RYDPARK          Cash        1,794.00          CashRYDPARK                        
+  Receipt_MADA.csv                          RYDPARK          Mada        9,382.00          AL Jazeerah BankRYDPARK            
+  Receipt_MASTER.csv                        RYDPARK          Master      601.00            AL Jazeerah BankRYDPARK            
+  Receipt_VISA.csv                          RYDPARK          Visa        3,720.00          AL Jazeerah BankRYDPARK            
+  Receipt_CASH.csv                          RYDPARK          Cash        1,205.00          CashRYDPARK                        
+  Receipt_MADA.csv                          RYDPARK          Mada        7,974.00          AL Jazeerah BankRYDPARK            
+  Receipt_MASTER.csv                        RYDPARK          Master      559.00            AL Jazeerah BankRYDPARK            
+  Receipt_VISA.csv                          RYDPARK          Visa        6,264.00          AL Jazeerah BankRYDPARK            
+  Receipt_CASH.csv                          RYDPARK          Cash        1,584.00          CashRYDPARK                        
+  Receipt_MADA.csv                          RYDPARK          Mada        7,488.00          AL Jazeerah BankRYDPARK            
+  Receipt_MASTER.csv                        RYDPARK          Master      597.00            AL Jazeerah BankRYDPARK            
+  Receipt_VISA.csv                          RYDPARK          Visa        473.00            AL Jazeerah BankRYDPARK            
+  Receipt_AMEX.csv                          RYDPARK          Amex        58.00             AL Jazeerah BankRYDPARK            
+  Receipt_CASH.csv                          RYDPARK          Cash        2,795.00          CashRYDPARK                        
+  Receipt_MADA.csv                          RYDPARK          Mada        11,751.00         AL Jazeerah BankRYDPARK            
+  Receipt_MASTER.csv                        RYDPARK          Master      1,479.00          AL Jazeerah BankRYDPARK            
+  Receipt_VISA.csv                          RYDPARK          Visa        6,186.00          AL Jazeerah BankRYDPARK            
+  Receipt_AMEX.csv                          RYDPARK          Amex        299.00            AL Jazeerah BankRYDPARK            
+  Receipt_CASH.csv                          RYDPARK          Cash        3,626.00          CashRYDPARK                        
+  Receipt_MADA.csv                          RYDPARK          Mada        13,015.00         AL Jazeerah BankRYDPARK            
+  Receipt_MASTER.csv                        RYDPARK          Master      2,691.00          AL Jazeerah BankRYDPARK            
+  Receipt_VISA.csv                          RYDPARK          Visa        6,548.00          AL Jazeerah BankRYDPARK            
+  Receipt_CASH.csv                          RYDPARK          Cash        2,209.00          CashRYDPARK                        
+  Receipt_MADA.csv                          RYDPARK          Mada        11,533.00         AL Jazeerah BankRYDPARK            
+  Receipt_MASTER.csv                        RYDPARK          Master      1,713.00          AL Jazeerah BankRYDPARK            
+  Receipt_VISA.csv                          RYDPARK          Visa        3,625.00          AL Jazeerah BankRYDPARK            
+  Receipt_CASH.csv                          RYDPARK          Cash        1,036.00          CashRYDPARK                        
+  Receipt_MADA.csv                          RYDPARK          Mada        6,951.00          AL Jazeerah BankRYDPARK            
+  Receipt_MASTER.csv                        RYDPARK          Master      797.00            AL Jazeerah BankRYDPARK            
+  Receipt_VISA.csv                          RYDPARK          Visa        2,700.00          AL Jazeerah BankRYDPARK            
+  Receipt_AMEX.csv                          RYDPARK          Amex        59.00             AL Jazeerah BankRYDPARK            
+  Receipt_CASH.csv                          RYDPARK          Cash        2,694.00          CashRYDPARK                        
+  Receipt_MADA.csv                          RYDPARK          Mada        12,175.00         AL Jazeerah BankRYDPARK            
+  Receipt_MASTER.csv                        RYDPARK          Master      399.00            AL Jazeerah BankRYDPARK            
+  Receipt_VISA.csv                          RYDPARK          Visa        5,328.00          AL Jazeerah BankRYDPARK            
+  Receipt_CASH.csv                          RYDPARK          Cash        3,366.00          CashRYDPARK                        
+  Receipt_MADA.csv                          RYDPARK          Mada        10,759.00         AL Jazeerah BankRYDPARK            
+  Receipt_MASTER.csv                        RYDPARK          Master      1,076.00          AL Jazeerah BankRYDPARK            
+  Receipt_VISA.csv                          RYDPARK          Visa        5,856.00          AL Jazeerah BankRYDPARK            
+  Receipt_CASH.csv                          RYDPARK          Cash        3,436.00          CashRYDPARK                        
+  Receipt_MADA.csv                          RYDPARK          Mada        11,486.00         AL Jazeerah BankRYDPARK            
+  Receipt_MASTER.csv                        RYDPARK          Master      750.00            AL Jazeerah BankRYDPARK            
+  Receipt_VISA.csv                          RYDPARK          Visa        7,122.00          AL Jazeerah BankRYDPARK            
+  Receipt_AMEX.csv                          RYDPARK          Amex        149.00            AL Jazeerah BankRYDPARK            
+  Receipt_CASH.csv                          RYDPARK          Cash        335.00            CashRYDPARK                        
+  Receipt_MADA.csv                          RYDPARK          Mada        4,037.00          AL Jazeerah BankRYDPARK            
+  Receipt_MASTER.csv                        RYDPARK          Master      1,003.00          AL Jazeerah BankRYDPARK            
+  Receipt_VISA.csv                          RYDPARK          Visa        2,023.00          AL Jazeerah BankRYDPARK            
+  Receipt_CASH.csv                          RYDPARK          Cash        1,249.00          CashRYDPARK                        
+  Receipt_MADA.csv                          RYDPARK          Mada        3,559.00          AL Jazeerah BankRYDPARK            
+  Receipt_MASTER.csv                        RYDPARK          Master      1,237.00          AL Jazeerah BankRYDPARK            
+  Receipt_VISA.csv                          RYDPARK          Visa        1,421.00          AL Jazeerah BankRYDPARK            
+  Receipt_AMEX.csv                          RYDPARK          Amex        186.00            AL Jazeerah BankRYDPARK            
+  Receipt_CASH.csv                          RYDPARK          Cash        1,624.00          CashRYDPARK                        
+  Receipt_MADA.csv                          RYDPARK          Mada        4,851.00          AL Jazeerah BankRYDPARK            
+  Receipt_VISA.csv                          RYDPARK          Visa        1,878.00          AL Jazeerah BankRYDPARK            
+  Receipt_CASH.csv                          RYDPARK          Cash        2,921.00          CashRYDPARK                        
+  Receipt_MADA.csv                          RYDPARK          Mada        4,113.00          AL Jazeerah BankRYDPARK            
+  Receipt_MASTER.csv                        RYDPARK          Master      430.00            AL Jazeerah BankRYDPARK            
+  Receipt_VISA.csv                          RYDPARK          Visa        3,732.00          AL Jazeerah BankRYDPARK            
+  Receipt_CASH.csv                          RYDPARK          Cash        933.00            CashRYDPARK                        
+  Receipt_MADA.csv                          RYDPARK          Mada        3,715.00          AL Jazeerah BankRYDPARK            
+  Receipt_MASTER.csv                        RYDPARK          Master      589.00            AL Jazeerah BankRYDPARK            
+  Receipt_VISA.csv                          RYDPARK          Visa        809.00            AL Jazeerah BankRYDPARK            
+  Receipt_AMEX.csv                          RYDPARK          Amex        170.00            AL Jazeerah BankRYDPARK            
+  Receipt_CASH.csv                          RYDPARK          Cash        1,744.00          CashRYDPARK                        
+  Receipt_MADA.csv                          RYDPARK          Mada        4,259.00          AL Jazeerah BankRYDPARK            
+  Receipt_MASTER.csv                        RYDPARK          Master      2,105.00          AL Jazeerah BankRYDPARK            
+  Receipt_VISA.csv                          RYDPARK          Visa        1,666.00          AL Jazeerah BankRYDPARK            
+  Receipt_CASH.csv                          RYDPARK          Cash        1,838.00          CashRYDPARK                        
+  Receipt_MADA.csv                          RYDPARK          Mada        3,411.00          AL Jazeerah BankRYDPARK            
+  Receipt_VISA.csv                          RYDPARK          Visa        1,278.00          AL Jazeerah BankRYDPARK            
+  Receipt_CASH.csv                          RYDPARK          Cash        1,090.00          CashRYDPARK                        
+  Receipt_MADA.csv                          RYDPARK          Mada        3,830.00          AL Jazeerah BankRYDPARK            
+  Receipt_MASTER.csv                        RYDPARK          Master      521.00            AL Jazeerah BankRYDPARK            
+  Receipt_VISA.csv                          RYDPARK          Visa        1,269.00          AL Jazeerah BankRYDPARK            
+  Receipt_CASH.csv                          RYDPARK          Cash        1,193.00          CashRYDPARK                        
+  Receipt_MADA.csv                          RYDPARK          Mada        3,838.00          AL Jazeerah BankRYDPARK            
+  Receipt_MASTER.csv                        RYDPARK          Master      1,677.00          AL Jazeerah BankRYDPARK            
+  Receipt_VISA.csv                          RYDPARK          Visa        1,970.00          AL Jazeerah BankRYDPARK            
+  Receipt_CASH.csv                          RYDPARK          Cash        -38.00            CashRYDPARK                        
+  Receipt_MADA.csv                          RYDPARK          Mada        1,615.00          AL Jazeerah BankRYDPARK            
+  Receipt_VISA.csv                          RYDPARK          Visa        1,244.00          AL Jazeerah BankRYDPARK            
+  Receipt_CASH.csv                          RYDPARK          Cash        939.00            CashRYDPARK                        
+  Receipt_MADA.csv                          RYDPARK          Mada        2,356.00          AL Jazeerah BankRYDPARK            
+  Receipt_MASTER.csv                        RYDPARK          Master      343.00            AL Jazeerah BankRYDPARK            
+  Receipt_VISA.csv                          RYDPARK          Visa        2,010.00          AL Jazeerah BankRYDPARK            
+  Receipt_CASH.csv                          RYDPARK          Cash        327.00            CashRYDPARK                        
+  Receipt_MADA.csv                          RYDPARK          Mada        2,616.00          AL Jazeerah BankRYDPARK            
+  Receipt_MASTER.csv                        RYDPARK          Master      398.00            AL Jazeerah BankRYDPARK            
+  Receipt_VISA.csv                          RYDPARK          Visa        2,345.00          AL Jazeerah BankRYDPARK            
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            343,124.00                                           
+
+  Per-method totals:
+    Amex              6 file(s)          921.00 SAR
+    Cash             28 file(s)       45,143.00 SAR
+    Mada             27 file(s)      184,306.00 SAR
+    Master           23 file(s)       22,146.00 SAR
+    Visa             27 file(s)       90,608.00 SAR
+    Grand Total                       343,124.00 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Amex         Cash         Mada       Master         Visa          TOTAL
+  ------------------------------------------------------------------------------------------------
+  2026-03-05              0        1,222        7,277            0        6,880         15,379
+  2026-03-06              0          587        7,642          374        4,029         12,632
+  2026-03-07              0        1,929        8,528        1,779        1,901         14,137
+  2026-03-08              0        1,400        8,262          508        3,995         14,165
+  2026-03-09              0        2,304        7,883          520        4,336         15,043
+  2026-03-10              0        1,794        9,382          601        3,720         15,497
+  2026-03-11              0        1,205        7,974          559        6,264         16,002
+  2026-03-12              0        1,584        7,488          597          473         10,142
+  2026-03-13             58        2,795       11,751        1,479        6,186         22,269
+  2026-03-14            299        3,626       13,015        2,691        6,548         26,179
+  2026-03-15              0        2,209       11,533        1,713        3,625         19,080
+  2026-03-16              0        1,036        6,951          797        2,700         11,484
+  2026-03-17             59        2,694       12,175          399        5,328         20,655
+  2026-03-18              0        3,366       10,759        1,076        5,856         21,057
+  2026-03-19              0        3,237       11,486          750        7,122         22,595
+  2026-03-20            149          335        4,037        1,003        2,023          7,547
+  2026-03-21              0        1,249        3,559        1,237        1,421          7,466
+  2026-03-22            186        1,624        4,851            0        1,878          8,539
+  2026-03-23              0        2,921        4,113          430        3,732         11,196
+  2026-03-24              0          933        3,715          589          809          6,046
+  2026-03-25            170        1,744        4,259        2,105        1,666          9,944
+  2026-03-26              0        1,838        3,411            0        1,278          6,527
+  2026-03-27              0        1,090        3,830          521        1,269          6,710
+  2026-03-28              0        1,193        3,838        1,677        1,970          8,678
+  2026-03-29              0          -38        1,615            0        1,244          2,821
+  2026-03-30              0          939        2,356          343        2,010          5,648
+  2026-03-31              0          327        2,616          398        2,345          5,686
+  ------------------------------------------------------------------------------------------------
+  TOTAL                 921       45,143      184,306       22,146       90,608        343,124
+
+  VALIDATION:
+    Payment file total (for standard receipts):       343,124.00 SAR
+    Receipt files total:                              343,124.00 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Amex            Payment:       921.00  Receipt:       921.00  Diff:     0.00  ✓
+    Cash            Payment:    45,143.00  Receipt:    45,143.00  Diff:     0.00  ✓
+    Mada            Payment:   184,306.00  Receipt:   184,306.00  Diff:     0.00  ✓
+    Master          Payment:    22,146.00  Receipt:    22,146.00  Diff:     0.00  ✓
+    Visa            Payment:    90,608.00  Receipt:    90,608.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (111 rows, 343,124.00 SAR)
+  Per-method grand total                   343,124.00 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 83
+    Total amount: -3,776.1331 SAR
+    Payment methods included: ['AMEX', 'Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -3,776.1331 SAR
+    Per-method total:               -3,776.1331 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    AMEX                6 rows            -39.1884 SAR  ⚠ 6 NEGATIVE AMOUNTS!
+    Mada               27 rows         -1,273.2708 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             23 rows           -483.8896 SAR  ⚠ 23 NEGATIVE AMOUNTS!
+    Visa               27 rows         -1,979.7843 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              5
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       184,532.00 SAR
+    Visa                        90,608.00 SAR
+    Master                      22,146.00 SAR
+    Amex                           921.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                        48,342.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED               48,342.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  RYDPARK          Mada        7,503.00          0.01      -51.7707          AL Jazeerah BankRYDPARK       
+  RYDPARK          Visa        6,880.00          0.02      -150.3280         AL Jazeerah BankRYDPARK       
+  RYDPARK          Mada        7,642.00          0.01      -52.7298          AL Jazeerah BankRYDPARK       
+  RYDPARK          Master      374.00            0.02      -8.1719           AL Jazeerah BankRYDPARK       
+  RYDPARK          Visa        4,029.00          0.02      -88.0336          AL Jazeerah BankRYDPARK       
+  RYDPARK          Mada        8,528.00          0.01      -58.8432          AL Jazeerah BankRYDPARK       
+  RYDPARK          Master      1,779.00          0.02      -38.8712          AL Jazeerah BankRYDPARK       
+  RYDPARK          Visa        1,901.00          0.02      -41.5368          AL Jazeerah BankRYDPARK       
+  RYDPARK          Mada        8,262.00          0.01      -57.0078          AL Jazeerah BankRYDPARK       
+  RYDPARK          Master      508.00            0.02      -11.0998          AL Jazeerah BankRYDPARK       
+  RYDPARK          Visa        3,995.00          0.02      -87.2907          AL Jazeerah BankRYDPARK       
+  RYDPARK          Mada        7,883.00          0.01      -54.3927          AL Jazeerah BankRYDPARK       
+  RYDPARK          Master      520.00            0.02      -11.3620          AL Jazeerah BankRYDPARK       
+  RYDPARK          Visa        4,336.00          0.02      -94.7416          AL Jazeerah BankRYDPARK       
+  RYDPARK          Mada        9,382.00          0.01      -64.7358          AL Jazeerah BankRYDPARK       
+  RYDPARK          Master      601.00            0.02      -13.1319          AL Jazeerah BankRYDPARK       
+  RYDPARK          Visa        3,720.00          0.02      -81.2820          AL Jazeerah BankRYDPARK       
+  RYDPARK          Mada        7,974.00          0.01      -55.0206          AL Jazeerah BankRYDPARK       
+  RYDPARK          Master      559.00            0.02      -12.2142          AL Jazeerah BankRYDPARK       
+  RYDPARK          Visa        6,264.00          0.02      -136.8684         AL Jazeerah BankRYDPARK       
+  RYDPARK          Mada        7,488.00          0.01      -51.6672          AL Jazeerah BankRYDPARK       
+  RYDPARK          Master      597.00            0.02      -13.0444          AL Jazeerah BankRYDPARK       
+  RYDPARK          Visa        473.00            0.02      -10.3350          AL Jazeerah BankRYDPARK       
+  RYDPARK          Amex        58.00             0.04      -2.4679           AL Jazeerah BankRYDPARK       
+  RYDPARK          Mada        11,751.00         0.01      -81.0819          AL Jazeerah BankRYDPARK       
+  RYDPARK          Master      1,479.00          0.02      -32.3161          AL Jazeerah BankRYDPARK       
+  RYDPARK          Visa        6,186.00          0.02      -135.1641         AL Jazeerah BankRYDPARK       
+  RYDPARK          Amex        299.00            0.04      -12.7224          AL Jazeerah BankRYDPARK       
+  RYDPARK          Mada        13,015.00         0.01      -89.8035          AL Jazeerah BankRYDPARK       
+  RYDPARK          Master      2,691.00          0.02      -58.7983          AL Jazeerah BankRYDPARK       
+  RYDPARK          Visa        6,548.00          0.02      -143.0738         AL Jazeerah BankRYDPARK       
+  RYDPARK          Mada        11,533.00         0.01      -79.5777          AL Jazeerah BankRYDPARK       
+  RYDPARK          Master      1,713.00          0.02      -37.4290          AL Jazeerah BankRYDPARK       
+  RYDPARK          Visa        3,625.00          0.02      -79.2062          AL Jazeerah BankRYDPARK       
+  RYDPARK          Mada        6,951.00          0.01      -47.9619          AL Jazeerah BankRYDPARK       
+  RYDPARK          Master      797.00            0.02      -17.4144          AL Jazeerah BankRYDPARK       
+  RYDPARK          Visa        2,700.00          0.02      -58.9950          AL Jazeerah BankRYDPARK       
+  RYDPARK          Amex        59.00             0.04      -2.5104           AL Jazeerah BankRYDPARK       
+  RYDPARK          Mada        12,175.00         0.01      -84.0075          AL Jazeerah BankRYDPARK       
+  RYDPARK          Master      399.00            0.02      -8.7181           AL Jazeerah BankRYDPARK       
+  RYDPARK          Visa        5,328.00          0.02      -116.4168         AL Jazeerah BankRYDPARK       
+  RYDPARK          Mada        10,759.00         0.01      -74.2371          AL Jazeerah BankRYDPARK       
+  RYDPARK          Master      1,076.00          0.02      -23.5106          AL Jazeerah BankRYDPARK       
+  RYDPARK          Visa        5,856.00          0.02      -127.9536         AL Jazeerah BankRYDPARK       
+  RYDPARK          Mada        11,486.00         0.01      -79.2534          AL Jazeerah BankRYDPARK       
+  RYDPARK          Master      750.00            0.02      -16.3875          AL Jazeerah BankRYDPARK       
+  RYDPARK          Visa        7,122.00          0.02      -155.6157         AL Jazeerah BankRYDPARK       
+  RYDPARK          Amex        149.00            0.04      -6.3399           AL Jazeerah BankRYDPARK       
+  RYDPARK          Mada        4,037.00          0.01      -27.8553          AL Jazeerah BankRYDPARK       
+  RYDPARK          Master      1,003.00          0.02      -21.9155          AL Jazeerah BankRYDPARK       
+  RYDPARK          Visa        2,023.00          0.02      -44.2025          AL Jazeerah BankRYDPARK       
+  RYDPARK          Mada        3,559.00          0.01      -24.5571          AL Jazeerah BankRYDPARK       
+  RYDPARK          Master      1,237.00          0.02      -27.0284          AL Jazeerah BankRYDPARK       
+  RYDPARK          Visa        1,421.00          0.02      -31.0488          AL Jazeerah BankRYDPARK       
+  RYDPARK          Amex        186.00            0.04      -7.9143           AL Jazeerah BankRYDPARK       
+  RYDPARK          Mada        4,851.00          0.01      -33.4719          AL Jazeerah BankRYDPARK       
+  RYDPARK          Visa        1,878.00          0.02      -41.0343          AL Jazeerah BankRYDPARK       
+  RYDPARK          Mada        4,113.00          0.01      -28.3797          AL Jazeerah BankRYDPARK       
+  RYDPARK          Master      430.00            0.02      -9.3955           AL Jazeerah BankRYDPARK       
+  RYDPARK          Visa        3,732.00          0.02      -81.5442          AL Jazeerah BankRYDPARK       
+  RYDPARK          Mada        3,715.00          0.01      -25.6335          AL Jazeerah BankRYDPARK       
+  RYDPARK          Master      589.00            0.02      -12.8696          AL Jazeerah BankRYDPARK       
+  RYDPARK          Visa        809.00            0.02      -17.6766          AL Jazeerah BankRYDPARK       
+  RYDPARK          Amex        170.00            0.04      -7.2335           AL Jazeerah BankRYDPARK       
+  RYDPARK          Mada        4,259.00          0.01      -29.3871          AL Jazeerah BankRYDPARK       
+  RYDPARK          Master      2,105.00          0.02      -45.9942          AL Jazeerah BankRYDPARK       
+  RYDPARK          Visa        1,666.00          0.02      -36.4021          AL Jazeerah BankRYDPARK       
+  RYDPARK          Mada        3,411.00          0.01      -23.5359          AL Jazeerah BankRYDPARK       
+  RYDPARK          Visa        1,278.00          0.02      -27.9243          AL Jazeerah BankRYDPARK       
+  RYDPARK          Mada        3,830.00          0.01      -26.4270          AL Jazeerah BankRYDPARK       
+  RYDPARK          Master      521.00            0.02      -11.3838          AL Jazeerah BankRYDPARK       
+  RYDPARK          Visa        1,269.00          0.02      -27.7276          AL Jazeerah BankRYDPARK       
+  RYDPARK          Mada        3,838.00          0.01      -26.4822          AL Jazeerah BankRYDPARK       
+  RYDPARK          Master      1,677.00          0.02      -36.6424          AL Jazeerah BankRYDPARK       
+  RYDPARK          Visa        1,970.00          0.02      -43.0445          AL Jazeerah BankRYDPARK       
+  RYDPARK          Mada        1,615.00          0.01      -11.1435          AL Jazeerah BankRYDPARK       
+  RYDPARK          Visa        1,244.00          0.02      -27.1814          AL Jazeerah BankRYDPARK       
+  RYDPARK          Mada        2,356.00          0.01      -16.2564          AL Jazeerah BankRYDPARK       
+  RYDPARK          Master      343.00            0.02      -7.4945           AL Jazeerah BankRYDPARK       
+  RYDPARK          Visa        2,010.00          0.02      -43.9185          AL Jazeerah BankRYDPARK       
+  RYDPARK          Mada        2,616.00          0.01      -18.0504          AL Jazeerah BankRYDPARK       
+  RYDPARK          Master      398.00            0.02      -8.6963           AL Jazeerah BankRYDPARK       
+  RYDPARK          Visa        2,345.00          0.02      -51.2382          AL Jazeerah BankRYDPARK       
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -3,776.1331                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (83 rows, -3,776.1331 SAR)
+  Per-method grand total                   -3,776.1331 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  321,997.19 SAR         █
+  █  Total Standard Receipt amt               686,248.00 SAR         █
+  █  Difference                               364,250.81 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  321,997.19 SAR
+  Total Standard Receipt amt               686,248.00 SAR
+  Difference                               364,250.81 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0001555
+  >>> Next run START_TXN_SEQUENCE =        1556  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 21:00:26
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

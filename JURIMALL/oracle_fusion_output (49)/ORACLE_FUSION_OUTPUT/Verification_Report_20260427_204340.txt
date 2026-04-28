@@ -1,0 +1,460 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 08:43:37 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         618,943.49 SAR     ║
+║  [ℹ] Standard Receipt Total                   1,180,894.00 SAR   ║
+║  [✗] Amount Reconciliation                    Diff: 561,950.51 SAR║
+║  [ℹ] Total Invoices                           2,724              ║
+║  [ℹ] Receipt Files Generated                  5                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          JURIMALL.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             JURIMALL_payment_line_5_to_31_March.xlsx
+  Segment 1 prefix                         78839645
+  Segment 2 prefix                         44235832
+
+  AR rows read                             4584
+  Unique invoices loaded                   993
+  Unique transactions (BLK)                21
+  Total AR amount                          214,524.49 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Cash                       771           138,213.00            
+  Mada                       1763          390,069.00            
+  Master                     54            13,081.00             
+  TABBY                      95            27,265.00             
+  TAMARA                     115           33,332.00             
+  Visa                       243           49,084.00             
+  ----------------------------------------------------------------------
+  TOTAL                      3041          651,044.00            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  JURIMALL                        2633        625,419.00          
+  RYDGALLER                       91          25,625.00           
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 98
+    Total amount: 590,447.00 SAR
+    Payment methods included: ['Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              590,447.00 SAR
+    Per-method total:                590,447.00 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    Cash               27 rows          138,213.00 SAR  ✓
+    Mada               27 rows          390,069.00 SAR  ✓
+    Master             19 rows           13,081.00 SAR  ✓
+    Visa               25 rows           49,084.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    210
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   5
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       390,069.00 SAR
+    Cash                       138,213.00 SAR
+    Visa                        49,084.00 SAR
+    Master                      13,081.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TAMARA                      33,332.00 SAR
+    TABBY                       27,265.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          JURIMALL         Cash        3,575.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          JURIMALL         Mada        20,354.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        JURIMALL         Master      958.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          JURIMALL         Visa        2,961.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          JURIMALL         Cash        3,483.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          JURIMALL         Mada        22,408.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        JURIMALL         Master      1,822.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          JURIMALL         Visa        2,351.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          JURIMALL         Cash        7,581.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          JURIMALL         Mada        21,863.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        JURIMALL         Master      264.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          JURIMALL         Visa        1,119.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          JURIMALL         Cash        7,253.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          JURIMALL         Mada        21,346.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        JURIMALL         Master      669.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          JURIMALL         Visa        2,549.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          JURIMALL         Cash        7,944.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          JURIMALL         Mada        20,731.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        JURIMALL         Master      222.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          JURIMALL         Visa        3,156.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          JURIMALL         Cash        6,090.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          JURIMALL         Mada        23,915.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          JURIMALL         Visa        2,186.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          JURIMALL         Cash        9,290.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          JURIMALL         Mada        25,874.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          JURIMALL         Visa        1,036.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          JURIMALL         Cash        9,874.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          JURIMALL         Mada        13,939.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        JURIMALL         Master      425.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          JURIMALL         Visa        1,132.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          JURIMALL         Cash        7,503.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          JURIMALL         Mada        18,977.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        JURIMALL         Master      345.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          JURIMALL         Visa        658.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          JURIMALL         Cash        7,388.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          JURIMALL         Mada        27,331.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        JURIMALL         Master      1,037.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          JURIMALL         Visa        3,696.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          JURIMALL         Cash        7,649.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          JURIMALL         Mada        23,103.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        JURIMALL         Master      735.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          JURIMALL         Visa        4,264.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          JURIMALL         Cash        9,805.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          JURIMALL         Mada        24,883.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        JURIMALL         Master      432.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          JURIMALL         Visa        4,056.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          JURIMALL         Cash        11,843.00         CashOth Mall Hail                  
+  Receipt_MADA.csv                          JURIMALL         Mada        28,164.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        JURIMALL         Master      604.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          JURIMALL         Visa        3,051.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          JURIMALL         Cash        4,408.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          JURIMALL         Mada        9,622.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        JURIMALL         Master      523.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          JURIMALL         Visa        1,574.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          JURIMALL         Cash        11,297.00         CashOth Mall Hail                  
+  Receipt_MADA.csv                          JURIMALL         Mada        34,002.00         AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        JURIMALL         Master      1,259.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          JURIMALL         Visa        7,385.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          JURIMALL         Cash        1,686.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          JURIMALL         Mada        6,610.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        JURIMALL         Master      788.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          JURIMALL         Visa        519.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          JURIMALL         Cash        1,382.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          JURIMALL         Mada        3,211.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          JURIMALL         Visa        669.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          JURIMALL         Cash        4,375.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          JURIMALL         Mada        3,998.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        JURIMALL         Master      798.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          JURIMALL         Visa        2,074.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          JURIMALL         Cash        3,002.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          JURIMALL         Mada        3,627.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        JURIMALL         Master      741.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          JURIMALL         Cash        2,341.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          JURIMALL         Mada        3,124.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        JURIMALL         Master      861.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          JURIMALL         Visa        1,436.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          JURIMALL         Cash        2,036.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          JURIMALL         Mada        3,152.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          JURIMALL         Visa        586.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          JURIMALL         Cash        542.00            CashOth Mall Hail                  
+  Receipt_MADA.csv                          JURIMALL         Mada        7,536.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        JURIMALL         Master      299.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          JURIMALL         Visa        595.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          JURIMALL         Cash        654.00            CashOth Mall Hail                  
+  Receipt_MADA.csv                          JURIMALL         Mada        6,605.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          JURIMALL         Visa        973.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          JURIMALL         Cash        2,680.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          JURIMALL         Mada        5,187.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          JURIMALL         Visa        816.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          JURIMALL         Cash        2,413.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          JURIMALL         Mada        3,614.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_MASTER.csv                        JURIMALL         Master      299.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          JURIMALL         Visa        29.00             AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          JURIMALL         Cash        913.00            CashOth Mall Hail                  
+  Receipt_MADA.csv                          JURIMALL         Mada        3,920.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          JURIMALL         Visa        213.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_CASH.csv                          JURIMALL         Cash        1,206.00          CashOth Mall Hail                  
+  Receipt_MADA.csv                          JURIMALL         Mada        2,973.00          AL Jazeerah Bank MJMAKRMMAL        
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            590,447.00                                           
+
+  Per-method totals:
+    Cash             27 file(s)      138,213.00 SAR
+    Mada             27 file(s)      390,069.00 SAR
+    Master           19 file(s)       13,081.00 SAR
+    Visa             25 file(s)       49,084.00 SAR
+    Grand Total                       590,447.00 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Cash         Mada       Master         Visa          TOTAL
+  ----------------------------------------------------------------------------------
+  2026-03-05          3,575       20,354          958        2,961         27,848
+  2026-03-06          3,483       22,408        1,822        2,351         30,064
+  2026-03-07          7,581       21,863          264        1,119         30,827
+  2026-03-08          7,253       21,346          669        2,549         31,817
+  2026-03-09          7,944       20,731          222        3,156         32,053
+  2026-03-10          6,090       23,915            0        2,186         32,191
+  2026-03-11          9,290       25,874            0        1,036         36,200
+  2026-03-12          9,874       13,939          425        1,132         25,370
+  2026-03-13          7,503       18,977          345          658         27,483
+  2026-03-14          7,388       27,331        1,037        3,696         39,452
+  2026-03-15          7,649       23,103          735        4,264         35,751
+  2026-03-16          9,805       24,883          432        4,056         39,176
+  2026-03-17         11,843       28,164          604        3,051         43,662
+  2026-03-18          4,408        9,622          523        1,574         16,127
+  2026-03-19         11,297       34,002        1,259        7,385         53,943
+  2026-03-20          1,686        6,610          788          519          9,603
+  2026-03-21          1,382        3,211            0          669          5,262
+  2026-03-22          4,375        3,998          798        2,074         11,245
+  2026-03-23          3,002        3,627          741            0          7,370
+  2026-03-24          2,341        3,124          861        1,436          7,762
+  2026-03-25          2,036        3,152            0          586          5,774
+  2026-03-26            542        7,536          299          595          8,972
+  2026-03-27            654        6,605            0          973          8,232
+  2026-03-28          2,680        5,187            0          816          8,683
+  2026-03-29          2,413        3,614          299           29          6,355
+  2026-03-30            913        3,920            0          213          5,046
+  2026-03-31          1,206        2,973            0            0          4,179
+  ----------------------------------------------------------------------------------
+  TOTAL             138,213      390,069       13,081       49,084        590,447
+
+  VALIDATION:
+    Payment file total (for standard receipts):       590,447.00 SAR
+    Receipt files total:                              590,447.00 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Cash            Payment:   138,213.00  Receipt:   138,213.00  Diff:     0.00  ✓
+    Mada            Payment:   390,069.00  Receipt:   390,069.00  Diff:     0.00  ✓
+    Master          Payment:    13,081.00  Receipt:    13,081.00  Diff:     0.00  ✓
+    Visa            Payment:    49,084.00  Receipt:    49,084.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (98 rows, 590,447.00 SAR)
+  Per-method grand total                   590,447.00 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 71
+    Total amount: -4,050.1804 SAR
+    Payment methods included: ['Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -4,050.1804 SAR
+    Per-method total:               -4,050.1804 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    Mada               27 rows         -2,691.8763 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             19 rows           -285.8193 SAR  ⚠ 19 NEGATIVE AMOUNTS!
+    Visa               25 rows         -1,072.4848 SAR  ⚠ 25 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              4
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       390,127.00 SAR
+    Visa                        49,084.00 SAR
+    Master                      13,081.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                       143,724.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED              143,724.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  JURIMALL         Mada        20,354.00         0.01      -140.4426         AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Master      958.00            0.02      -20.9323          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Visa        2,961.00          0.02      -64.6978          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Mada        22,408.00         0.01      -154.6152         AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Master      1,822.00          0.02      -39.8107          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Visa        2,351.00          0.02      -51.3693          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Mada        21,863.00         0.01      -150.8547         AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Master      264.00            0.02      -5.7684           AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Visa        1,119.00          0.02      -24.4501          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Mada        21,346.00         0.01      -147.2874         AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Master      669.00            0.02      -14.6176          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Visa        2,549.00          0.02      -55.6956          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Mada        20,731.00         0.01      -143.0439         AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Master      222.00            0.02      -4.8507           AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Visa        3,156.00          0.02      -68.9586          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Mada        23,915.00         0.01      -165.0135         AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Visa        2,186.00          0.02      -47.7641          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Mada        25,874.00         0.01      -178.5306         AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Visa        1,036.00          0.02      -22.6366          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Mada        13,939.00         0.01      -96.1791          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Master      425.00            0.02      -9.2862           AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Visa        1,132.00          0.02      -24.7342          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Mada        18,977.00         0.01      -130.9413         AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Master      345.00            0.02      -7.5382           AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Visa        658.00            0.02      -14.3773          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Mada        27,331.00         0.01      -188.5839         AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Master      1,037.00          0.02      -22.6584          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Visa        3,696.00          0.02      -80.7576          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Mada        23,103.00         0.01      -159.4107         AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Master      735.00            0.02      -16.0597          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Visa        4,264.00          0.02      -93.1684          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Mada        24,883.00         0.01      -171.6927         AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Master      432.00            0.02      -9.4392           AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Visa        4,056.00          0.02      -88.6236          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Mada        28,164.00         0.01      -194.3316         AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Master      604.00            0.02      -13.1974          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Visa        3,051.00          0.02      -66.6643          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Mada        9,622.00          0.01      -66.3918          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Master      523.00            0.02      -11.4275          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Visa        1,574.00          0.02      -34.3919          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Mada        34,002.00         0.01      -234.6138         AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Master      1,259.00          0.02      -27.5091          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Visa        7,385.00          0.02      -161.3622         AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Mada        6,610.00          0.01      -45.6090          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Master      788.00            0.02      -17.2178          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Visa        519.00            0.02      -11.3401          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Mada        3,211.00          0.01      -22.1559          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Visa        669.00            0.02      -14.6176          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Mada        3,998.00          0.01      -27.5862          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Master      798.00            0.02      -17.4363          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Visa        2,074.00          0.02      -45.3169          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Mada        3,627.00          0.01      -25.0263          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Master      741.00            0.02      -16.1908          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Mada        3,124.00          0.01      -21.5556          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Master      861.00            0.02      -18.8128          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Visa        1,436.00          0.02      -31.3766          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Mada        3,152.00          0.01      -21.7488          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Visa        586.00            0.02      -12.8041          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Mada        7,536.00          0.01      -51.9984          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Master      299.00            0.02      -6.5331           AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Visa        595.00            0.02      -13.0007          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Mada        6,605.00          0.01      -45.5745          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Visa        973.00            0.02      -21.2600          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Mada        5,245.00          0.01      -36.1905          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Visa        816.00            0.02      -17.8296          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Mada        3,614.00          0.01      -24.9366          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Master      299.00            0.02      -6.5331           AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Visa        29.00             0.02      -0.6336           AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Mada        3,920.00          0.01      -27.0480          AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Visa        213.00            0.02      -4.6540           AL Jazeerah Bank MJMAKRMMAL   
+  JURIMALL         Mada        2,973.00          0.01      -20.5137          AL Jazeerah Bank MJMAKRMMAL   
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -4,050.1804                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (71 rows, -4,050.1804 SAR)
+  Per-method grand total                   -4,050.1804 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  618,943.49 SAR         █
+  █  Total Standard Receipt amt               1,180,894.00 SAR       █
+  █  Difference                               561,950.51 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  618,943.49 SAR
+  Total Standard Receipt amt               1,180,894.00 SAR
+  Difference                               561,950.51 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0008016
+  >>> Next run START_TXN_SEQUENCE =        8017  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 20:43:40
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

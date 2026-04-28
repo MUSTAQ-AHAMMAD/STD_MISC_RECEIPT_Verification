@@ -1,0 +1,458 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 09:01:23 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         339,750.09 SAR     ║
+║  [ℹ] Standard Receipt Total                   615,262.00 SAR     ║
+║  [✗] Amount Reconciliation                    Diff: 275,511.91 SAR║
+║  [ℹ] Total Invoices                           1,877              ║
+║  [ℹ] Receipt Files Generated                  6                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          SABIAYASMN.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             SABIAYASMN_Payment_Lines_5_to_31_March.xlsx
+  Segment 1 prefix                         26200695
+  Segment 2 prefix                         13159567
+
+  AR rows read                             7190
+  Unique invoices loaded                   1877
+  Unique transactions (BLK)                68
+  Total AR amount                          339,750.09 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Amex                       4             0.00                  
+  Cash                       534           79,497.00             
+  Mada                       1039          193,812.00            
+  Master                     27            4,798.00              
+  TABBY                      127           36,441.00             
+  TAMARA                     174           47,039.00             
+  Visa                       157           29,524.00             
+  ----------------------------------------------------------------------
+  TOTAL                      2062          391,111.00            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  RYDGALLER                       301         83,480.00           
+  SABIAYASMN                      1576        307,631.00          
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 94
+    Total amount: 307,631.00 SAR
+    Payment methods included: ['AMEX', 'Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              307,631.00 SAR
+    Per-method total:                307,631.00 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    AMEX                3 rows                0.00 SAR  ⚠ 1 NEGATIVE AMOUNTS!
+    Cash               27 rows           79,497.00 SAR  ✓
+    Mada               27 rows          193,812.00 SAR  ✓
+    Master             13 rows            4,798.00 SAR  ✓
+    Visa               24 rows           29,524.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    301
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   6
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       193,812.00 SAR
+    Cash                        79,497.00 SAR
+    Visa                        29,524.00 SAR
+    Master                       4,798.00 SAR
+    Amex                             0.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TAMARA                      47,039.00 SAR
+    TABBY                       36,441.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_AMEX.csv                          SABIAYASMN       Amex        199.00            157-95017321-SABIAYASMN            
+  Receipt_CASH.csv                          SABIAYASMN       Cash        2,585.00          Cash SABIAYASMN                    
+  Receipt_MADA.csv                          SABIAYASMN       Mada        11,260.00         157-95017321-SABIAYASMN            
+  Receipt_MASTER.csv                        SABIAYASMN       Master      348.00            157-95017321-SABIAYASMN            
+  Receipt_VISA.csv                          SABIAYASMN       Visa        448.00            157-95017321-SABIAYASMN            
+  Receipt_AMEX.csv                          SABIAYASMN       Amex        -199.00           157-95017321-SABIAYASMN            
+  Receipt_CASH.csv                          SABIAYASMN       Cash        1,466.00          Cash SABIAYASMN                    
+  Receipt_MADA.csv                          SABIAYASMN       Mada        7,330.00          157-95017321-SABIAYASMN            
+  Receipt_VISA.csv                          SABIAYASMN       Visa        1,055.00          157-95017321-SABIAYASMN            
+  Receipt_CASH.csv                          SABIAYASMN       Cash        1,960.00          Cash SABIAYASMN                    
+  Receipt_MADA.csv                          SABIAYASMN       Mada        9,106.00          157-95017321-SABIAYASMN            
+  Receipt_MASTER.csv                        SABIAYASMN       Master      298.00            157-95017321-SABIAYASMN            
+  Receipt_VISA.csv                          SABIAYASMN       Visa        1,662.00          157-95017321-SABIAYASMN            
+  Receipt_CASH.csv                          SABIAYASMN       Cash        4,210.00          Cash SABIAYASMN                    
+  Receipt_MADA.csv                          SABIAYASMN       Mada        6,724.00          157-95017321-SABIAYASMN            
+  Receipt_MASTER.csv                        SABIAYASMN       Master      479.00            157-95017321-SABIAYASMN            
+  Receipt_VISA.csv                          SABIAYASMN       Visa        797.00            157-95017321-SABIAYASMN            
+  Receipt_CASH.csv                          SABIAYASMN       Cash        7,075.00          Cash SABIAYASMN                    
+  Receipt_MADA.csv                          SABIAYASMN       Mada        11,940.00         157-95017321-SABIAYASMN            
+  Receipt_MASTER.csv                        SABIAYASMN       Master      180.00            157-95017321-SABIAYASMN            
+  Receipt_VISA.csv                          SABIAYASMN       Visa        1,624.00          157-95017321-SABIAYASMN            
+  Receipt_CASH.csv                          SABIAYASMN       Cash        3,734.00          Cash SABIAYASMN                    
+  Receipt_MADA.csv                          SABIAYASMN       Mada        10,376.00         157-95017321-SABIAYASMN            
+  Receipt_MASTER.csv                        SABIAYASMN       Master      298.00            157-95017321-SABIAYASMN            
+  Receipt_VISA.csv                          SABIAYASMN       Visa        597.00            157-95017321-SABIAYASMN            
+  Receipt_CASH.csv                          SABIAYASMN       Cash        5,646.00          Cash SABIAYASMN                    
+  Receipt_MADA.csv                          SABIAYASMN       Mada        11,224.00         157-95017321-SABIAYASMN            
+  Receipt_VISA.csv                          SABIAYASMN       Visa        520.00            157-95017321-SABIAYASMN            
+  Receipt_CASH.csv                          SABIAYASMN       Cash        2,914.00          Cash SABIAYASMN                    
+  Receipt_MADA.csv                          SABIAYASMN       Mada        5,073.00          157-95017321-SABIAYASMN            
+  Receipt_MASTER.csv                        SABIAYASMN       Master      573.00            157-95017321-SABIAYASMN            
+  Receipt_VISA.csv                          SABIAYASMN       Visa        1,019.00          157-95017321-SABIAYASMN            
+  Receipt_CASH.csv                          SABIAYASMN       Cash        4,327.00          Cash SABIAYASMN                    
+  Receipt_MADA.csv                          SABIAYASMN       Mada        6,867.00          157-95017321-SABIAYASMN            
+  Receipt_MASTER.csv                        SABIAYASMN       Master      376.00            157-95017321-SABIAYASMN            
+  Receipt_VISA.csv                          SABIAYASMN       Visa        1,784.00          157-95017321-SABIAYASMN            
+  Receipt_CASH.csv                          SABIAYASMN       Cash        3,399.00          Cash SABIAYASMN                    
+  Receipt_MADA.csv                          SABIAYASMN       Mada        7,777.00          157-95017321-SABIAYASMN            
+  Receipt_MASTER.csv                        SABIAYASMN       Master      149.00            157-95017321-SABIAYASMN            
+  Receipt_VISA.csv                          SABIAYASMN       Visa        1,289.00          157-95017321-SABIAYASMN            
+  Receipt_CASH.csv                          SABIAYASMN       Cash        9,672.00          Cash SABIAYASMN                    
+  Receipt_MADA.csv                          SABIAYASMN       Mada        12,991.00         157-95017321-SABIAYASMN            
+  Receipt_MASTER.csv                        SABIAYASMN       Master      222.00            157-95017321-SABIAYASMN            
+  Receipt_VISA.csv                          SABIAYASMN       Visa        2,170.00          157-95017321-SABIAYASMN            
+  Receipt_CASH.csv                          SABIAYASMN       Cash        7,864.00          Cash SABIAYASMN                    
+  Receipt_MADA.csv                          SABIAYASMN       Mada        18,908.00         157-95017321-SABIAYASMN            
+  Receipt_MASTER.csv                        SABIAYASMN       Master      149.00            157-95017321-SABIAYASMN            
+  Receipt_VISA.csv                          SABIAYASMN       Visa        4,691.00          157-95017321-SABIAYASMN            
+  Receipt_CASH.csv                          SABIAYASMN       Cash        8,139.00          Cash SABIAYASMN                    
+  Receipt_MADA.csv                          SABIAYASMN       Mada        14,568.00         157-95017321-SABIAYASMN            
+  Receipt_MASTER.csv                        SABIAYASMN       Master      504.00            157-95017321-SABIAYASMN            
+  Receipt_VISA.csv                          SABIAYASMN       Visa        1,569.00          157-95017321-SABIAYASMN            
+  Receipt_CASH.csv                          SABIAYASMN       Cash        5,691.00          Cash SABIAYASMN                    
+  Receipt_MADA.csv                          SABIAYASMN       Mada        15,587.00         157-95017321-SABIAYASMN            
+  Receipt_MASTER.csv                        SABIAYASMN       Master      708.00            157-95017321-SABIAYASMN            
+  Receipt_VISA.csv                          SABIAYASMN       Visa        2,785.00          157-95017321-SABIAYASMN            
+  Receipt_CASH.csv                          SABIAYASMN       Cash        4,487.00          Cash SABIAYASMN                    
+  Receipt_MADA.csv                          SABIAYASMN       Mada        18,006.00         157-95017321-SABIAYASMN            
+  Receipt_MASTER.csv                        SABIAYASMN       Master      514.00            157-95017321-SABIAYASMN            
+  Receipt_VISA.csv                          SABIAYASMN       Visa        3,323.00          157-95017321-SABIAYASMN            
+  Receipt_AMEX.csv                          SABIAYASMN       Amex        0.00              157-95017321-SABIAYASMN            
+  Receipt_CASH.csv                          SABIAYASMN       Cash        1,812.00          Cash SABIAYASMN                    
+  Receipt_MADA.csv                          SABIAYASMN       Mada        7,002.00          157-95017321-SABIAYASMN            
+  Receipt_VISA.csv                          SABIAYASMN       Visa        800.00            157-95017321-SABIAYASMN            
+  Receipt_CASH.csv                          SABIAYASMN       Cash        199.00            Cash SABIAYASMN                    
+  Receipt_MADA.csv                          SABIAYASMN       Mada        1,201.00          157-95017321-SABIAYASMN            
+  Receipt_VISA.csv                          SABIAYASMN       Visa        170.00            157-95017321-SABIAYASMN            
+  Receipt_CASH.csv                          SABIAYASMN       Cash        248.00            Cash SABIAYASMN                    
+  Receipt_MADA.csv                          SABIAYASMN       Mada        1,146.00          157-95017321-SABIAYASMN            
+  Receipt_CASH.csv                          SABIAYASMN       Cash        681.00            Cash SABIAYASMN                    
+  Receipt_MADA.csv                          SABIAYASMN       Mada        451.00            157-95017321-SABIAYASMN            
+  Receipt_CASH.csv                          SABIAYASMN       Cash        343.00            Cash SABIAYASMN                    
+  Receipt_MADA.csv                          SABIAYASMN       Mada        632.00            157-95017321-SABIAYASMN            
+  Receipt_VISA.csv                          SABIAYASMN       Visa        572.00            157-95017321-SABIAYASMN            
+  Receipt_CASH.csv                          SABIAYASMN       Cash        323.00            Cash SABIAYASMN                    
+  Receipt_MADA.csv                          SABIAYASMN       Mada        805.00            157-95017321-SABIAYASMN            
+  Receipt_VISA.csv                          SABIAYASMN       Visa        603.00            157-95017321-SABIAYASMN            
+  Receipt_CASH.csv                          SABIAYASMN       Cash        588.00            Cash SABIAYASMN                    
+  Receipt_MADA.csv                          SABIAYASMN       Mada        4,260.00          157-95017321-SABIAYASMN            
+  Receipt_VISA.csv                          SABIAYASMN       Visa        597.00            157-95017321-SABIAYASMN            
+  Receipt_CASH.csv                          SABIAYASMN       Cash        563.00            Cash SABIAYASMN                    
+  Receipt_MADA.csv                          SABIAYASMN       Mada        904.00            157-95017321-SABIAYASMN            
+  Receipt_VISA.csv                          SABIAYASMN       Visa        447.00            157-95017321-SABIAYASMN            
+  Receipt_CASH.csv                          SABIAYASMN       Cash        105.00            Cash SABIAYASMN                    
+  Receipt_MADA.csv                          SABIAYASMN       Mada        2,718.00          157-95017321-SABIAYASMN            
+  Receipt_VISA.csv                          SABIAYASMN       Visa        99.00             157-95017321-SABIAYASMN            
+  Receipt_CASH.csv                          SABIAYASMN       Cash        395.00            Cash SABIAYASMN                    
+  Receipt_MADA.csv                          SABIAYASMN       Mada        2,649.00          157-95017321-SABIAYASMN            
+  Receipt_VISA.csv                          SABIAYASMN       Visa        804.00            157-95017321-SABIAYASMN            
+  Receipt_CASH.csv                          SABIAYASMN       Cash        523.00            Cash SABIAYASMN                    
+  Receipt_MADA.csv                          SABIAYASMN       Mada        2,043.00          157-95017321-SABIAYASMN            
+  Receipt_CASH.csv                          SABIAYASMN       Cash        548.00            Cash SABIAYASMN                    
+  Receipt_MADA.csv                          SABIAYASMN       Mada        2,264.00          157-95017321-SABIAYASMN            
+  Receipt_VISA.csv                          SABIAYASMN       Visa        99.00             157-95017321-SABIAYASMN            
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            307,631.00                                           
+
+  Per-method totals:
+    Amex              3 file(s)            0.00 SAR
+    Cash             27 file(s)       79,497.00 SAR
+    Mada             27 file(s)      193,812.00 SAR
+    Master           13 file(s)        4,798.00 SAR
+    Visa             24 file(s)       29,524.00 SAR
+    Grand Total                       307,631.00 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Amex         Cash         Mada       Master         Visa          TOTAL
+  ------------------------------------------------------------------------------------------------
+  2026-03-05            199        2,585       11,260          348          448         14,840
+  2026-03-06           -199        1,466        7,330            0        1,055          9,652
+  2026-03-07              0        1,960        9,106          298        1,662         13,026
+  2026-03-08              0        4,210        6,724          479          797         12,210
+  2026-03-09              0        7,075       11,940          180        1,624         20,819
+  2026-03-10              0        3,734       10,376          298          597         15,005
+  2026-03-11              0        5,646       11,224            0          520         17,390
+  2026-03-12              0        2,914        5,073          573        1,019          9,579
+  2026-03-13              0        4,327        6,867          376        1,784         13,354
+  2026-03-14              0        3,399        7,777          149        1,289         12,614
+  2026-03-15              0        9,672       12,991          222        2,170         25,055
+  2026-03-16              0        7,864       18,908          149        4,691         31,612
+  2026-03-17              0        8,139       14,568          504        1,569         24,780
+  2026-03-18              0        5,691       15,587          708        2,785         24,771
+  2026-03-19              0        4,487       18,006          514        3,323         26,330
+  2026-03-20              0        1,812        7,002            0          800          9,614
+  2026-03-21              0          199        1,201            0          170          1,570
+  2026-03-22              0          248        1,146            0            0          1,394
+  2026-03-23              0          681          451            0            0          1,132
+  2026-03-24              0          343          632            0          572          1,547
+  2026-03-25              0          323          805            0          603          1,731
+  2026-03-26              0          588        4,260            0          597          5,445
+  2026-03-27              0          563          904            0          447          1,914
+  2026-03-28              0          105        2,718            0           99          2,922
+  2026-03-29              0          395        2,649            0          804          3,848
+  2026-03-30              0          523        2,043            0            0          2,566
+  2026-03-31              0          548        2,264            0           99          2,911
+  ------------------------------------------------------------------------------------------------
+  TOTAL                   0       79,497      193,812        4,798       29,524        307,631
+
+  VALIDATION:
+    Payment file total (for standard receipts):       307,631.00 SAR
+    Receipt files total:                              307,631.00 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Amex            Payment:         0.00  Receipt:         0.00  Diff:     0.00  ✓
+    Cash            Payment:    79,497.00  Receipt:    79,497.00  Diff:     0.00  ✓
+    Mada            Payment:   193,812.00  Receipt:   193,812.00  Diff:     0.00  ✓
+    Master          Payment:     4,798.00  Receipt:     4,798.00  Diff:     0.00  ✓
+    Visa            Payment:    29,524.00  Receipt:    29,524.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (94 rows, 307,631.00 SAR)
+  Per-method grand total                   307,631.00 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 66
+    Total amount: -2,166.5763 SAR
+    Payment methods included: ['AMEX', 'Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -2,166.5763 SAR
+    Per-method total:               -2,166.5763 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    AMEX                2 rows            -16.9348 SAR  ⚠ 2 NEGATIVE AMOUNTS!
+    Mada               27 rows         -1,364.4405 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             13 rows           -106.9993 SAR  ⚠ 13 NEGATIVE AMOUNTS!
+    Visa               24 rows           -678.2017 SAR  ⚠ 24 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              5
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       197,745.00 SAR
+    Visa                        31,039.00 SAR
+    Master                       4,897.00 SAR
+    Amex                           398.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                        85,012.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED               85,012.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  SABIAYASMN       Amex        199.00            0.04      -8.4674           157-95017321-SABIAYASMN       
+  SABIAYASMN       Mada        12,290.00         0.01      -84.8010          157-95017321-SABIAYASMN       
+  SABIAYASMN       Master      348.00            0.02      -7.6038           157-95017321-SABIAYASMN       
+  SABIAYASMN       Visa        448.00            0.02      -9.7888           157-95017321-SABIAYASMN       
+  SABIAYASMN       Mada        7,560.00          0.01      -52.1640          157-95017321-SABIAYASMN       
+  SABIAYASMN       Visa        1,055.00          0.02      -23.0517          157-95017321-SABIAYASMN       
+  SABIAYASMN       Mada        9,106.00          0.01      -62.8314          157-95017321-SABIAYASMN       
+  SABIAYASMN       Master      298.00            0.02      -6.5113           157-95017321-SABIAYASMN       
+  SABIAYASMN       Visa        1,662.00          0.02      -36.3147          157-95017321-SABIAYASMN       
+  SABIAYASMN       Mada        6,829.00          0.01      -47.1201          157-95017321-SABIAYASMN       
+  SABIAYASMN       Master      479.00            0.02      -10.4661          157-95017321-SABIAYASMN       
+  SABIAYASMN       Visa        797.00            0.02      -17.4144          157-95017321-SABIAYASMN       
+  SABIAYASMN       Mada        11,940.00         0.01      -82.3860          157-95017321-SABIAYASMN       
+  SABIAYASMN       Master      180.00            0.02      -3.9330           157-95017321-SABIAYASMN       
+  SABIAYASMN       Visa        1,624.00          0.02      -35.4844          157-95017321-SABIAYASMN       
+  SABIAYASMN       Mada        10,760.00         0.01      -74.2440          157-95017321-SABIAYASMN       
+  SABIAYASMN       Master      298.00            0.02      -6.5113           157-95017321-SABIAYASMN       
+  SABIAYASMN       Visa        1,056.00          0.02      -23.0736          157-95017321-SABIAYASMN       
+  SABIAYASMN       Mada        11,224.00         0.01      -77.4456          157-95017321-SABIAYASMN       
+  SABIAYASMN       Visa        1,018.00          0.02      -22.2433          157-95017321-SABIAYASMN       
+  SABIAYASMN       Mada        5,073.00          0.01      -35.0037          157-95017321-SABIAYASMN       
+  SABIAYASMN       Master      573.00            0.02      -12.5200          157-95017321-SABIAYASMN       
+  SABIAYASMN       Visa        1,118.00          0.02      -24.4283          157-95017321-SABIAYASMN       
+  SABIAYASMN       Mada        6,867.00          0.01      -47.3823          157-95017321-SABIAYASMN       
+  SABIAYASMN       Master      475.00            0.02      -10.3788          157-95017321-SABIAYASMN       
+  SABIAYASMN       Visa        1,784.00          0.02      -38.9804          157-95017321-SABIAYASMN       
+  SABIAYASMN       Mada        8,021.00          0.01      -55.3449          157-95017321-SABIAYASMN       
+  SABIAYASMN       Master      149.00            0.02      -3.2556           157-95017321-SABIAYASMN       
+  SABIAYASMN       Visa        1,289.00          0.02      -28.1646          157-95017321-SABIAYASMN       
+  SABIAYASMN       Mada        13,140.00         0.01      -90.6660          157-95017321-SABIAYASMN       
+  SABIAYASMN       Master      222.00            0.02      -4.8507           157-95017321-SABIAYASMN       
+  SABIAYASMN       Visa        2,170.00          0.02      -47.4145          157-95017321-SABIAYASMN       
+  SABIAYASMN       Mada        19,088.00         0.01      -131.7072         157-95017321-SABIAYASMN       
+  SABIAYASMN       Master      149.00            0.02      -3.2556           157-95017321-SABIAYASMN       
+  SABIAYASMN       Visa        4,691.00          0.02      -102.4984         157-95017321-SABIAYASMN       
+  SABIAYASMN       Mada        14,568.00         0.01      -100.5192         157-95017321-SABIAYASMN       
+  SABIAYASMN       Master      504.00            0.02      -11.0124          157-95017321-SABIAYASMN       
+  SABIAYASMN       Visa        1,569.00          0.02      -34.2826          157-95017321-SABIAYASMN       
+  SABIAYASMN       Mada        16,006.00         0.01      -110.4414         157-95017321-SABIAYASMN       
+  SABIAYASMN       Master      708.00            0.02      -15.4698          157-95017321-SABIAYASMN       
+  SABIAYASMN       Visa        2,785.00          0.02      -60.8522          157-95017321-SABIAYASMN       
+  SABIAYASMN       Mada        18,819.00         0.01      -129.8511         157-95017321-SABIAYASMN       
+  SABIAYASMN       Master      514.00            0.02      -11.2309          157-95017321-SABIAYASMN       
+  SABIAYASMN       Visa        3,782.00          0.02      -82.6367          157-95017321-SABIAYASMN       
+  SABIAYASMN       Amex        199.00            0.04      -8.4674           157-95017321-SABIAYASMN       
+  SABIAYASMN       Mada        7,201.00          0.01      -49.6869          157-95017321-SABIAYASMN       
+  SABIAYASMN       Visa        800.00            0.02      -17.4800          157-95017321-SABIAYASMN       
+  SABIAYASMN       Mada        1,201.00          0.01      -8.2869           157-95017321-SABIAYASMN       
+  SABIAYASMN       Visa        170.00            0.02      -3.7145           157-95017321-SABIAYASMN       
+  SABIAYASMN       Mada        1,146.00          0.01      -7.9074           157-95017321-SABIAYASMN       
+  SABIAYASMN       Mada        451.00            0.01      -3.1119           157-95017321-SABIAYASMN       
+  SABIAYASMN       Mada        632.00            0.01      -4.3608           157-95017321-SABIAYASMN       
+  SABIAYASMN       Visa        572.00            0.02      -12.4982          157-95017321-SABIAYASMN       
+  SABIAYASMN       Mada        805.00            0.01      -5.5545           157-95017321-SABIAYASMN       
+  SABIAYASMN       Visa        603.00            0.02      -13.1755          157-95017321-SABIAYASMN       
+  SABIAYASMN       Mada        4,260.00          0.01      -29.3940          157-95017321-SABIAYASMN       
+  SABIAYASMN       Visa        597.00            0.02      -13.0444          157-95017321-SABIAYASMN       
+  SABIAYASMN       Mada        904.00            0.01      -6.2376           157-95017321-SABIAYASMN       
+  SABIAYASMN       Visa        447.00            0.02      -9.7669           157-95017321-SABIAYASMN       
+  SABIAYASMN       Mada        2,718.00          0.01      -18.7542          157-95017321-SABIAYASMN       
+  SABIAYASMN       Visa        99.00             0.02      -2.1631           157-95017321-SABIAYASMN       
+  SABIAYASMN       Mada        2,829.00          0.01      -19.5201          157-95017321-SABIAYASMN       
+  SABIAYASMN       Visa        804.00            0.02      -17.5674          157-95017321-SABIAYASMN       
+  SABIAYASMN       Mada        2,043.00          0.01      -14.0967          157-95017321-SABIAYASMN       
+  SABIAYASMN       Mada        2,264.00          0.01      -15.6216          157-95017321-SABIAYASMN       
+  SABIAYASMN       Visa        99.00             0.02      -2.1631           157-95017321-SABIAYASMN       
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -2,166.5763                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (66 rows, -2,166.5763 SAR)
+  Per-method grand total                   -2,166.5763 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  339,750.09 SAR         █
+  █  Total Standard Receipt amt               615,262.00 SAR         █
+  █  Difference                               275,511.91 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  339,750.09 SAR
+  Total Standard Receipt amt               615,262.00 SAR
+  Difference                               275,511.91 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0004738
+  >>> Next run START_TXN_SEQUENCE =        4739  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 21:01:27
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

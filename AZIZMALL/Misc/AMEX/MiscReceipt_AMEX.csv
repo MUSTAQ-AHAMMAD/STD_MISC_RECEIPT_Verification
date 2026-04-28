@@ -1,0 +1,6 @@
+﻿"Amount","CurrencyCode","DepositDate","ReceiptDate","GlDate","OrgId","ReceiptNumber","ReceiptMethodName","ReceivableActivityName","BankAccountNumber"
+"-9.6588","SAR","2026-03-08","2026-03-08","2026-03-08","300000001421038","AMEX-BLKU-0000970-MISC","AMEX","Bank Charge","AL Jazeerah Bank MJMAKRMMAL"
+"-8.9355","SAR","2026-03-09","2026-03-09","2026-03-09","300000001421038","AMEX-BLKU-0000972-MISC","AMEX","Bank Charge","AL Jazeerah Bank MJMAKRMMAL"
+"-12.7224","SAR","2026-03-12","2026-03-12","2026-03-12","300000001421038","AMEX-BLKU-0000978-MISC","AMEX","Bank Charge","AL Jazeerah Bank MJMAKRMMAL"
+"-12.7224","SAR","2026-03-15","2026-03-15","2026-03-15","300000001421038","AMEX-BLKU-0000982-MISC","AMEX","Bank Charge","AL Jazeerah Bank MJMAKRMMAL"
+"-12.7224","SAR","2026-03-22","2026-03-22","2026-03-22","300000001421038","AMEX-BLKU-0000994-MISC","AMEX","Bank Charge","AL Jazeerah Bank MJMAKRMMAL"

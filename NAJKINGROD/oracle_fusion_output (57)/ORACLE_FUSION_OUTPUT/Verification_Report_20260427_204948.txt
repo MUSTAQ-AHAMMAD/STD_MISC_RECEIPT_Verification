@@ -1,0 +1,443 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 08:49:47 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         142,878.10 SAR     ║
+║  [ℹ] Standard Receipt Total                   276,164.00 SAR     ║
+║  [✗] Amount Reconciliation                    Diff: 133,285.90 SAR║
+║  [ℹ] Total Invoices                           498                ║
+║  [ℹ] Receipt Files Generated                  5                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          NAJKINGROD.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             NAJKINGROD_Payment_Lines_5_to_31_March.xlsx
+  Segment 1 prefix                         90439559
+  Segment 2 prefix                         25164266
+
+  AR rows read                             3417
+  Unique invoices loaded                   498
+  Unique transactions (BLK)                61
+  Total AR amount                          142,878.10 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Cash                       121           26,531.00             
+  Mada                       284           79,126.00             
+  Master                     22            6,309.00              
+  TABBY                      40            11,994.00             
+  TAMARA                     48            14,399.00             
+  Visa                       45            26,116.00             
+  ----------------------------------------------------------------------
+  TOTAL                      560           164,475.00            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  NAJKINGROD                      410         138,082.00          
+  RYDGALLER                       88          26,393.00           
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 89
+    Total amount: 138,082.00 SAR
+    Payment methods included: ['Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              138,082.00 SAR
+    Per-method total:                138,082.00 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    Cash               26 rows           26,531.00 SAR  ✓
+    Mada               27 rows           79,126.00 SAR  ✓
+    Master             14 rows            6,309.00 SAR  ✓
+    Visa               22 rows           26,116.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    88
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   5
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                        79,126.00 SAR
+    Cash                        26,531.00 SAR
+    Visa                        26,116.00 SAR
+    Master                       6,309.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TAMARA                      14,399.00 SAR
+    TABBY                       11,994.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          NAJKINGROD       Cash        910.00            Cash NAJKINGROD                    
+  Receipt_MADA.csv                          NAJKINGROD       Mada        3,692.00          157-95017321-NAJKINGROD            
+  Receipt_VISA.csv                          NAJKINGROD       Visa        2,622.00          157-95017321-NAJKINGROD            
+  Receipt_CASH.csv                          NAJKINGROD       Cash        698.00            Cash NAJKINGROD                    
+  Receipt_MADA.csv                          NAJKINGROD       Mada        5,343.00          157-95017321-NAJKINGROD            
+  Receipt_MASTER.csv                        NAJKINGROD       Master      58.00             157-95017321-NAJKINGROD            
+  Receipt_VISA.csv                          NAJKINGROD       Visa        298.00            157-95017321-NAJKINGROD            
+  Receipt_CASH.csv                          NAJKINGROD       Cash        1,174.00          Cash NAJKINGROD                    
+  Receipt_MADA.csv                          NAJKINGROD       Mada        2,983.00          157-95017321-NAJKINGROD            
+  Receipt_MASTER.csv                        NAJKINGROD       Master      298.00            157-95017321-NAJKINGROD            
+  Receipt_VISA.csv                          NAJKINGROD       Visa        393.00            157-95017321-NAJKINGROD            
+  Receipt_CASH.csv                          NAJKINGROD       Cash        864.00            Cash NAJKINGROD                    
+  Receipt_MADA.csv                          NAJKINGROD       Mada        4,412.00          157-95017321-NAJKINGROD            
+  Receipt_CASH.csv                          NAJKINGROD       Cash        1,338.00          Cash NAJKINGROD                    
+  Receipt_MADA.csv                          NAJKINGROD       Mada        4,425.00          157-95017321-NAJKINGROD            
+  Receipt_MASTER.csv                        NAJKINGROD       Master      770.00            157-95017321-NAJKINGROD            
+  Receipt_VISA.csv                          NAJKINGROD       Visa        399.00            157-95017321-NAJKINGROD            
+  Receipt_CASH.csv                          NAJKINGROD       Cash        1,239.00          Cash NAJKINGROD                    
+  Receipt_MADA.csv                          NAJKINGROD       Mada        1,584.00          157-95017321-NAJKINGROD            
+  Receipt_MASTER.csv                        NAJKINGROD       Master      149.00            157-95017321-NAJKINGROD            
+  Receipt_VISA.csv                          NAJKINGROD       Visa        0.00              157-95017321-NAJKINGROD            
+  Receipt_CASH.csv                          NAJKINGROD       Cash        565.00            Cash NAJKINGROD                    
+  Receipt_MADA.csv                          NAJKINGROD       Mada        3,748.00          157-95017321-NAJKINGROD            
+  Receipt_MASTER.csv                        NAJKINGROD       Master      126.00            157-95017321-NAJKINGROD            
+  Receipt_VISA.csv                          NAJKINGROD       Visa        1,173.00          157-95017321-NAJKINGROD            
+  Receipt_CASH.csv                          NAJKINGROD       Cash        566.00            Cash NAJKINGROD                    
+  Receipt_MADA.csv                          NAJKINGROD       Mada        3,532.00          157-95017321-NAJKINGROD            
+  Receipt_VISA.csv                          NAJKINGROD       Visa        414.00            157-95017321-NAJKINGROD            
+  Receipt_CASH.csv                          NAJKINGROD       Cash        2,966.00          Cash NAJKINGROD                    
+  Receipt_MADA.csv                          NAJKINGROD       Mada        4,411.00          157-95017321-NAJKINGROD            
+  Receipt_VISA.csv                          NAJKINGROD       Visa        250.00            157-95017321-NAJKINGROD            
+  Receipt_CASH.csv                          NAJKINGROD       Cash        1,584.00          Cash NAJKINGROD                    
+  Receipt_MADA.csv                          NAJKINGROD       Mada        4,287.00          157-95017321-NAJKINGROD            
+  Receipt_MASTER.csv                        NAJKINGROD       Master      486.00            157-95017321-NAJKINGROD            
+  Receipt_VISA.csv                          NAJKINGROD       Visa        579.00            157-95017321-NAJKINGROD            
+  Receipt_CASH.csv                          NAJKINGROD       Cash        579.00            Cash NAJKINGROD                    
+  Receipt_MADA.csv                          NAJKINGROD       Mada        5,497.00          157-95017321-NAJKINGROD            
+  Receipt_VISA.csv                          NAJKINGROD       Visa        1,032.00          157-95017321-NAJKINGROD            
+  Receipt_CASH.csv                          NAJKINGROD       Cash        1,845.00          Cash NAJKINGROD                    
+  Receipt_MADA.csv                          NAJKINGROD       Mada        3,185.00          157-95017321-NAJKINGROD            
+  Receipt_MASTER.csv                        NAJKINGROD       Master      399.00            157-95017321-NAJKINGROD            
+  Receipt_VISA.csv                          NAJKINGROD       Visa        548.00            157-95017321-NAJKINGROD            
+  Receipt_CASH.csv                          NAJKINGROD       Cash        9.00              Cash NAJKINGROD                    
+  Receipt_MADA.csv                          NAJKINGROD       Mada        6,714.00          157-95017321-NAJKINGROD            
+  Receipt_VISA.csv                          NAJKINGROD       Visa        308.00            157-95017321-NAJKINGROD            
+  Receipt_CASH.csv                          NAJKINGROD       Cash        2,720.00          Cash NAJKINGROD                    
+  Receipt_MADA.csv                          NAJKINGROD       Mada        6,638.00          157-95017321-NAJKINGROD            
+  Receipt_MASTER.csv                        NAJKINGROD       Master      1,033.00          157-95017321-NAJKINGROD            
+  Receipt_VISA.csv                          NAJKINGROD       Visa        886.00            157-95017321-NAJKINGROD            
+  Receipt_CASH.csv                          NAJKINGROD       Cash        3,029.00          Cash NAJKINGROD                    
+  Receipt_MADA.csv                          NAJKINGROD       Mada        8,041.00          157-95017321-NAJKINGROD            
+  Receipt_MASTER.csv                        NAJKINGROD       Master      222.00            157-95017321-NAJKINGROD            
+  Receipt_CASH.csv                          NAJKINGROD       Cash        2,291.00          Cash NAJKINGROD                    
+  Receipt_MADA.csv                          NAJKINGROD       Mada        3,021.00          157-95017321-NAJKINGROD            
+  Receipt_MASTER.csv                        NAJKINGROD       Master      222.00            157-95017321-NAJKINGROD            
+  Receipt_VISA.csv                          NAJKINGROD       Visa        145.00            157-95017321-NAJKINGROD            
+  Receipt_CASH.csv                          NAJKINGROD       Cash        451.00            Cash NAJKINGROD                    
+  Receipt_MADA.csv                          NAJKINGROD       Mada        994.00            157-95017321-NAJKINGROD            
+  Receipt_MASTER.csv                        NAJKINGROD       Master      149.00            157-95017321-NAJKINGROD            
+  Receipt_VISA.csv                          NAJKINGROD       Visa        400.00            157-95017321-NAJKINGROD            
+  Receipt_CASH.csv                          NAJKINGROD       Cash        399.00            Cash NAJKINGROD                    
+  Receipt_MADA.csv                          NAJKINGROD       Mada        304.00            157-95017321-NAJKINGROD            
+  Receipt_CASH.csv                          NAJKINGROD       Cash        300.00            Cash NAJKINGROD                    
+  Receipt_MADA.csv                          NAJKINGROD       Mada        321.00            157-95017321-NAJKINGROD            
+  Receipt_MASTER.csv                        NAJKINGROD       Master      2,093.00          157-95017321-NAJKINGROD            
+  Receipt_VISA.csv                          NAJKINGROD       Visa        65.00             157-95017321-NAJKINGROD            
+  Receipt_CASH.csv                          NAJKINGROD       Cash        364.00            Cash NAJKINGROD                    
+  Receipt_MADA.csv                          NAJKINGROD       Mada        248.00            157-95017321-NAJKINGROD            
+  Receipt_VISA.csv                          NAJKINGROD       Visa        448.00            157-95017321-NAJKINGROD            
+  Receipt_CASH.csv                          NAJKINGROD       Cash        366.00            Cash NAJKINGROD                    
+  Receipt_MADA.csv                          NAJKINGROD       Mada        50.00             157-95017321-NAJKINGROD            
+  Receipt_MASTER.csv                        NAJKINGROD       Master      109.00            157-95017321-NAJKINGROD            
+  Receipt_CASH.csv                          NAJKINGROD       Cash        451.00            Cash NAJKINGROD                    
+  Receipt_MADA.csv                          NAJKINGROD       Mada        1,898.00          157-95017321-NAJKINGROD            
+  Receipt_VISA.csv                          NAJKINGROD       Visa        620.00            157-95017321-NAJKINGROD            
+  Receipt_MADA.csv                          NAJKINGROD       Mada        1,047.00          157-95017321-NAJKINGROD            
+  Receipt_CASH.csv                          NAJKINGROD       Cash        967.00            Cash NAJKINGROD                    
+  Receipt_MADA.csv                          NAJKINGROD       Mada        830.00            157-95017321-NAJKINGROD            
+  Receipt_MASTER.csv                        NAJKINGROD       Master      195.00            157-95017321-NAJKINGROD            
+  Receipt_VISA.csv                          NAJKINGROD       Visa        666.00            157-95017321-NAJKINGROD            
+  Receipt_CASH.csv                          NAJKINGROD       Cash        630.00            Cash NAJKINGROD                    
+  Receipt_MADA.csv                          NAJKINGROD       Mada        857.00            157-95017321-NAJKINGROD            
+  Receipt_VISA.csv                          NAJKINGROD       Visa        669.00            157-95017321-NAJKINGROD            
+  Receipt_CASH.csv                          NAJKINGROD       Cash        126.00            Cash NAJKINGROD                    
+  Receipt_MADA.csv                          NAJKINGROD       Mada        199.00            157-95017321-NAJKINGROD            
+  Receipt_VISA.csv                          NAJKINGROD       Visa        543.00            157-95017321-NAJKINGROD            
+  Receipt_CASH.csv                          NAJKINGROD       Cash        100.00            Cash NAJKINGROD                    
+  Receipt_MADA.csv                          NAJKINGROD       Mada        865.00            157-95017321-NAJKINGROD            
+  Receipt_VISA.csv                          NAJKINGROD       Visa        13,658.00         157-95017321-NAJKINGROD            
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            138,082.00                                           
+
+  Per-method totals:
+    Cash             26 file(s)       26,531.00 SAR
+    Mada             27 file(s)       79,126.00 SAR
+    Master           14 file(s)        6,309.00 SAR
+    Visa             22 file(s)       26,116.00 SAR
+    Grand Total                       138,082.00 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Cash         Mada       Master         Visa          TOTAL
+  ----------------------------------------------------------------------------------
+  2026-03-05            910        3,692            0        2,622          7,224
+  2026-03-06            698        5,343           58          298          6,397
+  2026-03-07          1,174        2,983          298          393          4,848
+  2026-03-08            864        4,412            0            0          5,276
+  2026-03-09          1,338        4,425          770          399          6,932
+  2026-03-10          1,239        1,584          149            0          2,972
+  2026-03-11            565        3,748          126        1,173          5,612
+  2026-03-12            566        3,532            0          414          4,512
+  2026-03-13          2,966        4,411            0          250          7,627
+  2026-03-14          1,584        4,287          486          579          6,936
+  2026-03-15            579        5,497            0        1,032          7,108
+  2026-03-16          1,845        3,185          399          548          5,977
+  2026-03-17              9        6,714            0          308          7,031
+  2026-03-18          2,720        6,638        1,033          886         11,277
+  2026-03-19          3,029        8,041          222            0         11,292
+  2026-03-20          2,291        3,021          222          145          5,679
+  2026-03-21            451          994          149          400          1,994
+  2026-03-22            399          304            0            0            703
+  2026-03-23            300          321        2,093           65          2,779
+  2026-03-24            364          248            0          448          1,060
+  2026-03-25            366           50          109            0            525
+  2026-03-26            451        1,898            0          620          2,969
+  2026-03-27              0        1,047            0            0          1,047
+  2026-03-28            967          830          195          666          2,658
+  2026-03-29            630          857            0          669          2,156
+  2026-03-30            126          199            0          543            868
+  2026-03-31            100          865            0       13,658         14,623
+  ----------------------------------------------------------------------------------
+  TOTAL              26,531       79,126        6,309       26,116        138,082
+
+  VALIDATION:
+    Payment file total (for standard receipts):       138,082.00 SAR
+    Receipt files total:                              138,082.00 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Cash            Payment:    26,531.00  Receipt:    26,531.00  Diff:     0.00  ✓
+    Mada            Payment:    79,126.00  Receipt:    79,126.00  Diff:     0.00  ✓
+    Master          Payment:     6,309.00  Receipt:     6,309.00  Diff:     0.00  ✓
+    Visa            Payment:    26,116.00  Receipt:    26,116.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (89 rows, 138,082.00 SAR)
+  Per-method grand total                   138,082.00 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 63
+    Total amount: -1,268.8885 SAR
+    Payment methods included: ['Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -1,268.8885 SAR
+    Per-method total:               -1,268.8885 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    Mada               27 rows           -553.8699 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             14 rows           -137.8513 SAR  ⚠ 14 NEGATIVE AMOUNTS!
+    Visa               22 rows           -577.1673 SAR  ⚠ 22 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              4
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                        80,271.00 SAR
+    Visa                        26,415.00 SAR
+    Master                       6,309.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                        26,531.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED               26,531.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  NAJKINGROD       Mada        3,991.00          0.01      -27.5379          157-95017321-NAJKINGROD       
+  NAJKINGROD       Visa        2,622.00          0.02      -57.2907          157-95017321-NAJKINGROD       
+  NAJKINGROD       Mada        5,343.00          0.01      -36.8667          157-95017321-NAJKINGROD       
+  NAJKINGROD       Master      58.00             0.02      -1.2673           157-95017321-NAJKINGROD       
+  NAJKINGROD       Visa        298.00            0.02      -6.5113           157-95017321-NAJKINGROD       
+  NAJKINGROD       Mada        3,382.00          0.01      -23.3358          157-95017321-NAJKINGROD       
+  NAJKINGROD       Master      298.00            0.02      -6.5113           157-95017321-NAJKINGROD       
+  NAJKINGROD       Visa        393.00            0.02      -8.5870           157-95017321-NAJKINGROD       
+  NAJKINGROD       Mada        4,412.00          0.01      -30.4428          157-95017321-NAJKINGROD       
+  NAJKINGROD       Mada        4,425.00          0.01      -30.5325          157-95017321-NAJKINGROD       
+  NAJKINGROD       Master      770.00            0.02      -16.8245          157-95017321-NAJKINGROD       
+  NAJKINGROD       Visa        399.00            0.02      -8.7181           157-95017321-NAJKINGROD       
+  NAJKINGROD       Mada        1,584.00          0.01      -10.9296          157-95017321-NAJKINGROD       
+  NAJKINGROD       Master      149.00            0.02      -3.2556           157-95017321-NAJKINGROD       
+  NAJKINGROD       Visa        299.00            0.02      -6.5331           157-95017321-NAJKINGROD       
+  NAJKINGROD       Mada        3,748.00          0.01      -25.8612          157-95017321-NAJKINGROD       
+  NAJKINGROD       Master      126.00            0.02      -2.7531           157-95017321-NAJKINGROD       
+  NAJKINGROD       Visa        1,173.00          0.02      -25.6300          157-95017321-NAJKINGROD       
+  NAJKINGROD       Mada        3,532.00          0.01      -24.3708          157-95017321-NAJKINGROD       
+  NAJKINGROD       Visa        414.00            0.02      -9.0459           157-95017321-NAJKINGROD       
+  NAJKINGROD       Mada        4,659.00          0.01      -32.1471          157-95017321-NAJKINGROD       
+  NAJKINGROD       Visa        250.00            0.02      -5.4625           157-95017321-NAJKINGROD       
+  NAJKINGROD       Mada        4,287.00          0.01      -29.5803          157-95017321-NAJKINGROD       
+  NAJKINGROD       Master      486.00            0.02      -10.6191          157-95017321-NAJKINGROD       
+  NAJKINGROD       Visa        579.00            0.02      -12.6511          157-95017321-NAJKINGROD       
+  NAJKINGROD       Mada        5,497.00          0.01      -37.9293          157-95017321-NAJKINGROD       
+  NAJKINGROD       Visa        1,032.00          0.02      -22.5492          157-95017321-NAJKINGROD       
+  NAJKINGROD       Mada        3,185.00          0.01      -21.9765          157-95017321-NAJKINGROD       
+  NAJKINGROD       Master      399.00            0.02      -8.7181           157-95017321-NAJKINGROD       
+  NAJKINGROD       Visa        548.00            0.02      -11.9738          157-95017321-NAJKINGROD       
+  NAJKINGROD       Mada        6,714.00          0.01      -46.3266          157-95017321-NAJKINGROD       
+  NAJKINGROD       Visa        308.00            0.02      -6.7298           157-95017321-NAJKINGROD       
+  NAJKINGROD       Mada        6,638.00          0.01      -45.8022          157-95017321-NAJKINGROD       
+  NAJKINGROD       Master      1,033.00          0.02      -22.5710          157-95017321-NAJKINGROD       
+  NAJKINGROD       Visa        886.00            0.02      -19.3591          157-95017321-NAJKINGROD       
+  NAJKINGROD       Mada        8,041.00          0.01      -55.4829          157-95017321-NAJKINGROD       
+  NAJKINGROD       Master      222.00            0.02      -4.8507           157-95017321-NAJKINGROD       
+  NAJKINGROD       Mada        3,021.00          0.01      -20.8449          157-95017321-NAJKINGROD       
+  NAJKINGROD       Master      222.00            0.02      -4.8507           157-95017321-NAJKINGROD       
+  NAJKINGROD       Visa        145.00            0.02      -3.1682           157-95017321-NAJKINGROD       
+  NAJKINGROD       Mada        994.00            0.01      -6.8586           157-95017321-NAJKINGROD       
+  NAJKINGROD       Master      149.00            0.02      -3.2556           157-95017321-NAJKINGROD       
+  NAJKINGROD       Visa        400.00            0.02      -8.7400           157-95017321-NAJKINGROD       
+  NAJKINGROD       Mada        503.00            0.01      -3.4707           157-95017321-NAJKINGROD       
+  NAJKINGROD       Mada        321.00            0.01      -2.2149           157-95017321-NAJKINGROD       
+  NAJKINGROD       Master      2,093.00          0.02      -45.7320          157-95017321-NAJKINGROD       
+  NAJKINGROD       Visa        65.00             0.02      -1.4202           157-95017321-NAJKINGROD       
+  NAJKINGROD       Mada        248.00            0.01      -1.7112           157-95017321-NAJKINGROD       
+  NAJKINGROD       Visa        448.00            0.02      -9.7888           157-95017321-NAJKINGROD       
+  NAJKINGROD       Mada        50.00             0.01      -0.3450           157-95017321-NAJKINGROD       
+  NAJKINGROD       Master      109.00            0.02      -2.3816           157-95017321-NAJKINGROD       
+  NAJKINGROD       Mada        1,898.00          0.01      -13.0962          157-95017321-NAJKINGROD       
+  NAJKINGROD       Visa        620.00            0.02      -13.5470          157-95017321-NAJKINGROD       
+  NAJKINGROD       Mada        1,047.00          0.01      -7.2243           157-95017321-NAJKINGROD       
+  NAJKINGROD       Mada        830.00            0.01      -5.7270           157-95017321-NAJKINGROD       
+  NAJKINGROD       Master      195.00            0.02      -4.2607           157-95017321-NAJKINGROD       
+  NAJKINGROD       Visa        666.00            0.02      -14.5521          157-95017321-NAJKINGROD       
+  NAJKINGROD       Mada        857.00            0.01      -5.9133           157-95017321-NAJKINGROD       
+  NAJKINGROD       Visa        669.00            0.02      -14.6176          157-95017321-NAJKINGROD       
+  NAJKINGROD       Mada        199.00            0.01      -1.3731           157-95017321-NAJKINGROD       
+  NAJKINGROD       Visa        543.00            0.02      -11.8645          157-95017321-NAJKINGROD       
+  NAJKINGROD       Mada        865.00            0.01      -5.9685           157-95017321-NAJKINGROD       
+  NAJKINGROD       Visa        13,658.00         0.02      -298.4273         157-95017321-NAJKINGROD       
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -1,268.8885                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (63 rows, -1,268.8885 SAR)
+  Per-method grand total                   -1,268.8885 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  142,878.10 SAR         █
+  █  Total Standard Receipt amt               276,164.00 SAR         █
+  █  Difference                               133,285.90 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  142,878.10 SAR
+  Total Standard Receipt amt               276,164.00 SAR
+  Difference                               133,285.90 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0006546
+  >>> Next run START_TXN_SEQUENCE =        6547  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 20:49:48
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

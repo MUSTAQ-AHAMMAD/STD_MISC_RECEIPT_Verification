@@ -1,0 +1,477 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 08:49:13 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         448,778.59 SAR     ║
+║  [ℹ] Standard Receipt Total                   933,876.00 SAR     ║
+║  [✗] Amount Reconciliation                    Diff: 485,097.41 SAR║
+║  [ℹ] Total Invoices                           2,553              ║
+║  [ℹ] Receipt Files Generated                  5                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          MURJANJED.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             MURJANJED_Payment_Lines_5_to_31_March.xlsx
+  Segment 1 prefix                         15121709
+  Segment 2 prefix                         91560711
+
+  AR rows read                             10559
+  Unique invoices loaded                   2546
+  Unique transactions (BLK)                66
+  Total AR amount                          450,621.59 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Cash                       875           159,867.00            
+  Mada                       1335          249,402.00            
+  Master                     65            15,755.00             
+  TABBY                      76            21,857.00             
+  TAMARA                     104           27,374.00             
+  Visa                       201           41,914.00             
+  ----------------------------------------------------------------------
+  TOTAL                      2656          516,169.00            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  ARABMALL                        2           -448.00             
+  AZIZMALL                        1           -299.00             
+  FLAMINGO                        1           -199.00             
+  JEDDAHPARK                      1           -299.00             
+  MURJANJED                       2366        468,781.00          
+  RYDGALLER                       180         49,231.00           
+  SALAMJED                        1           -299.00             
+  YASMEEN                         1           -299.00             
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 107
+    Total amount: 466,938.00 SAR
+    Payment methods included: ['Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              466,938.00 SAR
+    Per-method total:                466,938.00 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    Cash               34 rows          159,867.00 SAR  ⚠ 7 NEGATIVE AMOUNTS!
+    Mada               27 rows          249,402.00 SAR  ✓
+    Master             20 rows           15,755.00 SAR  ✓
+    Visa               26 rows           41,914.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    180
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   5
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       249,402.00 SAR
+    Cash                       159,867.00 SAR
+    Visa                        41,914.00 SAR
+    Master                      15,755.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TAMARA                      27,374.00 SAR
+    TABBY                       21,857.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          ARABMALL         Cash        -299.00           CashOth Mall Hail                  
+  Receipt_CASH.csv                          ARABMALL         Cash        -149.00           CashOth Mall Hail                  
+  Receipt_CASH.csv                          AZIZMALL         Cash        -299.00           CashOth Mall Hail                  
+  Receipt_CASH.csv                          FLAMINGO         Cash        -199.00           CashOth Mall Hail                  
+  Receipt_CASH.csv                          JEDDAHPARK       Cash        -299.00           Cash JEDDAHPARK                    
+  Receipt_CASH.csv                          MURJANJED        Cash        7,581.00          Cash MURJANJED                     
+  Receipt_MADA.csv                          MURJANJED        Mada        9,740.00          0157-95017321-MURJANJED            
+  Receipt_VISA.csv                          MURJANJED        Visa        1,106.00          0157-95017321-MURJANJED            
+  Receipt_CASH.csv                          MURJANJED        Cash        6,579.00          Cash MURJANJED                     
+  Receipt_MADA.csv                          MURJANJED        Mada        9,493.00          0157-95017321-MURJANJED            
+  Receipt_MASTER.csv                        MURJANJED        Master      337.00            0157-95017321-MURJANJED            
+  Receipt_VISA.csv                          MURJANJED        Visa        682.00            0157-95017321-MURJANJED            
+  Receipt_CASH.csv                          MURJANJED        Cash        4,543.00          Cash MURJANJED                     
+  Receipt_MADA.csv                          MURJANJED        Mada        14,687.00         0157-95017321-MURJANJED            
+  Receipt_MASTER.csv                        MURJANJED        Master      1,064.00          0157-95017321-MURJANJED            
+  Receipt_VISA.csv                          MURJANJED        Visa        2,507.00          0157-95017321-MURJANJED            
+  Receipt_CASH.csv                          MURJANJED        Cash        8,354.00          Cash MURJANJED                     
+  Receipt_MADA.csv                          MURJANJED        Mada        10,079.00         0157-95017321-MURJANJED            
+  Receipt_MASTER.csv                        MURJANJED        Master      540.00            0157-95017321-MURJANJED            
+  Receipt_VISA.csv                          MURJANJED        Visa        1,664.00          0157-95017321-MURJANJED            
+  Receipt_CASH.csv                          MURJANJED        Cash        7,392.00          Cash MURJANJED                     
+  Receipt_MADA.csv                          MURJANJED        Mada        14,454.00         0157-95017321-MURJANJED            
+  Receipt_VISA.csv                          MURJANJED        Visa        1,705.00          0157-95017321-MURJANJED            
+  Receipt_CASH.csv                          MURJANJED        Cash        7,278.00          Cash MURJANJED                     
+  Receipt_MADA.csv                          MURJANJED        Mada        16,797.00         0157-95017321-MURJANJED            
+  Receipt_MASTER.csv                        MURJANJED        Master      645.00            0157-95017321-MURJANJED            
+  Receipt_VISA.csv                          MURJANJED        Visa        2,421.00          0157-95017321-MURJANJED            
+  Receipt_CASH.csv                          MURJANJED        Cash        5,824.00          Cash MURJANJED                     
+  Receipt_MADA.csv                          MURJANJED        Mada        12,005.00         0157-95017321-MURJANJED            
+  Receipt_MASTER.csv                        MURJANJED        Master      343.00            0157-95017321-MURJANJED            
+  Receipt_VISA.csv                          MURJANJED        Visa        2,240.00          0157-95017321-MURJANJED            
+  Receipt_CASH.csv                          MURJANJED        Cash        5,278.00          Cash MURJANJED                     
+  Receipt_MADA.csv                          MURJANJED        Mada        8,647.00          0157-95017321-MURJANJED            
+  Receipt_MASTER.csv                        MURJANJED        Master      299.00            0157-95017321-MURJANJED            
+  Receipt_VISA.csv                          MURJANJED        Visa        2,597.00          0157-95017321-MURJANJED            
+  Receipt_CASH.csv                          MURJANJED        Cash        10,526.00         Cash MURJANJED                     
+  Receipt_MADA.csv                          MURJANJED        Mada        9,304.00          0157-95017321-MURJANJED            
+  Receipt_MASTER.csv                        MURJANJED        Master      208.00            0157-95017321-MURJANJED            
+  Receipt_VISA.csv                          MURJANJED        Visa        3,305.00          0157-95017321-MURJANJED            
+  Receipt_CASH.csv                          MURJANJED        Cash        8,147.00          Cash MURJANJED                     
+  Receipt_MADA.csv                          MURJANJED        Mada        18,143.00         0157-95017321-MURJANJED            
+  Receipt_MASTER.csv                        MURJANJED        Master      780.00            0157-95017321-MURJANJED            
+  Receipt_VISA.csv                          MURJANJED        Visa        2,001.00          0157-95017321-MURJANJED            
+  Receipt_CASH.csv                          MURJANJED        Cash        9,227.00          Cash MURJANJED                     
+  Receipt_MADA.csv                          MURJANJED        Mada        20,155.00         0157-95017321-MURJANJED            
+  Receipt_MASTER.csv                        MURJANJED        Master      2,257.00          0157-95017321-MURJANJED            
+  Receipt_VISA.csv                          MURJANJED        Visa        1,989.00          0157-95017321-MURJANJED            
+  Receipt_CASH.csv                          MURJANJED        Cash        9,141.00          Cash MURJANJED                     
+  Receipt_MADA.csv                          MURJANJED        Mada        14,292.00         0157-95017321-MURJANJED            
+  Receipt_MASTER.csv                        MURJANJED        Master      298.00            0157-95017321-MURJANJED            
+  Receipt_VISA.csv                          MURJANJED        Visa        2,097.00          0157-95017321-MURJANJED            
+  Receipt_CASH.csv                          MURJANJED        Cash        9,133.00          Cash MURJANJED                     
+  Receipt_MADA.csv                          MURJANJED        Mada        15,037.00         0157-95017321-MURJANJED            
+  Receipt_MASTER.csv                        MURJANJED        Master      1,878.00          0157-95017321-MURJANJED            
+  Receipt_VISA.csv                          MURJANJED        Visa        2,371.00          0157-95017321-MURJANJED            
+  Receipt_CASH.csv                          MURJANJED        Cash        8,887.00          Cash MURJANJED                     
+  Receipt_MADA.csv                          MURJANJED        Mada        13,924.00         0157-95017321-MURJANJED            
+  Receipt_MASTER.csv                        MURJANJED        Master      1,505.00          0157-95017321-MURJANJED            
+  Receipt_VISA.csv                          MURJANJED        Visa        4,406.00          0157-95017321-MURJANJED            
+  Receipt_CASH.csv                          MURJANJED        Cash        12,788.00         Cash MURJANJED                     
+  Receipt_MADA.csv                          MURJANJED        Mada        21,558.00         0157-95017321-MURJANJED            
+  Receipt_MASTER.csv                        MURJANJED        Master      1,307.00          0157-95017321-MURJANJED            
+  Receipt_VISA.csv                          MURJANJED        Visa        2,058.00          0157-95017321-MURJANJED            
+  Receipt_CASH.csv                          MURJANJED        Cash        5,364.00          Cash MURJANJED                     
+  Receipt_MADA.csv                          MURJANJED        Mada        3,809.00          0157-95017321-MURJANJED            
+  Receipt_MASTER.csv                        MURJANJED        Master      390.00            0157-95017321-MURJANJED            
+  Receipt_VISA.csv                          MURJANJED        Visa        728.00            0157-95017321-MURJANJED            
+  Receipt_CASH.csv                          MURJANJED        Cash        1,864.00          Cash MURJANJED                     
+  Receipt_MADA.csv                          MURJANJED        Mada        2,287.00          0157-95017321-MURJANJED            
+  Receipt_MASTER.csv                        MURJANJED        Master      257.00            0157-95017321-MURJANJED            
+  Receipt_VISA.csv                          MURJANJED        Visa        1,421.00          0157-95017321-MURJANJED            
+  Receipt_CASH.csv                          MURJANJED        Cash        3,952.00          Cash MURJANJED                     
+  Receipt_MADA.csv                          MURJANJED        Mada        4,616.00          0157-95017321-MURJANJED            
+  Receipt_MASTER.csv                        MURJANJED        Master      285.00            0157-95017321-MURJANJED            
+  Receipt_VISA.csv                          MURJANJED        Visa        473.00            0157-95017321-MURJANJED            
+  Receipt_CASH.csv                          MURJANJED        Cash        2,437.00          Cash MURJANJED                     
+  Receipt_MADA.csv                          MURJANJED        Mada        2,601.00          0157-95017321-MURJANJED            
+  Receipt_VISA.csv                          MURJANJED        Visa        199.00            0157-95017321-MURJANJED            
+  Receipt_CASH.csv                          MURJANJED        Cash        4,546.00          Cash MURJANJED                     
+  Receipt_MADA.csv                          MURJANJED        Mada        3,802.00          0157-95017321-MURJANJED            
+  Receipt_MASTER.csv                        MURJANJED        Master      675.00            0157-95017321-MURJANJED            
+  Receipt_VISA.csv                          MURJANJED        Visa        1,562.00          0157-95017321-MURJANJED            
+  Receipt_CASH.csv                          MURJANJED        Cash        3,579.00          Cash MURJANJED                     
+  Receipt_MADA.csv                          MURJANJED        Mada        2,049.00          0157-95017321-MURJANJED            
+  Receipt_VISA.csv                          MURJANJED        Visa        710.00            0157-95017321-MURJANJED            
+  Receipt_CASH.csv                          MURJANJED        Cash        5,729.00          Cash MURJANJED                     
+  Receipt_MADA.csv                          MURJANJED        Mada        5,065.00          0157-95017321-MURJANJED            
+  Receipt_MASTER.csv                        MURJANJED        Master      602.00            0157-95017321-MURJANJED            
+  Receipt_VISA.csv                          MURJANJED        Visa        442.00            0157-95017321-MURJANJED            
+  Receipt_CASH.csv                          MURJANJED        Cash        3,715.00          Cash MURJANJED                     
+  Receipt_MADA.csv                          MURJANJED        Mada        3,866.00          0157-95017321-MURJANJED            
+  Receipt_VISA.csv                          MURJANJED        Visa        283.00            0157-95017321-MURJANJED            
+  Receipt_CASH.csv                          MURJANJED        Cash        2,383.00          Cash MURJANJED                     
+  Receipt_MADA.csv                          MURJANJED        Mada        3,112.00          0157-95017321-MURJANJED            
+  Receipt_VISA.csv                          MURJANJED        Visa        717.00            0157-95017321-MURJANJED            
+  Receipt_CASH.csv                          MURJANJED        Cash        3,319.00          Cash MURJANJED                     
+  Receipt_MADA.csv                          MURJANJED        Mada        2,557.00          0157-95017321-MURJANJED            
+  Receipt_MASTER.csv                        MURJANJED        Master      1,229.00          0157-95017321-MURJANJED            
+  Receipt_CASH.csv                          MURJANJED        Cash        1,755.00          Cash MURJANJED                     
+  Receipt_MADA.csv                          MURJANJED        Mada        4,413.00          0157-95017321-MURJANJED            
+  Receipt_MASTER.csv                        MURJANJED        Master      856.00            0157-95017321-MURJANJED            
+  Receipt_VISA.csv                          MURJANJED        Visa        2,081.00          0157-95017321-MURJANJED            
+  Receipt_CASH.csv                          MURJANJED        Cash        2,389.00          Cash MURJANJED                     
+  Receipt_MADA.csv                          MURJANJED        Mada        2,910.00          0157-95017321-MURJANJED            
+  Receipt_VISA.csv                          MURJANJED        Visa        149.00            0157-95017321-MURJANJED            
+  Receipt_CASH.csv                          SALAMJED         Cash        -299.00           015795017321009                    
+  Receipt_CASH.csv                          YASMEEN          Cash        -299.00           CASH Yasmeen Mall Branch           
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            466,938.00                                           
+
+  Per-method totals:
+    Cash             34 file(s)      159,867.00 SAR
+    Mada             27 file(s)      249,402.00 SAR
+    Master           20 file(s)       15,755.00 SAR
+    Visa             26 file(s)       41,914.00 SAR
+    Grand Total                       466,938.00 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Cash         Mada       Master         Visa          TOTAL
+  ----------------------------------------------------------------------------------
+  2026-03-05          7,581        9,740            0        1,106         18,427
+  2026-03-06          6,579        9,493          337          682         17,091
+  2026-03-07          4,543       14,687        1,064        2,507         22,801
+  2026-03-08          8,055       10,079          540        1,664         20,338
+  2026-03-09          7,093       14,454            0        1,705         23,252
+  2026-03-10          7,278       16,797          645        2,421         27,141
+  2026-03-11          5,824       12,005          343        2,240         20,412
+  2026-03-12          5,278        8,647          299        2,597         16,821
+  2026-03-13         10,526        9,304          208        3,305         23,343
+  2026-03-14          7,848       18,143          780        2,001         28,772
+  2026-03-15          8,928       20,155        2,257        1,989         33,329
+  2026-03-16          9,141       14,292          298        2,097         25,828
+  2026-03-17          8,984       15,037        1,878        2,371         28,270
+  2026-03-18          8,588       13,924        1,505        4,406         28,423
+  2026-03-19         12,788       21,558        1,307        2,058         37,711
+  2026-03-20          5,364        3,809          390          728         10,291
+  2026-03-21          1,864        2,287          257        1,421          5,829
+  2026-03-22          3,952        4,616          285          473          9,326
+  2026-03-23          2,437        2,601            0          199          5,237
+  2026-03-24          4,546        3,802          675        1,562         10,585
+  2026-03-25          3,380        2,049            0          710          6,139
+  2026-03-26          5,729        5,065          602          442         11,838
+  2026-03-27          3,715        3,866            0          283          7,864
+  2026-03-28          2,383        3,112            0          717          6,212
+  2026-03-29          3,319        2,557        1,229            0          7,105
+  2026-03-30          1,755        4,413          856        2,081          9,105
+  2026-03-31          2,389        2,910            0          149          5,448
+  ----------------------------------------------------------------------------------
+  TOTAL             159,867      249,402       15,755       41,914        466,938
+
+  VALIDATION:
+    Payment file total (for standard receipts):       466,938.00 SAR
+    Receipt files total:                              466,938.00 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Cash            Payment:   159,867.00  Receipt:   159,867.00  Diff:     0.00  ✓
+    Mada            Payment:   249,402.00  Receipt:   249,402.00  Diff:     0.00  ✓
+    Master          Payment:    15,755.00  Receipt:    15,755.00  Diff:     0.00  ✓
+    Visa            Payment:    41,914.00  Receipt:    41,914.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (107 rows, 466,938.00 SAR)
+  Per-method grand total                   466,938.00 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 73
+    Total amount: -2,986.1739 SAR
+    Payment methods included: ['Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -2,986.1739 SAR
+    Per-method total:               -2,986.1739 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    Mada               27 rows         -1,724.2065 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             20 rows           -344.2462 SAR  ⚠ 20 NEGATIVE AMOUNTS!
+    Visa               26 rows           -917.7212 SAR  ⚠ 26 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              4
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       249,885.00 SAR
+    Visa                        42,001.00 SAR
+    Master                      15,755.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                       169,670.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED              169,670.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  MURJANJED        Mada        9,740.00          0.01      -67.2060          0157-95017321-MURJANJED       
+  MURJANJED        Visa        1,106.00          0.02      -24.1661          0157-95017321-MURJANJED       
+  MURJANJED        Mada        9,493.00          0.01      -65.5017          0157-95017321-MURJANJED       
+  MURJANJED        Master      337.00            0.02      -7.3634           0157-95017321-MURJANJED       
+  MURJANJED        Visa        682.00            0.02      -14.9017          0157-95017321-MURJANJED       
+  MURJANJED        Mada        14,687.00         0.01      -101.3403         0157-95017321-MURJANJED       
+  MURJANJED        Master      1,064.00          0.02      -23.2484          0157-95017321-MURJANJED       
+  MURJANJED        Visa        2,507.00          0.02      -54.7779          0157-95017321-MURJANJED       
+  MURJANJED        Mada        10,079.00         0.01      -69.5451          0157-95017321-MURJANJED       
+  MURJANJED        Master      540.00            0.02      -11.7990          0157-95017321-MURJANJED       
+  MURJANJED        Visa        1,664.00          0.02      -36.3584          0157-95017321-MURJANJED       
+  MURJANJED        Mada        14,454.00         0.01      -99.7326          0157-95017321-MURJANJED       
+  MURJANJED        Visa        1,705.00          0.02      -37.2542          0157-95017321-MURJANJED       
+  MURJANJED        Mada        16,797.00         0.01      -115.8993         0157-95017321-MURJANJED       
+  MURJANJED        Master      645.00            0.02      -14.0932          0157-95017321-MURJANJED       
+  MURJANJED        Visa        2,421.00          0.02      -52.8988          0157-95017321-MURJANJED       
+  MURJANJED        Mada        12,005.00         0.01      -82.8345          0157-95017321-MURJANJED       
+  MURJANJED        Master      343.00            0.02      -7.4945           0157-95017321-MURJANJED       
+  MURJANJED        Visa        2,240.00          0.02      -48.9440          0157-95017321-MURJANJED       
+  MURJANJED        Mada        8,647.00          0.01      -59.6643          0157-95017321-MURJANJED       
+  MURJANJED        Master      299.00            0.02      -6.5331           0157-95017321-MURJANJED       
+  MURJANJED        Visa        2,597.00          0.02      -56.7444          0157-95017321-MURJANJED       
+  MURJANJED        Mada        9,304.00          0.01      -64.1976          0157-95017321-MURJANJED       
+  MURJANJED        Master      208.00            0.02      -4.5448           0157-95017321-MURJANJED       
+  MURJANJED        Visa        3,305.00          0.02      -72.2142          0157-95017321-MURJANJED       
+  MURJANJED        Mada        18,143.00         0.01      -125.1867         0157-95017321-MURJANJED       
+  MURJANJED        Master      780.00            0.02      -17.0430          0157-95017321-MURJANJED       
+  MURJANJED        Visa        2,001.00          0.02      -43.7218          0157-95017321-MURJANJED       
+  MURJANJED        Mada        20,439.00         0.01      -141.0291         0157-95017321-MURJANJED       
+  MURJANJED        Master      2,257.00          0.02      -49.3154          0157-95017321-MURJANJED       
+  MURJANJED        Visa        2,076.00          0.02      -45.3606          0157-95017321-MURJANJED       
+  MURJANJED        Mada        14,292.00         0.01      -98.6148          0157-95017321-MURJANJED       
+  MURJANJED        Master      298.00            0.02      -6.5113           0157-95017321-MURJANJED       
+  MURJANJED        Visa        2,097.00          0.02      -45.8194          0157-95017321-MURJANJED       
+  MURJANJED        Mada        15,037.00         0.01      -103.7553         0157-95017321-MURJANJED       
+  MURJANJED        Master      1,878.00          0.02      -41.0343          0157-95017321-MURJANJED       
+  MURJANJED        Visa        2,371.00          0.02      -51.8063          0157-95017321-MURJANJED       
+  MURJANJED        Mada        13,924.00         0.01      -96.0756          0157-95017321-MURJANJED       
+  MURJANJED        Master      1,505.00          0.02      -32.8842          0157-95017321-MURJANJED       
+  MURJANJED        Visa        4,406.00          0.02      -96.2711          0157-95017321-MURJANJED       
+  MURJANJED        Mada        21,558.00         0.01      -148.7502         0157-95017321-MURJANJED       
+  MURJANJED        Master      1,307.00          0.02      -28.5579          0157-95017321-MURJANJED       
+  MURJANJED        Visa        2,058.00          0.02      -44.9673          0157-95017321-MURJANJED       
+  MURJANJED        Mada        3,809.00          0.01      -26.2821          0157-95017321-MURJANJED       
+  MURJANJED        Master      390.00            0.02      -8.5215           0157-95017321-MURJANJED       
+  MURJANJED        Visa        728.00            0.02      -15.9068          0157-95017321-MURJANJED       
+  MURJANJED        Mada        2,287.00          0.01      -15.7803          0157-95017321-MURJANJED       
+  MURJANJED        Master      257.00            0.02      -5.6154           0157-95017321-MURJANJED       
+  MURJANJED        Visa        1,421.00          0.02      -31.0488          0157-95017321-MURJANJED       
+  MURJANJED        Mada        4,616.00          0.01      -31.8504          0157-95017321-MURJANJED       
+  MURJANJED        Master      285.00            0.02      -6.2272           0157-95017321-MURJANJED       
+  MURJANJED        Visa        473.00            0.02      -10.3350          0157-95017321-MURJANJED       
+  MURJANJED        Mada        2,601.00          0.01      -17.9469          0157-95017321-MURJANJED       
+  MURJANJED        Visa        199.00            0.02      -4.3481           0157-95017321-MURJANJED       
+  MURJANJED        Mada        3,802.00          0.01      -26.2338          0157-95017321-MURJANJED       
+  MURJANJED        Master      675.00            0.02      -14.7487          0157-95017321-MURJANJED       
+  MURJANJED        Visa        1,562.00          0.02      -34.1297          0157-95017321-MURJANJED       
+  MURJANJED        Mada        2,049.00          0.01      -14.1381          0157-95017321-MURJANJED       
+  MURJANJED        Visa        710.00            0.02      -15.5135          0157-95017321-MURJANJED       
+  MURJANJED        Mada        5,065.00          0.01      -34.9485          0157-95017321-MURJANJED       
+  MURJANJED        Master      602.00            0.02      -13.1537          0157-95017321-MURJANJED       
+  MURJANJED        Visa        442.00            0.02      -9.6577           0157-95017321-MURJANJED       
+  MURJANJED        Mada        3,866.00          0.01      -26.6754          0157-95017321-MURJANJED       
+  MURJANJED        Visa        283.00            0.02      -6.1835           0157-95017321-MURJANJED       
+  MURJANJED        Mada        3,311.00          0.01      -22.8459          0157-95017321-MURJANJED       
+  MURJANJED        Visa        717.00            0.02      -15.6664          0157-95017321-MURJANJED       
+  MURJANJED        Mada        2,557.00          0.01      -17.6433          0157-95017321-MURJANJED       
+  MURJANJED        Master      1,229.00          0.02      -26.8536          0157-95017321-MURJANJED       
+  MURJANJED        Mada        4,413.00          0.01      -30.4497          0157-95017321-MURJANJED       
+  MURJANJED        Master      856.00            0.02      -18.7036          0157-95017321-MURJANJED       
+  MURJANJED        Visa        2,081.00          0.02      -45.4699          0157-95017321-MURJANJED       
+  MURJANJED        Mada        2,910.00          0.01      -20.0790          0157-95017321-MURJANJED       
+  MURJANJED        Visa        149.00            0.02      -3.2556           0157-95017321-MURJANJED       
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -2,986.1739                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (73 rows, -2,986.1739 SAR)
+  Per-method grand total                   -2,986.1739 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  448,778.59 SAR         █
+  █  Total Standard Receipt amt               933,876.00 SAR         █
+  █  Difference                               485,097.41 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  448,778.59 SAR
+  Total Standard Receipt amt               933,876.00 SAR
+  Difference                               485,097.41 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0008263
+  >>> Next run START_TXN_SEQUENCE =        8264  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 20:49:19
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

@@ -1,0 +1,499 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 08:41:56 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         406,555.83 SAR     ║
+║  [ℹ] Standard Receipt Total                   908,415.92 SAR     ║
+║  [✗] Amount Reconciliation                    Diff: 501,860.09 SAR║
+║  [ℹ] Total Invoices                           1,776              ║
+║  [ℹ] Receipt Files Generated                  6                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          HAIFAA.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             HAIFAA_Payment_line_5_to_31_March.xlsx
+  Segment 1 prefix                         86499398
+  Segment 2 prefix                         65243786
+
+  AR rows read                             7440
+  Unique invoices loaded                   1775
+  Unique transactions (BLK)                46
+  Total AR amount                          406,953.83 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Amex                       5             1,355.00              
+  Cash                       686           167,826.96            
+  Mada                       795           186,154.00            
+  Master                     127           33,975.00             
+  TABBY                      31            11,473.00             
+  TAMARA                     6             1,852.00              
+  Visa                       214           64,897.00             
+  ----------------------------------------------------------------------
+  TOTAL                      1864          467,532.96            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  HAIFAA                          1737        454,953.00          
+  HAMDANIIYA                      1           -347.04             
+  PRNCSLRD                        1           -398.00             
+  RYDGALLER                       37          13,325.00           
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 114
+    Total amount: 454,207.96 SAR
+    Payment methods included: ['AMEX', 'Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              454,207.96 SAR
+    Per-method total:                454,207.96 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    AMEX                4 rows            1,355.00 SAR  ✓
+    Cash               29 rows          167,826.96 SAR  ⚠ 2 NEGATIVE AMOUNTS!
+    Mada               27 rows          186,154.00 SAR  ✓
+    Master             27 rows           33,975.00 SAR  ✓
+    Visa               27 rows           64,897.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    37
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   6
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       186,154.00 SAR
+    Cash                       167,826.96 SAR
+    Visa                        64,897.00 SAR
+    Master                      33,975.00 SAR
+    Amex                         1,355.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TABBY                       11,473.00 SAR
+    TAMARA                       1,852.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          HAIFAA           Cash        3,782.00          CASH Haifaa Mall Branch            
+  Receipt_MADA.csv                          HAIFAA           Mada        7,478.00          0022555612015                      
+  Receipt_MASTER.csv                        HAIFAA           Master      1,251.00          0022555612015                      
+  Receipt_VISA.csv                          HAIFAA           Visa        3,406.00          0022555612015                      
+  Receipt_AMEX.csv                          HAIFAA           Amex        226.00            0022555612015                      
+  Receipt_CASH.csv                          HAIFAA           Cash        1,752.00          CASH Haifaa Mall Branch            
+  Receipt_MADA.csv                          HAIFAA           Mada        6,923.00          0022555612015                      
+  Receipt_MASTER.csv                        HAIFAA           Master      527.00            0022555612015                      
+  Receipt_VISA.csv                          HAIFAA           Visa        996.00            0022555612015                      
+  Receipt_AMEX.csv                          HAIFAA           Amex        399.00            0022555612015                      
+  Receipt_CASH.csv                          HAIFAA           Cash        7,431.00          CASH Haifaa Mall Branch            
+  Receipt_MADA.csv                          HAIFAA           Mada        10,565.00         0022555612015                      
+  Receipt_MASTER.csv                        HAIFAA           Master      763.00            0022555612015                      
+  Receipt_VISA.csv                          HAIFAA           Visa        8,996.00          0022555612015                      
+  Receipt_CASH.csv                          HAIFAA           Cash        10,523.00         CASH Haifaa Mall Branch            
+  Receipt_MADA.csv                          HAIFAA           Mada        7,186.00          0022555612015                      
+  Receipt_MASTER.csv                        HAIFAA           Master      698.00            0022555612015                      
+  Receipt_VISA.csv                          HAIFAA           Visa        340.00            0022555612015                      
+  Receipt_CASH.csv                          HAIFAA           Cash        5,106.00          CASH Haifaa Mall Branch            
+  Receipt_MADA.csv                          HAIFAA           Mada        10,405.00         0022555612015                      
+  Receipt_MASTER.csv                        HAIFAA           Master      1,559.00          0022555612015                      
+  Receipt_VISA.csv                          HAIFAA           Visa        1,613.00          0022555612015                      
+  Receipt_CASH.csv                          HAIFAA           Cash        7,139.00          CASH Haifaa Mall Branch            
+  Receipt_MADA.csv                          HAIFAA           Mada        10,373.00         0022555612015                      
+  Receipt_MASTER.csv                        HAIFAA           Master      408.00            0022555612015                      
+  Receipt_VISA.csv                          HAIFAA           Visa        1,831.00          0022555612015                      
+  Receipt_CASH.csv                          HAIFAA           Cash        10,848.00         CASH Haifaa Mall Branch            
+  Receipt_MADA.csv                          HAIFAA           Mada        9,410.00          0022555612015                      
+  Receipt_MASTER.csv                        HAIFAA           Master      1,433.00          0022555612015                      
+  Receipt_VISA.csv                          HAIFAA           Visa        2,608.00          0022555612015                      
+  Receipt_CASH.csv                          HAIFAA           Cash        9,922.00          CASH Haifaa Mall Branch            
+  Receipt_MADA.csv                          HAIFAA           Mada        9,178.00          0022555612015                      
+  Receipt_MASTER.csv                        HAIFAA           Master      299.00            0022555612015                      
+  Receipt_VISA.csv                          HAIFAA           Visa        7,148.00          0022555612015                      
+  Receipt_CASH.csv                          HAIFAA           Cash        7,060.00          CASH Haifaa Mall Branch            
+  Receipt_MADA.csv                          HAIFAA           Mada        6,136.00          0022555612015                      
+  Receipt_MASTER.csv                        HAIFAA           Master      747.00            0022555612015                      
+  Receipt_VISA.csv                          HAIFAA           Visa        5,420.00          0022555612015                      
+  Receipt_AMEX.csv                          HAIFAA           Amex        508.00            0022555612015                      
+  Receipt_CASH.csv                          HAIFAA           Cash        4,927.00          CASH Haifaa Mall Branch            
+  Receipt_MADA.csv                          HAIFAA           Mada        12,111.00         0022555612015                      
+  Receipt_MASTER.csv                        HAIFAA           Master      1,300.00          0022555612015                      
+  Receipt_VISA.csv                          HAIFAA           Visa        3,631.00          0022555612015                      
+  Receipt_AMEX.csv                          HAIFAA           Amex        222.00            0022555612015                      
+  Receipt_CASH.csv                          HAIFAA           Cash        4,556.00          CASH Haifaa Mall Branch            
+  Receipt_MADA.csv                          HAIFAA           Mada        8,099.00          0022555612015                      
+  Receipt_MASTER.csv                        HAIFAA           Master      2,548.00          0022555612015                      
+  Receipt_VISA.csv                          HAIFAA           Visa        3,779.00          0022555612015                      
+  Receipt_CASH.csv                          HAIFAA           Cash        9,020.00          CASH Haifaa Mall Branch            
+  Receipt_MADA.csv                          HAIFAA           Mada        11,645.00         0022555612015                      
+  Receipt_MASTER.csv                        HAIFAA           Master      2,318.00          0022555612015                      
+  Receipt_VISA.csv                          HAIFAA           Visa        3,765.00          0022555612015                      
+  Receipt_CASH.csv                          HAIFAA           Cash        13,969.00         CASH Haifaa Mall Branch            
+  Receipt_MADA.csv                          HAIFAA           Mada        11,799.00         0022555612015                      
+  Receipt_MASTER.csv                        HAIFAA           Master      813.00            0022555612015                      
+  Receipt_VISA.csv                          HAIFAA           Visa        3,396.00          0022555612015                      
+  Receipt_CASH.csv                          HAIFAA           Cash        8,313.00          CASH Haifaa Mall Branch            
+  Receipt_MADA.csv                          HAIFAA           Mada        10,623.00         0022555612015                      
+  Receipt_MASTER.csv                        HAIFAA           Master      394.00            0022555612015                      
+  Receipt_VISA.csv                          HAIFAA           Visa        3,068.00          0022555612015                      
+  Receipt_CASH.csv                          HAIFAA           Cash        9,020.00          CASH Haifaa Mall Branch            
+  Receipt_MADA.csv                          HAIFAA           Mada        12,268.00         0022555612015                      
+  Receipt_MASTER.csv                        HAIFAA           Master      1,567.00          0022555612015                      
+  Receipt_VISA.csv                          HAIFAA           Visa        2,940.00          0022555612015                      
+  Receipt_CASH.csv                          HAIFAA           Cash        4,406.00          CASH Haifaa Mall Branch            
+  Receipt_MADA.csv                          HAIFAA           Mada        4,958.00          0022555612015                      
+  Receipt_MASTER.csv                        HAIFAA           Master      3,042.00          0022555612015                      
+  Receipt_VISA.csv                          HAIFAA           Visa        1,807.00          0022555612015                      
+  Receipt_CASH.csv                          HAIFAA           Cash        4,909.00          CASH Haifaa Mall Branch            
+  Receipt_MADA.csv                          HAIFAA           Mada        3,896.00          0022555612015                      
+  Receipt_MASTER.csv                        HAIFAA           Master      499.00            0022555612015                      
+  Receipt_VISA.csv                          HAIFAA           Visa        1,461.00          0022555612015                      
+  Receipt_CASH.csv                          HAIFAA           Cash        1,964.00          CASH Haifaa Mall Branch            
+  Receipt_MADA.csv                          HAIFAA           Mada        7,783.00          0022555612015                      
+  Receipt_MASTER.csv                        HAIFAA           Master      286.00            0022555612015                      
+  Receipt_VISA.csv                          HAIFAA           Visa        1,041.00          0022555612015                      
+  Receipt_CASH.csv                          HAIFAA           Cash        3,277.00          CASH Haifaa Mall Branch            
+  Receipt_MADA.csv                          HAIFAA           Mada        3,175.00          0022555612015                      
+  Receipt_MASTER.csv                        HAIFAA           Master      497.00            0022555612015                      
+  Receipt_VISA.csv                          HAIFAA           Visa        1,309.00          0022555612015                      
+  Receipt_CASH.csv                          HAIFAA           Cash        4,152.00          CASH Haifaa Mall Branch            
+  Receipt_MADA.csv                          HAIFAA           Mada        2,373.00          0022555612015                      
+  Receipt_MASTER.csv                        HAIFAA           Master      1,929.00          0022555612015                      
+  Receipt_VISA.csv                          HAIFAA           Visa        583.00            0022555612015                      
+  Receipt_CASH.csv                          HAIFAA           Cash        4,784.00          CASH Haifaa Mall Branch            
+  Receipt_MADA.csv                          HAIFAA           Mada        2,824.00          0022555612015                      
+  Receipt_MASTER.csv                        HAIFAA           Master      2,985.00          0022555612015                      
+  Receipt_VISA.csv                          HAIFAA           Visa        1,255.00          0022555612015                      
+  Receipt_CASH.csv                          HAIFAA           Cash        3,842.00          CASH Haifaa Mall Branch            
+  Receipt_MADA.csv                          HAIFAA           Mada        3,412.00          0022555612015                      
+  Receipt_MASTER.csv                        HAIFAA           Master      2,834.00          0022555612015                      
+  Receipt_VISA.csv                          HAIFAA           Visa        359.00            0022555612015                      
+  Receipt_CASH.csv                          HAIFAA           Cash        16,623.00         CASH Haifaa Mall Branch            
+  Receipt_MADA.csv                          HAIFAA           Mada        4,002.00          0022555612015                      
+  Receipt_MASTER.csv                        HAIFAA           Master      2,184.00          0022555612015                      
+  Receipt_VISA.csv                          HAIFAA           Visa        938.00            0022555612015                      
+  Receipt_CASH.csv                          HAIFAA           Cash        7,164.00          CASH Haifaa Mall Branch            
+  Receipt_MADA.csv                          HAIFAA           Mada        1,731.00          0022555612015                      
+  Receipt_MASTER.csv                        HAIFAA           Master      1,679.00          0022555612015                      
+  Receipt_VISA.csv                          HAIFAA           Visa        687.00            0022555612015                      
+  Receipt_CASH.csv                          HAIFAA           Cash        1,509.00          CASH Haifaa Mall Branch            
+  Receipt_MADA.csv                          HAIFAA           Mada        3,121.00          0022555612015                      
+  Receipt_MASTER.csv                        HAIFAA           Master      1,116.00          0022555612015                      
+  Receipt_VISA.csv                          HAIFAA           Visa        821.00            0022555612015                      
+  Receipt_CASH.csv                          HAIFAA           Cash        1,013.00          CASH Haifaa Mall Branch            
+  Receipt_MADA.csv                          HAIFAA           Mada        2,695.00          0022555612015                      
+  Receipt_MASTER.csv                        HAIFAA           Master      115.00            0022555612015                      
+  Receipt_VISA.csv                          HAIFAA           Visa        984.00            0022555612015                      
+  Receipt_CASH.csv                          HAIFAA           Cash        1,561.00          CASH Haifaa Mall Branch            
+  Receipt_MADA.csv                          HAIFAA           Mada        1,985.00          0022555612015                      
+  Receipt_MASTER.csv                        HAIFAA           Master      184.00            0022555612015                      
+  Receipt_VISA.csv                          HAIFAA           Visa        715.00            0022555612015                      
+  Receipt_CASH.csv                          HAMDANIIYA       Cash        -347.04           CashHAMDANIIYA                     
+  Receipt_CASH.csv                          PRNCSLRD         Cash        -398.00           Cash PRNCSLRD                      
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            454,207.96                                           
+
+  Per-method totals:
+    Amex              4 file(s)        1,355.00 SAR
+    Cash             29 file(s)      167,826.96 SAR
+    Mada             27 file(s)      186,154.00 SAR
+    Master           27 file(s)       33,975.00 SAR
+    Visa             27 file(s)       64,897.00 SAR
+    Grand Total                       454,207.96 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Amex         Cash         Mada       Master         Visa          TOTAL
+  ------------------------------------------------------------------------------------------------
+  2026-03-05              0        3,782        7,478        1,251        3,406         15,917
+  2026-03-06            226        1,752        6,923          527          996         10,424
+  2026-03-07            399        7,431       10,565          763        8,996         28,154
+  2026-03-08              0       10,523        7,186          698          340         18,747
+  2026-03-09              0        5,106       10,405        1,559        1,613         18,683
+  2026-03-10              0        7,139       10,373          408        1,831         19,751
+  2026-03-11              0       10,450        9,410        1,433        2,608         23,901
+  2026-03-12              0        9,922        9,178          299        7,148         26,547
+  2026-03-13              0        7,060        6,136          747        5,420         19,363
+  2026-03-14            508        4,580       12,111        1,300        3,631         22,130
+  2026-03-15            222        4,556        8,099        2,548        3,779         19,204
+  2026-03-16              0        9,020       11,645        2,318        3,765         26,748
+  2026-03-17              0       13,969       11,799          813        3,396         29,977
+  2026-03-18              0        8,313       10,623          394        3,068         22,398
+  2026-03-19              0        9,020       12,268        1,567        2,940         25,795
+  2026-03-20              0        4,406        4,958        3,042        1,807         14,213
+  2026-03-21              0        4,909        3,896          499        1,461         10,765
+  2026-03-22              0        1,964        7,783          286        1,041         11,074
+  2026-03-23              0        3,277        3,175          497        1,309          8,258
+  2026-03-24              0        4,152        2,373        1,929          583          9,037
+  2026-03-25              0        4,784        2,824        2,985        1,255         11,848
+  2026-03-26              0        3,842        3,412        2,834          359         10,447
+  2026-03-27              0       16,623        4,002        2,184          938         23,747
+  2026-03-28              0        7,164        1,731        1,679          687         11,261
+  2026-03-29              0        1,509        3,121        1,116          821          6,567
+  2026-03-30              0        1,013        2,695          115          984          4,807
+  2026-03-31              0        1,561        1,985          184          715          4,445
+  ------------------------------------------------------------------------------------------------
+  TOTAL               1,355      167,827      186,154       33,975       64,897        454,208
+
+  VALIDATION:
+    Payment file total (for standard receipts):       454,207.96 SAR
+    Receipt files total:                              454,207.96 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Amex            Payment:     1,355.00  Receipt:     1,355.00  Diff:     0.00  ✓
+    Cash            Payment:   167,826.96  Receipt:   167,826.96  Diff:     0.00  ✓
+    Mada            Payment:   186,154.00  Receipt:   186,154.00  Diff:     0.00  ✓
+    Master          Payment:    33,975.00  Receipt:    33,975.00  Diff:     0.00  ✓
+    Visa            Payment:    64,897.00  Receipt:    64,897.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (114 rows, 454,207.96 SAR)
+  Per-method grand total                   454,207.96 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 85
+    Total amount: -3,502.9183 SAR
+    Payment methods included: ['AMEX', 'Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -3,502.9183 SAR
+    Per-method total:               -3,502.9183 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    AMEX                4 rows            -57.6552 SAR  ⚠ 4 NEGATIVE AMOUNTS!
+    Mada               27 rows         -1,284.9111 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             27 rows           -742.3531 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Visa               27 rows         -1,417.9989 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              5
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       186,219.00 SAR
+    Visa                        64,897.00 SAR
+    Master                      33,975.00 SAR
+    Amex                         1,355.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                       184,807.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED              184,807.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  HAIFAA           Mada        7,478.00          0.01      -51.5982          0022555612015                 
+  HAIFAA           Master      1,251.00          0.02      -27.3343          0022555612015                 
+  HAIFAA           Visa        3,406.00          0.02      -74.4211          0022555612015                 
+  HAIFAA           Amex        226.00            0.04      -9.6163           0022555612015                 
+  HAIFAA           Mada        6,923.00          0.01      -47.7687          0022555612015                 
+  HAIFAA           Master      527.00            0.02      -11.5149          0022555612015                 
+  HAIFAA           Visa        996.00            0.02      -21.7626          0022555612015                 
+  HAIFAA           Amex        399.00            0.04      -16.9774          0022555612015                 
+  HAIFAA           Mada        10,565.00         0.01      -72.8985          0022555612015                 
+  HAIFAA           Master      763.00            0.02      -16.6715          0022555612015                 
+  HAIFAA           Visa        8,996.00          0.02      -196.5626         0022555612015                 
+  HAIFAA           Mada        7,186.00          0.01      -49.5834          0022555612015                 
+  HAIFAA           Master      698.00            0.02      -15.2513          0022555612015                 
+  HAIFAA           Visa        340.00            0.02      -7.4290           0022555612015                 
+  HAIFAA           Mada        10,405.00         0.01      -71.7945          0022555612015                 
+  HAIFAA           Master      1,559.00          0.02      -34.0641          0022555612015                 
+  HAIFAA           Visa        1,613.00          0.02      -35.2440          0022555612015                 
+  HAIFAA           Mada        10,438.00         0.01      -72.0222          0022555612015                 
+  HAIFAA           Master      408.00            0.02      -8.9148           0022555612015                 
+  HAIFAA           Visa        1,831.00          0.02      -40.0073          0022555612015                 
+  HAIFAA           Mada        9,410.00          0.01      -64.9290          0022555612015                 
+  HAIFAA           Master      1,433.00          0.02      -31.3110          0022555612015                 
+  HAIFAA           Visa        2,608.00          0.02      -56.9848          0022555612015                 
+  HAIFAA           Mada        9,178.00          0.01      -63.3282          0022555612015                 
+  HAIFAA           Master      299.00            0.02      -6.5331           0022555612015                 
+  HAIFAA           Visa        7,148.00          0.02      -156.1838         0022555612015                 
+  HAIFAA           Mada        6,136.00          0.01      -42.3384          0022555612015                 
+  HAIFAA           Master      747.00            0.02      -16.3219          0022555612015                 
+  HAIFAA           Visa        5,420.00          0.02      -118.4270         0022555612015                 
+  HAIFAA           Amex        508.00            0.04      -21.6154          0022555612015                 
+  HAIFAA           Mada        12,111.00         0.01      -83.5659          0022555612015                 
+  HAIFAA           Master      1,300.00          0.02      -28.4050          0022555612015                 
+  HAIFAA           Visa        3,631.00          0.02      -79.3374          0022555612015                 
+  HAIFAA           Amex        222.00            0.04      -9.4461           0022555612015                 
+  HAIFAA           Mada        8,099.00          0.01      -55.8831          0022555612015                 
+  HAIFAA           Master      2,548.00          0.02      -55.6738          0022555612015                 
+  HAIFAA           Visa        3,779.00          0.02      -82.5712          0022555612015                 
+  HAIFAA           Mada        11,645.00         0.01      -80.3505          0022555612015                 
+  HAIFAA           Master      2,318.00          0.02      -50.6483          0022555612015                 
+  HAIFAA           Visa        3,765.00          0.02      -82.2652          0022555612015                 
+  HAIFAA           Mada        11,799.00         0.01      -81.4131          0022555612015                 
+  HAIFAA           Master      813.00            0.02      -17.7640          0022555612015                 
+  HAIFAA           Visa        3,396.00          0.02      -74.2026          0022555612015                 
+  HAIFAA           Mada        10,623.00         0.01      -73.2987          0022555612015                 
+  HAIFAA           Master      394.00            0.02      -8.6089           0022555612015                 
+  HAIFAA           Visa        3,068.00          0.02      -67.0358          0022555612015                 
+  HAIFAA           Mada        12,268.00         0.01      -84.6492          0022555612015                 
+  HAIFAA           Master      1,567.00          0.02      -34.2389          0022555612015                 
+  HAIFAA           Visa        2,940.00          0.02      -64.2390          0022555612015                 
+  HAIFAA           Mada        4,958.00          0.01      -34.2102          0022555612015                 
+  HAIFAA           Master      3,042.00          0.02      -66.4677          0022555612015                 
+  HAIFAA           Visa        1,807.00          0.02      -39.4829          0022555612015                 
+  HAIFAA           Mada        3,896.00          0.01      -26.8824          0022555612015                 
+  HAIFAA           Master      499.00            0.02      -10.9031          0022555612015                 
+  HAIFAA           Visa        1,461.00          0.02      -31.9228          0022555612015                 
+  HAIFAA           Mada        7,783.00          0.01      -53.7027          0022555612015                 
+  HAIFAA           Master      286.00            0.02      -6.2491           0022555612015                 
+  HAIFAA           Visa        1,041.00          0.02      -22.7458          0022555612015                 
+  HAIFAA           Mada        3,175.00          0.01      -21.9075          0022555612015                 
+  HAIFAA           Master      497.00            0.02      -10.8594          0022555612015                 
+  HAIFAA           Visa        1,309.00          0.02      -28.6016          0022555612015                 
+  HAIFAA           Mada        2,373.00          0.01      -16.3737          0022555612015                 
+  HAIFAA           Master      1,929.00          0.02      -42.1486          0022555612015                 
+  HAIFAA           Visa        583.00            0.02      -12.7385          0022555612015                 
+  HAIFAA           Mada        2,824.00          0.01      -19.4856          0022555612015                 
+  HAIFAA           Master      2,985.00          0.02      -65.2222          0022555612015                 
+  HAIFAA           Visa        1,255.00          0.02      -27.4217          0022555612015                 
+  HAIFAA           Mada        3,412.00          0.01      -23.5428          0022555612015                 
+  HAIFAA           Master      2,834.00          0.02      -61.9229          0022555612015                 
+  HAIFAA           Visa        359.00            0.02      -7.8441           0022555612015                 
+  HAIFAA           Mada        4,002.00          0.01      -27.6138          0022555612015                 
+  HAIFAA           Master      2,184.00          0.02      -47.7204          0022555612015                 
+  HAIFAA           Visa        938.00            0.02      -20.4953          0022555612015                 
+  HAIFAA           Mada        1,731.00          0.01      -11.9439          0022555612015                 
+  HAIFAA           Master      1,679.00          0.02      -36.6861          0022555612015                 
+  HAIFAA           Visa        687.00            0.02      -15.0109          0022555612015                 
+  HAIFAA           Mada        3,121.00          0.01      -21.5349          0022555612015                 
+  HAIFAA           Master      1,116.00          0.02      -24.3846          0022555612015                 
+  HAIFAA           Visa        821.00            0.02      -17.9388          0022555612015                 
+  HAIFAA           Mada        2,695.00          0.01      -18.5955          0022555612015                 
+  HAIFAA           Master      115.00            0.02      -2.5128           0022555612015                 
+  HAIFAA           Visa        984.00            0.02      -21.5004          0022555612015                 
+  HAIFAA           Mada        1,985.00          0.01      -13.6965          0022555612015                 
+  HAIFAA           Master      184.00            0.02      -4.0204           0022555612015                 
+  HAIFAA           Visa        715.00            0.02      -15.6227          0022555612015                 
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -3,502.9183                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (85 rows, -3,502.9183 SAR)
+  Per-method grand total                   -3,502.9183 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  406,555.83 SAR         █
+  █  Total Standard Receipt amt               908,415.92 SAR         █
+  █  Difference                               501,860.09 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  406,555.83 SAR
+  Total Standard Receipt amt               908,415.92 SAR
+  Difference                               501,860.09 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0001343
+  >>> Next run START_TXN_SEQUENCE =        1344  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 20:42:00
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

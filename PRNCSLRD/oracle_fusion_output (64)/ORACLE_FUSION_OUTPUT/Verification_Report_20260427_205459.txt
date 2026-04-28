@@ -1,0 +1,491 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 08:54:51 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         855,622.44 SAR     ║
+║  [ℹ] Standard Receipt Total                   1,806,944.10 SAR   ║
+║  [✗] Amount Reconciliation                    Diff: 951,321.66 SAR║
+║  [ℹ] Total Invoices                           3,193              ║
+║  [ℹ] Receipt Files Generated                  5                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          PRNCSLRD.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             PRNCSLRD_payment_line_5_to_31_March.xlsx
+  Segment 1 prefix                         22492392
+  Segment 2 prefix                         04581364
+
+  AR rows read                             15577
+  Unique invoices loaded                   3185
+  Unique transactions (BLK)                67
+  Total AR amount                          858,338.44 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Cash                       801           191,558.05            
+  Mada                       1506          376,503.00            
+  Master                     269           173,706.00            
+  TABBY                      182           65,891.00             
+  TAMARA                     30            14,664.00             
+  Visa                       569           161,705.00            
+  ----------------------------------------------------------------------
+  TOTAL                      3357          984,027.05            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  AZIZMALL                        1           -299.00             
+  HAIFAA                          1           -399.00             
+  HIRAAJED                        1           -126.00             
+  JEDSULTNST                      2           -1,095.00           
+  PRNCSLRD                        2973        906,188.05          
+  REDSEA                          3           -797.00             
+  RYDGALLER                       212         80,555.00           
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 114
+    Total amount: 903,472.05 SAR
+    Payment methods included: ['Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              903,472.05 SAR
+    Per-method total:                903,472.05 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    Cash               33 rows          191,558.05 SAR  ⚠ 6 NEGATIVE AMOUNTS!
+    Mada               27 rows          376,503.00 SAR  ✓
+    Master             27 rows          173,706.00 SAR  ✓
+    Visa               27 rows          161,705.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    212
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   5
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       376,503.00 SAR
+    Cash                       191,558.05 SAR
+    Master                     173,706.00 SAR
+    Visa                       161,705.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TABBY                       65,891.00 SAR
+    TAMARA                      14,664.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          AZIZMALL         Cash        -299.00           CashOth Mall Hail                  
+  Receipt_CASH.csv                          HAIFAA           Cash        -399.00           CASH Haifaa Mall Branch            
+  Receipt_CASH.csv                          HIRAAJED         Cash        -126.00           Cash HIRAAJED                      
+  Receipt_CASH.csv                          JEDSULTNST       Cash        -1,095.00         Cash JEDSULTNST                    
+  Receipt_CASH.csv                          PRNCSLRD         Cash        9,628.00          Cash PRNCSLRD                      
+  Receipt_MADA.csv                          PRNCSLRD         Mada        21,724.00         AL Jazeerah PRNCSLRD               
+  Receipt_MASTER.csv                        PRNCSLRD         Master      1,393.00          AL Jazeerah PRNCSLRD               
+  Receipt_VISA.csv                          PRNCSLRD         Visa        9,849.00          AL Jazeerah PRNCSLRD               
+  Receipt_CASH.csv                          PRNCSLRD         Cash        6,248.00          Cash PRNCSLRD                      
+  Receipt_MADA.csv                          PRNCSLRD         Mada        12,774.00         AL Jazeerah PRNCSLRD               
+  Receipt_MASTER.csv                        PRNCSLRD         Master      1,324.00          AL Jazeerah PRNCSLRD               
+  Receipt_VISA.csv                          PRNCSLRD         Visa        5,592.00          AL Jazeerah PRNCSLRD               
+  Receipt_CASH.csv                          PRNCSLRD         Cash        15,637.00         Cash PRNCSLRD                      
+  Receipt_MADA.csv                          PRNCSLRD         Mada        14,989.00         AL Jazeerah PRNCSLRD               
+  Receipt_MASTER.csv                        PRNCSLRD         Master      6,648.00          AL Jazeerah PRNCSLRD               
+  Receipt_VISA.csv                          PRNCSLRD         Visa        11,650.00         AL Jazeerah PRNCSLRD               
+  Receipt_CASH.csv                          PRNCSLRD         Cash        7,373.05          Cash PRNCSLRD                      
+  Receipt_MADA.csv                          PRNCSLRD         Mada        18,161.00         AL Jazeerah PRNCSLRD               
+  Receipt_MASTER.csv                        PRNCSLRD         Master      6,051.00          AL Jazeerah PRNCSLRD               
+  Receipt_VISA.csv                          PRNCSLRD         Visa        4,776.00          AL Jazeerah PRNCSLRD               
+  Receipt_CASH.csv                          PRNCSLRD         Cash        2,888.00          Cash PRNCSLRD                      
+  Receipt_MADA.csv                          PRNCSLRD         Mada        15,773.00         AL Jazeerah PRNCSLRD               
+  Receipt_MASTER.csv                        PRNCSLRD         Master      26,324.00         AL Jazeerah PRNCSLRD               
+  Receipt_VISA.csv                          PRNCSLRD         Visa        4,684.00          AL Jazeerah PRNCSLRD               
+  Receipt_CASH.csv                          PRNCSLRD         Cash        4,625.00          Cash PRNCSLRD                      
+  Receipt_MADA.csv                          PRNCSLRD         Mada        15,759.00         AL Jazeerah PRNCSLRD               
+  Receipt_MASTER.csv                        PRNCSLRD         Master      25,799.00         AL Jazeerah PRNCSLRD               
+  Receipt_VISA.csv                          PRNCSLRD         Visa        5,918.00          AL Jazeerah PRNCSLRD               
+  Receipt_CASH.csv                          PRNCSLRD         Cash        5,251.00          Cash PRNCSLRD                      
+  Receipt_MADA.csv                          PRNCSLRD         Mada        10,650.00         AL Jazeerah PRNCSLRD               
+  Receipt_MASTER.csv                        PRNCSLRD         Master      3,731.00          AL Jazeerah PRNCSLRD               
+  Receipt_VISA.csv                          PRNCSLRD         Visa        6,744.00          AL Jazeerah PRNCSLRD               
+  Receipt_CASH.csv                          PRNCSLRD         Cash        7,365.00          Cash PRNCSLRD                      
+  Receipt_MADA.csv                          PRNCSLRD         Mada        16,674.00         AL Jazeerah PRNCSLRD               
+  Receipt_MASTER.csv                        PRNCSLRD         Master      385.00            AL Jazeerah PRNCSLRD               
+  Receipt_VISA.csv                          PRNCSLRD         Visa        5,143.00          AL Jazeerah PRNCSLRD               
+  Receipt_CASH.csv                          PRNCSLRD         Cash        11,457.00         Cash PRNCSLRD                      
+  Receipt_MADA.csv                          PRNCSLRD         Mada        10,982.00         AL Jazeerah PRNCSLRD               
+  Receipt_MASTER.csv                        PRNCSLRD         Master      3,457.00          AL Jazeerah PRNCSLRD               
+  Receipt_VISA.csv                          PRNCSLRD         Visa        3,999.00          AL Jazeerah PRNCSLRD               
+  Receipt_CASH.csv                          PRNCSLRD         Cash        6,126.00          Cash PRNCSLRD                      
+  Receipt_MADA.csv                          PRNCSLRD         Mada        20,491.00         AL Jazeerah PRNCSLRD               
+  Receipt_MASTER.csv                        PRNCSLRD         Master      3,963.00          AL Jazeerah PRNCSLRD               
+  Receipt_VISA.csv                          PRNCSLRD         Visa        8,086.00          AL Jazeerah PRNCSLRD               
+  Receipt_CASH.csv                          PRNCSLRD         Cash        6,684.00          Cash PRNCSLRD                      
+  Receipt_MADA.csv                          PRNCSLRD         Mada        17,370.00         AL Jazeerah PRNCSLRD               
+  Receipt_MASTER.csv                        PRNCSLRD         Master      2,195.00          AL Jazeerah PRNCSLRD               
+  Receipt_VISA.csv                          PRNCSLRD         Visa        12,168.00         AL Jazeerah PRNCSLRD               
+  Receipt_CASH.csv                          PRNCSLRD         Cash        10,198.00         Cash PRNCSLRD                      
+  Receipt_MADA.csv                          PRNCSLRD         Mada        20,787.00         AL Jazeerah PRNCSLRD               
+  Receipt_MASTER.csv                        PRNCSLRD         Master      12,511.00         AL Jazeerah PRNCSLRD               
+  Receipt_VISA.csv                          PRNCSLRD         Visa        7,060.00          AL Jazeerah PRNCSLRD               
+  Receipt_CASH.csv                          PRNCSLRD         Cash        8,783.00          Cash PRNCSLRD                      
+  Receipt_MADA.csv                          PRNCSLRD         Mada        24,285.00         AL Jazeerah PRNCSLRD               
+  Receipt_MASTER.csv                        PRNCSLRD         Master      4,413.00          AL Jazeerah PRNCSLRD               
+  Receipt_VISA.csv                          PRNCSLRD         Visa        9,609.00          AL Jazeerah PRNCSLRD               
+  Receipt_CASH.csv                          PRNCSLRD         Cash        13,064.00         Cash PRNCSLRD                      
+  Receipt_MADA.csv                          PRNCSLRD         Mada        22,451.00         AL Jazeerah PRNCSLRD               
+  Receipt_MASTER.csv                        PRNCSLRD         Master      7,499.00          AL Jazeerah PRNCSLRD               
+  Receipt_VISA.csv                          PRNCSLRD         Visa        15,320.00         AL Jazeerah PRNCSLRD               
+  Receipt_CASH.csv                          PRNCSLRD         Cash        16,270.00         Cash PRNCSLRD                      
+  Receipt_MADA.csv                          PRNCSLRD         Mada        33,649.00         AL Jazeerah PRNCSLRD               
+  Receipt_MASTER.csv                        PRNCSLRD         Master      46,709.00         AL Jazeerah PRNCSLRD               
+  Receipt_VISA.csv                          PRNCSLRD         Visa        13,647.00         AL Jazeerah PRNCSLRD               
+  Receipt_CASH.csv                          PRNCSLRD         Cash        9,853.00          Cash PRNCSLRD                      
+  Receipt_MADA.csv                          PRNCSLRD         Mada        21,709.00         AL Jazeerah PRNCSLRD               
+  Receipt_MASTER.csv                        PRNCSLRD         Master      4,739.00          AL Jazeerah PRNCSLRD               
+  Receipt_VISA.csv                          PRNCSLRD         Visa        6,948.00          AL Jazeerah PRNCSLRD               
+  Receipt_CASH.csv                          PRNCSLRD         Cash        3,846.00          Cash PRNCSLRD                      
+  Receipt_MADA.csv                          PRNCSLRD         Mada        9,238.00          AL Jazeerah PRNCSLRD               
+  Receipt_MASTER.csv                        PRNCSLRD         Master      1,548.00          AL Jazeerah PRNCSLRD               
+  Receipt_VISA.csv                          PRNCSLRD         Visa        2,489.00          AL Jazeerah PRNCSLRD               
+  Receipt_CASH.csv                          PRNCSLRD         Cash        7,039.00          Cash PRNCSLRD                      
+  Receipt_MADA.csv                          PRNCSLRD         Mada        9,253.00          AL Jazeerah PRNCSLRD               
+  Receipt_MASTER.csv                        PRNCSLRD         Master      2,507.00          AL Jazeerah PRNCSLRD               
+  Receipt_VISA.csv                          PRNCSLRD         Visa        3,082.00          AL Jazeerah PRNCSLRD               
+  Receipt_CASH.csv                          PRNCSLRD         Cash        6,969.00          Cash PRNCSLRD                      
+  Receipt_MADA.csv                          PRNCSLRD         Mada        10,023.00         AL Jazeerah PRNCSLRD               
+  Receipt_MASTER.csv                        PRNCSLRD         Master      2,929.00          AL Jazeerah PRNCSLRD               
+  Receipt_VISA.csv                          PRNCSLRD         Visa        3,334.00          AL Jazeerah PRNCSLRD               
+  Receipt_CASH.csv                          PRNCSLRD         Cash        6,121.00          Cash PRNCSLRD                      
+  Receipt_MADA.csv                          PRNCSLRD         Mada        5,398.00          AL Jazeerah PRNCSLRD               
+  Receipt_MASTER.csv                        PRNCSLRD         Master      2,310.00          AL Jazeerah PRNCSLRD               
+  Receipt_VISA.csv                          PRNCSLRD         Visa        6,642.00          AL Jazeerah PRNCSLRD               
+  Receipt_CASH.csv                          PRNCSLRD         Cash        5,905.00          Cash PRNCSLRD                      
+  Receipt_MADA.csv                          PRNCSLRD         Mada        8,741.00          AL Jazeerah PRNCSLRD               
+  Receipt_MASTER.csv                        PRNCSLRD         Master      1,258.00          AL Jazeerah PRNCSLRD               
+  Receipt_VISA.csv                          PRNCSLRD         Visa        2,714.00          AL Jazeerah PRNCSLRD               
+  Receipt_CASH.csv                          PRNCSLRD         Cash        5,929.00          Cash PRNCSLRD                      
+  Receipt_MADA.csv                          PRNCSLRD         Mada        7,562.00          AL Jazeerah PRNCSLRD               
+  Receipt_MASTER.csv                        PRNCSLRD         Master      1,018.00          AL Jazeerah PRNCSLRD               
+  Receipt_VISA.csv                          PRNCSLRD         Visa        2,489.00          AL Jazeerah PRNCSLRD               
+  Receipt_CASH.csv                          PRNCSLRD         Cash        3,894.00          Cash PRNCSLRD                      
+  Receipt_MADA.csv                          PRNCSLRD         Mada        9,515.00          AL Jazeerah PRNCSLRD               
+  Receipt_MASTER.csv                        PRNCSLRD         Master      946.00            AL Jazeerah PRNCSLRD               
+  Receipt_VISA.csv                          PRNCSLRD         Visa        1,447.00          AL Jazeerah PRNCSLRD               
+  Receipt_CASH.csv                          PRNCSLRD         Cash        4,071.00          Cash PRNCSLRD                      
+  Receipt_MADA.csv                          PRNCSLRD         Mada        3,688.00          AL Jazeerah PRNCSLRD               
+  Receipt_MASTER.csv                        PRNCSLRD         Master      983.00            AL Jazeerah PRNCSLRD               
+  Receipt_VISA.csv                          PRNCSLRD         Visa        2,811.00          AL Jazeerah PRNCSLRD               
+  Receipt_CASH.csv                          PRNCSLRD         Cash        5,114.00          Cash PRNCSLRD                      
+  Receipt_MADA.csv                          PRNCSLRD         Mada        4,397.00          AL Jazeerah PRNCSLRD               
+  Receipt_MASTER.csv                        PRNCSLRD         Master      1,941.00          AL Jazeerah PRNCSLRD               
+  Receipt_VISA.csv                          PRNCSLRD         Visa        1,729.00          AL Jazeerah PRNCSLRD               
+  Receipt_CASH.csv                          PRNCSLRD         Cash        2,226.00          Cash PRNCSLRD                      
+  Receipt_MADA.csv                          PRNCSLRD         Mada        5,572.00          AL Jazeerah PRNCSLRD               
+  Receipt_MASTER.csv                        PRNCSLRD         Master      354.00            AL Jazeerah PRNCSLRD               
+  Receipt_VISA.csv                          PRNCSLRD         Visa        2,054.00          AL Jazeerah PRNCSLRD               
+  Receipt_CASH.csv                          PRNCSLRD         Cash        1,710.00          Cash PRNCSLRD                      
+  Receipt_MADA.csv                          PRNCSLRD         Mada        4,888.00          AL Jazeerah PRNCSLRD               
+  Receipt_MASTER.csv                        PRNCSLRD         Master      771.00            AL Jazeerah PRNCSLRD               
+  Receipt_VISA.csv                          PRNCSLRD         Visa        1,721.00          AL Jazeerah PRNCSLRD               
+  Receipt_CASH.csv                          REDSEA           Cash        -199.00           CashOth Mall Hail                  
+  Receipt_CASH.csv                          REDSEA           Cash        -598.00           CashOth Mall Hail                  
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            903,472.05                                           
+
+  Per-method totals:
+    Cash             33 file(s)      191,558.05 SAR
+    Mada             27 file(s)      376,503.00 SAR
+    Master           27 file(s)      173,706.00 SAR
+    Visa             27 file(s)      161,705.00 SAR
+    Grand Total                       903,472.05 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Cash         Mada       Master         Visa          TOTAL
+  ----------------------------------------------------------------------------------
+  2026-03-05          9,628       21,724        1,393        9,849         42,594
+  2026-03-06          6,248       12,774        1,324        5,592         25,938
+  2026-03-07         15,637       14,989        6,648       11,650         48,924
+  2026-03-08          7,373       18,161        6,051        4,776         36,361
+  2026-03-09          2,888       15,773       26,324        4,684         49,669
+  2026-03-10          4,625       15,759       25,799        5,918         52,101
+  2026-03-11          5,251       10,650        3,731        6,744         26,376
+  2026-03-12          7,365       16,674          385        5,143         29,567
+  2026-03-13         11,457       10,982        3,457        3,999         29,895
+  2026-03-14          6,126       20,491        3,963        8,086         38,666
+  2026-03-15          6,485       17,370        2,195       12,168         38,218
+  2026-03-16         10,198       20,787       12,511        7,060         50,556
+  2026-03-17          8,783       24,285        4,413        9,609         47,090
+  2026-03-18         13,064       22,451        7,499       15,320         58,334
+  2026-03-19         15,871       33,649       46,709       13,647        109,876
+  2026-03-20          9,853       21,709        4,739        6,948         43,249
+  2026-03-21          3,846        9,238        1,548        2,489         17,121
+  2026-03-22          7,039        9,253        2,507        3,082         21,881
+  2026-03-23          6,969       10,023        2,929        3,334         23,255
+  2026-03-24          6,121        5,398        2,310        6,642         20,471
+  2026-03-25          5,905        8,741        1,258        2,714         18,618
+  2026-03-26          5,929        7,562        1,018        2,489         16,998
+  2026-03-27          3,894        9,515          946        1,447         15,802
+  2026-03-28          4,071        3,688          983        2,811         11,553
+  2026-03-29          4,988        4,397        1,941        1,729         13,055
+  2026-03-30            234        5,572          354        2,054          8,214
+  2026-03-31          1,710        4,888          771        1,721          9,090
+  ----------------------------------------------------------------------------------
+  TOTAL             191,558      376,503      173,706      161,705        903,472
+
+  VALIDATION:
+    Payment file total (for standard receipts):       903,472.05 SAR
+    Receipt files total:                              903,472.05 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Cash            Payment:   191,558.05  Receipt:   191,558.05  Diff:     0.00  ✓
+    Mada            Payment:   376,503.00  Receipt:   376,503.00  Diff:     0.00  ✓
+    Master          Payment:   173,706.00  Receipt:   173,706.00  Diff:     0.00  ✓
+    Visa            Payment:   161,705.00  Receipt:   161,705.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (114 rows, 903,472.05 SAR)
+  Per-method grand total                   903,472.05 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 81
+    Total amount: -9,944.9111 SAR
+    Payment methods included: ['Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -9,944.9111 SAR
+    Per-method total:               -9,944.9111 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    Mada               27 rows         -2,604.9294 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             27 rows         -3,795.4752 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Visa               27 rows         -3,544.5065 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              4
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       377,526.00 SAR
+    Master                     173,706.00 SAR
+    Visa                       162,220.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                       203,678.05 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED              203,678.05 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  PRNCSLRD         Mada        21,724.00         0.01      -149.8956         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Master      1,393.00          0.02      -30.4370          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Visa        9,849.00          0.02      -215.2006         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Mada        12,774.00         0.01      -88.1406          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Master      1,324.00          0.02      -28.9294          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Visa        5,592.00          0.02      -122.1852         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Mada        14,989.00         0.01      -103.4241         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Master      6,648.00          0.02      -145.2588         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Visa        11,650.00         0.02      -254.5525         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Mada        18,161.00         0.01      -125.3109         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Master      6,051.00          0.02      -132.2143         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Visa        4,776.00          0.02      -104.3556         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Mada        15,773.00         0.01      -108.8337         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Master      26,324.00         0.02      -575.1794         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Visa        4,684.00          0.02      -102.3454         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Mada        15,759.00         0.01      -108.7371         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Master      25,799.00         0.02      -563.7081         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Visa        5,918.00          0.02      -129.3083         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Mada        10,849.00         0.01      -74.8581          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Master      3,731.00          0.02      -81.5223          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Visa        6,744.00          0.02      -147.3564         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Mada        17,134.00         0.01      -118.2246         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Master      385.00            0.02      -8.4122           AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Visa        5,143.00          0.02      -112.3745         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Mada        10,982.00         0.01      -75.7758          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Master      3,457.00          0.02      -75.5354          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Visa        3,999.00          0.02      -87.3781          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Mada        20,491.00         0.01      -141.3879         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Master      3,963.00          0.02      -86.5915          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Visa        8,452.00          0.02      -184.6762         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Mada        17,370.00         0.01      -119.8530         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Master      2,195.00          0.02      -47.9607          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Visa        12,168.00         0.02      -265.8708         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Mada        20,787.00         0.01      -143.4303         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Master      12,511.00         0.02      -273.3653         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Visa        7,060.00          0.02      -154.2610         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Mada        24,285.00         0.01      -167.5665         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Master      4,413.00          0.02      -96.4240          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Visa        9,609.00          0.02      -209.9566         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Mada        22,451.00         0.01      -154.9119         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Master      7,499.00          0.02      -163.8531         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Visa        15,320.00         0.02      -334.7420         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Mada        33,948.00         0.01      -234.2412         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Master      46,709.00         0.02      -1,020.5916       AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Visa        13,647.00         0.02      -298.1869         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Mada        21,709.00         0.01      -149.7921         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Master      4,739.00          0.02      -103.5471         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Visa        6,948.00          0.02      -151.8138         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Mada        9,238.00          0.01      -63.7422          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Master      1,548.00          0.02      -33.8238          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Visa        2,489.00          0.02      -54.3846          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Mada        9,253.00          0.01      -63.8457          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Master      2,507.00          0.02      -54.7779          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Visa        3,082.00          0.02      -67.3417          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Mada        10,023.00         0.01      -69.1587          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Master      2,929.00          0.02      -63.9986          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Visa        3,334.00          0.02      -72.8479          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Mada        5,398.00          0.01      -37.2462          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Master      2,310.00          0.02      -50.4735          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Visa        6,642.00          0.02      -145.1277         AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Mada        8,741.00          0.01      -60.3129          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Master      1,258.00          0.02      -27.4873          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Visa        2,714.00          0.02      -59.3009          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Mada        7,562.00          0.01      -52.1778          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Master      1,018.00          0.02      -22.2433          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Visa        2,489.00          0.02      -54.3846          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Mada        9,515.00          0.01      -65.6535          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Master      946.00            0.02      -20.6701          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Visa        1,447.00          0.02      -31.6169          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Mada        3,688.00          0.01      -25.4472          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Master      983.00            0.02      -21.4785          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Visa        2,811.00          0.02      -61.4203          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Mada        4,397.00          0.01      -30.3393          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Master      1,941.00          0.02      -42.4108          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Visa        1,878.00          0.02      -41.0343          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Mada        5,637.00          0.01      -38.8953          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Master      354.00            0.02      -7.7349           AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Visa        2,054.00          0.02      -44.8799          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Mada        4,888.00          0.01      -33.7272          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Master      771.00            0.02      -16.8463          AL Jazeerah PRNCSLRD          
+  PRNCSLRD         Visa        1,721.00          0.02      -37.6038          AL Jazeerah PRNCSLRD          
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -9,944.9111                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (81 rows, -9,944.9111 SAR)
+  Per-method grand total                   -9,944.9111 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  855,622.44 SAR         █
+  █  Total Standard Receipt amt               1,806,944.10 SAR       █
+  █  Difference                               951,321.66 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  855,622.44 SAR
+  Total Standard Receipt amt               1,806,944.10 SAR
+  Difference                               951,321.66 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0002334
+  >>> Next run START_TXN_SEQUENCE =        2335  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 20:54:59
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

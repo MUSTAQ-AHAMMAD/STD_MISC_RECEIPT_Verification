@@ -1,0 +1,516 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 08:44:06 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         1,325,044.55 SAR   ║
+║  [ℹ] Standard Receipt Total                   2,898,832.00 SAR   ║
+║  [✗] Amount Reconciliation                    Diff: 1,573,787.4...║
+║  [ℹ] Total Invoices                           5,467              ║
+║  [ℹ] Receipt Files Generated                  6                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          MAKKAH.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             MAKKAH_payment_line_5_to_31_March.xlsx
+  Segment 1 prefix                         51323060
+  Segment 2 prefix                         02378566
+
+  AR rows read                             20393
+  Unique invoices loaded                   5463
+  Unique transactions (BLK)                75
+  Total AR amount                          1,326,090.55 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Amex                       24            8,092.00              
+  Cash                       2318          621,354.00            
+  Mada                       1751          344,124.00            
+  Master                     701           222,964.00            
+  TABBY                      101           31,486.00             
+  TAMARA                     158           42,839.00             
+  Visa                       807           252,882.00            
+  ----------------------------------------------------------------------
+  TOTAL                      5860          1,523,741.00          
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  MAKABRAJ1                       1           -299.00             
+  MAKAHMALL2                      1           -149.00             
+  MAKAHMEJAZ                      2           -598.00             
+  MAKKAH                          5204        1,450,462.00        
+  RYDGALLER                       259         74,325.00           
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 123
+    Total amount: 1,449,416.00 SAR
+    Payment methods included: ['AMEX', 'Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:            1,449,416.00 SAR
+    Per-method total:              1,449,416.00 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    AMEX               11 rows            8,092.00 SAR  ✓
+    Cash               31 rows          621,354.00 SAR  ⚠ 4 NEGATIVE AMOUNTS!
+    Mada               27 rows          344,124.00 SAR  ✓
+    Master             27 rows          222,964.00 SAR  ✓
+    Visa               27 rows          252,882.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    259
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   6
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Cash                       621,354.00 SAR
+    Mada                       344,124.00 SAR
+    Visa                       252,882.00 SAR
+    Master                     222,964.00 SAR
+    Amex                         8,092.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TAMARA                      42,839.00 SAR
+    TABBY                       31,486.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          MAKABRAJ1        Cash        -299.00           Cash MAKABRAJ1                     
+  Receipt_CASH.csv                          MAKAHMALL2       Cash        -149.00           Cash MAKAHMALL2                    
+  Receipt_CASH.csv                          MAKAHMEJAZ       Cash        -199.00           Cash MAKAHMEJAZ                    
+  Receipt_CASH.csv                          MAKAHMEJAZ       Cash        -399.00           Cash MAKAHMEJAZ                    
+  Receipt_CASH.csv                          MAKKAH           Cash        11,599.00         CASH Makkah Mall Branch            
+  Receipt_MADA.csv                          MAKKAH           Mada        18,361.00         0022555612014                      
+  Receipt_MASTER.csv                        MAKKAH           Master      933.00            0022555612014                      
+  Receipt_VISA.csv                          MAKKAH           Visa        4,832.00          0022555612014                      
+  Receipt_CASH.csv                          MAKKAH           Cash        8,853.00          CASH Makkah Mall Branch            
+  Receipt_MADA.csv                          MAKKAH           Mada        17,123.00         0022555612014                      
+  Receipt_MASTER.csv                        MAKKAH           Master      2,081.00          0022555612014                      
+  Receipt_VISA.csv                          MAKKAH           Visa        4,308.00          0022555612014                      
+  Receipt_AMEX.csv                          MAKKAH           Amex        499.00            0022555612014                      
+  Receipt_CASH.csv                          MAKKAH           Cash        15,270.00         CASH Makkah Mall Branch            
+  Receipt_MADA.csv                          MAKKAH           Mada        17,008.00         0022555612014                      
+  Receipt_MASTER.csv                        MAKKAH           Master      6,922.00          0022555612014                      
+  Receipt_VISA.csv                          MAKKAH           Visa        5,765.00          0022555612014                      
+  Receipt_CASH.csv                          MAKKAH           Cash        15,416.00         CASH Makkah Mall Branch            
+  Receipt_MADA.csv                          MAKKAH           Mada        18,093.00         0022555612014                      
+  Receipt_MASTER.csv                        MAKKAH           Master      2,014.00          0022555612014                      
+  Receipt_VISA.csv                          MAKKAH           Visa        3,494.00          0022555612014                      
+  Receipt_CASH.csv                          MAKKAH           Cash        15,450.00         CASH Makkah Mall Branch            
+  Receipt_MADA.csv                          MAKKAH           Mada        16,572.00         0022555612014                      
+  Receipt_MASTER.csv                        MAKKAH           Master      5,396.00          0022555612014                      
+  Receipt_VISA.csv                          MAKKAH           Visa        4,960.00          0022555612014                      
+  Receipt_AMEX.csv                          MAKKAH           Amex        369.00            0022555612014                      
+  Receipt_CASH.csv                          MAKKAH           Cash        24,624.00         CASH Makkah Mall Branch            
+  Receipt_MADA.csv                          MAKKAH           Mada        20,971.00         0022555612014                      
+  Receipt_MASTER.csv                        MAKKAH           Master      10,609.00         0022555612014                      
+  Receipt_VISA.csv                          MAKKAH           Visa        19,821.00         0022555612014                      
+  Receipt_AMEX.csv                          MAKKAH           Amex        199.00            0022555612014                      
+  Receipt_CASH.csv                          MAKKAH           Cash        19,852.00         CASH Makkah Mall Branch            
+  Receipt_MADA.csv                          MAKKAH           Mada        18,515.00         0022555612014                      
+  Receipt_MASTER.csv                        MAKKAH           Master      7,552.00          0022555612014                      
+  Receipt_VISA.csv                          MAKKAH           Visa        5,771.00          0022555612014                      
+  Receipt_CASH.csv                          MAKKAH           Cash        30,232.00         CASH Makkah Mall Branch            
+  Receipt_MADA.csv                          MAKKAH           Mada        17,442.00         0022555612014                      
+  Receipt_MASTER.csv                        MAKKAH           Master      6,980.00          0022555612014                      
+  Receipt_VISA.csv                          MAKKAH           Visa        9,933.00          0022555612014                      
+  Receipt_AMEX.csv                          MAKKAH           Amex        1,002.00          0022555612014                      
+  Receipt_CASH.csv                          MAKKAH           Cash        48,882.00         CASH Makkah Mall Branch            
+  Receipt_MADA.csv                          MAKKAH           Mada        12,942.00         0022555612014                      
+  Receipt_MASTER.csv                        MAKKAH           Master      9,139.00          0022555612014                      
+  Receipt_VISA.csv                          MAKKAH           Visa        5,582.00          0022555612014                      
+  Receipt_CASH.csv                          MAKKAH           Cash        31,388.00         CASH Makkah Mall Branch            
+  Receipt_MADA.csv                          MAKKAH           Mada        18,165.00         0022555612014                      
+  Receipt_MASTER.csv                        MAKKAH           Master      8,967.00          0022555612014                      
+  Receipt_VISA.csv                          MAKKAH           Visa        12,376.00         0022555612014                      
+  Receipt_AMEX.csv                          MAKKAH           Amex        1,395.00          0022555612014                      
+  Receipt_CASH.csv                          MAKKAH           Cash        37,386.00         CASH Makkah Mall Branch            
+  Receipt_MADA.csv                          MAKKAH           Mada        22,866.00         0022555612014                      
+  Receipt_MASTER.csv                        MAKKAH           Master      13,216.00         0022555612014                      
+  Receipt_VISA.csv                          MAKKAH           Visa        15,019.00         0022555612014                      
+  Receipt_CASH.csv                          MAKKAH           Cash        39,205.00         CASH Makkah Mall Branch            
+  Receipt_MADA.csv                          MAKKAH           Mada        17,603.00         0022555612014                      
+  Receipt_MASTER.csv                        MAKKAH           Master      16,616.00         0022555612014                      
+  Receipt_VISA.csv                          MAKKAH           Visa        19,101.00         0022555612014                      
+  Receipt_AMEX.csv                          MAKKAH           Amex        719.00            0022555612014                      
+  Receipt_CASH.csv                          MAKKAH           Cash        29,995.00         CASH Makkah Mall Branch            
+  Receipt_MADA.csv                          MAKKAH           Mada        22,289.00         0022555612014                      
+  Receipt_MASTER.csv                        MAKKAH           Master      25,550.00         0022555612014                      
+  Receipt_VISA.csv                          MAKKAH           Visa        20,808.00         0022555612014                      
+  Receipt_AMEX.csv                          MAKKAH           Amex        2,009.00          0022555612014                      
+  Receipt_CASH.csv                          MAKKAH           Cash        40,315.00         CASH Makkah Mall Branch            
+  Receipt_MADA.csv                          MAKKAH           Mada        15,780.00         0022555612014                      
+  Receipt_MASTER.csv                        MAKKAH           Master      26,084.00         0022555612014                      
+  Receipt_VISA.csv                          MAKKAH           Visa        14,286.00         0022555612014                      
+  Receipt_AMEX.csv                          MAKKAH           Amex        474.00            0022555612014                      
+  Receipt_CASH.csv                          MAKKAH           Cash        38,606.00         CASH Makkah Mall Branch            
+  Receipt_MADA.csv                          MAKKAH           Mada        21,291.00         0022555612014                      
+  Receipt_MASTER.csv                        MAKKAH           Master      32,202.00         0022555612014                      
+  Receipt_VISA.csv                          MAKKAH           Visa        28,386.00         0022555612014                      
+  Receipt_AMEX.csv                          MAKKAH           Amex        299.00            0022555612014                      
+  Receipt_CASH.csv                          MAKKAH           Cash        26,663.00         CASH Makkah Mall Branch            
+  Receipt_MADA.csv                          MAKKAH           Mada        6,427.00          0022555612014                      
+  Receipt_MASTER.csv                        MAKKAH           Master      14,735.00         0022555612014                      
+  Receipt_VISA.csv                          MAKKAH           Visa        11,248.00         0022555612014                      
+  Receipt_CASH.csv                          MAKKAH           Cash        16,093.00         CASH Makkah Mall Branch            
+  Receipt_MADA.csv                          MAKKAH           Mada        3,662.00          0022555612014                      
+  Receipt_MASTER.csv                        MAKKAH           Master      7,289.00          0022555612014                      
+  Receipt_VISA.csv                          MAKKAH           Visa        5,435.00          0022555612014                      
+  Receipt_AMEX.csv                          MAKKAH           Amex        789.00            0022555612014                      
+  Receipt_CASH.csv                          MAKKAH           Cash        15,878.00         CASH Makkah Mall Branch            
+  Receipt_MADA.csv                          MAKKAH           Mada        5,803.00          0022555612014                      
+  Receipt_MASTER.csv                        MAKKAH           Master      4,375.00          0022555612014                      
+  Receipt_VISA.csv                          MAKKAH           Visa        9,135.00          0022555612014                      
+  Receipt_CASH.csv                          MAKKAH           Cash        13,874.00         CASH Makkah Mall Branch            
+  Receipt_MADA.csv                          MAKKAH           Mada        3,919.00          0022555612014                      
+  Receipt_MASTER.csv                        MAKKAH           Master      4,485.00          0022555612014                      
+  Receipt_VISA.csv                          MAKKAH           Visa        2,454.00          0022555612014                      
+  Receipt_CASH.csv                          MAKKAH           Cash        23,612.00         CASH Makkah Mall Branch            
+  Receipt_MADA.csv                          MAKKAH           Mada        5,056.00          0022555612014                      
+  Receipt_MASTER.csv                        MAKKAH           Master      4,408.00          0022555612014                      
+  Receipt_VISA.csv                          MAKKAH           Visa        15,706.00         0022555612014                      
+  Receipt_CASH.csv                          MAKKAH           Cash        10,147.00         CASH Makkah Mall Branch            
+  Receipt_MADA.csv                          MAKKAH           Mada        9,610.00          0022555612014                      
+  Receipt_MASTER.csv                        MAKKAH           Master      2,681.00          0022555612014                      
+  Receipt_VISA.csv                          MAKKAH           Visa        3,112.00          0022555612014                      
+  Receipt_CASH.csv                          MAKKAH           Cash        27,675.00         CASH Makkah Mall Branch            
+  Receipt_MADA.csv                          MAKKAH           Mada        11,733.00         0022555612014                      
+  Receipt_MASTER.csv                        MAKKAH           Master      2,987.00          0022555612014                      
+  Receipt_VISA.csv                          MAKKAH           Visa        13,301.00         0022555612014                      
+  Receipt_AMEX.csv                          MAKKAH           Amex        338.00            0022555612014                      
+  Receipt_CASH.csv                          MAKKAH           Cash        5,883.00          CASH Makkah Mall Branch            
+  Receipt_MADA.csv                          MAKKAH           Mada        3,183.00          0022555612014                      
+  Receipt_MASTER.csv                        MAKKAH           Master      808.00            0022555612014                      
+  Receipt_VISA.csv                          MAKKAH           Visa        6,144.00          0022555612014                      
+  Receipt_CASH.csv                          MAKKAH           Cash        21,337.00         CASH Makkah Mall Branch            
+  Receipt_MADA.csv                          MAKKAH           Mada        6,953.00          0022555612014                      
+  Receipt_MASTER.csv                        MAKKAH           Master      3,096.00          0022555612014                      
+  Receipt_VISA.csv                          MAKKAH           Visa        735.00            0022555612014                      
+  Receipt_CASH.csv                          MAKKAH           Cash        5,090.00          CASH Makkah Mall Branch            
+  Receipt_MADA.csv                          MAKKAH           Mada        3,347.00          0022555612014                      
+  Receipt_MASTER.csv                        MAKKAH           Master      1,857.00          0022555612014                      
+  Receipt_VISA.csv                          MAKKAH           Visa        8,527.00          0022555612014                      
+  Receipt_CASH.csv                          MAKKAH           Cash        15,968.00         CASH Makkah Mall Branch            
+  Receipt_MADA.csv                          MAKKAH           Mada        5,552.00          0022555612014                      
+  Receipt_MASTER.csv                        MAKKAH           Master      1,303.00          0022555612014                      
+  Receipt_VISA.csv                          MAKKAH           Visa        1,538.00          0022555612014                      
+  Receipt_CASH.csv                          MAKKAH           Cash        33,107.00         CASH Makkah Mall Branch            
+  Receipt_MADA.csv                          MAKKAH           Mada        3,858.00          0022555612014                      
+  Receipt_MASTER.csv                        MAKKAH           Master      679.00            0022555612014                      
+  Receipt_VISA.csv                          MAKKAH           Visa        1,105.00          0022555612014                      
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            1,449,416.00                                         
+
+  Per-method totals:
+    Amex             11 file(s)        8,092.00 SAR
+    Cash             31 file(s)      621,354.00 SAR
+    Mada             27 file(s)      344,124.00 SAR
+    Master           27 file(s)      222,964.00 SAR
+    Visa             27 file(s)      252,882.00 SAR
+    Grand Total                     1,449,416.00 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Amex         Cash         Mada       Master         Visa          TOTAL
+  ------------------------------------------------------------------------------------------------
+  2026-03-05              0       11,400       18,361          933        4,832         35,526
+  2026-03-06              0        8,554       17,123        2,081        4,308         32,066
+  2026-03-07            499       15,270       17,008        6,922        5,765         45,464
+  2026-03-08              0       15,416       18,093        2,014        3,494         39,017
+  2026-03-09              0       15,051       16,572        5,396        4,960         41,979
+  2026-03-10            369       24,624       20,971       10,609       19,821         76,394
+  2026-03-11            199       19,852       18,515        7,552        5,771         51,889
+  2026-03-12              0       30,232       17,442        6,980        9,933         64,587
+  2026-03-13          1,002       48,882       12,942        9,139        5,582         77,547
+  2026-03-14              0       31,388       18,165        8,967       12,376         70,896
+  2026-03-15          1,395       37,386       22,866       13,216       15,019         89,882
+  2026-03-16              0       39,056       17,603       16,616       19,101         92,376
+  2026-03-17            719       29,995       22,289       25,550       20,808         99,361
+  2026-03-18          2,009       40,315       15,780       26,084       14,286         98,474
+  2026-03-19            474       38,606       21,291       32,202       28,386        120,959
+  2026-03-20            299       26,663        6,427       14,735       11,248         59,372
+  2026-03-21              0       16,093        3,662        7,289        5,435         32,479
+  2026-03-22            789       15,878        5,803        4,375        9,135         35,980
+  2026-03-23              0       13,874        3,919        4,485        2,454         24,732
+  2026-03-24              0       23,612        5,056        4,408       15,706         48,782
+  2026-03-25              0       10,147        9,610        2,681        3,112         25,550
+  2026-03-26              0       27,675       11,733        2,987       13,301         55,696
+  2026-03-27            338        5,883        3,183          808        6,144         16,356
+  2026-03-28              0       21,337        6,953        3,096          735         32,121
+  2026-03-29              0        5,090        3,347        1,857        8,527         18,821
+  2026-03-30              0       15,968        5,552        1,303        1,538         24,361
+  2026-03-31              0       33,107        3,858          679        1,105         38,749
+  ------------------------------------------------------------------------------------------------
+  TOTAL               8,092      621,354      344,124      222,964      252,882      1,449,416
+
+  VALIDATION:
+    Payment file total (for standard receipts):     1,449,416.00 SAR
+    Receipt files total:                            1,449,416.00 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Amex            Payment:     8,092.00  Receipt:     8,092.00  Diff:     0.00  ✓
+    Cash            Payment:   621,354.00  Receipt:   621,354.00  Diff:     0.00  ✓
+    Mada            Payment:   344,124.00  Receipt:   344,124.00  Diff:     0.00  ✓
+    Master          Payment:   222,964.00  Receipt:   222,964.00  Diff:     0.00  ✓
+    Visa            Payment:   252,882.00  Receipt:   252,882.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (123 rows, 1,449,416.00 SAR)
+  Per-method grand total                   1,449,416.00 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 92
+    Total amount: -13,166.4932 SAR
+    Payment methods included: ['AMEX', 'Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:            -13,166.4932 SAR
+    Per-method total:              -13,166.4932 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    AMEX               11 rows           -344.3142 SAR  ⚠ 11 NEGATIVE AMOUNTS!
+    Mada               27 rows         -2,381.2452 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             27 rows         -4,889.1772 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Visa               27 rows         -5,551.7566 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              5
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       345,108.00 SAR
+    Visa                       254,085.00 SAR
+    Master                     223,761.00 SAR
+    Amex                         8,092.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                       672,578.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED              672,578.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  MAKKAH           Mada        18,583.00         0.01      -128.2227         0022555612014                 
+  MAKKAH           Master      933.00            0.02      -20.3860          0022555612014                 
+  MAKKAH           Visa        4,832.00          0.02      -105.5792         0022555612014                 
+  MAKKAH           Mada        17,123.00         0.01      -118.1487         0022555612014                 
+  MAKKAH           Master      2,081.00          0.02      -45.4699          0022555612014                 
+  MAKKAH           Visa        4,308.00          0.02      -94.1298          0022555612014                 
+  MAKKAH           Amex        499.00            0.04      -21.2324          0022555612014                 
+  MAKKAH           Mada        17,008.00         0.01      -117.3552         0022555612014                 
+  MAKKAH           Master      6,922.00          0.02      -151.2457         0022555612014                 
+  MAKKAH           Visa        5,765.00          0.02      -125.9652         0022555612014                 
+  MAKKAH           Mada        18,093.00         0.01      -124.8417         0022555612014                 
+  MAKKAH           Master      2,014.00          0.02      -44.0059          0022555612014                 
+  MAKKAH           Visa        3,494.00          0.02      -76.3439          0022555612014                 
+  MAKKAH           Mada        16,871.00         0.01      -116.4099         0022555612014                 
+  MAKKAH           Master      5,695.00          0.02      -124.4357         0022555612014                 
+  MAKKAH           Visa        5,159.00          0.02      -112.7241         0022555612014                 
+  MAKKAH           Amex        369.00            0.04      -15.7009          0022555612014                 
+  MAKKAH           Mada        20,971.00         0.01      -144.6999         0022555612014                 
+  MAKKAH           Master      10,808.00         0.02      -236.1548         0022555612014                 
+  MAKKAH           Visa        19,821.00         0.02      -433.0888         0022555612014                 
+  MAKKAH           Amex        199.00            0.04      -8.4674           0022555612014                 
+  MAKKAH           Mada        18,536.00         0.01      -127.8984         0022555612014                 
+  MAKKAH           Master      7,851.00          0.02      -171.5443         0022555612014                 
+  MAKKAH           Visa        6,345.00          0.02      -138.6382         0022555612014                 
+  MAKKAH           Mada        17,442.00         0.01      -120.3498         0022555612014                 
+  MAKKAH           Master      6,980.00          0.02      -152.5130         0022555612014                 
+  MAKKAH           Visa        9,933.00          0.02      -217.0360         0022555612014                 
+  MAKKAH           Amex        1,002.00          0.04      -42.6351          0022555612014                 
+  MAKKAH           Mada        12,942.00         0.01      -89.2998          0022555612014                 
+  MAKKAH           Master      9,139.00          0.02      -199.6871         0022555612014                 
+  MAKKAH           Visa        5,881.00          0.02      -128.4999         0022555612014                 
+  MAKKAH           Mada        18,309.00         0.01      -126.3321         0022555612014                 
+  MAKKAH           Master      8,967.00          0.02      -195.9289         0022555612014                 
+  MAKKAH           Visa        12,507.00         0.02      -273.2779         0022555612014                 
+  MAKKAH           Amex        1,395.00          0.04      -59.3572          0022555612014                 
+  MAKKAH           Mada        22,866.00         0.01      -157.7754         0022555612014                 
+  MAKKAH           Master      13,216.00         0.02      -288.7696         0022555612014                 
+  MAKKAH           Visa        15,019.00         0.02      -328.1651         0022555612014                 
+  MAKKAH           Mada        17,603.00         0.01      -121.4607         0022555612014                 
+  MAKKAH           Master      16,616.00         0.02      -363.0596         0022555612014                 
+  MAKKAH           Visa        19,101.00         0.02      -417.3568         0022555612014                 
+  MAKKAH           Amex        719.00            0.04      -30.5934          0022555612014                 
+  MAKKAH           Mada        22,587.00         0.01      -155.8503         0022555612014                 
+  MAKKAH           Master      25,550.00         0.02      -558.2675         0022555612014                 
+  MAKKAH           Visa        20,808.00         0.02      -454.6548         0022555612014                 
+  MAKKAH           Amex        2,009.00          0.04      -85.4829          0022555612014                 
+  MAKKAH           Mada        15,780.00         0.01      -108.8820         0022555612014                 
+  MAKKAH           Master      26,084.00         0.02      -569.9354         0022555612014                 
+  MAKKAH           Visa        14,286.00         0.02      -312.1491         0022555612014                 
+  MAKKAH           Amex        474.00            0.04      -20.1687          0022555612014                 
+  MAKKAH           Mada        21,291.00         0.01      -146.9079         0022555612014                 
+  MAKKAH           Master      32,202.00         0.02      -703.6137         0022555612014                 
+  MAKKAH           Visa        28,386.00         0.02      -620.2341         0022555612014                 
+  MAKKAH           Amex        299.00            0.04      -12.7224          0022555612014                 
+  MAKKAH           Mada        6,427.00          0.01      -44.3463          0022555612014                 
+  MAKKAH           Master      14,735.00         0.02      -321.9597         0022555612014                 
+  MAKKAH           Visa        11,248.00         0.02      -245.7688         0022555612014                 
+  MAKKAH           Mada        3,662.00          0.01      -25.2678          0022555612014                 
+  MAKKAH           Master      7,289.00          0.02      -159.2646         0022555612014                 
+  MAKKAH           Visa        5,435.00          0.02      -118.7547         0022555612014                 
+  MAKKAH           Amex        789.00            0.04      -33.5719          0022555612014                 
+  MAKKAH           Mada        5,803.00          0.01      -40.0407          0022555612014                 
+  MAKKAH           Master      4,375.00          0.02      -95.5937          0022555612014                 
+  MAKKAH           Visa        9,135.00          0.02      -199.5997         0022555612014                 
+  MAKKAH           Mada        3,919.00          0.01      -27.0411          0022555612014                 
+  MAKKAH           Master      4,485.00          0.02      -97.9972          0022555612014                 
+  MAKKAH           Visa        2,454.00          0.02      -53.6199          0022555612014                 
+  MAKKAH           Mada        5,056.00          0.01      -34.8864          0022555612014                 
+  MAKKAH           Master      4,408.00          0.02      -96.3148          0022555612014                 
+  MAKKAH           Visa        15,706.00         0.02      -343.1761         0022555612014                 
+  MAKKAH           Mada        9,610.00          0.01      -66.3090          0022555612014                 
+  MAKKAH           Master      2,681.00          0.02      -58.5798          0022555612014                 
+  MAKKAH           Visa        3,112.00          0.02      -67.9972          0022555612014                 
+  MAKKAH           Mada        11,733.00         0.01      -80.9577          0022555612014                 
+  MAKKAH           Master      2,987.00          0.02      -65.2659          0022555612014                 
+  MAKKAH           Visa        13,301.00         0.02      -290.6268         0022555612014                 
+  MAKKAH           Amex        338.00            0.04      -14.3819          0022555612014                 
+  MAKKAH           Mada        3,183.00          0.01      -21.9627          0022555612014                 
+  MAKKAH           Master      808.00            0.02      -17.6548          0022555612014                 
+  MAKKAH           Visa        6,144.00          0.02      -134.2464         0022555612014                 
+  MAKKAH           Mada        6,953.00          0.01      -47.9757          0022555612014                 
+  MAKKAH           Master      3,096.00          0.02      -67.6476          0022555612014                 
+  MAKKAH           Visa        735.00            0.02      -16.0597          0022555612014                 
+  MAKKAH           Mada        3,347.00          0.01      -23.0943          0022555612014                 
+  MAKKAH           Master      1,857.00          0.02      -40.5754          0022555612014                 
+  MAKKAH           Visa        8,527.00          0.02      -186.3149         0022555612014                 
+  MAKKAH           Mada        5,552.00          0.01      -38.3088          0022555612014                 
+  MAKKAH           Master      1,303.00          0.02      -28.4705          0022555612014                 
+  MAKKAH           Visa        1,538.00          0.02      -33.6053          0022555612014                 
+  MAKKAH           Mada        3,858.00          0.01      -26.6202          0022555612014                 
+  MAKKAH           Master      679.00            0.02      -14.8361          0022555612014                 
+  MAKKAH           Visa        1,105.00          0.02      -24.1442          0022555612014                 
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -13,166.4932                                    
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (92 rows, -13,166.4932 SAR)
+  Per-method grand total                   -13,166.4932 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  1,325,044.55 SAR       █
+  █  Total Standard Receipt amt               2,898,832.00 SAR       █
+  █  Difference                               1,573,787.45 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  1,325,044.55 SAR
+  Total Standard Receipt amt               2,898,832.00 SAR
+  Difference                               1,573,787.45 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0000744
+  >>> Next run START_TXN_SEQUENCE =        745  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 20:44:16
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
