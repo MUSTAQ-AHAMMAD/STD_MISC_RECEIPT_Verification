@@ -1,0 +1,4 @@
+﻿"ReceiptNumber","ReceiptMethod","ReceiptDate","BusinessUnit","CustomerAccountNumber","CustomerSite","Amount","Currency","RemittanceBankAccountNumber","AccountingDate"
+"Master-BLKU-0004434","Master","2026-04-27","AlQurashi-KSA","105012","91003","1698.0","SAR","157-95017321-YASMEENPLZ","2026-04-27"
+"Master-BLKU-0004431","Master","2026-10-01","AlQurashi-KSA","105012","91003","199.0","SAR","157-95017321-YASMEENPLZ","2026-10-01"
+"Master-BLKU-0004432","Master","2026-11-01","AlQurashi-KSA","105012","91003","299.0","SAR","157-95017321-YASMEENPLZ","2026-11-01"

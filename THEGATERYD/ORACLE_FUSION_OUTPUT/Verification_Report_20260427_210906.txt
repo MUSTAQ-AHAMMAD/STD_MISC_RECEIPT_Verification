@@ -1,0 +1,475 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 09:09:04 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         202,648.71 SAR     ║
+║  [ℹ] Standard Receipt Total                   429,664.00 SAR     ║
+║  [✗] Amount Reconciliation                    Diff: 227,015.29 SAR║
+║  [ℹ] Total Invoices                           1,000              ║
+║  [ℹ] Receipt Files Generated                  6                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          THEGATERYD.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             THEGATERYD_Payment_Lines_5_to_31_March.xlsx
+  Segment 1 prefix                         84266804
+  Segment 2 prefix                         24340869
+
+  AR rows read                             4320
+  Unique invoices loaded                   999
+  Unique transactions (BLK)                58
+  Total AR amount                          202,947.71 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Amex                       1             598.00                
+  Cash                       120           15,886.00             
+  Mada                       553           122,626.00            
+  Master                     57            14,290.00             
+  TABBY                      44            13,556.00             
+  TAMARA                     16            4,609.00              
+  Visa                       238           61,432.00             
+  ----------------------------------------------------------------------
+  TOTAL                      1029          232,997.00            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  RYDGALLER                       60          18,165.00           
+  TALAMALL                        1           -299.00             
+  THEGATERYD                      939         215,131.00          
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 101
+    Total amount: 214,832.00 SAR
+    Payment methods included: ['AMEX', 'Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              214,832.00 SAR
+    Per-method total:                214,832.00 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    AMEX                1 rows              598.00 SAR  ✓
+    Cash               25 rows           15,886.00 SAR  ⚠ 3 NEGATIVE AMOUNTS!
+    Mada               27 rows          122,626.00 SAR  ✓
+    Master             22 rows           14,290.00 SAR  ⚠ 1 NEGATIVE AMOUNTS!
+    Visa               26 rows           61,432.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    60
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   6
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       122,626.00 SAR
+    Visa                        61,432.00 SAR
+    Cash                        15,886.00 SAR
+    Master                      14,290.00 SAR
+    Amex                           598.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TABBY                       13,556.00 SAR
+    TAMARA                       4,609.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          TALAMALL         Cash        -299.00           CashOth Mall Hail                  
+  Receipt_CASH.csv                          THEGATERYD       Cash        1,258.00          Cash THEGATERYD                    
+  Receipt_MADA.csv                          THEGATERYD       Mada        3,648.00          157-95017321-THEGATERYD            
+  Receipt_MASTER.csv                        THEGATERYD       Master      825.00            157-95017321-THEGATERYD            
+  Receipt_VISA.csv                          THEGATERYD       Visa        1,573.00          157-95017321-THEGATERYD            
+  Receipt_CASH.csv                          THEGATERYD       Cash        873.00            Cash THEGATERYD                    
+  Receipt_MADA.csv                          THEGATERYD       Mada        4,924.00          157-95017321-THEGATERYD            
+  Receipt_MASTER.csv                        THEGATERYD       Master      299.00            157-95017321-THEGATERYD            
+  Receipt_VISA.csv                          THEGATERYD       Visa        1,762.00          157-95017321-THEGATERYD            
+  Receipt_CASH.csv                          THEGATERYD       Cash        -1.00             Cash THEGATERYD                    
+  Receipt_MADA.csv                          THEGATERYD       Mada        4,148.00          157-95017321-THEGATERYD            
+  Receipt_MASTER.csv                        THEGATERYD       Master      1,894.00          157-95017321-THEGATERYD            
+  Receipt_VISA.csv                          THEGATERYD       Visa        3,927.00          157-95017321-THEGATERYD            
+  Receipt_CASH.csv                          THEGATERYD       Cash        0.00              Cash THEGATERYD                    
+  Receipt_MADA.csv                          THEGATERYD       Mada        5,189.00          157-95017321-THEGATERYD            
+  Receipt_MASTER.csv                        THEGATERYD       Master      274.00            157-95017321-THEGATERYD            
+  Receipt_VISA.csv                          THEGATERYD       Visa        3,179.00          157-95017321-THEGATERYD            
+  Receipt_CASH.csv                          THEGATERYD       Cash        461.00            Cash THEGATERYD                    
+  Receipt_MADA.csv                          THEGATERYD       Mada        3,934.00          157-95017321-THEGATERYD            
+  Receipt_MASTER.csv                        THEGATERYD       Master      450.00            157-95017321-THEGATERYD            
+  Receipt_VISA.csv                          THEGATERYD       Visa        3,574.00          157-95017321-THEGATERYD            
+  Receipt_CASH.csv                          THEGATERYD       Cash        390.00            Cash THEGATERYD                    
+  Receipt_MADA.csv                          THEGATERYD       Mada        6,031.00          157-95017321-THEGATERYD            
+  Receipt_MASTER.csv                        THEGATERYD       Master      596.00            157-95017321-THEGATERYD            
+  Receipt_VISA.csv                          THEGATERYD       Visa        2,321.00          157-95017321-THEGATERYD            
+  Receipt_CASH.csv                          THEGATERYD       Cash        100.00            Cash THEGATERYD                    
+  Receipt_MADA.csv                          THEGATERYD       Mada        5,283.00          157-95017321-THEGATERYD            
+  Receipt_MASTER.csv                        THEGATERYD       Master      385.00            157-95017321-THEGATERYD            
+  Receipt_VISA.csv                          THEGATERYD       Visa        3,446.00          157-95017321-THEGATERYD            
+  Receipt_CASH.csv                          THEGATERYD       Cash        610.00            Cash THEGATERYD                    
+  Receipt_MADA.csv                          THEGATERYD       Mada        4,627.00          157-95017321-THEGATERYD            
+  Receipt_MASTER.csv                        THEGATERYD       Master      234.00            157-95017321-THEGATERYD            
+  Receipt_VISA.csv                          THEGATERYD       Visa        1,707.00          157-95017321-THEGATERYD            
+  Receipt_CASH.csv                          THEGATERYD       Cash        1,871.00          Cash THEGATERYD                    
+  Receipt_MADA.csv                          THEGATERYD       Mada        4,586.00          157-95017321-THEGATERYD            
+  Receipt_MASTER.csv                        THEGATERYD       Master      1,246.00          157-95017321-THEGATERYD            
+  Receipt_VISA.csv                          THEGATERYD       Visa        4,863.00          157-95017321-THEGATERYD            
+  Receipt_CASH.csv                          THEGATERYD       Cash        851.00            Cash THEGATERYD                    
+  Receipt_MADA.csv                          THEGATERYD       Mada        5,015.00          157-95017321-THEGATERYD            
+  Receipt_MASTER.csv                        THEGATERYD       Master      1,884.00          157-95017321-THEGATERYD            
+  Receipt_VISA.csv                          THEGATERYD       Visa        3,742.00          157-95017321-THEGATERYD            
+  Receipt_CASH.csv                          THEGATERYD       Cash        995.00            Cash THEGATERYD                    
+  Receipt_MADA.csv                          THEGATERYD       Mada        6,650.00          157-95017321-THEGATERYD            
+  Receipt_MASTER.csv                        THEGATERYD       Master      897.00            157-95017321-THEGATERYD            
+  Receipt_VISA.csv                          THEGATERYD       Visa        4,653.00          157-95017321-THEGATERYD            
+  Receipt_CASH.csv                          THEGATERYD       Cash        0.00              Cash THEGATERYD                    
+  Receipt_MADA.csv                          THEGATERYD       Mada        7,020.00          157-95017321-THEGATERYD            
+  Receipt_MASTER.csv                        THEGATERYD       Master      801.00            157-95017321-THEGATERYD            
+  Receipt_VISA.csv                          THEGATERYD       Visa        2,717.00          157-95017321-THEGATERYD            
+  Receipt_CASH.csv                          THEGATERYD       Cash        183.00            Cash THEGATERYD                    
+  Receipt_MADA.csv                          THEGATERYD       Mada        7,216.00          157-95017321-THEGATERYD            
+  Receipt_MASTER.csv                        THEGATERYD       Master      2,236.00          157-95017321-THEGATERYD            
+  Receipt_VISA.csv                          THEGATERYD       Visa        4,405.00          157-95017321-THEGATERYD            
+  Receipt_CASH.csv                          THEGATERYD       Cash        2,461.00          Cash THEGATERYD                    
+  Receipt_MADA.csv                          THEGATERYD       Mada        9,728.00          157-95017321-THEGATERYD            
+  Receipt_MASTER.csv                        THEGATERYD       Master      238.00            157-95017321-THEGATERYD            
+  Receipt_VISA.csv                          THEGATERYD       Visa        3,150.00          157-95017321-THEGATERYD            
+  Receipt_CASH.csv                          THEGATERYD       Cash        1,318.00          Cash THEGATERYD                    
+  Receipt_MADA.csv                          THEGATERYD       Mada        11,859.00         157-95017321-THEGATERYD            
+  Receipt_MASTER.csv                        THEGATERYD       Master      746.00            157-95017321-THEGATERYD            
+  Receipt_VISA.csv                          THEGATERYD       Visa        5,141.00          157-95017321-THEGATERYD            
+  Receipt_AMEX.csv                          THEGATERYD       Amex        598.00            157-95017321-THEGATERYD            
+  Receipt_CASH.csv                          THEGATERYD       Cash        1,522.00          Cash THEGATERYD                    
+  Receipt_MADA.csv                          THEGATERYD       Mada        6,001.00          157-95017321-THEGATERYD            
+  Receipt_MASTER.csv                        THEGATERYD       Master      -598.00           157-95017321-THEGATERYD            
+  Receipt_VISA.csv                          THEGATERYD       Visa        4,134.00          157-95017321-THEGATERYD            
+  Receipt_CASH.csv                          THEGATERYD       Cash        794.00            Cash THEGATERYD                    
+  Receipt_MADA.csv                          THEGATERYD       Mada        3,123.00          157-95017321-THEGATERYD            
+  Receipt_MASTER.csv                        THEGATERYD       Master      99.00             157-95017321-THEGATERYD            
+  Receipt_VISA.csv                          THEGATERYD       Visa        379.00            157-95017321-THEGATERYD            
+  Receipt_CASH.csv                          THEGATERYD       Cash        803.00            Cash THEGATERYD                    
+  Receipt_MADA.csv                          THEGATERYD       Mada        3,147.00          157-95017321-THEGATERYD            
+  Receipt_MASTER.csv                        THEGATERYD       Master      896.00            157-95017321-THEGATERYD            
+  Receipt_VISA.csv                          THEGATERYD       Visa        2,541.00          157-95017321-THEGATERYD            
+  Receipt_CASH.csv                          THEGATERYD       Cash        -78.00            Cash THEGATERYD                    
+  Receipt_MADA.csv                          THEGATERYD       Mada        3,527.00          157-95017321-THEGATERYD            
+  Receipt_MASTER.csv                        THEGATERYD       Master      299.00            157-95017321-THEGATERYD            
+  Receipt_VISA.csv                          THEGATERYD       Visa        701.00            157-95017321-THEGATERYD            
+  Receipt_CASH.csv                          THEGATERYD       Cash        199.00            Cash THEGATERYD                    
+  Receipt_MADA.csv                          THEGATERYD       Mada        2,851.00          157-95017321-THEGATERYD            
+  Receipt_MASTER.csv                        THEGATERYD       Master      230.00            157-95017321-THEGATERYD            
+  Receipt_VISA.csv                          THEGATERYD       Visa        389.00            157-95017321-THEGATERYD            
+  Receipt_CASH.csv                          THEGATERYD       Cash        379.00            Cash THEGATERYD                    
+  Receipt_MADA.csv                          THEGATERYD       Mada        2,882.00          157-95017321-THEGATERYD            
+  Receipt_MASTER.csv                        THEGATERYD       Master      301.00            157-95017321-THEGATERYD            
+  Receipt_CASH.csv                          THEGATERYD       Cash        399.00            Cash THEGATERYD                    
+  Receipt_MADA.csv                          THEGATERYD       Mada        3,031.00          157-95017321-THEGATERYD            
+  Receipt_VISA.csv                          THEGATERYD       Visa        808.00            157-95017321-THEGATERYD            
+  Receipt_MADA.csv                          THEGATERYD       Mada        2,903.00          157-95017321-THEGATERYD            
+  Receipt_MASTER.csv                        THEGATERYD       Master      58.00             157-95017321-THEGATERYD            
+  Receipt_VISA.csv                          THEGATERYD       Visa        362.00            157-95017321-THEGATERYD            
+  Receipt_CASH.csv                          THEGATERYD       Cash        598.00            Cash THEGATERYD                    
+  Receipt_MADA.csv                          THEGATERYD       Mada        1,779.00          157-95017321-THEGATERYD            
+  Receipt_VISA.csv                          THEGATERYD       Visa        813.00            157-95017321-THEGATERYD            
+  Receipt_MADA.csv                          THEGATERYD       Mada        2,216.00          157-95017321-THEGATERYD            
+  Receipt_VISA.csv                          THEGATERYD       Visa        880.00            157-95017321-THEGATERYD            
+  Receipt_CASH.csv                          THEGATERYD       Cash        199.00            Cash THEGATERYD                    
+  Receipt_MADA.csv                          THEGATERYD       Mada        683.00            157-95017321-THEGATERYD            
+  Receipt_VISA.csv                          THEGATERYD       Visa        178.00            157-95017321-THEGATERYD            
+  Receipt_MADA.csv                          THEGATERYD       Mada        625.00            157-95017321-THEGATERYD            
+  Receipt_VISA.csv                          THEGATERYD       Visa        87.00             157-95017321-THEGATERYD            
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            214,832.00                                           
+
+  Per-method totals:
+    Amex              1 file(s)          598.00 SAR
+    Cash             25 file(s)       15,886.00 SAR
+    Mada             27 file(s)      122,626.00 SAR
+    Master           22 file(s)       14,290.00 SAR
+    Visa             26 file(s)       61,432.00 SAR
+    Grand Total                       214,832.00 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Amex         Cash         Mada       Master         Visa          TOTAL
+  ------------------------------------------------------------------------------------------------
+  2026-03-05              0          959        3,648          825        1,573          7,005
+  2026-03-06              0          873        4,924          299        1,762          7,858
+  2026-03-07              0           -1        4,148        1,894        3,927          9,968
+  2026-03-08              0            0        5,189          274        3,179          8,642
+  2026-03-09              0          461        3,934          450        3,574          8,419
+  2026-03-10              0          390        6,031          596        2,321          9,338
+  2026-03-11              0          100        5,283          385        3,446          9,214
+  2026-03-12              0          610        4,627          234        1,707          7,178
+  2026-03-13              0        1,871        4,586        1,246        4,863         12,566
+  2026-03-14              0          851        5,015        1,884        3,742         11,492
+  2026-03-15              0          995        6,650          897        4,653         13,195
+  2026-03-16              0            0        7,020          801        2,717         10,538
+  2026-03-17              0          183        7,216        2,236        4,405         14,040
+  2026-03-18              0        2,461        9,728          238        3,150         15,577
+  2026-03-19              0        1,318       11,859          746        5,141         19,064
+  2026-03-20            598        1,522        6,001         -598        4,134         11,657
+  2026-03-21              0          794        3,123           99          379          4,395
+  2026-03-22              0          803        3,147          896        2,541          7,387
+  2026-03-23              0          -78        3,527          299          701          4,449
+  2026-03-24              0          199        2,851          230          389          3,669
+  2026-03-25              0          379        2,882          301            0          3,562
+  2026-03-26              0          399        3,031            0          808          4,238
+  2026-03-27              0            0        2,903           58          362          3,323
+  2026-03-28              0          598        1,779            0          813          3,190
+  2026-03-29              0            0        2,216            0          880          3,096
+  2026-03-30              0          199          683            0          178          1,060
+  2026-03-31              0            0          625            0           87            712
+  ------------------------------------------------------------------------------------------------
+  TOTAL                 598       15,886      122,626       14,290       61,432        214,832
+
+  VALIDATION:
+    Payment file total (for standard receipts):       214,832.00 SAR
+    Receipt files total:                              214,832.00 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Amex            Payment:       598.00  Receipt:       598.00  Diff:     0.00  ✓
+    Cash            Payment:    15,886.00  Receipt:    15,886.00  Diff:     0.00  ✓
+    Mada            Payment:   122,626.00  Receipt:   122,626.00  Diff:     0.00  ✓
+    Master          Payment:    14,290.00  Receipt:    14,290.00  Diff:     0.00  ✓
+    Visa            Payment:    61,432.00  Receipt:    61,432.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (101 rows, 214,832.00 SAR)
+  Per-method grand total                   214,832.00 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 75
+    Total amount: -2,545.7608 SAR
+    Payment methods included: ['AMEX', 'Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -2,545.7608 SAR
+    Per-method total:               -2,545.7608 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    AMEX                1 rows            -25.4449 SAR  ⚠ 1 NEGATIVE AMOUNTS!
+    Mada               27 rows           -847.3062 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             21 rows           -330.7212 SAR  ⚠ 21 NEGATIVE AMOUNTS!
+    Visa               26 rows         -1,342.2885 SAR  ⚠ 26 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              5
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       122,798.00 SAR
+    Visa                        61,432.00 SAR
+    Master                      15,136.00 SAR
+    Amex                           598.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                        21,680.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED               21,680.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  THEGATERYD       Mada        3,648.00          0.01      -25.1712          157-95017321-THEGATERYD       
+  THEGATERYD       Master      825.00            0.02      -18.0262          157-95017321-THEGATERYD       
+  THEGATERYD       Visa        1,573.00          0.02      -34.3700          157-95017321-THEGATERYD       
+  THEGATERYD       Mada        4,924.00          0.01      -33.9756          157-95017321-THEGATERYD       
+  THEGATERYD       Master      299.00            0.02      -6.5331           157-95017321-THEGATERYD       
+  THEGATERYD       Visa        1,762.00          0.02      -38.4997          157-95017321-THEGATERYD       
+  THEGATERYD       Mada        4,148.00          0.01      -28.6212          157-95017321-THEGATERYD       
+  THEGATERYD       Master      1,894.00          0.02      -41.3839          157-95017321-THEGATERYD       
+  THEGATERYD       Visa        3,927.00          0.02      -85.8049          157-95017321-THEGATERYD       
+  THEGATERYD       Mada        5,189.00          0.01      -35.8041          157-95017321-THEGATERYD       
+  THEGATERYD       Master      274.00            0.02      -5.9869           157-95017321-THEGATERYD       
+  THEGATERYD       Visa        3,179.00          0.02      -69.4611          157-95017321-THEGATERYD       
+  THEGATERYD       Mada        3,934.00          0.01      -27.1446          157-95017321-THEGATERYD       
+  THEGATERYD       Master      450.00            0.02      -9.8325           157-95017321-THEGATERYD       
+  THEGATERYD       Visa        3,574.00          0.02      -78.0919          157-95017321-THEGATERYD       
+  THEGATERYD       Mada        6,031.00          0.01      -41.6139          157-95017321-THEGATERYD       
+  THEGATERYD       Master      596.00            0.02      -13.0226          157-95017321-THEGATERYD       
+  THEGATERYD       Visa        2,321.00          0.02      -50.7138          157-95017321-THEGATERYD       
+  THEGATERYD       Mada        5,283.00          0.01      -36.4527          157-95017321-THEGATERYD       
+  THEGATERYD       Master      385.00            0.02      -8.4122           157-95017321-THEGATERYD       
+  THEGATERYD       Visa        3,446.00          0.02      -75.2951          157-95017321-THEGATERYD       
+  THEGATERYD       Mada        4,627.00          0.01      -31.9263          157-95017321-THEGATERYD       
+  THEGATERYD       Master      234.00            0.02      -5.1129           157-95017321-THEGATERYD       
+  THEGATERYD       Visa        1,707.00          0.02      -37.2980          157-95017321-THEGATERYD       
+  THEGATERYD       Mada        4,586.00          0.01      -31.6434          157-95017321-THEGATERYD       
+  THEGATERYD       Master      1,246.00          0.02      -27.2251          157-95017321-THEGATERYD       
+  THEGATERYD       Visa        4,863.00          0.02      -106.2565         157-95017321-THEGATERYD       
+  THEGATERYD       Mada        5,015.00          0.01      -34.6035          157-95017321-THEGATERYD       
+  THEGATERYD       Master      1,884.00          0.02      -41.1654          157-95017321-THEGATERYD       
+  THEGATERYD       Visa        3,742.00          0.02      -81.7627          157-95017321-THEGATERYD       
+  THEGATERYD       Mada        6,650.00          0.01      -45.8850          157-95017321-THEGATERYD       
+  THEGATERYD       Master      897.00            0.02      -19.5994          157-95017321-THEGATERYD       
+  THEGATERYD       Visa        4,653.00          0.02      -101.6680         157-95017321-THEGATERYD       
+  THEGATERYD       Mada        7,066.00          0.01      -48.7554          157-95017321-THEGATERYD       
+  THEGATERYD       Master      1,049.00          0.02      -22.9206          157-95017321-THEGATERYD       
+  THEGATERYD       Visa        2,717.00          0.02      -59.3664          157-95017321-THEGATERYD       
+  THEGATERYD       Mada        7,216.00          0.01      -49.7904          157-95017321-THEGATERYD       
+  THEGATERYD       Master      2,236.00          0.02      -48.8566          157-95017321-THEGATERYD       
+  THEGATERYD       Visa        4,405.00          0.02      -96.2492          157-95017321-THEGATERYD       
+  THEGATERYD       Mada        9,728.00          0.01      -67.1232          157-95017321-THEGATERYD       
+  THEGATERYD       Master      238.00            0.02      -5.2003           157-95017321-THEGATERYD       
+  THEGATERYD       Visa        3,150.00          0.02      -68.8275          157-95017321-THEGATERYD       
+  THEGATERYD       Mada        11,859.00         0.01      -81.8271          157-95017321-THEGATERYD       
+  THEGATERYD       Master      746.00            0.02      -16.3001          157-95017321-THEGATERYD       
+  THEGATERYD       Visa        5,141.00          0.02      -112.3308         157-95017321-THEGATERYD       
+  THEGATERYD       Amex        598.00            0.04      -25.4449          157-95017321-THEGATERYD       
+  THEGATERYD       Mada        6,001.00          0.01      -41.4069          157-95017321-THEGATERYD       
+  THEGATERYD       Visa        4,134.00          0.02      -90.3279          157-95017321-THEGATERYD       
+  THEGATERYD       Mada        3,123.00          0.01      -21.5487          157-95017321-THEGATERYD       
+  THEGATERYD       Master      99.00             0.02      -2.1631           157-95017321-THEGATERYD       
+  THEGATERYD       Visa        379.00            0.02      -8.2811           157-95017321-THEGATERYD       
+  THEGATERYD       Mada        3,147.00          0.01      -21.7143          157-95017321-THEGATERYD       
+  THEGATERYD       Master      896.00            0.02      -19.5776          157-95017321-THEGATERYD       
+  THEGATERYD       Visa        2,541.00          0.02      -55.5208          157-95017321-THEGATERYD       
+  THEGATERYD       Mada        3,527.00          0.01      -24.3363          157-95017321-THEGATERYD       
+  THEGATERYD       Master      299.00            0.02      -6.5331           157-95017321-THEGATERYD       
+  THEGATERYD       Visa        701.00            0.02      -15.3168          157-95017321-THEGATERYD       
+  THEGATERYD       Mada        2,851.00          0.01      -19.6719          157-95017321-THEGATERYD       
+  THEGATERYD       Master      230.00            0.02      -5.0255           157-95017321-THEGATERYD       
+  THEGATERYD       Visa        389.00            0.02      -8.4996           157-95017321-THEGATERYD       
+  THEGATERYD       Mada        3,008.00          0.01      -20.7552          157-95017321-THEGATERYD       
+  THEGATERYD       Master      301.00            0.02      -6.5768           157-95017321-THEGATERYD       
+  THEGATERYD       Mada        3,031.00          0.01      -20.9139          157-95017321-THEGATERYD       
+  THEGATERYD       Visa        808.00            0.02      -17.6548          157-95017321-THEGATERYD       
+  THEGATERYD       Mada        2,903.00          0.01      -20.0307          157-95017321-THEGATERYD       
+  THEGATERYD       Master      58.00             0.02      -1.2673           157-95017321-THEGATERYD       
+  THEGATERYD       Visa        362.00            0.02      -7.9097           157-95017321-THEGATERYD       
+  THEGATERYD       Mada        1,779.00          0.01      -12.2751          157-95017321-THEGATERYD       
+  THEGATERYD       Visa        813.00            0.02      -17.7640          157-95017321-THEGATERYD       
+  THEGATERYD       Mada        2,216.00          0.01      -15.2904          157-95017321-THEGATERYD       
+  THEGATERYD       Visa        880.00            0.02      -19.2280          157-95017321-THEGATERYD       
+  THEGATERYD       Mada        683.00            0.01      -4.7127           157-95017321-THEGATERYD       
+  THEGATERYD       Visa        178.00            0.02      -3.8893           157-95017321-THEGATERYD       
+  THEGATERYD       Mada        625.00            0.01      -4.3125           157-95017321-THEGATERYD       
+  THEGATERYD       Visa        87.00             0.02      -1.9009           157-95017321-THEGATERYD       
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -2,545.7608                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (75 rows, -2,545.7608 SAR)
+  Per-method grand total                   -2,545.7608 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  202,648.71 SAR         █
+  █  Total Standard Receipt amt               429,664.00 SAR         █
+  █  Difference                               227,015.29 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  202,648.71 SAR
+  Total Standard Receipt amt               429,664.00 SAR
+  Difference                               227,015.29 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0004868
+  >>> Next run START_TXN_SEQUENCE =        4869  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 21:09:06
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

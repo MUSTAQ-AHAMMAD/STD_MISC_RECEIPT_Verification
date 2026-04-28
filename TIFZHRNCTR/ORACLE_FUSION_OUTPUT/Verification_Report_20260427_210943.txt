@@ -1,0 +1,422 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 09:09:40 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         262,851.88 SAR     ║
+║  [ℹ] Standard Receipt Total                   557,048.00 SAR     ║
+║  [✗] Amount Reconciliation                    Diff: 294,196.12 SAR║
+║  [ℹ] Total Invoices                           1,560              ║
+║  [ℹ] Receipt Files Generated                  5                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          TIFZHRNCTR.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             TIFZHRNCTR_Payment_lines_5-31.xlsx
+  Segment 1 prefix                         47792297
+  Segment 2 prefix                         95683365
+
+  AR rows read                             5478
+  Unique invoices loaded                   1559
+  Unique transactions (BLK)                54
+  Total AR amount                          263,191.88 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Cash                       614           94,997.00             
+  Mada                       887           169,747.00            
+  Master                     11            2,388.00              
+  TABBY                      24            5,968.00              
+  TAMARA                     71            18,687.00             
+  Visa                       52            11,392.00             
+  ----------------------------------------------------------------------
+  TOTAL                      1659          303,179.00            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  RYDGALLER                       95          24,655.00           
+  TAIFSHARST                      1           -340.00             
+  TIFZHRNCTR                      1464        278,864.00          
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 79
+    Total amount: 278,524.00 SAR
+    Payment methods included: ['Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              278,524.00 SAR
+    Per-method total:                278,524.00 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    Cash               27 rows           94,997.00 SAR  ⚠ 1 NEGATIVE AMOUNTS!
+    Mada               26 rows          169,747.00 SAR  ✓
+    Master              8 rows            2,388.00 SAR  ✓
+    Visa               18 rows           11,392.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    95
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   5
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       169,747.00 SAR
+    Cash                        94,997.00 SAR
+    Visa                        11,392.00 SAR
+    Master                       2,388.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TAMARA                      18,687.00 SAR
+    TABBY                        5,968.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          TAIFSHARST       Cash        -340.00           Cash TAIFSHARST                    
+  Receipt_CASH.csv                          TIFZHRNCTR       Cash        2,475.00          Cash TIFZHRNCTR#                   
+  Receipt_MADA.csv                          TIFZHRNCTR       Mada        8,134.00          AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_VISA.csv                          TIFZHRNCTR       Visa        1,146.00          AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_CASH.csv                          TIFZHRNCTR       Cash        3,822.00          Cash TIFZHRNCTR#                   
+  Receipt_MADA.csv                          TIFZHRNCTR       Mada        22,054.00         AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_CASH.csv                          TIFZHRNCTR       Cash        5,404.00          Cash TIFZHRNCTR#                   
+  Receipt_MADA.csv                          TIFZHRNCTR       Mada        7,894.00          AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_VISA.csv                          TIFZHRNCTR       Visa        141.00            AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_CASH.csv                          TIFZHRNCTR       Cash        3,318.00          Cash TIFZHRNCTR#                   
+  Receipt_MADA.csv                          TIFZHRNCTR       Mada        11,280.00         AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_MASTER.csv                        TIFZHRNCTR       Master      180.00            AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_VISA.csv                          TIFZHRNCTR       Visa        531.00            AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_CASH.csv                          TIFZHRNCTR       Cash        3,623.00          Cash TIFZHRNCTR#                   
+  Receipt_MADA.csv                          TIFZHRNCTR       Mada        10,589.00         AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_VISA.csv                          TIFZHRNCTR       Visa        398.00            AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_CASH.csv                          TIFZHRNCTR       Cash        4,925.00          Cash TIFZHRNCTR#                   
+  Receipt_MADA.csv                          TIFZHRNCTR       Mada        13,093.00         AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_VISA.csv                          TIFZHRNCTR       Visa        1,056.00          AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_CASH.csv                          TIFZHRNCTR       Cash        3,829.00          Cash TIFZHRNCTR#                   
+  Receipt_MADA.csv                          TIFZHRNCTR       Mada        11,279.00         AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_VISA.csv                          TIFZHRNCTR       Visa        398.00            AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_CASH.csv                          TIFZHRNCTR       Cash        6,231.00          Cash TIFZHRNCTR#                   
+  Receipt_MADA.csv                          TIFZHRNCTR       Mada        7,710.00          AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_MASTER.csv                        TIFZHRNCTR       Master      199.00            AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_VISA.csv                          TIFZHRNCTR       Visa        794.00            AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_CASH.csv                          TIFZHRNCTR       Cash        8,120.00          Cash TIFZHRNCTR#                   
+  Receipt_MADA.csv                          TIFZHRNCTR       Mada        6,412.00          AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_MASTER.csv                        TIFZHRNCTR       Master      199.00            AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_VISA.csv                          TIFZHRNCTR       Visa        967.00            AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_CASH.csv                          TIFZHRNCTR       Cash        5,999.00          Cash TIFZHRNCTR#                   
+  Receipt_MADA.csv                          TIFZHRNCTR       Mada        10,282.00         AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_MASTER.csv                        TIFZHRNCTR       Master      160.00            AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_VISA.csv                          TIFZHRNCTR       Visa        733.00            AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_CASH.csv                          TIFZHRNCTR       Cash        5,704.00          Cash TIFZHRNCTR#                   
+  Receipt_MADA.csv                          TIFZHRNCTR       Mada        8,323.00          AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_VISA.csv                          TIFZHRNCTR       Visa        199.00            AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_CASH.csv                          TIFZHRNCTR       Cash        10,518.00         Cash TIFZHRNCTR#                   
+  Receipt_MADA.csv                          TIFZHRNCTR       Mada        11,463.00         AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_MASTER.csv                        TIFZHRNCTR       Master      293.00            AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_CASH.csv                          TIFZHRNCTR       Cash        7,449.00          Cash TIFZHRNCTR#                   
+  Receipt_MADA.csv                          TIFZHRNCTR       Mada        6,837.00          AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_MASTER.csv                        TIFZHRNCTR       Master      698.00            AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_VISA.csv                          TIFZHRNCTR       Visa        545.00            AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_CASH.csv                          TIFZHRNCTR       Cash        5,267.00          Cash TIFZHRNCTR#                   
+  Receipt_MADA.csv                          TIFZHRNCTR       Mada        8,359.00          AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_MASTER.csv                        TIFZHRNCTR       Master      509.00            AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_VISA.csv                          TIFZHRNCTR       Visa        496.00            AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_CASH.csv                          TIFZHRNCTR       Cash        8,301.00          Cash TIFZHRNCTR#                   
+  Receipt_MADA.csv                          TIFZHRNCTR       Mada        13,428.00         AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_VISA.csv                          TIFZHRNCTR       Visa        619.00            AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_CASH.csv                          TIFZHRNCTR       Cash        4,461.00          Cash TIFZHRNCTR#                   
+  Receipt_MADA.csv                          TIFZHRNCTR       Mada        3,148.00          AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_MASTER.csv                        TIFZHRNCTR       Master      150.00            AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_VISA.csv                          TIFZHRNCTR       Visa        1,519.00          AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_CASH.csv                          TIFZHRNCTR       Cash        383.00            Cash TIFZHRNCTR#                   
+  Receipt_MADA.csv                          TIFZHRNCTR       Mada        1,719.00          AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_VISA.csv                          TIFZHRNCTR       Visa        435.00            AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_CASH.csv                          TIFZHRNCTR       Cash        768.00            Cash TIFZHRNCTR#                   
+  Receipt_MADA.csv                          TIFZHRNCTR       Mada        1,105.00          AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_CASH.csv                          TIFZHRNCTR       Cash        984.00            Cash TIFZHRNCTR#                   
+  Receipt_MADA.csv                          TIFZHRNCTR       Mada        722.00            AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_VISA.csv                          TIFZHRNCTR       Visa        987.00            AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_CASH.csv                          TIFZHRNCTR       Cash        503.00            Cash TIFZHRNCTR#                   
+  Receipt_MADA.csv                          TIFZHRNCTR       Mada        115.00            AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_CASH.csv                          TIFZHRNCTR       Cash        386.00            Cash TIFZHRNCTR#                   
+  Receipt_MADA.csv                          TIFZHRNCTR       Mada        487.00            AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_VISA.csv                          TIFZHRNCTR       Visa        180.00            AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_CASH.csv                          TIFZHRNCTR       Cash        991.00            Cash TIFZHRNCTR#                   
+  Receipt_MADA.csv                          TIFZHRNCTR       Mada        1,784.00          AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_CASH.csv                          TIFZHRNCTR       Cash        360.00            Cash TIFZHRNCTR#                   
+  Receipt_MADA.csv                          TIFZHRNCTR       Mada        1,291.00          AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_CASH.csv                          TIFZHRNCTR       Cash        649.00            Cash TIFZHRNCTR#                   
+  Receipt_MADA.csv                          TIFZHRNCTR       Mada        562.00            AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_CASH.csv                          TIFZHRNCTR       Cash        344.00            Cash TIFZHRNCTR#                   
+  Receipt_MADA.csv                          TIFZHRNCTR       Mada        1,351.00          AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_CASH.csv                          TIFZHRNCTR       Cash        523.00            Cash TIFZHRNCTR#                   
+  Receipt_MADA.csv                          TIFZHRNCTR       Mada        326.00            AL Jazeerah Bank TIFZHRNCTR#       
+  Receipt_VISA.csv                          TIFZHRNCTR       Visa        248.00            AL Jazeerah Bank TIFZHRNCTR#       
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            278,524.00                                           
+
+  Per-method totals:
+    Cash             27 file(s)       94,997.00 SAR
+    Mada             26 file(s)      169,747.00 SAR
+    Master            8 file(s)        2,388.00 SAR
+    Visa             18 file(s)       11,392.00 SAR
+    Grand Total                       278,524.00 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Cash         Mada       Master         Visa          TOTAL
+  ----------------------------------------------------------------------------------
+  2026-03-05          2,475        8,134            0        1,146         11,755
+  2026-03-06          3,822       22,054            0            0         25,876
+  2026-03-07          5,404        7,894            0          141         13,439
+  2026-03-08          3,318       11,280          180          531         15,309
+  2026-03-09          3,623       10,589            0          398         14,610
+  2026-03-10          4,925       13,093            0        1,056         19,074
+  2026-03-11          3,829       11,279            0          398         15,506
+  2026-03-12          6,231        7,710          199          794         14,934
+  2026-03-13          8,120        6,412          199          967         15,698
+  2026-03-14          5,999       10,282          160          733         17,174
+  2026-03-15          5,704        8,323            0          199         14,226
+  2026-03-16         10,178       11,463          293            0         21,934
+  2026-03-17          7,449        6,837          698          545         15,529
+  2026-03-18          5,267        8,359          509          496         14,631
+  2026-03-19          8,301       13,428            0          619         22,348
+  2026-03-20          4,461        3,148          150        1,519          9,278
+  2026-03-21            383        1,719            0          435          2,537
+  2026-03-22            768        1,105            0            0          1,873
+  2026-03-23            984          722            0          987          2,693
+  2026-03-24            503          115            0            0            618
+  2026-03-25            386          487            0          180          1,053
+  2026-03-27            991        1,784            0            0          2,775
+  2026-03-28            360        1,291            0            0          1,651
+  2026-03-29            649          562            0            0          1,211
+  2026-03-30            344        1,351            0            0          1,695
+  2026-03-31            523          326            0          248          1,097
+  ----------------------------------------------------------------------------------
+  TOTAL              94,997      169,747        2,388       11,392        278,524
+
+  VALIDATION:
+    Payment file total (for standard receipts):       278,524.00 SAR
+    Receipt files total:                              278,524.00 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Cash            Payment:    94,997.00  Receipt:    94,997.00  Diff:     0.00  ✓
+    Mada            Payment:   169,747.00  Receipt:   169,747.00  Diff:     0.00  ✓
+    Master          Payment:     2,388.00  Receipt:     2,388.00  Diff:     0.00  ✓
+    Visa            Payment:    11,392.00  Receipt:    11,392.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (79 rows, 278,524.00 SAR)
+  Per-method grand total                   278,524.00 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 52
+    Total amount: -1,472.3467 SAR
+    Payment methods included: ['Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -1,472.3467 SAR
+    Per-method total:               -1,472.3467 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    Mada               26 rows         -1,171.2543 SAR  ⚠ 26 NEGATIVE AMOUNTS!
+    Master              8 rows            -52.1777 SAR  ⚠ 8 NEGATIVE AMOUNTS!
+    Visa               18 rows           -248.9147 SAR  ⚠ 18 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              4
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       169,747.00 SAR
+    Visa                        11,392.00 SAR
+    Master                       2,388.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                       101,947.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED              101,947.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  TIFZHRNCTR       Mada        8,134.00          0.01      -56.1246          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Visa        1,146.00          0.02      -25.0401          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Mada        22,054.00         0.01      -152.1726         AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Mada        7,894.00          0.01      -54.4686          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Visa        141.00            0.02      -3.0808           AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Mada        11,280.00         0.01      -77.8320          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Master      180.00            0.02      -3.9330           AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Visa        531.00            0.02      -11.6023          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Mada        10,589.00         0.01      -73.0641          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Visa        398.00            0.02      -8.6963           AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Mada        13,093.00         0.01      -90.3417          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Visa        1,056.00          0.02      -23.0736          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Mada        11,279.00         0.01      -77.8251          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Visa        398.00            0.02      -8.6963           AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Mada        7,710.00          0.01      -53.1990          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Master      199.00            0.02      -4.3481           AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Visa        794.00            0.02      -17.3489          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Mada        6,412.00          0.01      -44.2428          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Master      199.00            0.02      -4.3481           AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Visa        967.00            0.02      -21.1289          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Mada        10,282.00         0.01      -70.9458          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Master      160.00            0.02      -3.4960           AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Visa        733.00            0.02      -16.0160          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Mada        8,323.00          0.01      -57.4287          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Visa        199.00            0.02      -4.3481           AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Mada        11,463.00         0.01      -79.0947          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Master      293.00            0.02      -6.4021           AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Mada        6,837.00          0.01      -47.1753          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Master      698.00            0.02      -15.2513          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Visa        545.00            0.02      -11.9082          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Mada        8,359.00          0.01      -57.6771          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Master      509.00            0.02      -11.1216          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Visa        496.00            0.02      -10.8376          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Mada        13,428.00         0.01      -92.6532          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Visa        619.00            0.02      -13.5251          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Mada        3,148.00          0.01      -21.7212          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Master      150.00            0.02      -3.2775           AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Visa        1,519.00          0.02      -33.1901          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Mada        1,719.00          0.01      -11.8611          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Visa        435.00            0.02      -9.5047           AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Mada        1,105.00          0.01      -7.6245           AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Mada        722.00            0.01      -4.9818           AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Visa        987.00            0.02      -21.5659          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Mada        115.00            0.01      -0.7935           AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Mada        487.00            0.01      -3.3603           AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Visa        180.00            0.02      -3.9330           AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Mada        1,784.00          0.01      -12.3096          AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Mada        1,291.00          0.01      -8.9079           AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Mada        562.00            0.01      -3.8778           AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Mada        1,351.00          0.01      -9.3219           AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Mada        326.00            0.01      -2.2494           AL Jazeerah Bank TIFZHRNCTR#  
+  TIFZHRNCTR       Visa        248.00            0.02      -5.4188           AL Jazeerah Bank TIFZHRNCTR#  
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -1,472.3467                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (52 rows, -1,472.3467 SAR)
+  Per-method grand total                   -1,472.3467 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  262,851.88 SAR         █
+  █  Total Standard Receipt amt               557,048.00 SAR         █
+  █  Difference                               294,196.12 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  262,851.88 SAR
+  Total Standard Receipt amt               557,048.00 SAR
+  Difference                               294,196.12 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0007712
+  >>> Next run START_TXN_SEQUENCE =        7713  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 21:09:43
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

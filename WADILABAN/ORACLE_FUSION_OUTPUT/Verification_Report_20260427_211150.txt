@@ -1,0 +1,471 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 09:11:47 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         359,849.37 SAR     ║
+║  [ℹ] Standard Receipt Total                   724,420.00 SAR     ║
+║  [✗] Amount Reconciliation                    Diff: 364,570.63 SAR║
+║  [ℹ] Total Invoices                           1,296              ║
+║  [ℹ] Receipt Files Generated                  5                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          WADILABAN.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             WADILABAN_payment_line_5_to_31_March.xlsx
+  Segment 1 prefix                         27917682
+  Segment 2 prefix                         95644434
+
+  AR rows read                             5986
+  Unique invoices loaded                   1296
+  Unique transactions (BLK)                72
+  Total AR amount                          359,849.37 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Cash                       100           33,899.00             
+  Mada                       833           228,179.00            
+  Master                     77            22,581.00             
+  TABBY                      95            27,785.00             
+  TAMARA                     74            23,684.00             
+  Visa                       209           77,551.00             
+  ----------------------------------------------------------------------
+  TOTAL                      1388          413,679.00            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  RYDGALLER                       169         51,469.00           
+  WADILABAN                       1127        362,210.00          
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 102
+    Total amount: 362,210.00 SAR
+    Payment methods included: ['Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              362,210.00 SAR
+    Per-method total:                362,210.00 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    Cash               24 rows           33,899.00 SAR  ✓
+    Mada               27 rows          228,179.00 SAR  ✓
+    Master             24 rows           22,581.00 SAR  ✓
+    Visa               27 rows           77,551.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    169
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   5
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       228,179.00 SAR
+    Visa                        77,551.00 SAR
+    Cash                        33,899.00 SAR
+    Master                      22,581.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TABBY                       27,785.00 SAR
+    TAMARA                      23,684.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          WADILABAN        Cash        927.00            Cash WADILABAN                     
+  Receipt_MADA.csv                          WADILABAN        Mada        5,419.00          015795017321049                    
+  Receipt_MASTER.csv                        WADILABAN        Master      314.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          WADILABAN        Visa        1,278.00          015795017321049                    
+  Receipt_CASH.csv                          WADILABAN        Cash        206.00            Cash WADILABAN                     
+  Receipt_MADA.csv                          WADILABAN        Mada        6,712.00          015795017321049                    
+  Receipt_MASTER.csv                        WADILABAN        Master      908.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          WADILABAN        Visa        1,686.00          015795017321049                    
+  Receipt_CASH.csv                          WADILABAN        Cash        2,697.00          Cash WADILABAN                     
+  Receipt_MADA.csv                          WADILABAN        Mada        12,268.00         015795017321049                    
+  Receipt_MASTER.csv                        WADILABAN        Master      541.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          WADILABAN        Visa        1,518.00          015795017321049                    
+  Receipt_CASH.csv                          WADILABAN        Cash        3,492.00          Cash WADILABAN                     
+  Receipt_MADA.csv                          WADILABAN        Mada        10,061.00         015795017321049                    
+  Receipt_MASTER.csv                        WADILABAN        Master      2,249.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          WADILABAN        Visa        3,096.00          015795017321049                    
+  Receipt_CASH.csv                          WADILABAN        Cash        302.00            Cash WADILABAN                     
+  Receipt_MADA.csv                          WADILABAN        Mada        11,331.00         015795017321049                    
+  Receipt_MASTER.csv                        WADILABAN        Master      115.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          WADILABAN        Visa        1,351.00          015795017321049                    
+  Receipt_CASH.csv                          WADILABAN        Cash        485.00            Cash WADILABAN                     
+  Receipt_MADA.csv                          WADILABAN        Mada        9,876.00          015795017321049                    
+  Receipt_MASTER.csv                        WADILABAN        Master      1,416.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          WADILABAN        Visa        4,184.00          015795017321049                    
+  Receipt_CASH.csv                          WADILABAN        Cash        363.00            Cash WADILABAN                     
+  Receipt_MADA.csv                          WADILABAN        Mada        8,797.00          015795017321049                    
+  Receipt_MASTER.csv                        WADILABAN        Master      65.00             AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          WADILABAN        Visa        3,868.00          015795017321049                    
+  Receipt_CASH.csv                          WADILABAN        Cash        875.00            Cash WADILABAN                     
+  Receipt_MADA.csv                          WADILABAN        Mada        6,740.00          015795017321049                    
+  Receipt_MASTER.csv                        WADILABAN        Master      415.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          WADILABAN        Visa        1,075.00          015795017321049                    
+  Receipt_CASH.csv                          WADILABAN        Cash        2,024.00          Cash WADILABAN                     
+  Receipt_MADA.csv                          WADILABAN        Mada        7,469.00          015795017321049                    
+  Receipt_VISA.csv                          WADILABAN        Visa        2,434.00          015795017321049                    
+  Receipt_CASH.csv                          WADILABAN        Cash        8,385.00          Cash WADILABAN                     
+  Receipt_MADA.csv                          WADILABAN        Mada        13,459.00         015795017321049                    
+  Receipt_MASTER.csv                        WADILABAN        Master      796.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          WADILABAN        Visa        3,684.00          015795017321049                    
+  Receipt_CASH.csv                          WADILABAN        Cash        1,512.00          Cash WADILABAN                     
+  Receipt_MADA.csv                          WADILABAN        Mada        11,275.00         015795017321049                    
+  Receipt_MASTER.csv                        WADILABAN        Master      498.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          WADILABAN        Visa        1,427.00          015795017321049                    
+  Receipt_CASH.csv                          WADILABAN        Cash        1,065.00          Cash WADILABAN                     
+  Receipt_MADA.csv                          WADILABAN        Mada        10,246.00         015795017321049                    
+  Receipt_MASTER.csv                        WADILABAN        Master      400.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          WADILABAN        Visa        6,380.00          015795017321049                    
+  Receipt_CASH.csv                          WADILABAN        Cash        2,826.00          Cash WADILABAN                     
+  Receipt_MADA.csv                          WADILABAN        Mada        13,304.00         015795017321049                    
+  Receipt_MASTER.csv                        WADILABAN        Master      1,691.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          WADILABAN        Visa        3,954.00          015795017321049                    
+  Receipt_CASH.csv                          WADILABAN        Cash        662.00            Cash WADILABAN                     
+  Receipt_MADA.csv                          WADILABAN        Mada        13,888.00         015795017321049                    
+  Receipt_MASTER.csv                        WADILABAN        Master      146.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          WADILABAN        Visa        2,312.00          015795017321049                    
+  Receipt_CASH.csv                          WADILABAN        Cash        2,133.00          Cash WADILABAN                     
+  Receipt_MADA.csv                          WADILABAN        Mada        17,551.00         015795017321049                    
+  Receipt_MASTER.csv                        WADILABAN        Master      1,283.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          WADILABAN        Visa        5,116.00          015795017321049                    
+  Receipt_CASH.csv                          WADILABAN        Cash        1,330.00          Cash WADILABAN                     
+  Receipt_MADA.csv                          WADILABAN        Mada        9,211.00          015795017321049                    
+  Receipt_MASTER.csv                        WADILABAN        Master      999.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          WADILABAN        Visa        3,806.00          015795017321049                    
+  Receipt_MADA.csv                          WADILABAN        Mada        2,496.00          015795017321049                    
+  Receipt_MASTER.csv                        WADILABAN        Master      693.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          WADILABAN        Visa        718.00            015795017321049                    
+  Receipt_CASH.csv                          WADILABAN        Cash        99.00             Cash WADILABAN                     
+  Receipt_MADA.csv                          WADILABAN        Mada        2,379.00          015795017321049                    
+  Receipt_MASTER.csv                        WADILABAN        Master      459.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          WADILABAN        Visa        1,711.00          015795017321049                    
+  Receipt_CASH.csv                          WADILABAN        Cash        204.00            Cash WADILABAN                     
+  Receipt_MADA.csv                          WADILABAN        Mada        5,105.00          015795017321049                    
+  Receipt_MASTER.csv                        WADILABAN        Master      908.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          WADILABAN        Visa        20.00             015795017321049                    
+  Receipt_MADA.csv                          WADILABAN        Mada        6,318.00          015795017321049                    
+  Receipt_MASTER.csv                        WADILABAN        Master      270.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          WADILABAN        Visa        3,180.00          015795017321049                    
+  Receipt_CASH.csv                          WADILABAN        Cash        1,702.00          Cash WADILABAN                     
+  Receipt_MADA.csv                          WADILABAN        Mada        4,120.00          015795017321049                    
+  Receipt_MASTER.csv                        WADILABAN        Master      497.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          WADILABAN        Visa        1,785.00          015795017321049                    
+  Receipt_MADA.csv                          WADILABAN        Mada        3,685.00          015795017321049                    
+  Receipt_MASTER.csv                        WADILABAN        Master      334.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          WADILABAN        Visa        459.00            015795017321049                    
+  Receipt_CASH.csv                          WADILABAN        Cash        678.00            Cash WADILABAN                     
+  Receipt_MADA.csv                          WADILABAN        Mada        5,463.00          015795017321049                    
+  Receipt_MASTER.csv                        WADILABAN        Master      758.00            AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          WADILABAN        Visa        99.00             015795017321049                    
+  Receipt_CASH.csv                          WADILABAN        Cash        63.00             Cash WADILABAN                     
+  Receipt_MADA.csv                          WADILABAN        Mada        6,088.00          015795017321049                    
+  Receipt_VISA.csv                          WADILABAN        Visa        298.00            015795017321049                    
+  Receipt_CASH.csv                          WADILABAN        Cash        192.00            Cash WADILABAN                     
+  Receipt_MADA.csv                          WADILABAN        Mada        5,843.00          015795017321049                    
+  Receipt_MASTER.csv                        WADILABAN        Master      99.00             AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          WADILABAN        Visa        978.00            015795017321049                    
+  Receipt_CASH.csv                          WADILABAN        Cash        920.00            Cash WADILABAN                     
+  Receipt_MADA.csv                          WADILABAN        Mada        1,199.00          015795017321049                    
+  Receipt_VISA.csv                          WADILABAN        Visa        2,234.00          015795017321049                    
+  Receipt_CASH.csv                          WADILABAN        Cash        757.00            Cash WADILABAN                     
+  Receipt_MADA.csv                          WADILABAN        Mada        17,876.00         015795017321049                    
+  Receipt_MASTER.csv                        WADILABAN        Master      6,727.00          AL Jazeerah Bank MJMAKRMMAL        
+  Receipt_VISA.csv                          WADILABAN        Visa        18,900.00         015795017321049                    
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            362,210.00                                           
+
+  Per-method totals:
+    Cash             24 file(s)       33,899.00 SAR
+    Mada             27 file(s)      228,179.00 SAR
+    Master           24 file(s)       22,581.00 SAR
+    Visa             27 file(s)       77,551.00 SAR
+    Grand Total                       362,210.00 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Cash         Mada       Master         Visa          TOTAL
+  ----------------------------------------------------------------------------------
+  2026-03-05            927        5,419          314        1,278          7,938
+  2026-03-06            206        6,712          908        1,686          9,512
+  2026-03-07          2,697       12,268          541        1,518         17,024
+  2026-03-08          3,492       10,061        2,249        3,096         18,898
+  2026-03-09            302       11,331          115        1,351         13,099
+  2026-03-10            485        9,876        1,416        4,184         15,961
+  2026-03-11            363        8,797           65        3,868         13,093
+  2026-03-12            875        6,740          415        1,075          9,105
+  2026-03-13          2,024        7,469            0        2,434         11,927
+  2026-03-14          8,385       13,459          796        3,684         26,324
+  2026-03-15          1,512       11,275          498        1,427         14,712
+  2026-03-16          1,065       10,246          400        6,380         18,091
+  2026-03-17          2,826       13,304        1,691        3,954         21,775
+  2026-03-18            662       13,888          146        2,312         17,008
+  2026-03-19          2,133       17,551        1,283        5,116         26,083
+  2026-03-20          1,330        9,211          999        3,806         15,346
+  2026-03-21              0        2,496          693          718          3,907
+  2026-03-22             99        2,379          459        1,711          4,648
+  2026-03-23            204        5,105          908           20          6,237
+  2026-03-24              0        6,318          270        3,180          9,768
+  2026-03-25          1,702        4,120          497        1,785          8,104
+  2026-03-26              0        3,685          334          459          4,478
+  2026-03-27            678        5,463          758           99          6,998
+  2026-03-28             63        6,088            0          298          6,449
+  2026-03-29            192        5,843           99          978          7,112
+  2026-03-30            920        1,199            0        2,234          4,353
+  2026-03-31            757       17,876        6,727       18,900         44,260
+  ----------------------------------------------------------------------------------
+  TOTAL              33,899      228,179       22,581       77,551        362,210
+
+  VALIDATION:
+    Payment file total (for standard receipts):       362,210.00 SAR
+    Receipt files total:                              362,210.00 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Cash            Payment:    33,899.00  Receipt:    33,899.00  Diff:     0.00  ✓
+    Mada            Payment:   228,179.00  Receipt:   228,179.00  Diff:     0.00  ✓
+    Master          Payment:    22,581.00  Receipt:    22,581.00  Diff:     0.00  ✓
+    Visa            Payment:    77,551.00  Receipt:    77,551.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (102 rows, 362,210.00 SAR)
+  Per-method grand total                   362,210.00 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 78
+    Total amount: -3,773.8001 SAR
+    Payment methods included: ['Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -3,773.8001 SAR
+    Per-method total:               -3,773.8001 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    Mada               27 rows         -1,575.0354 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             24 rows           -497.7425 SAR  ⚠ 24 NEGATIVE AMOUNTS!
+    Visa               27 rows         -1,701.0222 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              4
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       228,266.00 SAR
+    Visa                        77,850.00 SAR
+    Master                      22,780.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                        37,790.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED               37,790.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  WADILABAN        Mada        5,419.00          0.01      -37.3911          015795017321049               
+  WADILABAN        Master      314.00            0.02      -6.8609           AL Jazeerah Bank MJMAKRMMAL   
+  WADILABAN        Visa        1,278.00          0.02      -27.9243          015795017321049               
+  WADILABAN        Mada        6,712.00          0.01      -46.3128          015795017321049               
+  WADILABAN        Master      908.00            0.02      -19.8398          AL Jazeerah Bank MJMAKRMMAL   
+  WADILABAN        Visa        1,686.00          0.02      -36.8391          015795017321049               
+  WADILABAN        Mada        12,268.00         0.01      -84.6492          015795017321049               
+  WADILABAN        Master      541.00            0.02      -11.8208          AL Jazeerah Bank MJMAKRMMAL   
+  WADILABAN        Visa        1,518.00          0.02      -33.1683          015795017321049               
+  WADILABAN        Mada        10,061.00         0.01      -69.4209          015795017321049               
+  WADILABAN        Master      2,249.00          0.02      -49.1407          AL Jazeerah Bank MJMAKRMMAL   
+  WADILABAN        Visa        3,096.00          0.02      -67.6476          015795017321049               
+  WADILABAN        Mada        11,331.00         0.01      -78.1839          015795017321049               
+  WADILABAN        Master      115.00            0.02      -2.5128           AL Jazeerah Bank MJMAKRMMAL   
+  WADILABAN        Visa        1,351.00          0.02      -29.5193          015795017321049               
+  WADILABAN        Mada        9,876.00          0.01      -68.1444          015795017321049               
+  WADILABAN        Master      1,416.00          0.02      -30.9396          AL Jazeerah Bank MJMAKRMMAL   
+  WADILABAN        Visa        4,184.00          0.02      -91.4204          015795017321049               
+  WADILABAN        Mada        8,797.00          0.01      -60.6993          015795017321049               
+  WADILABAN        Master      65.00             0.02      -1.4202           AL Jazeerah Bank MJMAKRMMAL   
+  WADILABAN        Visa        3,868.00          0.02      -84.5158          015795017321049               
+  WADILABAN        Mada        6,740.00          0.01      -46.5060          015795017321049               
+  WADILABAN        Master      415.00            0.02      -9.0677           AL Jazeerah Bank MJMAKRMMAL   
+  WADILABAN        Visa        1,075.00          0.02      -23.4887          015795017321049               
+  WADILABAN        Mada        7,469.00          0.01      -51.5361          015795017321049               
+  WADILABAN        Visa        2,434.00          0.02      -53.1829          015795017321049               
+  WADILABAN        Mada        13,459.00         0.01      -92.8671          015795017321049               
+  WADILABAN        Master      796.00            0.02      -17.3926          AL Jazeerah Bank MJMAKRMMAL   
+  WADILABAN        Visa        3,684.00          0.02      -80.4954          015795017321049               
+  WADILABAN        Mada        11,275.00         0.01      -77.7975          015795017321049               
+  WADILABAN        Master      498.00            0.02      -10.8813          AL Jazeerah Bank MJMAKRMMAL   
+  WADILABAN        Visa        1,427.00          0.02      -31.1799          015795017321049               
+  WADILABAN        Mada        10,246.00         0.01      -70.6974          015795017321049               
+  WADILABAN        Master      599.00            0.02      -13.0881          AL Jazeerah Bank MJMAKRMMAL   
+  WADILABAN        Visa        6,380.00          0.02      -139.4030         015795017321049               
+  WADILABAN        Mada        13,304.00         0.01      -91.7976          015795017321049               
+  WADILABAN        Master      1,691.00          0.02      -36.9483          AL Jazeerah Bank MJMAKRMMAL   
+  WADILABAN        Visa        3,954.00          0.02      -86.3949          015795017321049               
+  WADILABAN        Mada        13,888.00         0.01      -95.8272          015795017321049               
+  WADILABAN        Master      146.00            0.02      -3.1901           AL Jazeerah Bank MJMAKRMMAL   
+  WADILABAN        Visa        2,312.00          0.02      -50.5172          015795017321049               
+  WADILABAN        Mada        17,638.00         0.01      -121.7022         015795017321049               
+  WADILABAN        Master      1,283.00          0.02      -28.0335          AL Jazeerah Bank MJMAKRMMAL   
+  WADILABAN        Visa        5,116.00          0.02      -111.7846         015795017321049               
+  WADILABAN        Mada        9,211.00          0.01      -63.5559          015795017321049               
+  WADILABAN        Master      999.00            0.02      -21.8281          AL Jazeerah Bank MJMAKRMMAL   
+  WADILABAN        Visa        3,806.00          0.02      -83.1611          015795017321049               
+  WADILABAN        Mada        2,496.00          0.01      -17.2224          015795017321049               
+  WADILABAN        Master      693.00            0.02      -15.1420          AL Jazeerah Bank MJMAKRMMAL   
+  WADILABAN        Visa        718.00            0.02      -15.6883          015795017321049               
+  WADILABAN        Mada        2,379.00          0.01      -16.4151          015795017321049               
+  WADILABAN        Master      459.00            0.02      -10.0291          AL Jazeerah Bank MJMAKRMMAL   
+  WADILABAN        Visa        1,711.00          0.02      -37.3853          015795017321049               
+  WADILABAN        Mada        5,105.00          0.01      -35.2245          015795017321049               
+  WADILABAN        Master      908.00            0.02      -19.8398          AL Jazeerah Bank MJMAKRMMAL   
+  WADILABAN        Visa        20.00             0.02      -0.4370           015795017321049               
+  WADILABAN        Mada        6,318.00          0.01      -43.5942          015795017321049               
+  WADILABAN        Master      270.00            0.02      -5.8995           AL Jazeerah Bank MJMAKRMMAL   
+  WADILABAN        Visa        3,180.00          0.02      -69.4830          015795017321049               
+  WADILABAN        Mada        4,120.00          0.01      -28.4280          015795017321049               
+  WADILABAN        Master      497.00            0.02      -10.8594          AL Jazeerah Bank MJMAKRMMAL   
+  WADILABAN        Visa        2,084.00          0.02      -45.5354          015795017321049               
+  WADILABAN        Mada        3,685.00          0.01      -25.4265          015795017321049               
+  WADILABAN        Master      334.00            0.02      -7.2979           AL Jazeerah Bank MJMAKRMMAL   
+  WADILABAN        Visa        459.00            0.02      -10.0291          015795017321049               
+  WADILABAN        Mada        5,463.00          0.01      -37.6947          015795017321049               
+  WADILABAN        Master      758.00            0.02      -16.5623          AL Jazeerah Bank MJMAKRMMAL   
+  WADILABAN        Visa        99.00             0.02      -2.1631           015795017321049               
+  WADILABAN        Mada        6,088.00          0.01      -42.0072          015795017321049               
+  WADILABAN        Visa        298.00            0.02      -6.5113           015795017321049               
+  WADILABAN        Mada        5,843.00          0.01      -40.3167          015795017321049               
+  WADILABAN        Master      99.00             0.02      -2.1631           AL Jazeerah Bank MJMAKRMMAL   
+  WADILABAN        Visa        978.00            0.02      -21.3693          015795017321049               
+  WADILABAN        Mada        1,199.00          0.01      -8.2731           015795017321049               
+  WADILABAN        Visa        2,234.00          0.02      -48.8129          015795017321049               
+  WADILABAN        Mada        17,876.00         0.01      -123.3444         015795017321049               
+  WADILABAN        Master      6,727.00          0.02      -146.9849         AL Jazeerah Bank MJMAKRMMAL   
+  WADILABAN        Visa        18,900.00         0.02      -412.9650         015795017321049               
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -3,773.8001                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (78 rows, -3,773.8001 SAR)
+  Per-method grand total                   -3,773.8001 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  359,849.37 SAR         █
+  █  Total Standard Receipt amt               724,420.00 SAR         █
+  █  Difference                               364,570.63 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  359,849.37 SAR
+  Total Standard Receipt amt               724,420.00 SAR
+  Difference                               364,570.63 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0001946
+  >>> Next run START_TXN_SEQUENCE =        1947  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 21:11:50
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝

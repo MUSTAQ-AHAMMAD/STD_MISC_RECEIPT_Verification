@@ -1,0 +1,470 @@
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                    ORACLE FUSION FINANCIAL INTEGRATION                                   ║
+║                         VERIFICATION REPORT                                              ║
+║                                                                                          ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║  Report Generated    : Monday, April 27, 2026 at 09:06:56 PM                             ║
+║  Report Type         : Accounts Receivable & Receipt Validation                          ║
+║  System Version      : v2.5.0 - Enhanced Verification                                    ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              EXECUTIVE SUMMARY                                           ║
+╠══════════════════════════════════════════════════════════════════════════════════════════╣
+║                                                                                          ║
+║  Overall Status      : ✗ ACTION REQUIRED                                                 ║
+║  Assessment          : 1 critical issue(s) must be resolved                              ║
+║                                                                                          ║
+╠──────────────────────────────────────────────────────────────────────────────────────────╣
+║  Validation Metrics  :                                                                   ║
+║                                                                                          ║
+║      Total Checks           :   5                                                            ║
+║      Passed  [✓]            :   0   (  0.0%)                                              ║
+║      Failed  [✗]            :   1                                                            ║
+║      Warnings [⚠]           :   0                                                            ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════╗
+║               QUICK VERIFICATION CHECKLIST                           ║
+║               (For Manual Review)                                    ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Overall Status: ⚠ ISSUES NEED REVIEW                               ║
+║  Passed: 0    |  Failed: 1    |  Warnings: 0                     ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  [ℹ] AR Invoice Total                         519,867.08 SAR     ║
+║  [ℹ] Standard Receipt Total                   1,071,894.00 SAR   ║
+║  [✗] Amount Reconciliation                    Diff: 552,026.92 SAR║
+║  [ℹ] Total Invoices                           2,263              ║
+║  [ℹ] Receipt Files Generated                  5                  ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                              DETAILED VERIFICATION                                       ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1. INPUT FILES (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AR Invoice file                          TAIFSHARST.csv
+  Metadata file                            RCPT_Mapping_DATA.csv
+  Receipt Methods                          Receipt_Methods.csv
+  Bank Charges                             BANK_CHARGES.csv
+  Payment File                             TAIFSHARST_payment_line_5_to_31_March.xlsx
+  Segment 1 prefix                         86420223
+  Segment 2 prefix                         23867110
+
+  AR rows read                             8413
+  Unique invoices loaded                   2263
+  Unique transactions (BLK)                71
+  Total AR amount                          519,867.08 SAR
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 1b. PAYMENT FILE (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Payment Method             Invoices      Total Amount (SAR)    
+  ----------------------------------------------------------------------
+  Cash                       623           109,518.00            
+  Mada                       1360          348,884.00            
+  Master                     72            25,041.00             
+  TABBY                      126           40,347.00             
+  TAMARA                     78            22,920.00             
+  Visa                       222           52,504.00             
+  ----------------------------------------------------------------------
+  TOTAL                      2481          599,214.00            
+
+  Payment methods sourced from the uploaded payment file.
+  Misc Receipts will be generated for card-payment methods
+  matched against BANK_CHARGES.csv.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 2. STORE BREAKDOWN (AR INVOICE MODE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Store                           Invoices    Amount (SAR)        
+  ----------------------------------------------------------------------
+  RYDGALLER                       204         63,267.00           
+  TAIFSHARST                      2059        535,947.00          
+
+  ✓ CONSOLIDATED FILE CREATED: Receipt_ALL_CONSOLIDATED.csv
+    Total rows: 103
+    Total amount: 535,947.00 SAR
+    Payment methods included: ['Cash', 'Mada', 'Master', 'Visa']
+
+  ═══ CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:              535,947.00 SAR
+    Per-method total:                535,947.00 SAR
+    Difference:                            0.00 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Consolidated File:
+    Cash               27 rows          109,518.00 SAR  ✓
+    Mada               27 rows          348,884.00 SAR  ✓
+    Master             23 rows           25,041.00 SAR  ✓
+    Visa               26 rows           52,504.00 SAR  ✓
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8. STANDARD RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  BNPL invoices skipped                    204
+  Unknown method rows skipped              0
+  Skipped (no AR txn number)               0
+  Receipt files to write                   5
+
+  ⚠ PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Standard Receipts (in RECEIPT_PAYMENT_METHODS):
+    Mada                       348,884.00 SAR
+    Cash                       109,518.00 SAR
+    Visa                        52,504.00 SAR
+    Master                      25,041.00 SAR
+
+  ⚠ SKIPPED - Not in RECEIPT_PAYMENT_METHODS:
+    (none)
+
+  ⊗ BNPL Methods (excluded by design):
+    TABBY                       40,347.00 SAR
+    TAMARA                      22,920.00 SAR
+
+  RECEIPT DETAILS WITH BANK ACCOUNT MAPPING:
+  File                                      Store            Method      Amount (SAR)      Bank Account                       
+  ------------------------------------------------------------------------------------------------------------------------
+  Receipt_CASH.csv                          TAIFSHARST       Cash        3,299.00          Cash TAIFSHARST                    
+  Receipt_MADA.csv                          TAIFSHARST       Mada        9,633.00          0157-95017321-000                  
+  Receipt_MASTER.csv                        TAIFSHARST       Master      210.00            0157-95017321-000                  
+  Receipt_VISA.csv                          TAIFSHARST       Visa        2,199.00          0157-95017321-000                  
+  Receipt_CASH.csv                          TAIFSHARST       Cash        4,368.00          Cash TAIFSHARST                    
+  Receipt_MADA.csv                          TAIFSHARST       Mada        11,976.00         0157-95017321-000                  
+  Receipt_MASTER.csv                        TAIFSHARST       Master      2,258.00          0157-95017321-000                  
+  Receipt_VISA.csv                          TAIFSHARST       Visa        1,081.00          0157-95017321-000                  
+  Receipt_CASH.csv                          TAIFSHARST       Cash        3,860.00          Cash TAIFSHARST                    
+  Receipt_MADA.csv                          TAIFSHARST       Mada        15,716.00         0157-95017321-000                  
+  Receipt_MASTER.csv                        TAIFSHARST       Master      257.00            0157-95017321-000                  
+  Receipt_VISA.csv                          TAIFSHARST       Visa        1,181.00          0157-95017321-000                  
+  Receipt_CASH.csv                          TAIFSHARST       Cash        3,469.00          Cash TAIFSHARST                    
+  Receipt_MADA.csv                          TAIFSHARST       Mada        9,147.00          0157-95017321-000                  
+  Receipt_VISA.csv                          TAIFSHARST       Visa        884.00            0157-95017321-000                  
+  Receipt_CASH.csv                          TAIFSHARST       Cash        5,083.00          Cash TAIFSHARST                    
+  Receipt_MADA.csv                          TAIFSHARST       Mada        13,489.00         0157-95017321-000                  
+  Receipt_MASTER.csv                        TAIFSHARST       Master      984.00            0157-95017321-000                  
+  Receipt_VISA.csv                          TAIFSHARST       Visa        2,168.00          0157-95017321-000                  
+  Receipt_CASH.csv                          TAIFSHARST       Cash        4,204.00          Cash TAIFSHARST                    
+  Receipt_MADA.csv                          TAIFSHARST       Mada        17,524.00         0157-95017321-000                  
+  Receipt_MASTER.csv                        TAIFSHARST       Master      517.00            0157-95017321-000                  
+  Receipt_VISA.csv                          TAIFSHARST       Visa        515.00            0157-95017321-000                  
+  Receipt_CASH.csv                          TAIFSHARST       Cash        3,124.00          Cash TAIFSHARST                    
+  Receipt_MADA.csv                          TAIFSHARST       Mada        18,182.00         0157-95017321-000                  
+  Receipt_MASTER.csv                        TAIFSHARST       Master      2,091.00          0157-95017321-000                  
+  Receipt_VISA.csv                          TAIFSHARST       Visa        2,327.00          0157-95017321-000                  
+  Receipt_CASH.csv                          TAIFSHARST       Cash        4,484.00          Cash TAIFSHARST                    
+  Receipt_MADA.csv                          TAIFSHARST       Mada        12,849.00         0157-95017321-000                  
+  Receipt_MASTER.csv                        TAIFSHARST       Master      2,517.00          0157-95017321-000                  
+  Receipt_VISA.csv                          TAIFSHARST       Visa        1,574.00          0157-95017321-000                  
+  Receipt_CASH.csv                          TAIFSHARST       Cash        5,304.00          Cash TAIFSHARST                    
+  Receipt_MADA.csv                          TAIFSHARST       Mada        17,932.00         0157-95017321-000                  
+  Receipt_MASTER.csv                        TAIFSHARST       Master      298.00            0157-95017321-000                  
+  Receipt_VISA.csv                          TAIFSHARST       Visa        4,492.00          0157-95017321-000                  
+  Receipt_CASH.csv                          TAIFSHARST       Cash        6,548.00          Cash TAIFSHARST                    
+  Receipt_MADA.csv                          TAIFSHARST       Mada        14,993.00         0157-95017321-000                  
+  Receipt_MASTER.csv                        TAIFSHARST       Master      1,528.00          0157-95017321-000                  
+  Receipt_VISA.csv                          TAIFSHARST       Visa        2,678.00          0157-95017321-000                  
+  Receipt_CASH.csv                          TAIFSHARST       Cash        4,700.00          Cash TAIFSHARST                    
+  Receipt_MADA.csv                          TAIFSHARST       Mada        12,617.00         0157-95017321-000                  
+  Receipt_MASTER.csv                        TAIFSHARST       Master      1,282.00          0157-95017321-000                  
+  Receipt_VISA.csv                          TAIFSHARST       Visa        2,092.00          0157-95017321-000                  
+  Receipt_CASH.csv                          TAIFSHARST       Cash        6,889.00          Cash TAIFSHARST                    
+  Receipt_MADA.csv                          TAIFSHARST       Mada        26,111.00         0157-95017321-000                  
+  Receipt_MASTER.csv                        TAIFSHARST       Master      707.00            0157-95017321-000                  
+  Receipt_VISA.csv                          TAIFSHARST       Visa        2,490.00          0157-95017321-000                  
+  Receipt_CASH.csv                          TAIFSHARST       Cash        6,400.00          Cash TAIFSHARST                    
+  Receipt_MADA.csv                          TAIFSHARST       Mada        25,228.00         0157-95017321-000                  
+  Receipt_MASTER.csv                        TAIFSHARST       Master      1,826.00          0157-95017321-000                  
+  Receipt_VISA.csv                          TAIFSHARST       Visa        5,478.00          0157-95017321-000                  
+  Receipt_CASH.csv                          TAIFSHARST       Cash        7,546.00          Cash TAIFSHARST                    
+  Receipt_MADA.csv                          TAIFSHARST       Mada        33,300.00         0157-95017321-000                  
+  Receipt_MASTER.csv                        TAIFSHARST       Master      3,876.00          0157-95017321-000                  
+  Receipt_VISA.csv                          TAIFSHARST       Visa        6,366.00          0157-95017321-000                  
+  Receipt_CASH.csv                          TAIFSHARST       Cash        10,361.00         Cash TAIFSHARST                    
+  Receipt_MADA.csv                          TAIFSHARST       Mada        32,938.00         0157-95017321-000                  
+  Receipt_MASTER.csv                        TAIFSHARST       Master      1,861.00          0157-95017321-000                  
+  Receipt_VISA.csv                          TAIFSHARST       Visa        5,934.00          0157-95017321-000                  
+  Receipt_CASH.csv                          TAIFSHARST       Cash        5,646.00          Cash TAIFSHARST                    
+  Receipt_MADA.csv                          TAIFSHARST       Mada        17,758.00         0157-95017321-000                  
+  Receipt_MASTER.csv                        TAIFSHARST       Master      850.00            0157-95017321-000                  
+  Receipt_VISA.csv                          TAIFSHARST       Visa        1,603.00          0157-95017321-000                  
+  Receipt_CASH.csv                          TAIFSHARST       Cash        2,517.00          Cash TAIFSHARST                    
+  Receipt_MADA.csv                          TAIFSHARST       Mada        4,193.00          0157-95017321-000                  
+  Receipt_MASTER.csv                        TAIFSHARST       Master      647.00            0157-95017321-000                  
+  Receipt_VISA.csv                          TAIFSHARST       Visa        1,273.00          0157-95017321-000                  
+  Receipt_CASH.csv                          TAIFSHARST       Cash        2,684.00          Cash TAIFSHARST                    
+  Receipt_MADA.csv                          TAIFSHARST       Mada        3,960.00          0157-95017321-000                  
+  Receipt_MASTER.csv                        TAIFSHARST       Master      549.00            0157-95017321-000                  
+  Receipt_VISA.csv                          TAIFSHARST       Visa        2,047.00          0157-95017321-000                  
+  Receipt_CASH.csv                          TAIFSHARST       Cash        2,069.00          Cash TAIFSHARST                    
+  Receipt_MADA.csv                          TAIFSHARST       Mada        7,567.00          0157-95017321-000                  
+  Receipt_MASTER.csv                        TAIFSHARST       Master      160.00            0157-95017321-000                  
+  Receipt_VISA.csv                          TAIFSHARST       Visa        674.00            0157-95017321-000                  
+  Receipt_CASH.csv                          TAIFSHARST       Cash        2,305.00          Cash TAIFSHARST                    
+  Receipt_MADA.csv                          TAIFSHARST       Mada        4,744.00          0157-95017321-000                  
+  Receipt_MASTER.csv                        TAIFSHARST       Master      210.00            0157-95017321-000                  
+  Receipt_VISA.csv                          TAIFSHARST       Visa        1,020.00          0157-95017321-000                  
+  Receipt_CASH.csv                          TAIFSHARST       Cash        1,988.00          Cash TAIFSHARST                    
+  Receipt_MADA.csv                          TAIFSHARST       Mada        3,619.00          0157-95017321-000                  
+  Receipt_VISA.csv                          TAIFSHARST       Visa        284.00            0157-95017321-000                  
+  Receipt_CASH.csv                          TAIFSHARST       Cash        1,386.00          Cash TAIFSHARST                    
+  Receipt_MADA.csv                          TAIFSHARST       Mada        7,245.00          0157-95017321-000                  
+  Receipt_MASTER.csv                        TAIFSHARST       Master      469.00            0157-95017321-000                  
+  Receipt_VISA.csv                          TAIFSHARST       Visa        952.00            0157-95017321-000                  
+  Receipt_CASH.csv                          TAIFSHARST       Cash        1,194.00          Cash TAIFSHARST                    
+  Receipt_MADA.csv                          TAIFSHARST       Mada        5,038.00          0157-95017321-000                  
+  Receipt_VISA.csv                          TAIFSHARST       Visa        1,148.00          0157-95017321-000                  
+  Receipt_CASH.csv                          TAIFSHARST       Cash        1,941.00          Cash TAIFSHARST                    
+  Receipt_MADA.csv                          TAIFSHARST       Mada        8,702.00          0157-95017321-000                  
+  Receipt_MASTER.csv                        TAIFSHARST       Master      712.00            0157-95017321-000                  
+  Receipt_VISA.csv                          TAIFSHARST       Visa        408.00            0157-95017321-000                  
+  Receipt_CASH.csv                          TAIFSHARST       Cash        1,188.00          Cash TAIFSHARST                    
+  Receipt_MADA.csv                          TAIFSHARST       Mada        5,071.00          0157-95017321-000                  
+  Receipt_MASTER.csv                        TAIFSHARST       Master      448.00            0157-95017321-000                  
+  Receipt_VISA.csv                          TAIFSHARST       Visa        964.00            0157-95017321-000                  
+  Receipt_CASH.csv                          TAIFSHARST       Cash        5,073.00          Cash TAIFSHARST                    
+  Receipt_MADA.csv                          TAIFSHARST       Mada        5,008.00          0157-95017321-000                  
+  Receipt_MASTER.csv                        TAIFSHARST       Master      784.00            0157-95017321-000                  
+  Receipt_VISA.csv                          TAIFSHARST       Visa        672.00            0157-95017321-000                  
+  Receipt_CASH.csv                          TAIFSHARST       Cash        1,888.00          Cash TAIFSHARST                    
+  Receipt_MADA.csv                          TAIFSHARST       Mada        4,344.00          0157-95017321-000                  
+  ------------------------------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                                            535,947.00                                           
+
+  Per-method totals:
+    Cash             27 file(s)      109,518.00 SAR
+    Mada             27 file(s)      348,884.00 SAR
+    Master           23 file(s)       25,041.00 SAR
+    Visa             26 file(s)       52,504.00 SAR
+    Grand Total                       535,947.00 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  8a. DAY-WISE PAYMENT METHOD VALIDATION                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+  This section shows payment totals broken down by date and payment method.
+  These are the ACTUAL payment amounts collected (from payment file).
+
+  Day-wise payment method totals (SAR):
+
+  Date                 Cash         Mada       Master         Visa          TOTAL
+  ----------------------------------------------------------------------------------
+  2026-03-05          3,299        9,633          210        2,199         15,341
+  2026-03-06          4,368       11,976        2,258        1,081         19,683
+  2026-03-07          3,860       15,716          257        1,181         21,014
+  2026-03-08          3,469        9,147            0          884         13,500
+  2026-03-09          5,083       13,489          984        2,168         21,724
+  2026-03-10          4,204       17,524          517          515         22,760
+  2026-03-11          3,124       18,182        2,091        2,327         25,724
+  2026-03-12          4,484       12,849        2,517        1,574         21,424
+  2026-03-13          5,304       17,932          298        4,492         28,026
+  2026-03-14          6,548       14,993        1,528        2,678         25,747
+  2026-03-15          4,700       12,617        1,282        2,092         20,691
+  2026-03-16          6,889       26,111          707        2,490         36,197
+  2026-03-17          6,400       25,228        1,826        5,478         38,932
+  2026-03-18          7,546       33,300        3,876        6,366         51,088
+  2026-03-19         10,361       32,938        1,861        5,934         51,094
+  2026-03-20          5,646       17,758          850        1,603         25,857
+  2026-03-21          2,517        4,193          647        1,273          8,630
+  2026-03-22          2,684        3,960          549        2,047          9,240
+  2026-03-23          2,069        7,567          160          674         10,470
+  2026-03-24          2,305        4,744          210        1,020          8,279
+  2026-03-25          1,988        3,619            0          284          5,891
+  2026-03-26          1,386        7,245          469          952         10,052
+  2026-03-27          1,194        5,038            0        1,148          7,380
+  2026-03-28          1,941        8,702          712          408         11,763
+  2026-03-29          1,188        5,071          448          964          7,671
+  2026-03-30          5,073        5,008          784          672         11,537
+  2026-03-31          1,888        4,344            0            0          6,232
+  ----------------------------------------------------------------------------------
+  TOTAL             109,518      348,884       25,041       52,504        535,947
+
+  VALIDATION:
+    Payment file total (for standard receipts):       535,947.00 SAR
+    Receipt files total:                              535,947.00 SAR
+    Difference:                                             0.00 SAR  ✓ MATCH
+
+  Per-method validation:
+    Cash            Payment:   109,518.00  Receipt:   109,518.00  Diff:     0.00  ✓
+    Mada            Payment:   348,884.00  Receipt:   348,884.00  Diff:     0.00  ✓
+    Master          Payment:    25,041.00  Receipt:    25,041.00  Diff:     0.00  ✓
+    Visa            Payment:    52,504.00  Receipt:    52,504.00  Diff:     0.00  ✓
+
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10. OUTPUT FILES — STANDARD RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Consolidated file                        Receipt_ALL_CONSOLIDATED.csv (103 rows, 535,947.00 SAR)
+  Per-method grand total                   535,947.00 SAR
+
+  ✓ MISC CONSOLIDATED FILE CREATED: MiscReceipt_ALL_CONSOLIDATED.csv
+    Total rows: 76
+    Total amount: -4,105.9719 SAR
+    Payment methods included: ['Mada', 'Master', 'Visa']
+
+  ═══ MISC CONSOLIDATED FILE VALIDATION ═══
+    Consolidated total:             -4,105.9719 SAR
+    Per-method total:               -4,105.9719 SAR
+    Difference:                          0.0000 SAR
+    Status: ✓ MATCH - Totals are accurate
+
+  Payment Method Breakdown in Misc Consolidated File:
+    Mada               27 rows         -2,407.8999 SAR  ⚠ 27 NEGATIVE AMOUNTS!
+    Master             23 rows           -547.1455 SAR  ⚠ 23 NEGATIVE AMOUNTS!
+    Visa               26 rows         -1,150.9265 SAR  ⚠ 26 NEGATIVE AMOUNTS!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 8b. MISCELLANEOUS RECEIPT RECORDS — DETAIL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Skipped (no AR txn number)               0
+  Misc receipt files to write              4
+
+  ⚠ CARD PAYMENT METHOD PROCESSING BREAKDOWN:
+
+  ✓ ACCEPTED for Misc Receipts (in CARD_PAYMENT_METHODS):
+    Mada                       348,971.00 SAR
+    Visa                        52,674.00 SAR
+    Master                      25,041.00 SAR
+
+  ⚠ SKIPPED - Not in CARD_PAYMENT_METHODS:
+    Cash                       119,090.00 SAR  ← NOT GENERATING MISC RECEIPTS!
+    TOTAL SKIPPED              119,090.00 SAR
+
+  MISC RECEIPT CALCULATION DETAILS:
+  Store            Method      Payment Total     Rate %    Misc Amount       Bank Acct                     
+  ----------------------------------------------------------------------------------------------------
+  TAIFSHARST       Mada        9,633.00          0.01      -66.4677          0157-95017321-000             
+  TAIFSHARST       Master      210.00            0.02      -4.5885           0157-95017321-000             
+  TAIFSHARST       Visa        2,199.00          0.02      -48.0481          0157-95017321-000             
+  TAIFSHARST       Mada        11,976.00         0.01      -82.6344          0157-95017321-000             
+  TAIFSHARST       Master      2,258.00          0.02      -49.3373          0157-95017321-000             
+  TAIFSHARST       Visa        1,081.00          0.02      -23.6198          0157-95017321-000             
+  TAIFSHARST       Mada        15,716.00         0.01      -108.4404         0157-95017321-000             
+  TAIFSHARST       Master      257.00            0.02      -5.6154           0157-95017321-000             
+  TAIFSHARST       Visa        1,181.00          0.02      -25.8048          0157-95017321-000             
+  TAIFSHARST       Mada        9,147.00          0.01      -63.1143          0157-95017321-000             
+  TAIFSHARST       Visa        884.00            0.02      -19.3154          0157-95017321-000             
+  TAIFSHARST       Mada        13,489.00         0.01      -93.0741          0157-95017321-000             
+  TAIFSHARST       Master      984.00            0.02      -21.5004          0157-95017321-000             
+  TAIFSHARST       Visa        2,168.00          0.02      -47.3708          0157-95017321-000             
+  TAIFSHARST       Mada        17,524.00         0.01      -120.9156         0157-95017321-000             
+  TAIFSHARST       Master      517.00            0.02      -11.2965          0157-95017321-000             
+  TAIFSHARST       Visa        515.00            0.02      -11.2527          0157-95017321-000             
+  TAIFSHARST       Mada        18,182.00         0.01      -125.4558         0157-95017321-000             
+  TAIFSHARST       Master      2,091.00          0.02      -45.6883          0157-95017321-000             
+  TAIFSHARST       Visa        2,327.00          0.02      -50.8449          0157-95017321-000             
+  TAIFSHARST       Mada        12,849.00         0.01      -88.6581          0157-95017321-000             
+  TAIFSHARST       Master      2,517.00          0.02      -54.9964          0157-95017321-000             
+  TAIFSHARST       Visa        1,574.00          0.02      -34.3919          0157-95017321-000             
+  TAIFSHARST       Mada        17,932.00         0.01      -123.7308         0157-95017321-000             
+  TAIFSHARST       Master      298.00            0.02      -6.5113           0157-95017321-000             
+  TAIFSHARST       Visa        4,492.00          0.02      -98.1502          0157-95017321-000             
+  TAIFSHARST       Mada        14,993.00         0.01      -103.4517         0157-95017321-000             
+  TAIFSHARST       Master      1,528.00          0.02      -33.3868          0157-95017321-000             
+  TAIFSHARST       Visa        2,678.00          0.02      -58.5143          0157-95017321-000             
+  TAIFSHARST       Mada        12,617.00         0.01      -87.0573          0157-95017321-000             
+  TAIFSHARST       Master      1,282.00          0.02      -28.0117          0157-95017321-000             
+  TAIFSHARST       Visa        2,092.00          0.02      -45.7102          0157-95017321-000             
+  TAIFSHARST       Mada        26,111.00         0.01      -180.1659         0157-95017321-000             
+  TAIFSHARST       Master      707.00            0.02      -15.4479          0157-95017321-000             
+  TAIFSHARST       Visa        2,490.00          0.02      -54.4065          0157-95017321-000             
+  TAIFSHARST       Mada        25,228.00         0.01      -174.0732         0157-95017321-000             
+  TAIFSHARST       Master      1,826.00          0.02      -39.8981          0157-95017321-000             
+  TAIFSHARST       Visa        5,648.00          0.02      -123.4088         0157-95017321-000             
+  TAIFSHARST       Mada        33,300.00         0.01      -229.7700         0157-95017321-000             
+  TAIFSHARST       Master      3,876.00          0.02      -84.6906          0157-95017321-000             
+  TAIFSHARST       Visa        6,366.00          0.02      -139.0971         0157-95017321-000             
+  TAIFSHARST       Mada        32,938.00         0.01      -227.2722         0157-95017321-000             
+  TAIFSHARST       Master      1,861.00          0.02      -40.6628          0157-95017321-000             
+  TAIFSHARST       Visa        5,934.00          0.02      -129.6579         0157-95017321-000             
+  TAIFSHARST       Mada        17,845.00         0.01      -123.1305         0157-95017321-000             
+  TAIFSHARST       Master      850.00            0.02      -18.5725          0157-95017321-000             
+  TAIFSHARST       Visa        1,603.00          0.02      -35.0255          0157-95017321-000             
+  TAIFSHARST       Mada        4,193.00          0.01      -28.9317          0157-95017321-000             
+  TAIFSHARST       Master      647.00            0.02      -14.1369          0157-95017321-000             
+  TAIFSHARST       Visa        1,273.00          0.02      -27.8150          0157-95017321-000             
+  TAIFSHARST       Mada        3,960.00          0.01      -27.3240          0157-95017321-000             
+  TAIFSHARST       Master      549.00            0.02      -11.9956          0157-95017321-000             
+  TAIFSHARST       Visa        2,047.00          0.02      -44.7269          0157-95017321-000             
+  TAIFSHARST       Mada        7,567.00          0.01      -52.2123          0157-95017321-000             
+  TAIFSHARST       Master      160.00            0.02      -3.4960           0157-95017321-000             
+  TAIFSHARST       Visa        674.00            0.02      -14.7269          0157-95017321-000             
+  TAIFSHARST       Mada        4,744.00          0.01      -32.7336          0157-95017321-000             
+  TAIFSHARST       Master      210.00            0.02      -4.5885           0157-95017321-000             
+  TAIFSHARST       Visa        1,020.00          0.02      -22.2870          0157-95017321-000             
+  TAIFSHARST       Mada        3,619.00          0.01      -24.9711          0157-95017321-000             
+  TAIFSHARST       Visa        284.00            0.02      -6.2054           0157-95017321-000             
+  TAIFSHARST       Mada        7,245.00          0.01      -49.9905          0157-95017321-000             
+  TAIFSHARST       Master      469.00            0.02      -10.2476          0157-95017321-000             
+  TAIFSHARST       Visa        952.00            0.02      -20.8012          0157-95017321-000             
+  TAIFSHARST       Mada        5,038.00          0.01      -34.7622          0157-95017321-000             
+  TAIFSHARST       Visa        1,148.00          0.02      -25.0838          0157-95017321-000             
+  TAIFSHARST       Mada        8,702.00          0.01      -60.0438          0157-95017321-000             
+  TAIFSHARST       Master      712.00            0.02      -15.5572          0157-95017321-000             
+  TAIFSHARST       Visa        408.00            0.02      -8.9148           0157-95017321-000             
+  TAIFSHARST       Mada        5,071.00          0.01      -34.9899          0157-95017321-000             
+  TAIFSHARST       Master      448.00            0.02      -9.7888           0157-95017321-000             
+  TAIFSHARST       Visa        964.00            0.02      -21.0634          0157-95017321-000             
+  TAIFSHARST       Mada        5,008.00          0.01      -34.5552          0157-95017321-000             
+  TAIFSHARST       Master      784.00            0.02      -17.1304          0157-95017321-000             
+  TAIFSHARST       Visa        672.00            0.02      -14.6832          0157-95017321-000             
+  TAIFSHARST       Mada        4,344.00          0.01      -29.9736          0157-95017321-000             
+  ----------------------------------------------------------------------------------------------------
+  GRAND TOTAL                                              -4,105.9719                                     
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+▶ 10b. OUTPUT FILES — MISCELLANEOUS RECEIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Misc Consolidated file                   MiscReceipt_ALL_CONSOLIDATED.csv (76 rows, -4,105.9719 SAR)
+  Per-method grand total                   -4,105.9719 SAR
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║  FINAL CROSS-CHECK — MAJOR VERIFICATION POINTS (AR INVOICE MODE)                         ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+  ██████████████████████████████████████████████████████████████████████
+  █  CRITICAL VERIFICATION CHECKS                                      █
+  ██████████████████████████████████████████████████████████████████████
+  █  Total AR Invoice amount                  519,867.08 SAR         █
+  █  Total Standard Receipt amt               1,071,894.00 SAR       █
+  █  Difference                               552,026.92 SAR ⚠ CHECK  █
+  █                                                                  █
+  █  Status                                   ⚠ REVIEW REQUIRED      █
+  ██████████████████████████████████████████████████████████████████████
+
+  Total AR Invoice amount                  519,867.08 SAR
+  Total Standard Receipt amt               1,071,894.00 SAR
+  Difference                               552,026.92 SAR  ⚠ CHECK
+
+  Max Transaction Number found             BLKU-0001779
+  >>> Next run START_TXN_SEQUENCE =        1780  ← set this next run
+
+  ══════════════════════════════════════════════════════════════════════
+  ⚠  VERIFICATION COMPLETE WITH WARNINGS
+  ⚠  Please review the amount discrepancies above
+  ✓  Finished : 2026-04-27 21:07:00
+  ══════════════════════════════════════════════════════════════════════
+
+
+╔══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                          ║
+║                         END OF VERIFICATION REPORT                                       ║
+║                                                                                          ║
+║  For questions or support, please contact your system administrator.                    ║
+║  This is an automated report generated by Oracle Fusion Integration System.             ║
+║                                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════════════════════╝
