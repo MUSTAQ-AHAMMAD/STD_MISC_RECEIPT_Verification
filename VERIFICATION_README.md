@@ -10,7 +10,8 @@ This script automates the complete verification process with the following check
 2. **Transaction Number Verification**: Matches Oracle transaction numbers to standard receipt IDs (handles prefixes: Visa-, Cash-, Mada-, Master-, AMEX-)
 3. **Organization ID Validation**: Verifies that all records have the correct Organization ID (`AlQurashi-KSA`)
 4. **Bank Account Verification**: Validates bank account details against the reference file (`Subledger Bank Account.xlsx`)
-5. **Comprehensive Reporting**: Generates detailed reports for each folder with all verification results
+5. **Oracle Invoice Folder Verification**: Checks for "Oracle invoice" folder and verifies that all CSV/Excel files contain "Oracle invoice" in their filename
+6. **Comprehensive Reporting**: Generates detailed reports for each folder with all verification results
 
 ## Prerequisites
 
@@ -134,6 +135,12 @@ For each store folder, the script generates:
 - Identifies accounts not found in reference
 - Shows which receipts use unrecognized accounts
 
+### 5. Oracle Invoice Folder Verification
+- Searches for "Oracle invoice" folder in each store directory (case-insensitive)
+- Verifies that all CSV and Excel files in the folder contain "Oracle invoice" in their filename
+- Reports files that don't follow the naming convention
+- Supports variations: "Oracle invoice", "Oracle invoices", "oracle_invoice", etc.
+
 ## Configuration
 
 The script uses the following constants (can be modified in `payment_verification.py`):
@@ -168,14 +175,17 @@ BANK_ACCOUNT_FILE = "Subledger Bank Account.xlsx"
 - Matched transactions
 - Valid Organization IDs
 - Matched bank accounts
+- Oracle invoice folder found with correctly named files
 
 ### Warnings (Yellow ⚠)
 - Missing transactions (might be expected in some cases)
 - Bank accounts not in reference file (might need to update reference)
+- Oracle invoice folder not found (may not be required for all stores)
 
 ### Errors (Red ✗)
 - Mismatched amounts (requires investigation)
 - Invalid Organization IDs (needs correction)
+- Files in Oracle invoice folder without "Oracle invoice" in filename (needs renaming)
 - Failed file loads (check file paths)
 
 ## Notes
