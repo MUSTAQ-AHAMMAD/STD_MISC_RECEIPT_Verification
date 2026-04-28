@@ -43,6 +43,11 @@ That's it! The script will:
 - Validates bank accounts against `Subledger Bank Account.xlsx`
 - Shows which accounts are not in the reference file
 
+### 5. Oracle Invoice Folder Verification ✓
+- Checks for "Oracle invoice" folder in each store directory
+- Verifies all CSV/Excel files contain "Oracle invoice" in their filename
+- Reports files with incorrect naming
+
 ## Where Are the Reports?
 
 After running the script, you'll find:
@@ -69,6 +74,7 @@ After running the script, you'll find:
 - Number of matched/mismatched transactions
 - Organization ID validation counts
 - Bank account verification counts
+- Oracle invoice folder status and file naming validation
 
 #### MISMATCHED AMOUNTS Section
 - Lists all transactions where amounts don't match
@@ -85,6 +91,10 @@ After running the script, you'll find:
 #### BANK ACCOUNTS NOT FOUND Section
 - Bank accounts used but not in reference file
 - Shows how many receipts use each unrecognized account
+
+#### ORACLE INVOICE FILES WITH INCORRECT NAMING Section
+- Lists files in "Oracle invoice" folder that don't have "Oracle invoice" in their filename
+- These files should be renamed to follow the naming convention
 
 ## Troubleshooting
 
